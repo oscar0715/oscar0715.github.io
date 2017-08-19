@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Database," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="《Database System Concepts》 Reference：三大范式与BCNF">
+<meta name="keywords" content="Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Database System Concepts》笔记">
+<meta property="og:url" content="http://menuet.xyz/database/Database_System_Concepts/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="《Database System Concepts》 Reference：三大范式与BCNF">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0031/8920/fa4fcfba-7888-310d-bd10-a736ef1ac97d.gif">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Database System Concepts》笔记">
+<meta name="twitter:description" content="《Database System Concepts》 Reference：三大范式与BCNF">
+<meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0031/8920/fa4fcfba-7888-310d-bd10-a736ef1ac97d.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/database/Database_System_Concepts/"/>
+
+
+
+
+
+  <title>《Database System Concepts》笔记 | Revolutionary Road</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/database/Database_System_Concepts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《Database System Concepts》笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-17T18:12:15+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>《Database System Concepts》</p>
+<p>Reference：<br><a href="http://www.cnblogs.com/ybwang/archive/2010/06/04/1751279.html" title="三大范式与BCNF" target="_blank" rel="external">三大范式与BCNF</a><br><a id="more"></a></p>
+<hr>
+<h1 id="关系数据库设计"><a href="#关系数据库设计" class="headerlink" title="关系数据库设计"></a>关系数据库设计</h1><ol>
+<li>第一范式<br>符合1NF的关系中的每个属性都不可再分。<br>但是还是会出现冗余。</li>
+<li><p>第二范式<br>符合1NF，并且非主属性完全依赖于码。</p>
+<ul>
+<li>数据库表中不存在<code>非关键字段</code>对任一<code>候选键</code>的<code>部分函数依赖</code>，也即所有<code>非关键字段</code>都<code>完全依赖</code>于任意一组<code>候选关键字</code>。</li>
+<li><code>函数依赖</code>很容易理解</li>
+<li><code>完全函数依赖</code>：如果Y完全函数依赖于X，那X的真子集无法唯一标识Y</li>
+<li><code>主属性</code>：包含在任何一个候选键中的属性</li>
+<li>不包含在任何候选键中的属性称为<code>非主属性</code>或<code>非键属性</code>或<code>非关键字段</code>。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">例子：(学号, 姓名, 年龄, 课程名称, 成绩, 学分)</div><div class="line">候选键只有一个，就是(学号，课程名称)，则主键就是(学号，课程名称)</div><div class="line">存在如下决定关系：</div><div class="line">1：(学号, 课程名称) → (姓名, 年龄, 成绩, 学分)</div><div class="line">2：(课程名称) → (学分)</div><div class="line">3：(学号) → (姓名, 年龄)</div><div class="line"></div><div class="line">其中，姓名、年龄、学分是部分依赖于主键的，而成绩是完全依赖于主键的，存在部分依赖关系，所以不满足第二范式。</div><div class="line"></div><div class="line">解决办法：把原表(学号, 姓名, 年龄, 课程名称, 成绩, 学分)分成三个表：</div><div class="line">1. 学生：Student(学号, 姓名, 年龄)；</div><div class="line">2. 课程：Course(课程名称, 学分)；</div><div class="line">3. 选课关系：SelectCourse(学号, 课程名称, 成绩)。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>第三范式<br>符合3NF，并且，主属性不依赖于主属性。</p>
+<ul>
+<li>在第二范式的基础上，数据表中如果不存在<code>非关键字段</code>对任一<code>候选关键字段</code>的<code>传递函数依赖</code>则符合第三范式<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">例子：表：(学号, 姓名, 年龄, 所在学院, 学院地点, 学院电话)</div><div class="line">该表中候选字段只有“学号”，于是“学号”做主键。由于主键是单一属性，所以不存在非主属性对主键的部分函数依赖的问题，所以必然满足第二范式。但是存在如下传递依赖</div><div class="line">(学号) → (所在学院) → (学院地点, 学院电话)</div><div class="line">学院地点和学院电话传递依赖于学号，而学院地点和学院电话都是非关键字段，即表中出现了“某一非关键字段可以确定出其它非关键字段”的情况，于是违反了第三范式。</div><div class="line"></div><div class="line">解决办法：</div><div class="line">把原表分成两个表：</div><div class="line">1. 学生：(学号, 姓名, 年龄, 所在学院)；</div><div class="line">2. 学院：(学院, 地点, 电话)。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>BCNF范式<br>符合3NF，并且，主属性不依赖于主属性。</p>
+</li>
+</ol>
+<p><img src="http://dl2.iteye.com/upload/attachment/0031/8920/fa4fcfba-7888-310d-bd10-a736ef1ac97d.gif" alt="四种范式的关系" title="四种范式的关系"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/database/MySQL_Crash_Course/" rel="next" title="《MySQL Crash Course》笔记">
+                <i class="fa fa-chevron-left"></i> 《MySQL Crash Course》笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/java/Java编程思想【Java系列笔记】/" rel="prev" title="Java编程思想【Java系列笔记】">
+                Java编程思想【Java系列笔记】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">385</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库设计"><span class="nav-text">关系数据库设计</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Graph Traversals">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15650 - Graph Traversals">
+<meta property="og:url" content="http://menuet.xyz/algorithm/algorithm-15650-bfs-dfs/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Graph Traversals">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/e/e8/Simple-bipartite-graph.svg">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-bfs-dfs/Bipartite.png">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 15650 - Graph Traversals">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Graph Traversals">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/e/e8/Simple-bipartite-graph.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/algorithm/algorithm-15650-bfs-dfs/"/>
+
+
+
+
+
+  <title>CMU 15650 - Graph Traversals | Revolutionary Road</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/algorithm-15650-bfs-dfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 15650 - Graph Traversals</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-04T12:04:45+08:00">
+                2016-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 15650 - Algorithm and Data Structure </p>
+<p>Graph Traversals<br><a id="more"></a></p>
+<hr>
+<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><h2 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth-First Search"></a>Depth-First Search</h2><p>DFS keeps walking down a path until it is forced to backtrack.<br>It backtracks until it finds a new path to go down.<br>深度优先搜索先沿着一条路一直往下走，实在走不下去了，再回头原路返回，知道找到一条可以重新继续往前走的路。</p>
+<p>It results in a search tree, called the depth-first search tree.<br>In general, the DFS tree will be very different than the BFS tree.<br>深度优先搜索算法都到的深度优先搜索树，通常来说 DFS 树和 BFS 树是不一样的。</p>
+<h2 id="A-property-of-Non-DFS-Tree-Edges"><a href="#A-property-of-Non-DFS-Tree-Edges" class="headerlink" title="A property of Non-DFS-Tree Edges"></a>A property of Non-DFS-Tree Edges</h2><p><strong>Theorem 定理:</strong><br>Let x and y be nodes in the DFS tree $T_G$ such that $\lbrace x,y \rbrace$ is an edge in undirected graph $G$. Then one of $x$ or $y$ is an ancestor of the other in $T_G$ .<br>如果 $x$ ， $y$ 是 DFS 树中的两个节点，这两个节点之间有一条无向边，那么两个节点其中的一个一定是另一个的祖先节点。</p>
+<p><strong>Proof 证明:</strong><br>Suppose, $x$ is reached first in the DFS. When we reach $x$, node $y$ must not yet have been explored.<br>假设，在DFS中 $x$ 先被遍历到了，这个时候 $y$ 还没有遍历到。</p>
+<p>All the nodes that are marked explored between first encountering $x$ and leaving $x$ for the last time are  of $x$ in $T_G$ .<br>接着，我们第一次从 $x$ 出发，沿着这条路径往下走，直到然后最后一次回到 $x$ ，并离开 $x$ 。这个过程中间的所有的点都是 $x$ 的descendants，这里叫成后代真的也是有点奇怪。</p>
+<p>$y$ must become explored before leaving $x$ for the last time (otherwise, we should add $\lbrace x,y \rbrace$ to $T_G$). Hence, $y$ is a descendent of $x$ in $T_G$.<br>因为 $x$ ， $y$ 是有一条边连着的，所以 $y$ 肯定也会在上文提到的那个过程中被遍历到，所以 $y$ 是 $x$ 的后代。</p>
+<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><h2 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth-First Search"></a>Breadth-First Search</h2><p>Breadth-first search explores the nodes of a graph in increasing distance away from some starting vertex $s$.<br>深度优先搜索是按照一步一步远离根节点的顺序来遍历。</p>
+<p>It decomposes the component into <strong>layers</strong> $L_i$ such that the shortest path from $s$ to each of nodes in $L_i$ is of length $i$.<br>BFS 把整张图拆分成许多<em>层</em>，于是从根节点 $s$ 到第 $L_i$ 层的每一个节点的距离都是 $i$.</p>
+<p>Breadth-First Search:</p>
+<ol>
+<li>$L_0$ is the set $\lbrace s \rbrace$.<br>第 $L_0$ 层只有一个根节点。</li>
+<li>Given layers $L0$, $L1$ ,…, $Lj$, then $L_{j+1}$ is the set of nodes that are not in a previous layer and that have an edge to some node in layer $L_j$.第 $L_{j+1}$ 层中的节点一定不在之前的层中，而且和第 $L_j$ 层的节点有边相连。
+</li>
+</ol>
+<h2 id="Property-of-Non-BFS-Tree-Edges"><a href="#Property-of-Non-BFS-Tree-Edges" class="headerlink" title="Property of Non-BFS-Tree Edges"></a>Property of Non-BFS-Tree Edges</h2><p>不在BFS树中的边的性质</p>
+<p><strong>Theorem：</strong><br>Choose $x \in L_i$ and $y \in L_j$ such that $\lbrace x,y \rbrace $ is an edge in undirected graph $G$. Then $i$ and $j$ differ by at most 1.<br>如果 $x \in L_i$ ，  $y \in L_j$ ，且这两个点之间有一条边 $\lbrace x,y \rbrace $ 相连，那么这两个点之间的层数只相差1。</p>
+<p>In other words, edges of $G$ that do not appear in the tree connect nodes either in the same layer or adjacent layer.<br>也就是说，在图中的任意一条边的两个端点，要么在同一层，要么在隔壁层。</p>
+<p><strong>Proof:</strong><br>Suppose not, and that $i &lt; j - 1$<br>All the neighbor of $x$ will be found by layer $i + 1$<br>Therefore, the layer is less than $i + 1$, so $j \leqslant i + 1$, which contradicts $i &lt; j - 1$<br>我们假设 $i &lt; j - 1$，$x \in L_i$ ，也就是 $i$ 比 $j$ 小了不止一层。<br>但是因为所有 $x$ 的邻点都会在下一层，也就是 $i + 1$ 层中被遍历到，所以 $j \leqslant i + 1$ ，这与假设矛盾了。</p>
+<h1 id="Tree-Growing"><a href="#Tree-Growing" class="headerlink" title="Tree Growing"></a>Tree Growing</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><p>We can think of BFS and DFS (and several other algorithms) as special cases of tree growing:</p>
+<ol>
+<li>Let T be the current tree, and</li>
+<li>Maintain a list of frontier edges: the set of edges of G that<br>have one endpoint in T and one endpoint not in T:</li>
+<li>Repeatedly choose a frontier edge (somehow) and add it to T.</li>
+</ol>
+<p>我们可以把DFS和DFS看成一种特殊的树的成长方式，两者都是按照以下步骤走的：</p>
+<ol>
+<li>$T$ 是图 $G$中一颗树</li>
+<li>一部分点在 $T$ 中，另外一部分不在 $T$ 。这个时候我们有一个 frontier edges 的集合，这些边的一端在 $T$ 中，另外一端在另外一部分中</li>
+<li>我们只需要不断地从这歌儿集合中挑选一条边到集合中就好了。</li>
+</ol>
+<h2 id="pseudocode"><a href="#pseudocode" class="headerlink" title="pseudocode"></a>pseudocode</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">TreeGrowing(graph G, vertex v, func nextEdge): </div><div class="line">	T = (v,∅)</div><div class="line">	S = set of edges incident to v  <span class="comment">// frontier edges</span></div><div class="line">	<span class="keyword">while</span> S is not empty:</div><div class="line">		e = nextEdge(G, S)       <span class="comment">// 挑选出下一条要加入T的边</span></div><div class="line">		T = T + e                <span class="comment">// add edge e to T</span></div><div class="line">		S = updateFrontier(G, S, e) <span class="comment">// 更新S这个集合</span></div><div class="line"><span class="keyword">return</span> T</div></pre></td></tr></table></figure>
+<ol>
+<li>The function $nextEdge(G, S)$ returns a frontier edge from $S$.<br> nextEdge这个函数负责挑出一条边来，这条边就是要加到 $T$ 中的</li>
+<li>$updateFrontier(G, S, e)$ returns the new frontier after we add edge e to $T$.<br> 因为有新的边加入了，所以需要 $updateFrontier$ 这个函数来更新 frontier edges 这个集合。</li>
+<li>So For $BFS$, $S$ is a queue, and $nextEdge$ poll the ealiest edge from queue, updateFrontier add neighbors to the end of the queue<br> 对于 $BFS$ 来说，$S$ 是一个队列，这个队列存着所有的邻边，$nextEdge$ 按照先进先出的顺序，选择最先遇到的边加入树。</li>
+<li>For $DFS$, $S$ is a stack, and nextEdge pop the latest edge from the stack. updateFrontier push the neighbors to the stack.<br> 对于 $DFS$ 来说， $S$ 是一个栈， $nextEdge$ 按照后进先出的顺序，每次都把最后找到的边作为加入 $T$ 的边。</li>
+</ol>
+<h2 id="Tree-Growing-Algorithms"><a href="#Tree-Growing-Algorithms" class="headerlink" title="Tree Growing Algorithms"></a>Tree Growing Algorithms</h2><p>These algorithms are all special cases / variants of Tree Growing, with different versions of nextEdge:</p>
+<ol>
+<li>Depth-first search</li>
+<li>Breadth-first search</li>
+<li>Prim’s minimum spanning tree algorithm </li>
+<li>Dijkstra’s shortest path</li>
+<li>A*</li>
+</ol>
+<h2 id="nextEdge"><a href="#nextEdge" class="headerlink" title="nextEdge"></a>nextEdge</h2><ol>
+<li>What’s nextEdge for DFS?<ul>
+<li>Select a frontier edge whose tree endpoint was discovered <strong>most recently</strong>.</li>
+<li>We can use a <strong>stack</strong> to implement DFS.</li>
+<li>Runtime for DFS: $O(|Edges|)$</li>
+</ul>
+</li>
+<li><p>What’s nextEdge for BFS?</p>
+<ul>
+<li>Select a frontier edge whose tree endpoint was discovered <strong>least recently</strong>.</li>
+<li>We can use a <strong>queue</strong> to implement DFS.</li>
+<li>Runtime for BFS: $O(|Edges|)$</li>
+</ul>
+<p>$nextEdge$ 在 $DFS$ 和 $BFS$ 中的作用，在上文一节介绍过啦。</p>
+</li>
+</ol>
+<h1 id="Representing-Graphs"><a href="#Representing-Graphs" class="headerlink" title="Representing Graphs"></a>Representing Graphs</h1><p>For a graph $G = (V, E)$<br>$n =|V|$ is the number of nodes, $m = |E|$ is the number of edges.</p>
+<p>图的字母表示。</p>
+<h2 id="Two-presentations"><a href="#Two-presentations" class="headerlink" title="Two presentations"></a>Two presentations</h2><p>There are two presentations of a graph. 两种存储图的数据结构</p>
+<ol>
+<li>Adjacency matrix. 邻接矩阵<ul>
+<li>takes $\Theta (n^2)$ space, but $G$ may have much fewer edges than $n^2$<br>  邻接矩阵要花费 $\Theta (n^2)$ 的时间复杂度，但是如果其实没有这么多边的话，很多空间都浪费了。</li>
+<li>checking incedent edges takes $\Theta (n)$ time, but a node may have much fewer nodes.<ul>
+<li>So Adjcency Maxtrix is inefficient.<br>  所以邻接矩阵效率很低的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Adjcency list. 邻接表<ul>
+<li>takes $O(m + n)$ space</li>
+<li>works better for sparse graphs.<br>  对于稀疏图来说，邻接表的性能更好。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Adjcency-list"><a href="#Adjcency-list" class="headerlink" title="Adjcency list"></a>Adjcency list</h2><p>We will use adjcency list!<br>那我们就来看看邻接表的实现：</p>
+<ul>
+<li>$Adj[v]$ records all <strong>adjcent node</strong> to $v$<br>  $Adj[v]$这个数组，保存了所有和$v$相邻的点。</li>
+<li>each edge $e = (v, w) \in E$ occurs on two adjcency lists.</li>
+</ul>
+<p>It takes $O(m + n)$ space:</p>
+<ol>
+<li>We need an array of pointers to set up lists in Adj (length = n, $O(n)$)<br>初始化的时候，我们需要建立一个长度为n的指针数组来实现这个邻接表，也就是说，每一个顶点都有自己的一个邻点的集合。</li>
+<li>We need space for all the lists, totally takes $2m = O(m)$<br>所有list的空间加起来是$2m$</li>
+</ol>
+<p>Another way to justify this bound:</p>
+<ol>
+<li>Define $degree(n_v)$ of node $v$, which is the number of its <em>incident edges</em></li>
+<li>The length of the list at $Adj[v]$ is is $n_v$</li>
+<li>So the totall length over all nodes is $O(\sum_{v \in V} n_v) = 2m$</li>
+</ol>
+<p><strong>Proof:</strong><br>Each edge $e = (v,w)$ contributes exactly twice to this sum: once in the quantity $n_v$ and once in the quantity in $n_w$. Since the sum is total of the contribution of each edge, it is $2m$.</p>
+<p>定义顶点 $v$  的度 $degree(n_v)$ ，也就是每个顶点的有多少个相邻的顶点，或者说多少条从这个顶点出发的边（这里是无向图）。所有个顶点的度加起来的和是 $2m$ ，因为每条边有两个顶点，被算了两次。</p>
+<p>The adjcent list is a natural representation for exploring graphs. If the algorithm is currently looking at a node $u$, it can read this list of neighbors in constant per neighbor.</p>
+<p>Thus, list representation correspinds to a physical notion of “exploring” the graph. You can learn the neighbors of a node $u$, once you arrive at $u$.</p>
+<h1 id="Implementations-of-BFS"><a href="#Implementations-of-BFS" class="headerlink" title="Implementations of BFS"></a>Implementations of BFS</h1><h2 id="BFS-implementation"><a href="#BFS-implementation" class="headerlink" title="BFS implementation"></a>BFS implementation</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function">procedure <span class="title">bfs</span><span class="params">(G, s)</span>:</span></div><div class="line"><span class="function">	Q :</span>= queue containing only s  <span class="comment">// 初始化的时候这个队列只包含根节点，也就是出发点</span></div><div class="line">	<span class="keyword">while</span> Q not empty</div><div class="line">		v := Q.front();           <span class="comment">// 取队列的第一个顶点</span></div><div class="line">		Q.<span class="function">remove <span class="title">front</span><span class="params">()</span>          <span class="comment">// 并顺便从队列中移除</span></span></div><div class="line"><span class="function">		<span class="keyword">for</span> w ∈ G.<span class="title">neighbors</span><span class="params">(v)</span>:   <span class="comment">// 遍历这个顶点的所有相邻的顶点</span></span></div><div class="line"><span class="function">			<span class="keyword">if</span> w not seen:        <span class="comment">// 如果这个顶点还没遍历到过，那么就加到队列中</span></span></div><div class="line"><span class="function">				mark w seen</span></div><div class="line"><span class="function">				Q.<span class="title">enqueue</span><span class="params">(w)</span></span></div></pre></td></tr></table></figure>
+<h2 id="n-Layers-Implementation"><a href="#n-Layers-Implementation" class="headerlink" title="n-Layers Implementation"></a>n-Layers Implementation</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">BFS(s):</div><div class="line">Set Discovered[s] = <span class="keyword">true</span> and Discovered[v] = <span class="keyword">false</span> <span class="keyword">for</span> all other v </div><div class="line">Initialize L[<span class="number">0</span>] to consist of the single element s</div><div class="line">Set the layer counter i = <span class="number">0</span></div><div class="line">Set the current BFS tree T = ∅</div><div class="line">While L[i] is not empty</div><div class="line">	Initialize an empty list L[i + <span class="number">1</span>] </div><div class="line">	For each node u ∈ L[i]</div><div class="line">		<span class="function">Consider each <span class="title">edge</span> <span class="params">(u, v)</span> incident to u </span></div><div class="line"><span class="function">		If Discovered[v] </span>= <span class="keyword">false</span> then</div><div class="line">			Set Discovered[v] = <span class="keyword">true</span></div><div class="line">			<span class="function">Add <span class="title">edge</span> <span class="params">(u, v)</span> to the tree T</span></div><div class="line"><span class="function">			Add v to the list L[i+1] </span></div><div class="line"><span class="function">		Endif</span></div><div class="line"><span class="function">	Endfor</span></div><div class="line"><span class="function">	Increment the layer counter i by one </span></div><div class="line"><span class="function">Endwhile</span></div></pre></td></tr></table></figure>
+<h2 id="Runtime-Analysis"><a href="#Runtime-Analysis" class="headerlink" title="Runtime Analysis"></a>Runtime Analysis</h2><p>If the graph is <em>adjcent list representation</em>, the implementation of BFS runs in time $O(m+n)$.</p>
+<p><strong>Proof:</strong></p>
+<ol>
+<li>There are $n$ lists $L[i]$ that need to set up, it takes $O(n)$.</li>
+<li>Each node occurs on at most one list, so <strong>For</strong> loop runs at most n times over all iterations of the <strong>While</strong> loop.</li>
+<li>The time spent in the For loop, considering edges incident to node $u$ is $O(n_u)$</li>
+<li>So the total time over all nodes is  $O(\sum_{v \in V} n_v) = 2m$ (Same to the space analysis)</li>
+<li>We need $O(n)$ additional time to set up the array <strong>Discovered</strong></li>
+<li>Totally $O(m+n)$</li>
+</ol>
+<p>时间复杂度和空间复杂度的算法是一样的。</p>
+<h1 id="Implementations-of-DFS"><a href="#Implementations-of-DFS" class="headerlink" title="Implementations of DFS"></a>Implementations of DFS</h1><h2 id="Recursive-implementation-of-DFS"><a href="#Recursive-implementation-of-DFS" class="headerlink" title="Recursive implementation of DFS"></a>Recursive implementation of DFS</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(G, u)</span>:</span></div><div class="line"><span class="function">	<span class="keyword">while</span> u has an unvisited neighbor in G</span></div><div class="line"><span class="function">	   v :</span>= an unvisited neighbor of u</div><div class="line">	   mark v visited</div><div class="line">	   dfs(G, v)</div></pre></td></tr></table></figure>
+<h2 id="Stack-based-implementation-of-DFS"><a href="#Stack-based-implementation-of-DFS" class="headerlink" title="Stack-based implementation of DFS"></a>Stack-based implementation of DFS</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(G, s)</span>:</span></div><div class="line"><span class="function">	S :</span>= stack containing only s</div><div class="line">	<span class="keyword">while</span> S not empty </div><div class="line">		v := S.pop()</div><div class="line">		<span class="keyword">if</span> v not visited: </div><div class="line">			mark v visited</div><div class="line">			<span class="keyword">for</span> w ∈ G.neighbors(v): S.push(w)</div></pre></td></tr></table></figure>
+<h2 id="Runtime-Analysis-1"><a href="#Runtime-Analysis-1" class="headerlink" title="Runtime Analysis"></a>Runtime Analysis</h2><p>The number of nodes which will be added into $S$ is still $2m$, so it also takes $O(m+n)$ time.</p>
+<h1 id="An-application-of-BFS"><a href="#An-application-of-BFS" class="headerlink" title="An application of BFS"></a>An application of BFS</h1><h2 id="Bipartiteness"><a href="#Bipartiteness" class="headerlink" title="Bipartiteness"></a>Bipartiteness</h2><p>A graph is bipartite if you can divide its nodes into 2 parts $(S,|V|−S)$ (a cut) so that every edge goes between the two parts $S$ and $|V| − S$ and not within a single part.</p>
+<p>二分图：如果能把一个图中的顶点分成两部分，所有的边都是横跨这两部分的，那么这个图就是一个二分图</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Simple-bipartite-graph.svg" alt="二分图" title="二分图"> </p>
+<p>Problem: Determine if a graph $G$ is bipartite.<br>我们要解决的问题是怎么判断一个图是不是二分图</p>
+<p>Bipartite graphs can’t contain odd cycles<br>一个重要的定理是二分图不能有奇数环，也就是环中的顶点数量不能使奇数。</p>
+<h2 id="Bipartite-Testing"><a href="#Bipartite-Testing" class="headerlink" title="Bipartite Testing"></a>Bipartite Testing</h2><p><strong>solution:</strong></p>
+<ol>
+<li>Do a BFS starting from some node s.</li>
+<li>Color even levels “blue” and odd levels “red.”</li>
+<li>Check each edge to see if any edge has both endpoints the same level.</li>
+</ol>
+<p>对一个图从 $s$ 出发，进行 $BFS$ ，把偶数层的顶点涂成蓝色，奇数层的顶点涂成红色。检查每一条边的两个顶点的颜色是不是都不一样。</p>
+<p><strong>Proof:</strong><br>One of two cases happen:</p>
+<ol>
+<li><p>There is no edge of $G$ between two nodes of the same layer. In this case, every edge just connects two nodes in adjacent layers. But adjacent layers are oppositely colored, so $G$ must be bipartite.<br>如果每一条边的两个顶点的颜色都不一样，也就是说可以把所有顶点恰好分成两组，红色一组，蓝色一组，所有边都横跨在这两组之间。</p>
+</li>
+<li><p>There is an edge of $G$ joining two nodes $x$ and $y$ of the same layer $L_j$ . Let $z ∈ L_i$ be the least common ancestor of $x$ and $y$ in the BFS tree T.<br>$z −x −y −z$ is a cycle of length $2(j−i)+1$, which is odd, so G is not bipartite.<br>$(z-x)$ is $(j-1)$, $(z-y)$ is $(j-1)$, $(x-y)$ is 1, so totally $2(j-1) + 1$<br>如果有一条边的两个顶点的颜色是一样的。我们先找到两个顶点最近的那个共同的祖先 $z$ ,由下图可知，这个环的长度是 $2(j-1) + 1$ ，是奇数。所以说一个图里有奇数环，就能证明这个图不是二分图。</p>
+</li>
+</ol>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-bfs-dfs/Bipartite.png" alt="Proof" title="Proof"></p>
+<h1 id="An-Application-of-DFS"><a href="#An-Application-of-DFS" class="headerlink" title="An Application of DFS"></a>An Application of DFS</h1><h2 id="DAGs"><a href="#DAGs" class="headerlink" title="DAGs"></a>DAGs</h2><p>有向无环图：<br>A directed, acyclic graph (DAG) is a graph that contains no directed cycles. (After leaving any node u you can never get back to u by following edges along the arrows.)</p>
+<p><strong>Theorem:</strong><br>Every DAG contains a vertex with no incoming edges.<br>定理：每一个有向无环图都有一个顶点是没有入边。</p>
+<p><strong>Proof:</strong><br>Suppose not.<br>Then keep following edges backward and in fewer than n + 1 steps you’ll reach a node you’ve already visited.<br>This is a directed cycle, contradicting that the graph is a DAG.<br>如果一个有向无环图是有入边的。我们随便找一个边，沿着有向边向反方向转，迟早会访问同一个节点访问两次。总之所有顶点都有入边就意味着有环。</p>
+<h2 id="Topological-Sort"><a href="#Topological-Sort" class="headerlink" title="Topological Sort"></a>Topological Sort</h2><p><strong>Topological Sort 拓扑排序:</strong><br>Given a DAG $D = (V , E)$, find a mapping $f$ from $V$ to {1,…,$|V|$}), so that for every edge $(u,v) ∈ E$, $f(u) &lt; f(v)$, and each integer $1 ≤ i ≤ |V|$ is mapped to exactly once.<br>给定一个有向无环图 $D = (V , E)$，对图中的每一个顶点的赋一个值$f$，对于每一条图中的边$(u,v) ∈ E$ 来说，都有 $f(u) &lt; f(v)$ ，注意这里是有向的。$f$ 的值 $i$ 的范围：$1 ≤ i ≤ |V|$，每个整数都唯一配对一个顶点。</p>
+<h2 id="Topological-Sort-Algorithm"><a href="#Topological-Sort-Algorithm" class="headerlink" title="Topological Sort Algorithm"></a>Topological Sort Algorithm</h2><p>Topological sort:</p>
+<ol>
+<li>Let i = 1</li>
+<li>Find a node u with no incoming edges, and let f (u) = i </li>
+<li>Delete u from the graph</li>
+<li>Increment i</li>
+</ol>
+<p>方法就是每次都找到一个没有入边的顶点，赋值i，把这个顶点从图中删去，i++。</p>
+<p>Implementation: Maintain</p>
+<ol>
+<li>Income[w] = number of incoming edges for node w</li>
+<li>a list S of nodes that currently have no incoming edges.</li>
+</ol>
+<p>实现的时候建立一个数组 $Income[w]$，来保存顶点 $w$ 还有多少入边。还需要一个list $S$，来保存现在有哪些顶点没有入边。</p>
+<h2 id="Topological-Sort-Running-Time"><a href="#Topological-Sort-Running-Time" class="headerlink" title="Topological Sort Running Time"></a>Topological Sort Running Time</h2><ol>
+<li>Initialize $Income[w]$ array:<ul>
+<li>Count the number of edges adjacent to each node.</li>
+<li>Implement via BFS or DFS.</li>
+<li>Total running time $O(|V| + |E|)$.</li>
+<li>用BFS或者DFS来确定每一个顶点都有几条边</li>
+</ul>
+</li>
+<li>For each node that currently has no incoming edges, decrement an entry in the income array, and possibly add something to S<ul>
+<li>This executes $O(|V|)$ times.</li>
+<li>Handling each neighbor (decrement, add to S) takes O(1) time.</li>
+<li>So this entire step takes $O(|V| + |E|)$ time.</li>
+<li>每次移除一个顶点以后，都要更新Income[]这个数组</li>
+</ul>
+</li>
+</ol>
+<p>Total running time is: $O(|V|+|E|)+O(|V|+|E|) = O(|V|+|E|)$. This is $O(|E|)$ for connected graphs.</p>
+<h2 id="Discovery-and-Finishing-Times"><a href="#Discovery-and-Finishing-Times" class="headerlink" title="Discovery and Finishing Times"></a>Discovery and Finishing Times</h2><p>DFS can be used to associate 2 numbers with each node of a graph G:</p>
+<ol>
+<li>discovery time: $d[u]$ = the time at which u is first visited   </li>
+<li>finishing time: $f[u]$ = the time at which all u and all its<br>neighbors have been visited. Clearly $d[u] \leqslant f [u]$.</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/art/书摘-不能承受的生命之轻/" rel="next" title="书摘 米兰昆德拉《不能承受的生命之轻》">
+                <i class="fa fa-chevron-left"></i> 书摘 米兰昆德拉《不能承受的生命之轻》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/algorithm/algorithm-15650-dijkstra/" rel="prev" title="CMU 15650 - Dijkstra">
+                CMU 15650 - Dijkstra <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">385</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS"><span class="nav-text">DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Depth-First-Search"><span class="nav-text">Depth-First Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-property-of-Non-DFS-Tree-Edges"><span class="nav-text">A property of Non-DFS-Tree Edges</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BFS"><span class="nav-text">BFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Breadth-First-Search"><span class="nav-text">Breadth-First Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Property-of-Non-BFS-Tree-Edges"><span class="nav-text">Property of Non-BFS-Tree Edges</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree-Growing"><span class="nav-text">Tree Growing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Process"><span class="nav-text">Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudocode"><span class="nav-text">pseudocode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Growing-Algorithms"><span class="nav-text">Tree Growing Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nextEdge"><span class="nav-text">nextEdge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Representing-Graphs"><span class="nav-text">Representing Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-presentations"><span class="nav-text">Two presentations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adjcency-list"><span class="nav-text">Adjcency list</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implementations-of-BFS"><span class="nav-text">Implementations of BFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS-implementation"><span class="nav-text">BFS implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-Layers-Implementation"><span class="nav-text">n-Layers Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-Analysis"><span class="nav-text">Runtime Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implementations-of-DFS"><span class="nav-text">Implementations of DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recursive-implementation-of-DFS"><span class="nav-text">Recursive implementation of DFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-based-implementation-of-DFS"><span class="nav-text">Stack-based implementation of DFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-Analysis-1"><span class="nav-text">Runtime Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#An-application-of-BFS"><span class="nav-text">An application of BFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bipartiteness"><span class="nav-text">Bipartiteness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bipartite-Testing"><span class="nav-text">Bipartite Testing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#An-Application-of-DFS"><span class="nav-text">An Application of DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DAGs"><span class="nav-text">DAGs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Topological-Sort"><span class="nav-text">Topological Sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Topological-Sort-Algorithm"><span class="nav-text">Topological Sort Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Topological-Sort-Running-Time"><span class="nav-text">Topological Sort Running Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discovery-and-Finishing-Times"><span class="nav-text">Discovery and Finishing Times</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

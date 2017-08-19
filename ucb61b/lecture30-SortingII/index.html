@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Lecture30 Sorting II">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lecture30 Sorting II">
+<meta property="og:url" content="http://menuet.xyz/ucb61b/lecture30-SortingII/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="Lecture30 Sorting II">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5.jpg">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-1.jpg">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-2.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/shoe.png">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lecture30 Sorting II">
+<meta name="twitter:description" content="Lecture30 Sorting II">
+<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/ucb61b/lecture30-SortingII/"/>
+
+
+
+
+
+  <title>Lecture30 Sorting II | Revolutionary Road</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/ucb61b/lecture30-SortingII/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lecture30 Sorting II</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-21T12:54:30+08:00">
+                2016-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Lecture30 Sorting II</p>
+<a id="more"></a>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Quick-sort"><a href="#Quick-sort" class="headerlink" title="Quick sort"></a>Quick sort</h1><p>Recursive divide-and-conquer algorithm</p>
+<p>Fastest comparesion-based sort for arrays</p>
+<p>Worest O(n^2)<br>Vitually always O(n logn)</p>
+<p>用在数组比较快<br>链表不一定比mergeSort快</p>
+<ol>
+<li>Start with list I of n items </li>
+<li>Choose pivot item v from I </li>
+<li>Partition I into 2 unsorted lists I1 &amp; I2<ul>
+<li>I1 all keys smaller than v’s key</li>
+<li>I2 all keys larger than v’s key</li>
+<li>Items with same key as v go into either list.</li>
+<li>the pivot v does not go into wither list. </li>
+</ul>
+</li>
+<li>Sort I1 recursively, yielding sorted list S1</li>
+<li>Sort I2 recursively, yielding sorted list S2</li>
+<li>concatenate S1, v and S1, yielding sorted list S</li>
+</ol>
+<p>举个例子：<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5.jpg" alt="Quick Sort O(n log n) " title="Quick Sort O(n log n) "><br>上图就取每个array的第一个为pivot</p>
+<p>但是，看下图，都选第一个有时候白花了很多时间。 O(n^2)<br>它明明排好序了啊<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-1.jpg" alt="Pivot Disastrous O(n^2)" title="Pivot Disastrous O(n^2)"></p>
+<p>那么有木有好一点的办法<br><strong>Choosing a pivot</strong><br>Randomly select an item form I as pivot<br>平均的长度是 一边四分之一 一边四分之三</p>
+<p>On Average running  </p>
+<h2 id="Quicksort-on-linked-lists"><a href="#Quicksort-on-linked-lists" class="headerlink" title="Quicksort on linked lists"></a>Quicksort on linked lists</h2><p>假设 key 和 pivot相同的都放到I1，那如果整个链表值都是一样的那么又O(n^2)了</p>
+<p>Better: 拆分为三个链表<br>I1, I2, Iv<br>Iv: contain pivot v &amp; all items with same key as pivot</p>
+<h2 id="Quicksort-on-arrays"><a href="#Quicksort-on-arrays" class="headerlink" title="Quicksort on arrays"></a>Quicksort on arrays</h2><p>In place</p>
+<p>快速排序比别的O(n log n)算法快的原因是<br>外循环里的小循环都非常的small</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-2.png" alt="Quick Sort of Array" title="Quick Sort of Array"></p>
+<hr>
+<p>Over！</p>
+<p><br><br><br>彩蛋！<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/shoe.png" alt="shoe" title="shoe"></p>
+<p>14年的男神苍老不少，但是那金花的衬衫还是帅爆了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/leetcode/Leetcode-202/" rel="next" title="Leetcode_202">
+                <i class="fa fa-chevron-left"></i> Leetcode_202
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/leetcode/Leetcode-242/" rel="prev" title="Leetcode_242">
+                Leetcode_242 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">385</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-sort"><span class="nav-text">Quick sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicksort-on-linked-lists"><span class="nav-text">Quicksort on linked lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicksort-on-arrays"><span class="nav-text">Quicksort on arrays</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

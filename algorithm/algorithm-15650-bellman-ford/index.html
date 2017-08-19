@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Bellman-Ford Algorithm">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15650 - Bellman-Ford">
+<meta property="og:url" content="http://menuet.xyz/algorithm/algorithm-15650-bellman-ford/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Bellman-Ford Algorithm">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 15650 - Bellman-Ford">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Bellman-Ford Algorithm">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/algorithm/algorithm-15650-bellman-ford/"/>
+
+
+
+
+
+  <title>CMU 15650 - Bellman-Ford | Revolutionary Road</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/algorithm-15650-bellman-ford/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 15650 - Bellman-Ford</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-05T23:38:45+08:00">
+                2016-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 15650 - Algorithm and Data Structure </p>
+<p>Bellman-Ford Algorithm<br><a id="more"></a></p>
+<hr>
+<h2 id="Shortest-Path-Problem"><a href="#Shortest-Path-Problem" class="headerlink" title="Shortest Path Problem"></a>Shortest Path Problem</h2><p><strong>Shortest Path with Negative Weights:</strong><br>Given directed graph $G$ with weighted edges $d(u,v)$ that may be positive or negative, find the shortest path from $s$ to $t$.<br>给定有向有权图，边的权重有正有负，找到 $s$ 到 $t$ 的最短路径</p>
+<h2 id="Complication-of-Negative-Weights"><a href="#Complication-of-Negative-Weights" class="headerlink" title="Complication of Negative Weights"></a>Complication of Negative Weights</h2><p><strong>Negative cycles:</strong><br>If some cycle has a negative total cost, we can make the $s − t$ path as low cost as we want:<br>如果在图中存在一个总权重为负数的环，那么我们可以使包含这个环的路径的总长度到负无穷</p>
+<p>Go from $s$ to some node on the cycle, and then travel around the cycle many times, eventually leaving to go to $t$.<br>因为我们可以一直沿着这个负环走啊走啊走啊</p>
+<h2 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="Bellman-Ford"></a>Bellman-Ford</h2><ol>
+<li>Let $dists(v)$ be the current estimated distance from $s$ to $v$.<br>我们假设 $dists(v)$ 是从点 $s$ 到 $v$ 的估计的距离</li>
+<li>At the start, $dists(s) = 0$ and $dists(v) = \infty$ for all other $v$.<br>起点的 dists(s) = 0$，其他点在初始情况下都是无穷大</li>
+<li>Ford step.<br> Find an $edge(u,v)$ such that<br> $dists(u) + d(u,v) &lt; dists(v)$<br> and set $dists(v) = dists(u) + d(u,v)$.</li>
+<li>Repeatedly Applying Ford Step until $dists(u)+d(u,v) ≥ dists(v)$</li>
+</ol>
+<p>其实 Dijkstra 也是会做这一步。</p>
+<p><strong>Theorem:</strong><br>After applying the Ford step until </p>
+<p>$$dists(u)+d(u,v) ≥ dists(v)$$</p>
+<p>for all edges, $dists(u)$ will equal the shortest-path distance from $s$ to $u$ for all $u$.</p>
+<p>只要不断重复的执行 Bellman-Ford Step，最后所有的 $dists(v)$ 都已经是最小的时候，就找到了最短路，因为不能更短了。</p>
+<p>那么问题来了，我们怎么去找还可以做 Bellman-Ford Step 的边呢<br><strong>Which edges are candidates for the Ford rule?</strong><br>Ford rule:</p>
+<p>$$dists(u) + d(u,v) &lt; dists(v)$$</p>
+<p>This can only become true if $dists(u)$ has gotten smaller since the<br>last time we checked.<br>如果 $dists(v)$ 需要被更新的话，原因肯定是它之前的那个节点 $u$ 的 $dists(u)$ 变小了</p>
+<ul>
+<li>Whenever we change $dists(u)$ we add u to a queue.<br>  在改变 $dists(u)$ 的时候，我们就把 $u$ 加到一个 queue 里面，这就是做了一个标记。</li>
+<li>To look for an edge to apply the Ford rule to we take a node of the queue and look at all its edges.<br>  然后要做的就是从 queue 里面取出一点，然后去检查这个点的所有相邻的点就好了。</li>
+</ul>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ShortestPath(G, s, t):</div><div class="line">Initialize dist[u] = ∞ <span class="keyword">for</span> all u</div><div class="line">dist[s] = <span class="number">0</span></div><div class="line"><span class="comment">// queue tracks nodes that are candidates for Ford rule queue = [s]</span></div><div class="line"><span class="keyword">while</span> queue is not empty:</div><div class="line">	v = <span class="function">front of <span class="title">queue</span> <span class="params">(and remove v)</span>   <span class="comment">// 从queue里面取出一个点</span></span></div><div class="line"><span class="function">	<span class="keyword">for</span> u ∈ <span class="title">neighbors</span><span class="params">(v)</span>:               <span class="comment">// 对这个点的所有邻点都进行检查</span></span></div><div class="line"><span class="function">		<span class="comment">// Apply Ford rule if we can   </span></span></div><div class="line"><span class="function">		<span class="keyword">if</span> dist[v] + <span class="title">d</span><span class="params">(v,u)</span> &lt; dist[u]:  <span class="comment">// 如果有必要，就做一个 Ford Step</span></span></div><div class="line"><span class="function">			dist[u] </span>= dist[v] + d(v,u) </div><div class="line">			parent[u] = v</div><div class="line">			<span class="keyword">if</span> u not in queue: put w at end of queue</div></pre></td></tr></table></figure>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><ul>
+<li>n = number of nodes   </li>
+<li>m = number of edges</li>
+</ul>
+<p>After $dists(v)$ has been updated $k$ times, it corresponds to a simple path of $k$ edges. （这个地方不是很理解……）（每做一次更新，都能确定一个新的节点的最短路）</p>
+<p>A path can contain at most $n − 1$ edges (before nodes start to repeat), so each $dists(v)$ can be updated at most $n − 1$ times.</p>
+<p>Updating all vertices once takes time $O(m)$ since we look at each edge twice.<br>Total running time = $O(mn)$. （m就是所有点的度的总和，这个好说）</p>
+<p>Note that this is slower than Dijkstra’s algorithm in general.</p>
+<p>Dijkstra 算法的本质是利用了贪心思想，是在剩下的节点中，找一个和 $S$ 最近的节点。<br>但是 Bellman Ford 算法不能这样做，因为有负边，所以只能去检查每一条边。</p>
+<h2 id="Another-view"><a href="#Another-view" class="headerlink" title="Another view"></a>Another view</h2><p>动态规划来解决问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ShortestPath(G, s, t):</div><div class="line">	Initialize dist[u] = ∞ <span class="keyword">for</span> all u </div><div class="line">	dist[s] = <span class="number">0</span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span> i from <span class="number">1</span> to |V|-<span class="number">1</span>:</div><div class="line">		# After round i, </div><div class="line">		# the i-th node of the shortest path must </div><div class="line">		# have its distance set to the correct value.</div><div class="line">		<span class="keyword">for</span> (v,u) in E:</div><div class="line">			<span class="keyword">if</span> dist[v] + d(v,u) &lt; dist[u]:</div><div class="line">				dist[u] = dist[v] + d(v,u)</div><div class="line">				parent[u] = v</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (v,u) in E:</div><div class="line">		<span class="keyword">if</span> dist[v] + d(v,u) &lt; dist[u]:</div><div class="line">		report that there is negative-weight cycle</div></pre></td></tr></table></figure>
+<p>This is a Dynamic Programming:</p>
+<p><strong>Definition:</strong><br>Let $dists(v,i)$ be minimum cost of a path from $s$ to $v$ that uses at most $i$ edges.</p>
+<p>Can recursively define $dists(v,i)$:</p>
+<ol>
+<li>If best $s−v$ path uses at most $i−1$ edges, then<br>$dists (v , i) = dists (v , i − 1)$.</li>
+<li>If best $s−v$ uses $i$ edges, and the last edge is $(w,v)$, then $dists (v , i ) = d (w , v) + dists (w , i − 1)$.</li>
+</ol>
+<p><strong>Recurrence:</strong><br>Let $N(w)$ be the neighbors of $w$.<br>$dists(v,i)$ = cost of best path from $s$ to $v$ using at most $i$ edges.</p>
+<p>Recurrence:</p>
+<p>$$<br>dists(v,i) = min<br>\left\{<br>    \begin{matrix}<br>         dists (v , i − 1) \\<br>         min_{w∈N(v)} dist_s(w,i−1)+d(w,v)<br>    \end{matrix}<br>\right .<br>$$</p>
+<p>Base case: $dist_s(v,1) = d(s,v)$ or ∞ if $(s,v)$ does not exist </p>
+<p>Goal: Compute dist_s $(t , n − 1)$.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/algorithm/algorithm-15650-aster/" rel="next" title="CMU 15650 - A *">
+                <i class="fa fa-chevron-left"></i> CMU 15650 - A *
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/diary/【随笔】虫儿飞/" rel="prev" title="【随笔】虫儿飞">
+                【随笔】虫儿飞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">385</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortest-Path-Problem"><span class="nav-text">Shortest Path Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complication-of-Negative-Weights"><span class="nav-text">Complication of Negative Weights</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Ford"><span class="nav-text">Bellman-Ford</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation"><span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime"><span class="nav-text">Runtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Another-view"><span class="nav-text">Another view</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
