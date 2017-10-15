@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Redis缓存 + Spring">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis用来做缓存">
+<meta property="og:url" content="http://menuet.xyz/java/Redis用来做缓存/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="Redis缓存 + Spring">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis用来做缓存">
+<meta name="twitter:description" content="Redis缓存 + Spring">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/java/Redis用来做缓存/"/>
+
+
+
+
+
+  <title>Redis用来做缓存 | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/java/Redis用来做缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis用来做缓存</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-01T14:56:12+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Techonology/" itemprop="url" rel="index">
+                    <span itemprop="name">Techonology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Techonology/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Redis缓存 + Spring<br><a id="more"></a></p>
+<hr>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><ol>
+<li><a href="http://blog.csdn.net/evankaka/article/details/50396325" title="Redis整合Spring结合使用缓存实例" target="_blank" rel="external">Redis整合Spring结合使用缓存实例</a></li>
+<li><a href="http://www.cnblogs.com/edwinchen/p/3816938.html" title="Spring Data Redis简介以及项目Demo，RedisTemplate和 Serializer详解" target="_blank" rel="external">Spring Data Redis简介以及项目Demo，RedisTemplate和 Serializer详解</a></li>
+<li><a href="http://www.cnblogs.com/luochengqiuse/p/4638988.html" title="深入理解Spring Redis的使用" target="_blank" rel="external">深入理解Spring Redis的使用</a>
+</li>
+</ol>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Key-Value Nosql Database.</p>
+<p>Redis数据库完全在内存中 –&gt; 适合用作缓存</p>
+<h3 id="Redis用作缓存实例"><a href="#Redis用作缓存实例" class="headerlink" title="Redis用作缓存实例"></a>Redis用作缓存实例</h3><h4 id="POM-引入jar包"><a href="#POM-引入jar包" class="headerlink" title="POM 引入jar包"></a>POM 引入jar包</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--Redis start --&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </div><div class="line"><span class="comment">&lt;!--Redis end --&gt;</span>  </div></pre></td></tr></table></figure>
+<ol>
+<li>spring-data-redis是Spring官方推出，可以算是Spring框架集成Redis操作的一个子框架，封装了Redis的很多命令，可以很方便的使用Spring操作Redis数据库，Spring对很多工具都提供了类似的集成，如Spring Data MongDB…</li>
+<li>Jedis是Redis官方推出的一款面向Java的客户端，提供了很多接口供Java语言调用。</li>
+</ol>
+<p>这三个究竟有什么区别呢？可以简单的这么理解：</p>
+<ol>
+<li>Redis是用ANSI C写的一个基于内存的Key-Value数据库；</li>
+<li>Jedis是Redis官方推出的面向Java的Client，提供了很多接口和方法，可以让Java操作使用Redis；</li>
+<li>Spring Data Redis是对Jedis进行了封装，集成了Jedis的一些命令和方法，可以与Spring整合。</li>
+<li>在后面的配置文件中可以看到，Spring是通过Jedis类来初始化connectionFactory的。</li>
+</ol>
+<h4 id="xml文件配置bean"><a href="#xml文件配置bean" class="headerlink" title="xml文件配置bean"></a>xml文件配置bean</h4><p>首先属性放在properties文件中<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#redis</span>中心  </div><div class="line">redis.host=10.75.202.11  </div><div class="line">redis.port=6379  </div><div class="line">redis.password=123456  </div><div class="line">redis.maxIdle=100  </div><div class="line">redis.maxActive=300  </div><div class="line">redis.maxWait=1000  </div><div class="line">redis.testOnBorrow=true  </div><div class="line">redis.timeout=100000  </div><div class="line">  </div><div class="line"># 不需要加入缓存的类  </div><div class="line">targetNames=xxxRecordManager,xxxSetRecordManager,xxxStatisticsIdentificationManager  </div><div class="line"># 不需要缓存的方法  </div><div class="line">methodNames=  </div><div class="line">  </div><div class="line">#设置缓存失效时间  </div><div class="line">com.service.impl.xxxRecordManager= 60  </div><div class="line">com.service.impl.xxxSetRecordManager= 60  </div><div class="line">defaultCacheExpireTime=3600  </div><div class="line">  </div><div class="line">fep.local.cache.capacity =10000  </div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- jedis 配置 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 注意此处注入的是JedisPoolConfig，说明SDR还依赖与Jedis --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 第一个poolconfig是对连接池的配置。包括最大连接数，队列数，存活时间，最大等待时间等等 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"poolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.maxIdle&#125;"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.maxWait&#125;"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.testOnBorrow&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span> &gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- redis服务器中心 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- Spring是通过Jedis类来初始化connectionFactory的 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 连接工厂，顾名思义，最基本的使用一定是对连接的打开和关闭。我们需要为其配置redis服务器的账户密码，端口号。 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"connectionFactory"</span>  <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.connection.jedis.JedisConnectionFactory"</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolConfig"</span> <span class="attr">ref</span>=<span class="string">"poolConfig"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.port&#125;"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hostName"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.host&#125;"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.password&#125;"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeout"</span> <span class="attr">value</span>=<span class="string">"$&#123;redis.timeout&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span> &gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 这个类作为一个模版类，提供了很多快速使用redis的api，而不需要自己来维护连接，事务。 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"redisTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.core.RedisTemplate"</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectionFactory"</span> <span class="attr">ref</span>=<span class="string">"connectionFactory"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"keySerializer"</span> &gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.StringRedisSerializer"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- JdkSerializationRedisSerializer用于类的序列化 --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"valueSerializer"</span> &gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span> &gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- cache配置 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"methodCacheInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.mucfc.msm.common.MethodCacheInterceptor"</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"redisUtil"</span> <span class="attr">ref</span>=<span class="string">"redisUtil"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span> &gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"redisUtil"</span> <span class="attr">class</span>=<span class="string">"com.mucfc.msm.common.RedisUtil"</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"redisTemplate"</span> <span class="attr">ref</span>=<span class="string">"redisTemplate"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span> &gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>为什么要使用Serializer</p>
+<ul>
+<li>因为redis是以key-value的形式将数据存在内存中，key就是简单的string，key似乎没有长度限制，不过原则上应该尽可能的短小且可读性强，无论是否基于持久存储，key在服务的整个生命周期中都会在内存中，因此减小key的尺寸可以有效的节约内存，同时也能优化key检索的效率。</li>
+<li>value在redis中，存储层面仍然基于string，在逻辑层面，可以是string/set/list/map，不过redis为了性能考虑，使用不同的“encoding”数据结构类型来表示它们。(例如：linkedlist，ziplist等)。</li>
+<li>所以可以理解为，其实redis在存储数据时，都把数据转化成了byte[]数组的形式，那么在存取数据时，需要将数据格式进行转化，那么就要用到序列化和反序列化了，这也就是为什么需要配置Serializer的原因。</li>
+</ul>
+</li>
+<li><p>Redistemplate</p>
+<ul>
+<li>通过Redistemplate可以调用ValueOperations和ListOperations等等方法，分别是对Redis命令的高级封装。</li>
+</ul>
+</li>
+</ul>
+<h4 id="业务service类"><a href="#业务service类" class="headerlink" title="业务service类"></a>业务service类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoService</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(TTScenicRegionReadServiceClient.class); </div><div class="line">    </div><div class="line">    <span class="keyword">private</span> RedisManager redisManager;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> CacheObject <span class="title">getObject</span><span class="params">(Long id)</span></span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="comment">// 用id获取内存</span></div><div class="line">            CacheObject obj = redisManager.getObjectCache(id);</div><div class="line">            <span class="comment">// 如果获取到了直接返回</span></div><div class="line">            <span class="keyword">if</span>(obj != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> obj</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 如果获取不到 则用业务逻辑产生一个CacheObject</span></div><div class="line">            <span class="comment">// CacheObject objGetByService = 此处省略</span></div><div class="line">            <span class="comment">// 然后将objGetByService存入缓存中</span></div><div class="line">            redisManager.setObjectCache(id, objGetByService);</div><div class="line"></div><div class="line">            <span class="comment">// 返回object</span></div><div class="line">            <span class="keyword">return</span> objGetByService;</div><div class="line"></div><div class="line">        &#125;<span class="keyword">catch</span> (RedisException </div><div class="line">            ***</div><div class="line">            Over！e) &#123;</div><div class="line">            <span class="comment">// 处理exception 省略</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="RedisManager接口"><a href="#RedisManager接口" class="headerlink" title="RedisManager接口"></a>RedisManager接口</h4><p>栗子：CacheObject 为被缓存的类<br>key为id</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RedisManager</span> </span>&#123;</div><div class="line">    <span class="function">CacheObject <span class="title">getObjectCache</span><span class="params">(Long id)</span> <span class="keyword">throws</span> RedisException</span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setObjectCache</span><span class="params">(Long id, Object data)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="RedisManager实现类"><a href="#RedisManager实现类" class="headerlink" title="RedisManager实现类"></a>RedisManager实现类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisManagerImpl</span> <span class="keyword">implements</span> <span class="title">RedisManager</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 日志</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory</div><div class="line">        .getLogger(TTRedisManagerImpl.class);</div><div class="line"></div><div class="line">    <span class="comment">// RedisTemplate</span></div><div class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRedisTemplate</span><span class="params">(RedisTemplate&lt;String, Object&gt; redisTemplate)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.redisTemplate = redisTemplate;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">CacheObject <span class="title">getObjectCache</span><span class="params">(Long id)</span> <span class="keyword">throws</span> RedisException</span>&#123;</div><div class="line">        <span class="keyword">if</span>( id == <span class="keyword">null</span> )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        ValueOperations&lt;String, Object&gt; valueOper = redisTemplate.opsForValue();</div><div class="line">        </div><div class="line">        Object obj = valueOper.get(<span class="string">"CacheObjectCache_"</span> + id);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> CacheObject)) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RedisException(ErrorCodeContants.REDIS_DESERIALIZE_ERROR);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (CacheObject) obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 设置缓存，这是data应该是已经获取的object类</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setObjectCache</span><span class="params">(Long id, Object data)</span></span>&#123;</div><div class="line">         <span class="keyword">if</span> (id == <span class="keyword">null</span> || data == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ValueOperations&lt;String, Object&gt; valueOper = redisTemplate.opsForValue();</div><div class="line">    </div><div class="line">    valueOper.set(<span class="string">"CacheObjectCache_"</span> + id, data);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过Redistemplate可以调用ValueOperations和ListOperations等等方法，分别是对Redis命令的高级封装。</p>
+<p>但是ValueOperations等等这些命令最终是要转化成为RedisCallback来执行的。也就是说通过使用RedisCallback可以实现更强的功能</p>
+<hr>
+<p>Over！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/leetcode/Leetcode-026/" rel="next" title="Leetcode_026">
+                <i class="fa fa-chevron-left"></i> Leetcode_026
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/leetcode/Leetcode-027/" rel="prev" title="Leetcode_027">
+                Leetcode_027 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis"><span class="nav-number">2.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis用作缓存实例"><span class="nav-number">3.</span> <span class="nav-text">Redis用作缓存实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#POM-引入jar包"><span class="nav-number">3.1.</span> <span class="nav-text">POM 引入jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xml文件配置bean"><span class="nav-number">3.2.</span> <span class="nav-text">xml文件配置bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务service类"><span class="nav-number">3.3.</span> <span class="nav-text">业务service类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RedisManager接口"><span class="nav-number">3.4.</span> <span class="nav-text">RedisManager接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RedisManager实现类"><span class="nav-number">3.5.</span> <span class="nav-text">RedisManager实现类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

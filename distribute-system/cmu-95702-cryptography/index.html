@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Distribution-System," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 95702 - Distributed System Cryptography">
+<meta name="keywords" content="Distribution-System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 95702 - Cryptography">
+<meta property="og:url" content="http://menuet.xyz/distribute-system/cmu-95702-cryptography/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 95702 - Distributed System Cryptography">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 95702 - Cryptography">
+<meta name="twitter:description" content="CMU 95702 - Distributed System Cryptography">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/distribute-system/cmu-95702-cryptography/"/>
+
+
+
+
+
+  <title>CMU 95702 - Cryptography | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/distribute-system/cmu-95702-cryptography/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 95702 - Cryptography</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-10T15:21:45+08:00">
+                2016-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Distribution-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Distribution-System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 95702 - Distributed System</p>
+<p>Cryptography<br><a id="more"></a></p>
+<hr>
+<h2 id="Symmetric-key"><a href="#Symmetric-key" class="headerlink" title="Symmetric key"></a>Symmetric key</h2><h3 id="Julius-Caesar-Shift-cipher"><a href="#Julius-Caesar-Shift-cipher" class="headerlink" title="Julius Caesar (Shift) cipher"></a>Julius Caesar (Shift) cipher</h3><ol>
+<li>Pick a key (a number)</li>
+<li>Shift the letters of the plaintext by the key to create the ciphertext.</li>
+<li>E.g.<br> – Plaintext: Yellow cake<br> – Key: 3<br> – Ciphertext: Bhoorz fdnh</li>
+<li>Secret key algorithm<br> – The sender and the receiver share a secret key</li>
+<li>Symmetric algorithm<br> – Trivially-related keys are used to encode and decode the message<ul>
+<li>Trivially-related: uses the same key, or keys require only a simple transformation.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Block-Cipher"><a href="#Block-Cipher" class="headerlink" title="Block Cipher"></a>Block Cipher</h3><ol>
+<li>Symmetric key cipher </li>
+<li>Works on blocks of text<br> – E.g. 128 bit blocks</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">初始块 01001</div><div class="line">key   00001</div><div class="line">原文   00011000010101100101</div><div class="line"></div><div class="line">    00011 00001 01011 00101 </div><div class="line">xor 01001                   \\ 与初始块做XOR</div><div class="line">=   01010                   </div><div class="line">+ k 00001                   \\ 加上key</div><div class="line">=   01011</div><div class="line"></div><div class="line">xor       01011             \\ 上一轮的输出作为这一轮的作XOR的块</div><div class="line">=         01010</div><div class="line">+ k       00001             \\ 加上key</div><div class="line">=         01011</div><div class="line"></div><div class="line">xor             01011</div><div class="line">=               00000</div><div class="line">+ k             00001</div><div class="line">=               00001</div><div class="line"></div><div class="line">xor                   00001</div><div class="line">                      00100</div><div class="line">+ k                   00001</div><div class="line">=                     00101 </div><div class="line"></div><div class="line">    01011 01011 00001 00101</div></pre></td></tr></table></figure>
+<p>Block cipher chaining:</p>
+<ol>
+<li>Each block is XOR’ed with the previous block before encrypting<br> –  The first block is XOR’ed with an initialization vector<br> –  Thein initialization is typically a randomn number<br> 用一个随机得到的初始块作为第一轮的作异或的块</li>
+<li>Therefore each block is dependent on all plaintext blocks up to that point</li>
+</ol>
+<h2 id="Asymmetric-key"><a href="#Asymmetric-key" class="headerlink" title="Asymmetric key"></a>Asymmetric key</h2><ol>
+<li>Uses asymmetric keys </li>
+<li>Single public key 公钥<br>– Let the world see 大家都知道你的公钥</li>
+<li>Single private key 密钥<br>– You keep secret 只有你自己知道你的密钥</li>
+</ol>
+<h3 id="Twos-of-Public-Private-key"><a href="#Twos-of-Public-Private-key" class="headerlink" title="Twos of Public/Private key"></a>Twos of Public/Private key</h3><ol>
+<li><strong>Encryption / Decryption:</strong> 加密解密<ul>
+<li>别人用你的公钥加密消息，传给你</li>
+<li>你收到密文以后，用自己的私钥解密。</li>
+</ul>
+</li>
+<li><strong>Signing / Verification:</strong><ul>
+<li>你用自己的私钥对文档进行加密</li>
+<li>别人用你的公钥对密文进行解密，然后验证文档是不是你当初签名过的文档。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Cryptographic-protocols"><a href="#Cryptographic-protocols" class="headerlink" title="Cryptographic protocols"></a>Cryptographic protocols</h2><p><strong>protocols:</strong></p>
+<ol>
+<li>Cryptographic protocols build on the use of cryptographic algorithms<br>加密协议是建立在加密算法之上的</li>
+<li>Two prominent protocols:<br> – Transport Layer Security (TLS) (newer)<br> – Secure Socket Layer (SSL) (older)</li>
+<li>Both are application-level protocols, that work above the transport layer (especially TCP) to provide safe end-to-end communication.<br>两种协议都是在传输层之上</li>
+</ol>
+<p><strong>Secure Email &amp; Web:</strong></p>
+<ol>
+<li><em>SMTP</em> and <em>IMAP</em> (email protocols) can work above TLS or SSL to provide secure email transmission<br>两个邮件协议，也是通过TLS或者SSL来提供邮件加密的。</li>
+<li>HTTPS is HTTP over TLS/SSL to provide secure web communication</li>
+</ol>
+<p><strong>Comparation:</strong></p>
+<ol>
+<li>Symmetric:<br> –  Fast 加密算法更快，效率高<br> –  Difficult to distribute and and keep keys secure 但是怎么让所有人都有对称密钥是个麻烦的问题。</li>
+<li>Asymmetric:<br> –  100 to 1000 times slower 非对称加密要慢100倍以上<br> –  Can allow for public keys </li>
+<li>TLS / SSL uses the best of both worlds:<br> –  Use asymmetric keys to exchange symmetric keys at the beginning of a conversation。<br> 先用非对称加密把对称密钥传到所有人手中。<br> –  Symmetric keys will have the lifespan of that conversation<br> 之后就能用对称加密来加密了。</li>
+</ol>
+<h2 id="TLS-SSL-Protocal-HandShake"><a href="#TLS-SSL-Protocal-HandShake" class="headerlink" title="TLS/SSL Protocal HandShake"></a>TLS/SSL Protocal HandShake</h2><ol>
+<li>Start with RSA Public/Private keys<br> –  Ask Amazon for their Public key<br> –  Amazon replies with their Public key<br> 向亚马逊要到公钥</li>
+<li>Generate a 128 bit(or bigger) random number<br> – This is your “session” new AES key<br> 这个是对称加密的对称密钥，这个对称密钥是随机的，只对这次session有用<br> – Encrypt the new AES key with the Amazon Public Key<br> 用公钥把对称密钥加密<br> – Send the encrypted key to Amazon<br> 把密文传给亚马逊</li>
+<li>Amazon receives the encrypted key<br> –  They (and only they) can decrypt the AES key with their RSA Private key<br> 亚马逊用自己的私钥对密文进行解密，然后就能得到对称加密要用到的对称密钥。<br> –  They now have the AES key you created for this session<br> 这样大家收发双方都有对称加密的对称密钥了</li>
+<li>Amazon and your browser communicate by encrypting and decrypting all messages with the same AES 128 bit random-number key.<br> –  At the end of this session, both forget the AES key<br> 这次session结束以后，这个对称密钥就可以退休了。</li>
+</ol>
+<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><p><strong>Digital Signature</strong></p>
+<ol>
+<li>Public key encryption can be used to provide digital signatures to validate authenticity 公钥加密可以被用来做数字签名</li>
+<li>Digital signatures are better that real signatures, for people can alter a paper document once you have signed it. </li>
+<li>With digital signatures, if the document is changed, then the signature becomes invalid.</li>
+<li>This is because the signature is a number based on the content of the document.</li>
+<li>Or more specifically, on the hash value of a document.</li>
+</ol>
+<p><strong>Hash Function:</strong> 得到原文的哈希值</p>
+<ol>
+<li>Takes a file (application, document, picture, etc.)</li>
+<li>Returns a large, but fixed-size number. (Hash)</li>
+<li>The file being encoded is called the “message”</li>
+<li>The resulting hash value is also called the<br> – “Message Digest”<br> – Or simply “Digest”</li>
+</ol>
+<p>一个好的hash funciton：</p>
+<ol>
+<li>对于一个hash value来说，不可能造出一个新的message与之相同</li>
+<li>如果改变了原文，那么hash value 也一定会改变</li>
+<li>两个不同的原文，不能得到相同的hash value</li>
+</ol>
+<p><strong>Digital Signature</strong><br>The sender:</p>
+<ol>
+<li>Take your document (email message, etc)</li>
+<li>Calculate a hash function on it.<br> – e.g. SHA2</li>
+<li>Encrypt the resulting hash value with your private key.<br>对哈希值用私钥进行加密</li>
+<li>The encrypted hash value is the digital signature.<br>加密得到的结果就是数字签名</li>
+<li>Send it …</li>
+</ol>
+<p>The recipient:</p>
+<ol>
+<li>Receives the document (email message, etc) and the digital signature.</li>
+<li>Decrypts the signature with public key<br>用公钥对数字签名进行解密</li>
+<li>Calculate a hash of the document &amp; compare it with the sender’s hash value<br>对原文做哈希</li>
+<li>They should be equal<br>比较哈希的结果和解密的结果来验证</li>
+</ol>
+<p><strong>Digital Cetificates</strong><br>还有一个不安全的地方是，我们向亚马逊要公钥，我们怎么知道发来公钥的这个人到底是不是亚马逊。这个时候就要数字证书这个东西。</p>
+<ol>
+<li>A Digital Certificate is a document that provides information about an organization<br> – Most importantly, its public key</li>
+<li>And the Digital Certificate is digitally signed by some trusted party.<br>数字证书是可信的第三方签发的</li>
+<li>Typically contains<br> –  Owner’s name<br> –  Owner’s public key<br> –  Expiration date<br> –  Name of certificate issuer –  Serial number<br> –  Issuer’s digital signature</li>
+</ol>
+<p><strong>Certification Authority</strong></p>
+<h2 id="Cryptographic-Protocols"><a href="#Cryptographic-Protocols" class="headerlink" title="Cryptographic Protocols"></a>Cryptographic Protocols</h2><p>A protocol is a series of steps, involving two or more parties, designed to<br>accomplish a task.<br>协议就是一系列的步骤，用于多方一起来完成同一个任务</p>
+<p>cryptographic protocol：<br>A cryptographic protocol is a protocol that uses cryptography<br>加密协议就是用到加密算法的协议（Orz 真是跪了</p>
+<h3 id="Some-Attacks-and-an-Assumption"><a href="#Some-Attacks-and-an-Assumption" class="headerlink" title="Some Attacks and an Assumption"></a>Some Attacks and an Assumption</h3><p><strong>攻击的种类：</strong></p>
+<ol>
+<li>Eavesdropping or listening in 窃听</li>
+<li>Masquerading or pretending to be someone you are not 身份伪装</li>
+<li>Tampering by a man in the middle 改动消息</li>
+<li>Replaying of old messages 可以在中间看到message，拦截，然后迟一些再传</li>
+<li>Denial of service 拒绝服务</li>
+</ol>
+<p><strong>参与者：</strong></p>
+<ol>
+<li>Alice: First participant</li>
+<li>Bob: Second participant</li>
+<li>Trent: A trusted third party</li>
+<li>Carol: Participant in three-party protocols</li>
+<li>Eve: Eavesdropper</li>
+<li>Mallory: Malicious attacker</li>
+<li>Sara: A trusted server</li>
+</ol>
+<p><strong>标记</strong></p>
+<ol>
+<li>$K_{A}$ Alice’s key that she keeps secret.</li>
+<li>$K_{B}$ Bob’s key that he keeps secret.</li>
+<li>$K_{AB}$ Secret key shared between Alice and Bob</li>
+<li>$K_{Apriv}$ Alice’s private key (known only to Alice in asymmetric key crypto)</li>
+<li>$K_{Apub}$ Alice’s public key (published by Alice for all to read)</li>
+<li>$\{M\}_K$ Message M encrypted with key K</li>
+<li>$[M]_K$ Message M signed with key K</li>
+</ol>
+<p><br></p>
+<hr>
+<p><br></p>
+<h2 id="Four-Important-Cryptographic-Protocols"><a href="#Four-Important-Cryptographic-Protocols" class="headerlink" title="Four Important Cryptographic Protocols"></a>Four Important Cryptographic Protocols</h2><h3 id="Scenario-1-Like-WWII-amp-TEA"><a href="#Scenario-1-Like-WWII-amp-TEA" class="headerlink" title="Scenario 1 (Like WWII &amp; TEA)"></a>Scenario 1 (Like WWII &amp; TEA)</h3><p>就是对称加密</p>
+<ol>
+<li>Communication with a shared secret key.</li>
+<li>Alice and Bob share $K_{AB}$.<br>双方都已经知道对称密钥了</li>
+<li>Alice computes $E(K_{AB},M_i)$ for each message $i$.<br>加密 </li>
+<li>She sends these to Bob.</li>
+<li>Bob uses $D(K_{AB}, \{M_i\} K_{AB})$ and reads each $M_i$.<br>解密</li>
+</ol>
+<hr>
+<h3 id="Scenario-2-Like-Kerberos"><a href="#Scenario-2-Like-Kerberos" class="headerlink" title="Scenario 2 (Like Kerberos)"></a>Scenario 2 (Like Kerberos)</h3><p>设计三方的一种安全认证系统</p>
+<p>Alice想要和Bob进行加密沟通</p>
+<ol>
+<li>Alice asks Sarah for a ticket to talk to Bob.</li>
+<li>Sarah knows Alice’s password so she can compute $K_A$.<br>这个$K_A$，Sarah和Alice都知道。Sarah是全知视角。这个$K_A$也就是Alice的密码，可以看做Alice和Sarah共享的对称密码。</li>
+<li>Sarah send to Alice $\{\{Ticket\}K_B,K_{AB}\}K_A$</li>
+<li>Alice knows her password and is able to compute $K_A$.<br>所以Alice可以解密，之后得到了可以供A，B加密的对称密钥$K_{AB}$ 和 加密好的$\{Ticket\}K_B$</li>
+<li>Alice sends a read request to Bob. She sends <strong>$\{Ticket\}K_B$,Alice,Read</strong>. Another challenge!</li>
+<li>Bob uses $K_B$ to read the content of the Ticket.同样$K_B$也是Bob和Sarah之间共享的对称密钥</li>
+<li>The Ticket is $K_{AB}$,Alice. Bob and Alice then use this session key to communicate.</li>
+</ol>
+<p>Does not scale well : Sarah must know $K_A$, $K_B$ ….<br>Sarah is a single point of failure.</p>
+<hr>
+<h3 id="Scenario-3-Authentication"><a href="#Scenario-3-Authentication" class="headerlink" title="Scenario 3 (Authentication)"></a>Scenario 3 (Authentication)</h3><p>Alice wishes to convince Bob that she sent the message M.<br>Alice要发一个经过签名的文档给Bob</p>
+<ol>
+<li>She computes a digest of $M$, $Digest(M)$.</li>
+<li>If the Digest method is a good one, it is very difficult to find another message $M’$ so that $Digest(M) == Digest(M’)$.</li>
+<li>Alice makes the following available to the intended users: $M,{Digest(M)}K_{Apriv}$.</li>
+<li>Bob obtains the signed document, extracts $M$ and computes $Digest(M)$.<br>Bob decrypts ${Digest(M)}K_{Apriv}$ using KApub and compares the<br>result with his calculated $Digest(M)$. </li>
+<li>If they match, the signature is valid.</li>
+</ol>
+<p>另外<br>MAC algorithm is a symmetric key cryptographic technique to provide message authentication. For establishing MAC process, the sender and receiver share a symmetric key $K$.<br>MAC 算法是就是就是运用对称加密的方式来进行签名的方法，这里用 A B 共有的 session key， 而不是非对称的密钥。<br>Message Authentication Codes (MACs) 就是hash以后的结果。</p>
+<hr>
+<h3 id="Scenario-4-Like-SSL"><a href="#Scenario-4-Like-SSL" class="headerlink" title="Scenario 4 (Like SSL)"></a>Scenario 4 (Like SSL)</h3><p>这个就是先RSA 在 DEA（先非对称，再对称）</p>
+<hr>
+<h3 id="keystore-truststore"><a href="#keystore-truststore" class="headerlink" title="keystore/truststore"></a>keystore/truststore</h3><p>一种解释：<br>A <strong>keystore</strong> contains private keys, and the certificates with their corresponding public keys.</p>
+<p>A <strong>truststore</strong> contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties.</p>
+<p>顾名思义：keystore 记录的是你的 key 和证书，而 trust store 记录的是你信任的证书，一般是对方服务器的证书(当然也可能是 SSL 客户端证书，比如金融交易中要求客户端也必须有证书)。</p>
+<hr>
+<p>更详细的解释：<br>In a SSL handshake the purpose of trustStore is to verify credentials and the purpose of keyStore is to provide credential.</p>
+<p><strong>KeyStore</strong>:<br>keyStore in Java stores <em>private key</em> and <em>certificates</em> corresponding to their public keys and require if you are SSL Server or SSL requires client authentication.</p>
+<p><strong>TrustStore</strong>:<br>TrustStore stores certificates <em>from third party</em>, your Java application communicate or certificates signed by CA(certificate authorities like Verisign, Thawte, Geotrust or GoDaddy) which can be used to identify third party.</p>
+<p><strong>TrustManager</strong>:<br>TrustManager determines whether remote connection should be trusted or not i.e. whether remote party is who it claims to and KeyManager decides which authentication credentials should be sent to the remote host for authentication during SSL handshake.</p>
+<hr>
+<p>If you are an SSL Server you will use private key during key exchange algorithm and send certificates corresponding to your public keys to client, this certificate is acquired from keyStore. </p>
+<p>On SSL client side, if its written in Java, it will use certificates stored in trustStore to verify identity of Server. SSL certificates are most commonly comes as .cer file which is added into keyStore or trustStore by using any key management utility e.g. keytool.</p>
+<hr>
+<p>Over!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Distribution-System/" rel="tag"># Distribution-System</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/diary/【随笔】虫儿飞/" rel="next" title="【随笔】虫儿飞">
+                <i class="fa fa-chevron-left"></i> 【随笔】虫儿飞
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/algorithm/algorithm-15650-skip-list/" rel="prev" title="CMU 15650 - Skip List">
+                CMU 15650 - Skip List <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetric-key"><span class="nav-number">1.</span> <span class="nav-text">Symmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Julius-Caesar-Shift-cipher"><span class="nav-number">1.1.</span> <span class="nav-text">Julius Caesar (Shift) cipher</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Cipher"><span class="nav-number">1.2.</span> <span class="nav-text">Block Cipher</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-key"><span class="nav-number">2.</span> <span class="nav-text">Asymmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Twos-of-Public-Private-key"><span class="nav-number">2.1.</span> <span class="nav-text">Twos of Public/Private key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-protocols"><span class="nav-number">3.</span> <span class="nav-text">Cryptographic protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TLS-SSL-Protocal-HandShake"><span class="nav-number">4.</span> <span class="nav-text">TLS/SSL Protocal HandShake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">5.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-Protocols"><span class="nav-number">6.</span> <span class="nav-text">Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-Attacks-and-an-Assumption"><span class="nav-number">6.1.</span> <span class="nav-text">Some Attacks and an Assumption</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Four-Important-Cryptographic-Protocols"><span class="nav-number">7.</span> <span class="nav-text">Four Important Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-1-Like-WWII-amp-TEA"><span class="nav-number">7.1.</span> <span class="nav-text">Scenario 1 (Like WWII & TEA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-2-Like-Kerberos"><span class="nav-number">7.2.</span> <span class="nav-text">Scenario 2 (Like Kerberos)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-3-Authentication"><span class="nav-number">7.3.</span> <span class="nav-text">Scenario 3 (Authentication)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-4-Like-SSL"><span class="nav-number">7.4.</span> <span class="nav-text">Scenario 4 (Like SSL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keystore-truststore"><span class="nav-number">7.5.</span> <span class="nav-text">keystore/truststore</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure  NP问题与计算难解性">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15650 - NP Problems">
+<meta property="og:url" content="http://menuet.xyz/algorithm/algorithm-15650-np/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  NP问题与计算难解性">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/1.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/2.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/3.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/4.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/5.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/6.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/7.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/8.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/9.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/10.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/11.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/12.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/13.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/14.png">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 15650 - NP Problems">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  NP问题与计算难解性">
+<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/algorithm/algorithm-15650-np/"/>
+
+
+
+
+
+  <title>CMU 15650 - NP Problems | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/algorithm-15650-np/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 15650 - NP Problems</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T09:52:45+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 15650 - Algorithm and Data Structure </p>
+<p>NP问题与计算难解性<br><a id="more"></a></p>
+<hr>
+<h1 id="多项式时间归约"><a href="#多项式时间归约" class="headerlink" title="多项式时间归约"></a>多项式时间归约</h1><p>能够用多项式个标准的计算步骤，加多项式次调用求解问题X的黑盒子来解决Y问题，我们就可以记作 $Y \leqslant _p X$ ，读作“Y多项式时间可归约到X”，也就是“X至少像Y一样难”</p>
+<p>定理：假设 $Y \leqslant _p X$，如果X能在多项式时间内求解，那么Y也能在多项式时间内求解。反之亦然。</p>
+<h1 id="独立集与顶点覆盖"><a href="#独立集与顶点覆盖" class="headerlink" title="独立集与顶点覆盖"></a>独立集与顶点覆盖</h1><blockquote>
+<p>独立集的定义：<br>在图 $G=(V,E)$ 中，如果顶点集合 $S \subseteq V$  中的任意两点之间都没有边，则称 $S$ 是独立的。 </p>
+</blockquote>
+<p>寻找小的独立集是很容易的，比如一个顶点就构成了一个独立集，难度大的是寻找大的独立集。</p>
+<blockquote>
+<p>独立集问题的定义：<br>给定图$G$和数$k$，问： $G$ 包含大小至少为$k$的独立集吗？</p>
+</blockquote>
+<p>为了说明NP问题的归约，我们考虑图论中的另一个基本问题：顶点覆盖</p>
+<blockquote>
+<p>顶点覆盖：<br>给定图 $G=(V,E)$ ，顶点集合 $S \subseteq V$ ，如果每一条边 $e \in E$ 至少有一个端点在 $S$ 中，则称 $S$ 是一个顶点覆盖。 </p>
+</blockquote>
+<p>在顶点覆盖中，顶点在做覆盖，而边是被覆盖的对象。找到一个大的顶点覆盖是很容易的，例如整个顶点的集合就是一个顶点覆盖。难点在于找到一个小的顶点覆盖。</p>
+<blockquote>
+<p>顶点覆盖问题：<br>给定图 $G$ 和数 $k$ ，问： $G$ 包含大小至多为 $k$ 的顶点覆盖吗？</p>
+</blockquote>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/1.png" alt="独立集合,顶点覆盖例子" title="独立集合,顶点覆盖例子">  </p>
+<blockquote>
+<p>引理：<br>给定图 $G=(V,E)$ ， $S \subseteq V$ ，那么 $S$ 是一个独立集，当且仅当它的补集 $V-S$ 是一个顶点覆盖。</p>
+</blockquote>
+<p>证明：<br>首先设 $S$ 是一个独立集，考虑任意一条边 $e=(u,v)$ ，因为 $S$ 是独立集， $u$ 和 $v$ 不可能都在 $S$ 中，因而 $u$ 和 $v$ 至少有一个在 $V-S$ 中，得证每一条边至少有一个端点在 $V-S$ 中，所以 $V-S$ 是一个顶点覆盖集。<br>反过来，设 $V-S$ 是一个顶点覆盖集，考虑 $S$ 中的任意两个顶点 $u$ 和 $v$ ，如果它们之间有一条边 $e$ ，那么 $e$ 的两个端点都不在 $V-S$ 中，与假设 $V-S$ 是一个顶点覆盖集矛盾，因此 $S$ 中的任意两个顶点都没有边，所以 $S$ 是一个独立集。</p>
+<p>所以我们可以得到两个问题双向的归纳：</p>
+<blockquote>
+<p>定理：<br>独立集 $\leqslant _p$ 顶点覆盖</p>
+</blockquote>
+<p>证明：<br>如果有一个能够解顶点覆盖问题的黑盒子，那么通过问黑盒子： $G$ 是否有大小至多为 $n-k$ 的顶点覆盖，就能确定 $G$ 是否有大小至少为 $k$ 的独立集。</p>
+<blockquote>
+<p>定理：<br>顶点覆盖 $\leqslant _p$ 独立集</p>
+</blockquote>
+<p>证明：<br>如果有一个能够解顶点独立集的黑盒子，那么通过问黑盒子： $G$ 是否有大小至多为 $n-k$ 的独立集，就能确定 $G$ 是否有大小至少为 $k$ 的顶点覆盖。</p>
+<h1 id="集合覆盖和集合包装"><a href="#集合覆盖和集合包装" class="headerlink" title="集合覆盖和集合包装"></a>集合覆盖和集合包装</h1><p>独立集和顶点覆盖是两种不同类型的问题</p>
+<p>独立集可以看做包装问题：它的目标是“装入”尽可能多的顶点，要求服从一些限制条件（边）。这些限制条件试图阻止把顶点装入。</p>
+<h2 id="集合覆盖"><a href="#集合覆盖" class="headerlink" title="集合覆盖"></a>集合覆盖</h2><p>而顶点覆盖可以看做一个覆盖问题：目标是用尽可能少的顶点“覆盖”图中的所有边。</p>
+<p>顶点覆盖使用特殊的图的语言描述覆盖问题，其实还有更一般的覆盖问题——集合覆盖。在集合覆盖中，试图用一组较小的集合覆盖一个任意的对象集合。</p>
+<blockquote>
+<p>集合覆盖问题定义：<br>给定 $n$ 个元素的集合 $U$ , $U$ 的子集 $S_1$ ，…，$S_m$ 以及数 $k$ ，问在这些子集中有一组子集，它们的并集等于整个 $U$ ，且这一组子集至多含有 $k$ 个子集吗？</p>
+</blockquote>
+<p>在顶点覆盖问题中，我们特殊地强调用与顶点关联的边集合覆盖图的边。而在集合覆盖中，我们试图用任意的子集覆盖一个任意的集合。直观上，顶点覆盖问题是集合覆盖问题的特殊情况。事实上，我们可以证明归约。</p>
+<blockquote>
+<p>定理：<br>顶点覆盖 $\leqslant _p$ 集合覆盖</p>
+</blockquote>
+<p>证明：<br>假设我们能够进入一个解集合覆盖的黑盒子，考虑顶点覆盖的任意一个实例，给定图 $G=(V,E)$ 和 $k$ ，能怎样利用这个黑盒子帮助我们呢？</p>
+<p>我们的目标是覆盖$E$中所有的边，所以构造集合覆盖的一个实例：</p>
+<ol>
+<li>它的基集 $U$ 等于 $E$ </li>
+<li>在顶点覆盖问题中，每次取一个顶点，覆盖所有与它相关联的边</li>
+<li>于是，对每一个顶点 $i \in V$ ，设 $S_i \subseteq U$ 为 $G$ 中所有与 $i$ 关联的边，把 $S_i$ 加入集合覆盖的实例中。</li>
+</ol>
+<blockquote>
+<p>$U$ 能被集合 $S_1$ ，…， $S_m$ 中至多 $k$ 个覆盖，当且仅当， $G$ 有大小至多为 $k$ 的顶点覆盖。</p>
+</blockquote>
+
+证明: <br>
+1. 集合 $S_{i_1}$ ， $S_{i_2}$ ...， $S_{i_l}$ 是覆盖 $U$ 的集合，$l \leqslant k$，<br>
+2. 那么 $G$ 中的每一条边都关联到顶点 $i_1$ ， $i_2$ ，...， $i_l$ 中的一个<br>
+3. 所以 $\{ i_1，i_2，i_l \}$ 是 $G$ 中大小为 $l \leqslant k$ 的顶点覆盖<br>
+<br>
+1. 反之，如果 $\{ i_1，i_2，i_l \}$ 是 $G$ 中大小为 $l \leqslant k$ 的顶点覆盖<br>
+2. 那么集合 $S_1$ ，...， $S_m$ 覆盖 $U$  <br>
+
+<h2 id="集合包装"><a href="#集合包装" class="headerlink" title="集合包装"></a>集合包装</h2><blockquote>
+<p>集合包装问题：<br>给定 $n$ 个元素的集合 $U$ ， $U$ 的子集 $S_1$ ，…， $S_m$ ，以及一个数 $k$ 问这些子集中至少有 $k$ 个两两不想交吗？</p>
+<p>定理<br>独立集 $\leqslant _p$ 集合包装</p>
+</blockquote>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="可满足性问题（SAT）"><a href="#可满足性问题（SAT）" class="headerlink" title="可满足性问题（SAT）"></a>可满足性问题（SAT）</h1><h2 id="SAT-和-3-SAT问题"><a href="#SAT-和-3-SAT问题" class="headerlink" title="SAT 和 3-SAT问题"></a>SAT 和 3-SAT问题</h2><p>给定$n$个布尔变量，$x_1$ ，…， $x_n$ 的集合 $X$ ，每个布尔变量可以取值0或1（也就是假和真）。变量 $x_i$ 或它的否定 $\overline{x}_i$ 称作 $X$ 上的项，不同项的析取:</p>
+<p>$$t_1 \bigvee t_2 \bigvee … \bigvee t_l$$</p>
+<p>称作字句（每个$t_1 \in \{ x_1,x_2…x_n,\overline{x}_1,\overline{x}_2..\overline{x}_n\}$）</p>
+<p>现在规定说，变量的赋值满足一组子句，是什么意思呢？ </p>
+<ol>
+<li>$X$ 的真值赋值是每一个变量 $x_i$ 指定值 0 或 1 。</li>
+<li>换句话说，它是一个函数 $f:V \longrightarrow {0,1}$ . </li>
+<li>毫无疑问，赋值 $f$ 给 $\overline{x}_i$ 指定与 $x_i$ 相反</li>
+</ol>
+<p>如果在布尔逻辑的“或”规则下赋值子句 $C$ 的值为 1 ，这等价于要求 $C$， 中至少有一个项是 1 ，则称赋值满足 $C$ 。 </p>
+<p>如果赋值满足每一个子句 $C_1$， $C_2$ … $C_k$，使他们的合取 (与逻辑)：</p>
+<p>$$C_1 \bigwedge C_2 \bigwedge … \bigwedge C_k$$</p>
+<p>的值为1，那么称该赋值满足这一组子句 $C_1$， $C_2$ … $C_k$ 。</p>
+<p>这种情况下称$f$是关于 $C_1$， $C_2$ … $C_k$ 的一个满足的赋值，又称这一组子句 $C_1$， $C_2$ … $C_k$ 是可满足的。</p>
+<blockquote>
+<p>举个例子，假设有三个子句<br>$(x_1 \bigvee \overline{t}_2)$ , $(\overline{x}_1 \bigvee \overline{t}_3)$ , $(x_2 \bigvee \overline{t}_3)$<br>令所有变量都是 1 的真值赋值 $f$ 不是满足的赋值，因为它不满足第二个子句。<br>令所有变量为 0 的真值赋值 $f’$ 是满足赋值</p>
+</blockquote>
+<p>所以满足性问题的定义如下</p>
+<blockquote>
+<p>可满足性问题，记做SAT：<br>给定变量集 $X = \{ x_1$，…，$x_n\}$， 上的一组子句$C_1$， $C_2$ … $C_k$，问存在满足的真值赋值吗？</p>
+</blockquote>
+<p>SAT问题有一种特殊情况，就是限定所有子句的项的数量恰好是3个。这个问题成为三元满足性，记做 3-SAT.</p>
+<blockquote>
+<p>三元可满足性，记做 3-SAT.<br>给定变量集 $X = \{ x_1$，…，$x_n\}$ ， 上的一组子句 $C_1$， $C_2$ … $C_k$ ，每一个子句的长为3，问：存在满足的真值赋值吗？</p>
+</blockquote>
+<p>SAT 和 3-SAT 问题是是真正的基本的组合搜索问题，它们以非常“梗概”的方式包含了一个难计算问题的基本要素：</p>
+<ol>
+<li>必须做出 n 个独立决定，也就是对每一个$x_i$ 赋值</li>
+<li>使得满足一组约束</li>
+</ol>
+<p>有多种方法单独地满足每一个约束，但是我们必须安排我们的决定使得所有的约束同时被满足。</p>
+<h2 id="SAT-归约到-3-SAT"><a href="#SAT-归约到-3-SAT" class="headerlink" title="SAT 归约到 3-SAT"></a>SAT 归约到 3-SAT</h2><p>给定一组子句 $C_1$， $C_2$ … $C_k$ ，每一个子句的长度都大于3</p>
+<p>$$C_i = (t_1 \bigvee t_2 \bigvee … \bigvee t_k)$$</p>
+<p>我们挑出一个子句，添加一些变量 $y_i$， 一共 $k-3$ 个， 使得子句变成这样：<br>
+$ (t_1 \bigvee t_2 \bigvee y_1)$<br>
+$ (\overline{y}_1 \bigvee t_3 \bigvee y_2)$<br>
+$ (\overline{y}_2 \bigvee t_3 \bigvee y_3)$<br>
+...<br>
+$ (\overline{y}_{i-3} \bigvee t_{i-1} \bigvee y_{i-2})$<br>
+$ (\overline{y}_{i-2} \bigvee t_{i} \bigvee y_{i-1})$<br>
+...<br>
+$ (\overline{y}_{k-4} \bigvee t_{k-2} \bigvee y_{k-3})$<br>
+$ (\overline{y}_{k-3} \bigvee t_{k-1} \bigvee t_k)$<br>
+</p>
+<p>上面这些都是 括号之间都是“与”的关系</p>
+<p>如果 $C_i = (t_1 \bigvee t_2 \bigvee … \bigvee t_k)$ 满足，那么一定有一个 $t<em>i$ 的值是1，那么上述的式子也满足。我们只要设 $y</em>{i-2}$ 和之前的 $y$ 为 1，之后的都为0，那么式子就是满足的。</p>
+<p>如果上述的式子满足，那么 $C_i = (t_1 \bigvee t_2 \bigvee … \bigvee t_k)$ 也满足。我们假设 $C_i$ 不满足，那么所有的 $t_i$ 都是0。我们令所有的 $y$ 都是1，那么最后一个子句就不满足了，整个式子也不满足了，这就矛盾了。</p>
+<h2 id="把-3-SAT-归约到独立集"><a href="#把-3-SAT-归约到独立集" class="headerlink" title="把 3-SAT 归约到独立集"></a>把 3-SAT 归约到独立集</h2><blockquote>
+<p>定理:<br>3-SAT $\leqslant _p$ 独立集</p>
+</blockquote>
+<p>证明：设有一个关于独立集的黑盒子，要解 3-SAT 的实例，实例由变量集 $X = \{ x_1,…, x_n \}$ 和 一组子句 $C_1$， $C_2$ … $C_k$ 组成</p>
+<p>考虑这个规约的关键是，认识到有两种概念上不同的方法来考虑 3—SAT 实例：</p>
+<ol>
+<li>对 $n$ 个变量中的每一个，做出独立的 $0/1$ 决定。</li>
+<li>从每一个子句中选出一个项，然后找一个真值赋值，使这些所有的项都为 1，从而满足子句。</li>
+</ol>
+<p>第二种情况下，如果没有两个被选中的项“冲突”，那么就成功了。说两个项冲突的意思是：</p>
+<ol>
+<li>一个项等于 $x_i$ ，而另一个项 $\overline{x}_i$</li>
+<li>如果能不选中冲突的项，就可以找到一个真值赋值，使得从每一个子句中的项的值 1.</li>
+</ol>
+<p>归约将基于上述对 3-SAT 实例的第二种看法，下面如何用图中的独立集描述 3-SAT 实例. 首先，构造图 $G = (V,E)$, 它由 $3k$ 个顶点组成 的 $k$ 个三角形组成。如下图所示：</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/2.png" alt="3—SAT 到独立集的归约" title="3—SAT 到独立集的归约">  </p>
+<p>在第i个三角形中有三个顶点： </p>
+<ol>
+<li> $v_{i1}$, $v_{i2}$, $v_{i2}$，$i = 1,2..k$ </li>
+<li>每个顶点之间用边相连。 </li>
+<li>$v_{ij}$ 是 3-SAT 实例中子句 $C_j$ 的第 $j$ 个项</li>
+</ol>
+<p>之前说，从每一个子句中选出一个项，也就是从每一个三角形中选出一个顶点。接下来设置阻止选择两个冲突的项：</p>
+<ol>
+<li>通过在图中增加一些边来描述冲突，在每一对标号对应的两个冲突的项的顶点之间添加一条边。</li>
+<li>现在是破坏了所有的大小为 $k$ 的独立集，还是仍然存在一个大小为 $k$ 的独立集呢？</li>
+<li>这取决于，我们从每个三角形中选出一个点以后，是否没有一对顶点是冲突的。</li>
+</ol>
+<p>也就是说，要证明 3-SAT 是可满足的，当且仅当，我们可以构造出图 $G$ 有大小至少为 $k$ 的独立集。</p>
+<p>证明：<br>首先</p>
+<ol>
+<li>如果 3-SAT 是可满足的，那么图中的每一个三角形至少包含一个标号的值为 1 的顶点， $S$ 就是由这些顶点组成的集合，我们说 $S$ 是一个独立集。</li>
+<li>因为这些顶点的值都是1，所以他们之间都没有边。</li>
+</ol>
+<p>反过来：</p>
+<ol>
+<li>假设图 $G$ 有一个大小至少为 $k$ 的独立集 $S$ ， 那么首先 $S$ 的大小恰好为 $k$ 并且一定由每一个三角形中的一个顶点组成。</li>
+<li>那么我们只要把这些顶点的值设为1，3-SAT 问题就可满足了</li>
+</ol>
+<h2 id="归约的传递性"><a href="#归约的传递性" class="headerlink" title="归约的传递性"></a>归约的传递性</h2><blockquote>
+<p>定理：<br>如果 $Z \leqslant _p Y$，且 $Y \leqslant _p X$，则 $Z \leqslant _p X$</p>
+</blockquote>
+<p>因此，我们可以得到<br>3-SAT $\leqslant _p$ 独立集 $\leqslant _p$ 顶点覆盖 $\leqslant _p$ 集合覆盖</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="有效证书和-NP-的定义"><a href="#有效证书和-NP-的定义" class="headerlink" title="有效证书和 NP 的定义"></a>有效证书和 NP 的定义</h1><h2 id="多项式运行时间"><a href="#多项式运行时间" class="headerlink" title="多项式运行时间"></a>多项式运行时间</h2><blockquote>
+<p>一个计算问题的输入，被编码成有穷的二进制串 $s$ ，串 $s$ 的长度记做 $|s|$ .<br>把判定问题 $X$ 等同于由对它的答案为”Yes”的串组成的集合.<br>判定问题的算法 $A$ 接受输入串 $s$ 并返回 “yes” , “no”.<br>这个返回的值记做 “A(s)”，<br>如果对所有的串 $s$，$A(s) = yes$ 当且仅当 $s=X$，则称 A 解问题 X</p>
+<p>如果存在多项式函数 $p(·)$ 使得对每一个输入串 $s$，算法 $A$ 的计算在至多 $O(p(|s|))$ 步内终止，则称 $A$ 有多项式运行时间</p>
+</blockquote>
+<h2 id="有效证书-Certificate"><a href="#有效证书-Certificate" class="headerlink" title="有效证书 Certificate"></a>有效证书 Certificate</h2><p>问题的“验证算法”和解这个问题的算法是不一样的。</p>
+<p>为了“验证”一个解，需要输入字符串 $s$, 以及另外一个“证书”串 $t$ 。这个证书$t$包含，$s$ 是 $X$ 的“yes” 实例，的证据。</p>
+<p>如果下面的两条性质成立，则称 $B$ 是问题 $X$ 的有效验证程序</p>
+<ol>
+<li>$B$ 是有两个输入变量 $t$ 和 $s$ 的多项式时间算法</li>
+<li>存在多项式 $p$ 使得对每一个输入串 $s$，$s \in X$ 当且仅当存在串 $t$，使得 $|t| \leqslant p(|s|)$ 且 $B(s,t) = yes$ </li>
+</ol>
+<h2 id="NP-一个问题类"><a href="#NP-一个问题类" class="headerlink" title="$NP$ 一个问题类"></a>$NP$ 一个问题类</h2><blockquote>
+<p>定义<br>$NP$ 是所有存在“有效验证程序”的问题的集合</p>
+<p>定理<br>$P \subseteq NP$</p>
+</blockquote>
+<p>证明：</p>
+<ol>
+<li>假设问题 $X \in P$，也就是说有一个解 $X$ 的多项式算法 $A$</li>
+<li>为了证明 $X \in NP$，必须证明存在 $X$ 的有效验证程序 $B$</li>
+</ol>
+<p>证明这个是很容易的，当输入 $(s,t)$ 的时候，验证程序 $B$ 只要返回 $A(s)$ 就好了。这里 $t$ 是没有用到的，因为 $A$ 可以在多项式时间内解决问题，所以 $B$ 这个验证程序也只要花费多项式时间。</p>
+<p>在第一部分中，我们提到的问题都属于 $NP$ </p>
+<ol>
+<li>三元可满足性 3-SAT ：证书 $t$ 是对所有变量的赋值，验证程序 $B$ 来计算这个子句在这些变量赋值下的值</li>
+<li>独立集：证书 $t$ 是至少有 $k$ 个顶点的集合，验证程序 $B$ 只要验证这些点之间都是没有边的</li>
+<li>集合覆盖：证书 $t$ 是一组集合中的 $k$ 个集合，验证程序只要验证这些集合的并集是不是等于基础集 $U$</li>
+</ol>
+<p>我们不能确定:</p>
+<blockquote>
+<p>在 $NP$ 问题中有不属于 $P$ 的问题吗？ $P = NP$ 吗？</p>
+</blockquote>
+<p>一般来说我们觉得 $P \neq NP$. 毕竟找到一个解比验证一个解要难得多呀。</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="NP-完全问题"><a href="#NP-完全问题" class="headerlink" title="NP 完全问题"></a>NP 完全问题</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在 是否$P = NP$ 的问题没有进展的情况下，人们转向一个相对的，但更好处理的问题：那些是 $NP$ 中最难的问题？</p>
+<p>“多项式时间可归约性”为我们提供了解决这个问题和洞察$NP$结构的途径</p>
+<p>我们定义，</p>
+<blockquote>
+<p>$NP$ 中的每一个问题都能归约到 $X$，则称这样的 $X$ 是 $NP$ 完全问题</p>
+</blockquote>
+<h2 id="证明-NP-完全问题的通用策略"><a href="#证明-NP-完全问题的通用策略" class="headerlink" title="证明 NP 完全问题的通用策略"></a>证明 NP 完全问题的通用策略</h2><p>证明策略：</p>
+<ol>
+<li>证明 $X \in NP$</li>
+<li>选择一个已知的 $NP-complete$ 问题 $Y$</li>
+<li>证明 $Y \leqslant _p X $</li>
+</ol>
+<p>那么我们怎么证明 $Y \leqslant _p X $ 呢？</p>
+<p>考虑 $Y$ 的任意一个实例 $s_Y$ ，说明如何在多项式时间内构造 $X$ 的一个满足下述性质的实例 $s_X$ </p>
+<ol>
+<li>如果 $s_Y$ 是 $Y$ 的 yes 实例，则 $s_X$ 是 $X$ 的 yes 实例</li>
+<li>如果 $s_X$ 是 $X$ 的 yes 实例，则 $s_Y$ 是 $Y$ 的 yes 实例</li>
+</ol>
+<p>也就是说 $s_X$ 和 $s_Y$ 有相同的答案时。</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="哈密顿环问题"><a href="#哈密顿环问题" class="headerlink" title="哈密顿环问题"></a>哈密顿环问题</h1><p>Hamiltonian Cycle Problem</p>
+<blockquote>
+<p>Problem (Hamiltonian Cycle). Given a directed graph $G$, is there a cycle that visits every vertex exactly once?</p>
+<p>哈密顿环问题：给定一个图 $G$，问：有没有一个环可以访问图中的所有的点，而且只经过一次。<br>如果存在这样的环，那么这个环就是哈密顿环。</p>
+<p>定理：哈密顿环是 NP-complete 问题</p>
+</blockquote>
+<p>证明：</p>
+<ol>
+<li>给定一个有向图 $G=(V,E)$ ，证书是一个哈密顿环上所有顶点的顺序表。</li>
+<li>我们可以在多项式时间内，验证这个顺序表确实可以遍历所有的顶点，而且只访问一次。</li>
+</ol>
+<blockquote>
+<p>3-SAT $\leqslant _p$ Hamiltonian Cycle</p>
+</blockquote>
+<p>证明：<br>考虑一个 3-SAT 的实例，由 $X = \{ x_1,…, x_n \}$ 和 一组子句 $C_1$， $C_2$ … $C_k$ 组成</p>
+<p>归约的抽象的想法：</p>
+<ol>
+<li>用图结构（gadget）来表示这些 $X$ 中的变量（Gadget表示零件）</li>
+<li>同时用图结构来表示 $C_i$ 子句</li>
+<li>根据这些式子，想办法把这些图连接起来。Hook them up in some way that encodes the formula</li>
+<li>证明，当式子成立的时候，图中存在哈密顿环</li>
+</ol>
+<hr>
+<p>怎么构造呢：<br>我们有 $n$ 个变量， $k$个Clause：</p>
+<ol>
+<li>我们构造出 $n$ 条路径 $P_1$，$P_2$ … $P_n$，每一条路径如图3所示。</li>
+<li> 每一条 $P_i$ 由 $b$ 个顶点 $v_{i1}$ ... $v_{ib}$ 组成。 </li>
+<li>$b$ 的取值略大于所有子句的总项数，取 $b=3k+3$ </li>
+<li>我们可以从左由 $v_{i1}$ 到 $v_{ib}$， 也可以从右 $v_{ib}$ ... $v_{i1}$ 
+</li>
+</ol>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/3.png" alt="&quot;Gadget Representing the Variables&quot;" title="图3 Gadget Representing the Variables"></p>
+<p>如果这条线路是从左往右走的，那么 $x_i$ 取1，否则取0</p>
+<p>每个子句添加一个顶点。 用来保存 3-SAT 实例是否可以满足，当且仅当有某个哈密顿圈的时候。如下如所示。</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/4.png" alt="&quot;Hooking in the Clauses&quot;" title="图4 Hooking in the Clauses"></p>
+<hr>
+<p>路径构造完了以后，我们要把这些路径连起来，如图5所示：</p>
+<ol>
+<li>我们先把前一条路径的第一个点连到下一条路径的第一个点和最后一个点，也就是连接 $v_{i1}$ 到 $v_{i+1,1}$ 和 $v_{i+1,b}$，$i=1,2..n-1$ </li>
+<li> 前一条路径的最后一个点同理，连接 $v_{ib}$ 到 $v_{i+1,1}$ 和 $v_{i+1,b}$，$i=1,2..n-1$ </li>
+<li>额外添加两个顶点 $s$ 和 $t$，这两点之间相连 $t$ 到 $s$</li>
+<li> $s$ 连到 $s_{11}$ 和 $s_{1b}$ </li>
+<li> $t$ 连到 $s_{n1}$ 和 $s_{nb}$ 
+</li>
+</ol>
+<p>在这个图中，一共有 $2^n$ 条哈密顿环。</p>
+<ol>
+<li>因为在离开 $s$ 以后，进入 $P1$ 分别有从左和从右两条路线可以走。</li>
+<li>离开 $P1$ 以后，进入 $P2$。无论 $P1$ 是怎么走的，$P2$ 也有两条路线可以走。</li>
+<li>所以每条路线都是有两种选择的，一共 $n$ 条路线，所以一共有 $2^n$ 条哈密顿环</li>
+</ol>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/5.png" alt="&quot;Connecting up the paths&quot;" title="图5 Connecting up the paths"></p>
+<p>然后我们连接对每一个子句定义的顶点 $c_j$，把每一条路径中的顶点位置，$3j$ 和 $3j+1$ 留给在子句 $C_j$ 中出现的变量。</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/6.png" alt="&quot;Connecting up the paths. cont.&quot;" title="图6 Connecting up the paths. cont."></p>
+<p>我们之前定义了：如果这条线路是从左往右走的，那么 $x_i$ 取1，否则取0。<br>那么如⬆图6所示：</p>
+<ol>
+<li>根据$c_1$ 的在 $P_1$中的两个箭头的方向， 我们知道 $c_1$ 是沿着 $P_1$ 从右向左走的，所以 $c_1$ 中 的 $x_1$ 取值为 -1</li>
+<li>根据$c_2$ 的在 $P_1$中的两个箭头的方向， 我们知道 $c_2$ 是沿着 $P_1$ 从左向右走的，所以 $c_2$ 中 的 $x_1$ 取值为 -1</li>
+</ol>
+<hr>
+<p>多看一个例子：</p>
+<p>假设 $C_1 = x_1 \bigvee \overline{x_2} \bigvee x_3 $</p>
+<p>那么 $C_1$ 中的三个变量的取值对应在图中的表示就是，如↓图7所示</p>
+<ol>
+<li>$x_1$ 在 $P_1$ 中的两条箭头是从左向右</li>
+<li>$x_2$ 在 $P_2$ 中的两条箭头是从右向左</li>
+<li>$x_3$ 在 $P_3$ 中的两条箭头是从左向右</li>
+</ol>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/7.png" alt="&quot;&quot;" title="图7"></p>
+<hr>
+<p>到这里构造 3-SAT 问题的 Graph 表示就完成了，接下来我们来完成证明。</p>
+<p>【Goal】：我们要证明，3-SAT 问题满足，当且仅当，G 有哈密顿环</p>
+<p>第一步：证明，3-SAT 问题满足时，G 中存在哈密顿环。<br>我们再用⬆图7的例子，如果子句成立，则必须 $x_1 = 1$ 或者 $x_2 = 0$ 或者 $x_3 = 1$，也就是 $P_1$ 从左向右走，或者 $P_2$ 从右向左走，或者 $P_3$ 从左向右走， 才有可能访问得到 $c_1$ 这个变量。</p>
+<p>第二步：证明，G中存在哈密顿环时，3-SAT 问题满足。<br>G中存在哈密顿环，则所有的 $c_j$ 都被访问到了，所以，每一个子句都是被满足的。</p>
+<p>得证。</p>
+<hr>
+<p>Hamiltonian Path</p>
+<p>Hamiltonian Path: Does $G$ contain a path that visits every node exactly once?<br>问：$G$ 中是否存在一条路径，恰好可以只访问每个顶点一次？</p>
+<p>Reduce Hamiltonian Cycle to Hamiltonian Path.<br>从哈密顿环到哈密顿路的归约</p>
+<p>给定一个哈密顿环 $G$，任意选一个点，把这个点拆成两个顶点，得到图 $G’$，如↓图8所示<br><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/8.png" alt="&quot;&quot;" title="图8"></p>
+<p>那么哈密顿路只要从 $v’$ 出发，然后到 $v’’$ 结束就好了。</p>
+<p>所以，哈密顿路也是一个 NP-complete 问题</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h1><p>Traveling Salesman Problem 也就是 TSP</p>
+<blockquote>
+<p>Problem (Traveling Salesman Problem).<br>Given $n$ cities, and distances $d(i,j)$ between each pair of cities, does there exist a path of length $≤ k$ that visits each city?</p>
+<p>旅行商问题：<br>给定 $n$ 个城市，城市 $i$ 和 $j$之间的距离是 $d(i,j)$。<br>问：一个旅行商要访问所有城市，是否存在一条路线，使得他需要走过的距离小于k？</p>
+</blockquote>
+<p>证明：</p>
+<p>TSP ∈ NP: a certificate is simply an ordering of the n cities.</p>
+<p>首先很容易证明 TSP 问题是一个 NP-Complete 问题。证书是，所有城市的顺序的排列，验证程序核实对应的路线总长度不超过给定的界限。</p>
+<p>现在证明 </p>
+<blockquote>
+<p>哈密顿环 $\leqslant _p$ 旅行商问题</p>
+</blockquote>
+<p>给定一个有向图 $G=<v,e>$。<br>给定一个 TSP 实例 $D$，$D$ 中有 $n$ 个城市，和 $n(n-1)$ 段距离。<br>当 $D$ 两个城市之间有边时，我们规定 $d(c_i,c_j) = 1$，否则 $d(c_i,c_j) = 2$</v,e></p>
+<p>$<br>d(c_i,c_j) =<br>\left\{<br>\begin{matrix}<br>1, &amp;  if edge (vi,vj) ∈ E \\<br>2, &amp;  otherwise<br>\end{matrix} \right .<br>$</p>
+<blockquote>
+<p>$G$ 有一个哈密顿环 等价于 $D$ 有一条 长队小于 $n$ 的路径</p>
+</blockquote>
+<p>证明</p>
+<ol>
+<li>If $G has a Ham. Cycle, then this ordering of cities gives a tour of length $≤ n$ in $D$ (only distances of length 1 are used).<br>这个显而易见</li>
+<li>Suppose $D$ has a tour of length $≤ n$. The tour length is the sum of $n$ terms, meaning each term must equal 1, and hence cities that are visited consecutively must be connected by an edge in $G$.<br>如果 $D$ 有一条长度 $≤ n$ 的路径，因为肯定走的都是长度为 1 的边，那肯定是每个城市都只访问一遍的。</li>
+</ol>
+<p>所以 TSP 是 NP-Complete</p>
+<p><br><em>*</em><br></p>
+<h1 id="Graph-Coloring-Problem"><a href="#Graph-Coloring-Problem" class="headerlink" title="Graph Coloring Problem"></a>Graph Coloring Problem</h1><h2 id="图着色问题定义"><a href="#图着色问题定义" class="headerlink" title="图着色问题定义"></a>图着色问题定义</h2><blockquote>
+<p>Problem (Graph Coloring Problem).<br>Given a graph $G$, can you color the nodes with $≤ k$ colors such that the endpoints of every edge are colored differently?</p>
+<p>图着色问题<br>给定一个图 $G$，能不能用小于 $k$ 种颜色让每条边的两个顶点的颜色都不一样</p>
+<p>用数学语言表达就是：<br>A k-coloring is a function $f : V→\{1,…,k\}$ such that for every edge $\{u,v\}$ we have $f(u) \neq f(v)$.<br>If such a function exists for a given graph G, then G is k-colorable.</p>
+</blockquote>
+<p>Special case of k = 2</p>
+<p>How can we test if a graph has a 2-coloring?<br>Check if the graph is bipartite.</p>
+<p>Unfortunately, for $k ≥ 3$, the problem is NP-complete.</p>
+<blockquote>
+<p>Theorem. 3-Coloring is NP-complete.</p>
+</blockquote>
+<p>首先 三着色问题是一个 NP 问题<br>3-Coloring ∈ NP: A valid coloring gives a certificate.</p>
+<p>然后我们再证明:</p>
+<blockquote>
+<p>3-SAT $≤_P$ 3-Coloring</p>
+</blockquote>
+<h2 id="证明-3-SAT-≤-P-3-Coloring"><a href="#证明-3-SAT-≤-P-3-Coloring" class="headerlink" title="证明 3-SAT $≤_P$ 3-Coloring"></a>证明 3-SAT $≤_P$ 3-Coloring</h2><p>考虑一个 3-SAT 的实例，由 $X = \{ x_1,…, x_n \}$ 和 一组子句 $C_1$， $C_2$ … $C_k$ 组成</p>
+<p>第一步，对于每一个变量 $x_i$ ，我们都画两个节点，$x_i$ 和 $\overline{x}_i$，并把这两个节点连接起来。另外画三个特殊的节点 T, F, B，这三个点连成一个三角形，分别叫做 真节点（True），假节点（False）和基点（Base）</p>
+<p>如下图所示</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/9.png" alt="&quot;&quot;" title="图9"></p>
+<p>第二步，把 B 和所有变量节点连接起来。如↓图所示：</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/10.png" alt="&quot;&quot;" title="图10"></p>
+<p>↑图10中的树结构有以下性质：</p>
+<ol>
+<li>$x_i$ 和 $\overline{x}_i$ 必须有不同的颜色，</li>
+<li>$x_i$ 和 $\overline{x}_i$ 和基点的颜色也不一样</li>
+<li>T, F, B 三个节点的颜色也都不一样。</li>
+<li>根据上面三条，$x_i$ 和 $\overline{x}_i$ 中一个得到真节点的颜色和另一个得到假节点的颜色</li>
+</ol>
+<p>举个例子：<br>假设 $C_1 = t_1 \bigvee t2 \bigvee t_3 $</p>
+<p>对应的 $t_1$， $t2$， $t_3$ 中至少有一个是真节点的颜色</p>
+<p>我们把一个这个子句画成这样：</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/11.png" alt="&quot;&quot;" title="图11"></p>
+<p>如果三个变量都为false，如↓图12所示。这张图中，基点是蓝色，真节点为绿色，假节点为红色，因为三个变量都是 false，那么也都是红色。</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/12.png" alt="&quot;&quot;" title="图12"></p>
+<p>根据上面提到过的性质，我们只能把各个点的颜色涂成这样，那么顶端最后一个点不管涂什么颜色，总会和相邻的一个节点冲突，所以三个节点都为假是不可行的。</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/13.png" alt="&quot;&quot;" title="图13"></p>
+<p>其实，只有当三个节点中的一个是真的时候，顶端的节点才可能是可以着色，</p>
+<h1 id="Three-Dimensional-Matching-Problem"><a href="#Three-Dimensional-Matching-Problem" class="headerlink" title="Three-Dimensional Matching Problem"></a>Three-Dimensional Matching Problem</h1><h2 id="三维匹配问题定义"><a href="#三维匹配问题定义" class="headerlink" title="三维匹配问题定义"></a>三维匹配问题定义</h2><p>Three-Dimensional Matching 也就是 3DM</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-np/14.png" alt="&quot;&quot;" title="图14"></p>
+<blockquote>
+<p>Given: Sets $X$, $Y$, $Z$, each of size n, and a set $T ⊂ X × Y × Z$ of order triplets.<br>给定三个集合 $X$, $Y$, $Z$。每个集合的大小都是 $n$。同时给出一个三元组集合 $T ⊂ X × Y × Z$</p>
+<p>Question: is there a set of $n$ triplets in $T$ such that each element is contained in exactly one triplet?<br>问：$T$ 中是否有 $n$ 个三元组使得 $X$, $Y$, $Z$ 中的每一个元素都只出现在一个三元组中。</p>
+</blockquote>
+<p>显然 3DM 是属于 NP</p>
+<h2 id="证明-3-SAT-≤-P-3DM"><a href="#证明-3-SAT-≤-P-3DM" class="headerlink" title="证明 3-SAT $≤_P$ 3DM"></a>证明 3-SAT $≤_P$ 3DM</h2><p>同样，考虑一个 3-SAT 的实例，由 $X = \{ x_1,…, x_n \}$ 和 一组子句 $C_1$， $C_2$ … $C_k$ 组成</p>
+<p>对于每一个变量 $x_i$ 我们都创造一个图组件，包含以下内容</p>
+<ol>
+<li> $A_i = \{a_{i1},...,a_{i,2k}\}$   ——core</li>
+<li>$B_i = \{bi1,…,bi,2k\}$ ——tips</li>
+<li>$t_{ij} = (a_{ij},a_{i,j+1},b_{ij})$   ——TF triples</li>
+</ol>
+<p>没写完，有空再来填坑</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/art/笔记-纪录片-唐之韵/" rel="next" title="纪录片笔记《唐之韵》">
+                <i class="fa fa-chevron-left"></i> 纪录片笔记《唐之韵》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/distribute-system/cmu-95702-project6/" rel="prev" title="CMU 95702 - SnapShot算法">
+                CMU 95702 - SnapShot算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多项式时间归约"><span class="nav-number">1.</span> <span class="nav-text">多项式时间归约</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#独立集与顶点覆盖"><span class="nav-number">2.</span> <span class="nav-text">独立集与顶点覆盖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合覆盖和集合包装"><span class="nav-number">3.</span> <span class="nav-text">集合覆盖和集合包装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合覆盖"><span class="nav-number">3.1.</span> <span class="nav-text">集合覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合包装"><span class="nav-number">3.2.</span> <span class="nav-text">集合包装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可满足性问题（SAT）"><span class="nav-number">4.</span> <span class="nav-text">可满足性问题（SAT）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SAT-和-3-SAT问题"><span class="nav-number">4.1.</span> <span class="nav-text">SAT 和 3-SAT问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SAT-归约到-3-SAT"><span class="nav-number">4.2.</span> <span class="nav-text">SAT 归约到 3-SAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把-3-SAT-归约到独立集"><span class="nav-number">4.3.</span> <span class="nav-text">把 3-SAT 归约到独立集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归约的传递性"><span class="nav-number">4.4.</span> <span class="nav-text">归约的传递性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有效证书和-NP-的定义"><span class="nav-number">5.</span> <span class="nav-text">有效证书和 NP 的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式运行时间"><span class="nav-number">5.1.</span> <span class="nav-text">多项式运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有效证书-Certificate"><span class="nav-number">5.2.</span> <span class="nav-text">有效证书 Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP-一个问题类"><span class="nav-number">5.3.</span> <span class="nav-text">$NP$ 一个问题类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NP-完全问题"><span class="nav-number">6.</span> <span class="nav-text">NP 完全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-NP-完全问题的通用策略"><span class="nav-number">6.2.</span> <span class="nav-text">证明 NP 完全问题的通用策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哈密顿环问题"><span class="nav-number">7.</span> <span class="nav-text">哈密顿环问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旅行商问题"><span class="nav-number">8.</span> <span class="nav-text">旅行商问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Graph-Coloring-Problem"><span class="nav-number">9.</span> <span class="nav-text">Graph Coloring Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图着色问题定义"><span class="nav-number">9.1.</span> <span class="nav-text">图着色问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-3-SAT-≤-P-3-Coloring"><span class="nav-number">9.2.</span> <span class="nav-text">证明 3-SAT $≤_P$ 3-Coloring</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Three-Dimensional-Matching-Problem"><span class="nav-number">10.</span> <span class="nav-text">Three-Dimensional Matching Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三维匹配问题定义"><span class="nav-number">10.1.</span> <span class="nav-text">三维匹配问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-3-SAT-≤-P-3DM"><span class="nav-number">10.2.</span> <span class="nav-text">证明 3-SAT $≤_P$ 3DM</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
