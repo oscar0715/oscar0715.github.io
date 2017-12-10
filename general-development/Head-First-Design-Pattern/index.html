@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Design Pattern," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Head First Desgin Pattern">
+<meta name="keywords" content="Design Pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解《Head First Design Pattern》">
+<meta property="og:url" content="http://menuet.xyz/general-development/Head-First-Design-Pattern/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="Head First Desgin Pattern">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.2-simple-extend.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/2-simple-interface.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/WeatherDataClass.png?v=2">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/ObserverPattern.png?v=2">
+<meta property="og:image" content="http://menuet.xyz/general-development/Head-First-Design-Pattern/%22%22">
+<meta property="og:updated_time" content="2017-12-10T15:49:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图解《Head First Design Pattern》">
+<meta name="twitter:description" content="Head First Desgin Pattern">
+<meta name="twitter:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/general-development/Head-First-Design-Pattern/"/>
+
+
+
+
+
+  <title>图解《Head First Design Pattern》 | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/general-development/Head-First-Design-Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图解《Head First Design Pattern》</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-05T14:14:15+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/General/" itemprop="url" rel="index">
+                    <span itemprop="name">General</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Head First Desgin Pattern<br><a id="more"></a></p>
+<hr>
+<h1 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h1><p>举个例子：Duck 类<br>不同种类的鸭子继承了 Duck 父类：</p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png" alt="简单继承"></p>
+<p>但是，当我们要给鸭子加入一个 <code>fly()</code> 方法的时候，这样的方式就会遇到麻烦：不会飞的鸭子怎么办呢？只能在 Rubber Duck 中重写 <code>fly()</code> 方法。也就是说：</p>
+<ol>
+<li>我们改动了父类就会影响到所有的子类，</li>
+<li>造成代码重复，所有不会飞的鸭子都要重写这个方法</li>
+</ol>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.2-simple-extend.png" alt="简单继承"></p>
+<p>那我们换用接口的方式来实现：</p>
+<ol>
+<li>我们仍然无法避免代码重复的问题，所有会飞的鸭子都要自己实现一遍 <code>fly()</code> 方法</li>
+</ol>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/2-simple-interface.png" alt="简单接口"></p>
+<p>这个时候就可以考虑设计模式了</p>
+<p>策略模式：</p>
+<ol>
+<li>把 <code>fly()</code> 方法 和  <code>quack()</code> 方法从 Duck 类中拆出来。定义自己的接口和实现类</li>
+<li>Duck 类中用接口类型定义 Fly 和 Quack 的行为变量</li>
+<li>Duck 类中用 performFly() 方法触发  <code>fly()</code> 方法，但并不关心这个方法是怎么实现的</li>
+<li>甚至可以写 setter 方法，在运行时改动 FlyBehavior 的实现</li>
+</ol>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png" alt="策略模式"></p>
+<p>主要的思想有两点:</p>
+<ol>
+<li>具体的行为和 Client 分开</li>
+<li>组合比继承更加灵活</li>
+</ol>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Observer-Pattern"><a href="#Observer-Pattern" class="headerlink" title="Observer Pattern"></a>Observer Pattern</h1><p>背景：</p>
+<ol>
+<li>一个气象中心提供天气信息（温度，湿度，气压）</li>
+<li>三个不同的显示设备，需要到气象中心获取天气信息，并做不同样式的展示。（Clients）<ul>
+<li>currentConditionDisplay</li>
+<li>statisticsDisplay</li>
+<li>forecastDisplay</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/WeatherDataClass.png?v=2" alt="Weather Data Class"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 最直接的实现方法</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measurementsChanged</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="comment">// getter 获取最新信息</span></div><div class="line">        <span class="keyword">float</span> temp = getTemperature();</div><div class="line">        <span class="keyword">float</span> humidity = getHumidity();</div><div class="line">        <span class="keyword">float</span> pressure = getPressure();</div><div class="line"></div><div class="line">        <span class="comment">// 更新三个客户端</span></div><div class="line">        currentConditionDisplay.update(temp, humidity, pressure);</div><div class="line">        statisticsDisplay.update(temp, humidity, pressure);</div><div class="line">        forecastDisplay.update(temp, humidity, pressure);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的3个 update 方法，有两个问题：</p>
+<ol>
+<li>每次增加或者改动客户端，都要涉及到 WeatherData 端的改动</li>
+<li>显然代码重复了</li>
+</ol>
+<p>所以使用观察者模式：</p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/ObserverPattern.png?v=2" alt="观察者模式"></p>
+<p>要点：</p>
+<ol>
+<li>核心是 Subject 和 Observer 两个接口</li>
+<li>Subject的实现类中维护一个 Observer 的列表<ul>
+<li>用 register 方法增加新的 Observer</li>
+<li>用 remove 方法移除 Observer</li>
+<li>notify 方法通知列表中所有的 Observers（调用 Observer 的 update 方法）</li>
+<li>Observer 中也可以维护一个 Subject 对象，来主动选择 register 或者 remove</li>
+</ul>
+</li>
+<li>观察者模式实现了 push 的机制</li>
+</ol>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Decorator-Pattern"><a href="#Decorator-Pattern" class="headerlink" title="Decorator Pattern"></a>Decorator Pattern</h1><p><strong>背景：</strong><br>Starbuzz 咖啡店卖四种咖啡：HouseBlend, DarkRoast, Decaf, Espresso</p>
+<p><img src="" alt="Class Diagram"></p>
+<p>咖啡店还提供了四种佐料：milk, soy, mocha, whip<br>每种咖啡都能加入任意种佐料，每种都要收费，那么如何才能灵活计费呢？</p>
+<p>第一种方法：<br>简单地在父类中，将是否含有佐料用 Boolean 类型的变量标记出来：<br><img src="" alt="Simple Extension"></p>
+<ol>
+<li>显然这样方法最大的问题在于，一旦有新的佐料，我们就要对所以子类的 <code>cost()</code> 进行修改。</li>
+<li>如果某种佐料的价格发生了变化，我们也要对现有的代码进行修改</li>
+<li>总之这种代码可拓展性太差</li>
+</ol>
+<p>设计原则：</p>
+<blockquote>
+<p>类应该对拓展开放，而拒绝修改</p>
+</blockquote>
+<p>那么接下来，<strong>装饰器模式</strong>就要登场了。</p>
+<p>思路就是，我们有一杯 Beverage，然后在 RunTime 对它添加佐料。</p>
+<p>比如说，消费者要了一杯 DarkRoast 开发，要求添加 Mocha 和 Whip</p>
+<ol>
+<li>那我们就创建一个 DarkRoast Object</li>
+<li>再装饰一个 Mocha Object</li>
+<li>再装饰一个 Whip Object</li>
+<li>然后 cost() 方法通过 Delegation（委托）去累加佐料的价格</li>
+</ol>
+<p>我们可以将装饰的对象想象成一个 wrapper 类（包装类）</p>
+<p><img src="&quot;&quot;" alt="Wrapper"></p>
+<p>调用cost的方法的时候，我们调用最外层 Whip类的 cost 方法，然后不断向里层调用，然后类似递归地不断向外累加并返回</p>
+<p>（很熟悉啊，链表+递归？）</p>
+<p><img src="" alt="Call cost()"></p>
+<p>来看一看<strong>装饰器模式</strong>的定义</p>
+<blockquote>
+<p>观察者模式能够动态地给对象添加新的职责。</p>
+</blockquote>
+<p>这种灵活性可以代替继承关系</p>
+<p><img src="" alt="Decorator Pattern on Coffee"></p>
+<p>要点：</p>
+<ol>
+<li>装饰器的类和咖啡的实现类是 same type，因为类型相同，装饰器类才能包在 Beverage 的实现类外面。</li>
+<li>装饰器的实现类(例如 Milk)类中有一个 Beverage 的变量，可以看做是接口类型的变量，达到了“组合”的目的。所以此处装饰器类并没有利用“继承”来使用<code>cost()</code>方法，而是利用了“组合”</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Beverage 基类</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Beverage</span> </span>&#123;</div><div class="line">    String description= <span class="string">"unknown beverage"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// getDescription() 已经实现好了</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> description;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// cost() 是抽象方法    </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 装饰器的抽象类</span></div><div class="line"><span class="comment">// 继承了 Beverage 基类， 所以是和别的 Beverage 可替换的</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CondimentDecorator</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</div><div class="line">    <span class="comment">// 所有的装饰者实现类都要用类似于链表的方式重新实现 getDescription() 方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Beverage 的实现类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Espresso</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 重写构造器，将基类中的变量 description 重新赋值</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Espresso</span><span class="params">()</span> </span>&#123;</div><div class="line">        description = <span class="string">"Esprsso"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 实现 cost()   </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1.99</span>;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 另外的 HouseBlend, DarkRoast, Decaf 都同理</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 装饰器的实现类</span></div><div class="line"><span class="comment">// 继承了 condimentDecorator（CondimentDecorator 继承了 Beverage）</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mocha</span> <span class="title">extend</span> <span class="title">CondimentDecorator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Beverage beverage;</div><div class="line"></div><div class="line">    <span class="comment">// 构造器，初始化了，这个装饰器装饰的 Beverage 类</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mocha</span><span class="params">(Beverage beverage)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.beverage = beverage;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 重新getDescription()方法</span></div><div class="line">    <span class="comment">// 这里就是所谓的 delegate</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> beverage.getDescrition + <span class="string">", Mocha"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 实现cost()方法，完全就是链表啊</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> beverage.cost() <span class="number">0.2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Starbuzz</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">        Beverage beverage = <span class="keyword">new</span> Espresso();</div><div class="line">        beverage = <span class="keyword">new</span> Mocha(beverage);</div><div class="line">        beverage = <span class="keyword">new</span> Whip(beverage);</div><div class="line">        System.out.println(beverage.getDescription() </div><div class="line">            + <span class="string">" $ "</span> + beverage.cost()</div><div class="line">        )</div><div class="line">        <span class="comment">// 假设 Espresso 1.99, Mocha 0.2, Whip 0.2</span></div><div class="line">        <span class="comment">// 输出如下</span></div><div class="line">        <span class="comment">// Espresso, Mocha, Whip $ 2.39</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Design-Pattern/" rel="tag"># Design Pattern</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/art/书摘-原研哉-设计中的设计/" rel="next" title="书摘 原研哉 《设计中的设计》">
+                <i class="fa fa-chevron-left"></i> 书摘 原研哉 《设计中的设计》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">388</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
