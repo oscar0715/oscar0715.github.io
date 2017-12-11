@@ -108,8 +108,12 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/WeatherDataClass.png?v=2">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/observer/ObserverPattern.png?v=2">
-<meta property="og:image" content="http://menuet.xyz/general-development/Head-First-Design-Pattern/%22%22">
-<meta property="og:updated_time" content="2017-12-10T15:49:15.000Z">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/1-background.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/2-inheritance.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/3-wrapper.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/4-call-cost%28%29-method.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/5-decorator-on-coffee.png">
+<meta property="og:updated_time" content="2017-12-11T02:06:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -462,9 +466,9 @@
 <hr>
 <p><br></p>
 <h1 id="Decorator-Pattern"><a href="#Decorator-Pattern" class="headerlink" title="Decorator Pattern"></a>Decorator Pattern</h1><p><strong>背景：</strong><br>Starbuzz 咖啡店卖四种咖啡：HouseBlend, DarkRoast, Decaf, Espresso</p>
-<p><img src="" alt="Class Diagram"></p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/1-background.png" alt="Class Diagram"></p>
 <p>咖啡店还提供了四种佐料：milk, soy, mocha, whip<br>每种咖啡都能加入任意种佐料，每种都要收费，那么如何才能灵活计费呢？</p>
-<p>第一种方法：<br>简单地在父类中，将是否含有佐料用 Boolean 类型的变量标记出来：<br><img src="" alt="Simple Extension"></p>
+<p>第一种方法：<br>简单地在父类中，将是否含有佐料用 Boolean 类型的变量标记出来：<br><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/2-inheritance.png" alt="Simple Extension"></p>
 <ol>
 <li>显然这样方法最大的问题在于，一旦有新的佐料，我们就要对所以子类的 <code>cost()</code> 进行修改。</li>
 <li>如果某种佐料的价格发生了变化，我们也要对现有的代码进行修改</li>
@@ -484,16 +488,16 @@
 <li>然后 cost() 方法通过 Delegation（委托）去累加佐料的价格</li>
 </ol>
 <p>我们可以将装饰的对象想象成一个 wrapper 类（包装类）</p>
-<p><img src="&quot;&quot;" alt="Wrapper"></p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/3-wrapper.png" alt="Wrapper"></p>
 <p>调用cost的方法的时候，我们调用最外层 Whip类的 cost 方法，然后不断向里层调用，然后类似递归地不断向外累加并返回</p>
 <p>（很熟悉啊，链表+递归？）</p>
-<p><img src="" alt="Call cost()"></p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/4-call-cost%28%29-method.png" alt="Call cost()"></p>
 <p>来看一看<strong>装饰器模式</strong>的定义</p>
 <blockquote>
 <p>观察者模式能够动态地给对象添加新的职责。</p>
 </blockquote>
 <p>这种灵活性可以代替继承关系</p>
-<p><img src="" alt="Decorator Pattern on Coffee"></p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/decorator/5-decorator-on-coffee.png" alt="Decorator Pattern on Coffee"></p>
 <p>要点：</p>
 <ol>
 <li>装饰器的类和咖啡的实现类是 same type，因为类型相同，装饰器类才能包在 Beverage 的实现类外面。</li>
