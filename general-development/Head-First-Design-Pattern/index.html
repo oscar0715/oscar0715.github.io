@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/simple-factory.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/pizza-factory.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/factory-pattern.png">
-<meta property="og:updated_time" content="2017-12-18T02:03:26.000Z">
+<meta property="og:updated_time" content="2018-01-03T13:15:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -556,7 +556,34 @@
 <li>Concreate Creator 来决定 这个 Product 的具体实现，也只有 ConcreateCreator 关心它的 Product 的具体实现</li>
 <li>最终的效果是，实现了 ConcreteProduct 与 Creator 类的解耦</li>
 </ol>
+<p><br></p>
 <hr>
+<p><br></p>
+<h1 id="Singleton-Pattern"><a href="#Singleton-Pattern" class="headerlink" title="Singleton Pattern"></a>Singleton Pattern</h1><p>单例模式，两个要点：</p>
+<ol>
+<li>一个类只有是一个实例</li>
+<li>这个类提供了一个全局获取这个实例的口子</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Singleton uniqueSingleton;</div><div class="line"></div><div class="line">    <span class="comment">// private 的构造器</span></div><div class="line">    <span class="keyword">private</span> Singleton &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 公共调用的静态方法</span></div><div class="line">    <span class="comment">// 可以通过 Singleton.getInstance 获取实例</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">            uniqueSingleton = <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> uniqueSingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上的代码</p>
+<ol>
+<li>构造器为 private 保证了只有一个实例</li>
+<li>公共静态方法 getInstance() 是一个全局的获取该唯一实例的入口</li>
+</ol>
+<p>但是这段代码有一个问题，在 uniqueSingleton 初始化的时候，在多线程的情况下会出现 new 出多个实例的情况：</p>
+<ol>
+<li>线程1 new 出一个实例，正在使用这个类，例如赋值操作</li>
+<li>线程2 同时进来，又new 出了一个实例，线程1 赋的值就废了</li>
+</ol>
+<p>一个粗暴的方法就是给 getInstance() 方法加上 synchronized ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">        uniqueSingleton = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> uniqueSingleton;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码：</p>
+<ol>
+<li>保证了只会调用构造器一次，但是性能就很差了</li>
+<li>事实上只有在类初始化的时候，才需要 synchronized 来防止多次调用构造器，只要 uniqueSingleton实例化以后，就不怕多线程了</li>
+</ol>
+<p>改进一下，用 <code>double-checked locking</code> 来保证之后在初始化的时候才用到 synchronized ：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Singleton uniqueSingleton;</div><div class="line"></div><div class="line">    <span class="comment">// private 的构造器</span></div><div class="line">    <span class="keyword">private</span> Singleton &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="comment">// 只有在初始化的时候才会进到 synchronized 的代码块</span></div><div class="line">            <span class="keyword">synchronized</span> （Singleton.class) &#123;</div><div class="line">                <span class="comment">// 进来以后再判断一下有没有别的先进来的线程已经 new 过了</span></div><div class="line">                <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">                    uniqueSingleton = <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> uniqueSingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="/java/Java%E5%86%85%E5%AD%98%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%90Java%E7%B3%BB%E5%88%97%E7%AC%94%E8%AE%B0%E3%80%91/">关于 Volatile 和 synchronized 可以看着一篇文章</a></p>
 
       
     </div>
@@ -735,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li></ol></div>
             
 
           </div>
@@ -758,7 +785,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
