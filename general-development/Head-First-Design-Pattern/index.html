@@ -116,7 +116,9 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/simple-factory.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/pizza-factory.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/factory-pattern.png">
-<meta property="og:updated_time" content="2018-01-03T13:15:57.000Z">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/Background.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/CommandPattern.png">
+<meta property="og:updated_time" content="2018-01-09T12:59:55.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -584,6 +586,53 @@
 </ol>
 <p>改进一下，用 <code>double-checked locking</code> 来保证之后在初始化的时候才用到 synchronized ：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Singleton uniqueSingleton;</div><div class="line"></div><div class="line">    <span class="comment">// private 的构造器</span></div><div class="line">    <span class="keyword">private</span> Singleton &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="comment">// 只有在初始化的时候才会进到 synchronized 的代码块</span></div><div class="line">            <span class="keyword">synchronized</span> （Singleton.class) &#123;</div><div class="line">                <span class="comment">// 进来以后再判断一下有没有别的先进来的线程已经 new 过了</span></div><div class="line">                <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</div><div class="line">                    uniqueSingleton = <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> uniqueSingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><a href="/java/Java%E5%86%85%E5%AD%98%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%90Java%E7%B3%BB%E5%88%97%E7%AC%94%E8%AE%B0%E3%80%91/">关于 Volatile 和 synchronized 可以看着一篇文章</a></p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Command-Pattern"><a href="#Command-Pattern" class="headerlink" title="Command Pattern"></a>Command Pattern</h1><p>背景:<br>下面的类图展示了不同家电的开关接口，不同的家电开关的方法都不一样，现在要给这些家电做一个统一的开关，放在一把统一的遥控器上：</p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/Background.png" alt="不同的电器的类图"></p>
+<p>怎么做呢</p>
+<ol>
+<li><p>定义一个控制器的接口，这个控制器是一个统一接口，只有一个 <code>execute()</code> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">execute</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>接下来，给灯写一个开灯的控制器类，这个类实现了上面的控制器接口<br> 实际上这个控制器就是在 Light 类外面封装了一层，这样可以不侵入 Light 类的代码，用execute()方法实现了统一的开关封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LightOnCommand</span> <span class="title">implement</span> <span class="title">Command</span> </span>&#123;</div><div class="line">    Light light;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LightOnCommand</span><span class="params">(Light light)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.light = light;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">        light.on();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后写遥控器类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleRemoteControl</span> </span>&#123;</div><div class="line">    </div><div class="line">    Command slot;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleRemoteControl</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="comment">// setter</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">setCommand</span><span class="params">(Command command)</span> </span>&#123;</div><div class="line">        slot = command;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buttonWasPressed</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 触发 slot 的 execute 方法</span></div><div class="line">        slot.execute();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>写一个 Test 类把上面的类整合在一起</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteControlTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">// 遥控器</span></div><div class="line">        SimpleRemoteControl remote = <span class="keyword">new</span> SimpleRemoteControl();</div><div class="line"></div><div class="line">        <span class="comment">// 开灯的控制类</span></div><div class="line">        Light light = <span class="keyword">new</span> Light();</div><div class="line">        LightOnCommand lightOn = <span class="keyword">new</span> LightOnCommand(light);</div><div class="line"></div><div class="line">        <span class="comment">// 把控制类set到 遥控器中去</span></div><div class="line">        remote.set(lightOn);</div><div class="line"></div><div class="line">        <span class="comment">// 调用遥控器的 按按钮方法</span></div><div class="line">        remote.buttonWasPressed()</div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Command Pattern 的类图如下：</p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/CommandPattern.png" alt="Command Pattern"></p>
+<p>图中的元素分解：</p>
+<ol>
+<li>client（就是上面的 Test类）：<ul>
+<li>new 一个控制器实例（例如 LightOnCommand）</li>
+<li>set 控制器的Receiver （Light）</li>
+</ul>
+</li>
+<li>invoker（就是 RemoteControl）</li>
+<li>Receiver （Light）<ul>
+<li>Command的接受者</li>
+<li>也就是具体的业务方</li>
+</ul>
+</li>
+<li>command 接口<ul>
+<li>定义了统一的execute() </li>
+</ul>
+</li>
+<li>ConcreteCommand (就是SimpleRemoteControl)<ul>
+<li>execute() 封装了 Receiver 的具体 action 方法（例如 on()）</li>
+</ul>
+</li>
+</ol>
+<p><br></p>
+<hr>
+<p><br></p>
 
       
     </div>
@@ -762,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li></ol></div>
             
 
           </div>
