@@ -118,7 +118,8 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/factory/factory-pattern.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/Background.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/CommandPattern.png">
-<meta property="og:updated_time" content="2018-01-09T12:59:55.685Z">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/adapter/Adaptor-Pattern.png">
+<meta property="og:updated_time" content="2018-01-15T15:13:08.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -633,6 +634,31 @@
 <p><br></p>
 <hr>
 <p><br></p>
+<h1 id="Adapter-Pattern"><a href="#Adapter-Pattern" class="headerlink" title="Adapter Pattern"></a>Adapter Pattern</h1><p>适配器模式：</p>
+<ol>
+<li>client 代码和 Server 代码接口不匹配</li>
+<li>写一个中间的 Adaptor 作为适配器</li>
+<li>Adaptor 和 Server 代码是 Compose 关系</li>
+</ol>
+<p>举个例子：</p>
+<ol>
+<li>你要操作一只鸭子，但是只有一只火鸡</li>
+<li>没办法，只能用火鸡代替一下鸭子</li>
+<li>所以要写一个火鸡到鸭子的适配器</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 你想要的 鸭子</span></div><div class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">Duck</span><span class="params">()</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 现在只有火鸡</span></div><div class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">Turkey</span><span class="params">()</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 写一个适配器</span></div><div class="line"><span class="function"><span class="keyword">public</span> class TurkeyAdaptor implements <span class="title">Duck</span><span class="params">()</span> </span>&#123;</div><div class="line">    </div><div class="line">    Turkey turkey;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TurkeyAdaptor</span><span class="params">(Turkey turkey)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.turkey = turkey;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</div><div class="line">        turkey.gobble();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 鸭子比火鸡飞得远</span></div><div class="line">        <span class="comment">// 鸭子飞一下，火鸡要飞 5 下</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">            turkey.gobble();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>来看看适配器模式的 UML 图<br><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/adapter/Adaptor-Pattern.png" alt="Adapter Pattern"></p>
+<ol>
+<li>Target 是用户想要操作的类，也就是上面的 Duck</li>
+<li>Adaptee 是现有能提供的类，也就是上面的 Turkey</li>
+<li>Adaptor 就是中间的适配器，也就是上面的 TurkeyAdaptor</li>
+</ol>
+<p>Adapter 对 Duck 完成了包装，Client 完全不会感知 Duck 类。<br>Duck 也不需要为了 Client做出任何改动。这就是 Adapter 类的作用</p>
+<p><br></p>
+<hr>
+<p><br></p>
 
       
     </div>
@@ -811,7 +837,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li></ol></div>
             
 
           </div>
