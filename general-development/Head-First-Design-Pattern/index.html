@@ -119,7 +119,8 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/Background.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/command/CommandPattern.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/adapter/Adaptor-Pattern.png">
-<meta property="og:updated_time" content="2018-01-15T15:13:08.158Z">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/adapter/Adaptor-Pattern.png">
+<meta property="og:updated_time" content="2018-01-24T15:18:47.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -634,7 +635,11 @@
 <p><br></p>
 <hr>
 <p><br></p>
-<h1 id="Adapter-Pattern"><a href="#Adapter-Pattern" class="headerlink" title="Adapter Pattern"></a>Adapter Pattern</h1><p>适配器模式：</p>
+<h1 id="Adapter-Pattern"><a href="#Adapter-Pattern" class="headerlink" title="Adapter Pattern"></a>Adapter Pattern</h1><p>定义：</p>
+<blockquote>
+<p>把一个接口转化成另外一个接口，方便适配 Client</p>
+</blockquote>
+<p>适配器模式：</p>
 <ol>
 <li>client 代码和 Server 代码接口不匹配</li>
 <li>写一个中间的 Adaptor 作为适配器</li>
@@ -656,6 +661,28 @@
 <li>Adaptor 就是中间的适配器，也就是上面的 TurkeyAdaptor</li>
 </ol>
 <p>Adapter 对 Duck 完成了包装，Client 完全不会感知 Duck 类。<br>Duck 也不需要为了 Client做出任何改动。这就是 Adapter 类的作用</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Facade-Pattern"><a href="#Facade-Pattern" class="headerlink" title="Facade Pattern"></a>Facade Pattern</h1><p>Facade 定义：为复杂的子系统创建一个简化的，统一的接口。<br>（在子系统上包装了一层简单的接口）</p>
+<p>Facade 和 Adapter 的联系：</p>
+<ol>
+<li>目的不同：<ul>
+<li>Facade 提供了一个简化的接口</li>
+<li>Adapter 提供了一个适配 Client 的接口</li>
+</ul>
+</li>
+<li>两者都进行了包装<ul>
+<li>Facade 对子系统进行了包装</li>
+<li>Adapter 对 Adaptee 进行了包装</li>
+</ul>
+</li>
+<li>两者都通过包装完成了 Client 对内部系统的解耦，如果遇到接口的变化，之间要改变 Facade 或者 Adapter 就好了</li>
+</ol>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/adapter/Adaptor-Pattern.png" alt="Facade Pattern"></p>
+<p>Facade Pattern 体现了一个设计原理：<br>Principle of Least Knowledge：<br>减少需要交互对象的数量，只关心最亲近的对象就好了，这样能减少依赖，降低对象间的耦合。</p>
+<p>举一个例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</div><div class="line">    Thermometer thermometer = station.getThermometer();</div><div class="line">    <span class="keyword">return</span> thermometer.getTemperature();</div><div class="line">    <span class="comment">// 这个方法从 Station 中获取 Thermometer 对象</span></div><div class="line">    <span class="comment">// 再去操作 thermometer</span></div><div class="line">    <span class="comment">// 那 getTemp() 方法就不太纯粹了，多依赖了 Thermometer 对象</span></div><div class="line">    <span class="comment">// 破坏了 Least KnowLedge 原则</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> station.getTemperature();</div><div class="line">    <span class="comment">// 如果直接从 station 方法获得温度，就比较好</span></div><div class="line">    <span class="comment">// 让 station 去关心 thermometer 对象就好了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><br></p>
 <hr>
 <p><br></p>
@@ -780,7 +807,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">388</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -791,7 +818,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -802,7 +829,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -837,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Facade-Pattern"><span class="nav-number">8.</span> <span class="nav-text">Facade Pattern</span></a></li></ol></div>
             
 
           </div>
