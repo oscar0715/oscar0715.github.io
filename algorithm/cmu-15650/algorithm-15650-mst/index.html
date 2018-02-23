@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Minimum Spanning Tree">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15650 - Minimum Spanning Tree">
+<meta property="og:url" content="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-mst/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Minimum Spanning Tree">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-mst/union-find.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-mst/tree-based-union-find.png">
+<meta property="og:updated_time" content="2017-10-15T07:02:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 15650 - Minimum Spanning Tree">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Minimum Spanning Tree">
+<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-mst/union-find.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-mst/"/>
+
+
+
+
+
+  <title>CMU 15650 - Minimum Spanning Tree | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-mst/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 15650 - Minimum Spanning Tree</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-02T21:22:45+08:00">
+                2016-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 15650 - Algorithm and Data Structure </p>
+<p>Minimum Spanning Tree<br><a id="more"></a></p>
+<hr>
+<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><p>Graph: graphs specify pairwise relationship between objects.<br>图展示了对象与对象之间的关系</p>
+<p>undirected tree: $G = (V, E)$<br><code>V</code> is a set of nodes (verticles) 顶点的集合<br><code>E</code> is a set of edges. 边的集合</p>
+<h2 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a>Trees</h2><p>Trees: A graph $G$ is a tree if it is connected and contains no cycles.<br>如果一个图中的点都相连而且这个途中不存在环，那么这个图就是一颗树</p>
+<ol>
+<li>$T$ is a tree </li>
+<li>$T$ contains no cycles and $n-1$ edges 树有$n-1$条边</li>
+<li>$T$ is connected and revoming any edge will disconnect it.<br> 从一棵树里移除任何一条边都会将这个树断开，因为没有环嘛。</li>
+<li>Any two nodes in a tree has only one path.<br> 树中的任意两个顶点间只有一条唯一的路径。</li>
+<li>$T$ is acyclic and adding any new edge creates exactly one cycle.<br> 在树种添加任意一条边都会形成一个环。</li>
+</ol>
+<h2 id="The-Minimum-Spanning-Tree"><a href="#The-Minimum-Spanning-Tree" class="headerlink" title="The Minimum Spanning Tree"></a>The Minimum Spanning Tree</h2><p>Given a undirected graph G with all non-negative weights.<br>Find a Subgraph $T$ that connects all verticles and minimizes cost(T).<br>给定一个无向图，图中的每一条边都有一个非负的权重，要求在图中找到一个子图，这个子图连接了图中所有的点，并且要使得这个子图中的边的权重和最小。</p>
+<p>$$cost(T)= \sum_{ (u,v) \in T}d(u, v)$$</p>
+<p>T will be a tree:<br>If there is a cycle, we could remove any of the edge on the cycle to get a new subgraph <code>T&#39;</code> with smaller cost(<code>T&#39;</code>)<br>得到的这个子图肯定是一棵树，否则的话，我们可以移除任意一条环中的边，这样图中的所有顶点还是相连的。</p>
+<h2 id="MST-Property-Summary"><a href="#MST-Property-Summary" class="headerlink" title="MST Property Summary"></a>MST Property Summary</h2><h3 id="MST-Cut-Property"><a href="#MST-Cut-Property" class="headerlink" title="MST Cut Property"></a>MST Cut Property</h3><p><strong>Theorem: </strong><br>The minimum weight edge $e = (v, w)$ between |S| and |V|-|S| must be in every the MST<br>切分定理：把一个图的顶点分为两个部分|S|，|V|-|S|，那么在所有连接这两个部分的边里面，最短的那条边肯定属于MST。</p>
+<p><strong>proof:</strong><br>If $T$ doesn’t contain $e$, Because $T$ is connected, there must be path $P$ between $v$ and $w$. Assume $P$ contains $f$ that “cross the cut” between |S| and |V|-|S|.<br>The subgraph $ T’ = T - f \cup e$ has lower weight than $T$.<br>证明：如果最短边$e$不在MST中，去掉连接这两个部分的边$f$，再把$e$加上去总是能使这棵树的总权重更小</p>
+<h3 id="MST-Cycle-Property"><a href="#MST-Cycle-Property" class="headerlink" title="MST Cycle Property"></a>MST Cycle Property</h3><p><strong>Theorem:</strong><br>Let $C$ be a cycle in $G$. Let $e = (u, v)$ be the edge with maximum weight on $C$. Then $e$ is not in any MST of G.<br>环定理：如果图中有一个环，那么这个环中的最长边一定不是MST中的一条边</p>
+<p><strong>Proof:</strong><br>Suppose the theorem is false. Let $T$ be a MST that contains $e$<br>Deleting $e$ from $T$, partioning $T$ in to two sets: $S$(contains $u$ ) and $V-S$ (contains $v$).<br>Cycle $C$ must have some other edge $f$ that goes from $|S|$ and $|V-S|$.<br>Replcing $e$ by $f$ produces a lower cost tree, contradicting that T is an MST.<br>证明：假设环中的最长边$e$在MST中，$|S|$和$|V-S|$由$e$相连，我们去掉$e$，总能找到比$e$更短的另一条边，重新把这棵树连起来，这样总权重就减小了。</p>
+<h2 id="Prim’s-MST-algorithm"><a href="#Prim’s-MST-algorithm" class="headerlink" title="Prim’s MST algorithm"></a>Prim’s MST algorithm</h2><p><strong>Algorithm:</strong><br>Starting with any root node, add the $frontier edge$ with the smallest weight.<br>Prim算法：每次都添加最短邻边。</p>
+<p><strong>Assumption:</strong><br>no two edge in G have the same edge cost.<br>If it doesn’t true, we can add a very small value $\epsilon_e$ to the weight of every edge $e$</p>
+<p><strong>Correctness:</strong></p>
+<ul>
+<li>Theorem: Prim’s algorithm produces a minimum spanning tree</li>
+<li><p>Proof:<br>  At any point, $T = (V_T, E_T)$ is a subgraph that is a Tree.<br>  $T$ grows by 1 vertex and 1 edge after each iteation. So it will stop after $|V_G| - 1$ iterations and at that point $T$ will be a spanning tree.<br>  The pair $(V_T, V_G - V_T)$ is a cut of $G$<br>  By the cut property, the MST con</p>
+<p>  tains the lowest cost edge crossing the cut. And this is the edge Prim’s algorithm adds to T. So Prim’s only add edges that are in MST<br>  切分定理可以证明</p>
+</li>
+</ul>
+<h2 id="Reverse-Delete-Algorithm"><a href="#Reverse-Delete-Algorithm" class="headerlink" title="Reverse-Delete Algorithm"></a>Reverse-Delete Algorithm</h2><p>Algorithm:<br>Remov edges in decreasing order of weight, skipping those whose removal removal will disconnect the graph. (largest edge in an cycle)<br>每次都移除最长边，跳过那些会disconnect the graph的边</p>
+<p>Guarantee that the graph is not disconnected, deleting edge with maximum weight $e$ and there must be <em>another path</em> between u and v</p>
+<h2 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h2><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p><strong>Algorithm:</strong><br>add edges in increasing weight, skipping those whose addition could create a cycle.<br>Kruskal算法，将边按从小到大的顺序添加到图里，跳过那些会形成环的边。</p>
+<p><strong>Proof</strong>:<br>(Cut Property)<br>$S$ = nodes which $v$ has a path just before $e$ is added<br>$u$ is in $V-S$ (otherwise there would be a cycle)<br>仍然可以用切分定理证明</p>
+<h3 id="Data-Structure-for-Kruskal-Algorithm"><a href="#Data-Structure-for-Kruskal-Algorithm" class="headerlink" title="Data Structure for Kruskal Algorithm:"></a>Data Structure for Kruskal Algorithm:</h3><p>接下来要解决的是用什么数据结构来构造Kruskal算法<br><strong>How to check if adding an edge $(u, v)$ would create a cycle?</strong></p>
+<ul>
+<li>If $u, v$ are already in the same component.</li>
+<li>We start with a component for each node.</li>
+<li>Components merge when we add an edge.</li>
+<li>Need a way to check $u$ and $v$ are in same component and to merge two components into one.</li>
+</ul>
+<h3 id="Array-based-Union-Find"><a href="#Array-based-Union-Find" class="headerlink" title="Array based Union-Find"></a>Array based Union-Find</h3><p>先来介绍以数组为基础的Union-Find数据结构。</p>
+<h4 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h4><ul>
+<li>MakeUnionFind: create the data structure containing |S| sets, each containing one item. O(|S|)<br>初始化，在一开始的时候才会用到。初始化简历|S|个集合，也就是每个顶点都自成一格集合。</li>
+<li>Find(i): return the name of the set containing item $i$. O(1)<br>查找操作，找到某个顶点的所属的集合的名字</li>
+<li>Union(a,b): merge two sets <strong>with name $a$ and $b$</strong> into single set<br>  prepend smaller list to larger list. Set size[y] = size[y] + size[x]<br>  合并操作，把两个集合和并起来。总是把小的集合接到大的集合后面。</li>
+</ul>
+<h4 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h4><p>要用到两个数组和一个list的数组</p>
+<ul>
+<li>UF Sizes (array) 一个数组来存每个集合的大小</li>
+<li>UF Sets (array) 一个数组来存每个集合的名字</li>
+<li>UF items (array of list) 每个集合都有一个元素列表，这些所有的列表组成一个集合</li>
+</ul>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-mst/union-find.png" alt="Data structure" title="Data structure"></p>
+<h4 id="Runtime-of-Union-Find-array-based"><a href="#Runtime-of-Union-Find-array-based" class="headerlink" title="Runtime of Union Find (array based):"></a>Runtime of Union Find (array based):</h4><p><strong>Theorem:</strong><br>Any sequence of $k$ union operationon a collection of $n$ items takes time at most proportion to $klog(k)$.<br>$k$次union操作的时间复杂度是$klog(k)$</p>
+<p><strong>Proof:</strong><br>After $k$ unions, at most $2k$ items have been involved in a union. (each union can touch at most 2 <strong>new items</strong>)</p>
+<ol>
+<li>Every time $set(v)$ changes, the size of the set at least doubles.</li>
+<li>$Set[v]$ can have changed at most $log_{2}(2k)times$</li>
+</ol>
+<p>At most 2k items have been modified at all, and each was updated at most $ log_{2}(2k) $.</p>
+<p>So totally $ 2klog_{2}(2k) $</p>
+<p>证明：</p>
+<ol>
+<li>在$k$次union操作以后，最多涉及$2k$个元素，因为每次的union最多涉及两个$新的元素$。</li>
+<li>每次一个顶点的所属的集合改变的时候，也就是被合并的时候，合并后的集合的大小至少比原来的集合大一倍，因为我们在合并两个集合的时候，改变元素数量小的集合的名字，保留元素数量大的集合的名字。</li>
+</ol>
+<p>综上所述，在$k$次union操作以后，一个集合里最多有$2k$个元素，集合中的每个元素所属的集合最多可能改变了$log_{2}(2k)$次。</p>
+<p>所以总的时间复杂度是$2klog_{2}(2k) = klog(k)$</p>
+<h3 id="Running-time-of-Kruskal-using-Array-based-UF"><a href="#Running-time-of-Kruskal-using-Array-based-UF" class="headerlink" title="Running time of Kruskal using Array based UF"></a>Running time of Kruskal using Array based UF</h3><p>$m$是边的数量</p>
+<ol>
+<li>Sorting the edges: $O(mlogm)$<br>$m \leqslant n^2$, so $log m &lt; log{n^2} = 2log n$<br>排序的时间复杂度是$O(mlogm) = O(mlogn)$</li>
+<li>At most $2m$ “find” operations: $O(2m)$ (To check if u and v are in the same component)<br>每次要添加一条边的的时候，都要检查两个顶点是不是在同一个集合中，不是的话才能加进来。所以要检查$O(2m)$次</li>
+<li>At most $n-1$ union operations: $O(nlogn)$ </li>
+</ol>
+<p>Total : $mlogn + 2m + nlogn = O(mlogn)$</p>
+<h3 id="Tree-based-Union-Find"><a href="#Tree-based-Union-Find" class="headerlink" title="Tree based Union Find"></a>Tree based Union Find</h3><p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-mst/tree-based-union-find.png" alt="Tree Based Union Find" title="Tree Based Union Find"></p>
+<p><strong>Operations:</strong></p>
+<ul>
+<li>MakeUnionFind: $O(n)$</li>
+<li>Find(i): $O(logn)$</li>
+<li>Union: $O(1)$</li>
+</ul>
+<p><strong>Theorem:</strong><br>$Find(i)$ takes $logn$ time in tree based union find data structure with $n$ items.<br>查找操作的时间复杂度变为了$logn$</p>
+<p><strong>Proof:</strong><br>The depth of an item equals the number of times the set is renamed.<br>When renamed, the size of the set at least doubles.<br>the largest number of times the set renamed is $log_{2}n$<br>用树结构的话，查找的时间复杂度与这个元素在树中的深度相同。<br>每次合并改变一个集合的名字的时候，同样，一个集合中的元素的数量翻倍。<br>因为顶点的总数就是$n$，所以深度最多也就是$log_2 n$</p>
+<h3 id="Running-time-of-Kruskal-using-Tree-based-UF"><a href="#Running-time-of-Kruskal-using-Tree-based-UF" class="headerlink" title="Running time of Kruskal using Tree based UF"></a>Running time of Kruskal using Tree based UF</h3><p>Same with Array based:</p>
+<ol>
+<li>Sorting: $O(mlogn)$</li>
+<li>Find: $2mlog(n)$</li>
+<li>Union: $n-1$</li>
+</ol>
+<p>Total: $O(mlogn)$</p>
+<h2 id="Implementing-ClostVertex-in-Prim’s"><a href="#Implementing-ClostVertex-in-Prim’s" class="headerlink" title="Implementing ClostVertex (in Prim’s)"></a>Implementing ClostVertex (in Prim’s)</h2><h3 id="Priority-Queue-ADT-amp-Heaps"><a href="#Priority-Queue-ADT-amp-Heaps" class="headerlink" title="Priority Queue ADT &amp; Heaps"></a>Priority Queue ADT &amp; Heaps</h3><p>Prim算法使用堆来实现的<br>(key(v), v)</p>
+<p><strong>operations:</strong></p>
+<ol>
+<li>H.insert(i)</li>
+<li>H.deleteMin()</li>
+<li>H.findMin()</li>
+<li>H.delete(i)</li>
+<li>H.makeHeap(S)</li>
+</ol>
+<p>Items: vertices that are on the “frontier”<br>key(v) = distToT[v]<br>ClostVertex: return H.deleteMin()</p>
+<h3 id="Run-time"><a href="#Run-time" class="headerlink" title="Run time"></a>Run time</h3><p>findMin: return root. $O(1)$<br>insert: add as leaf, heapify-up. $O(logn)$<br>delete(i): swap(i, leafNode), delete i, heapify-down the leafNode. $O(logn)$</p>
+<p>Store heap in a <strong>Complete Tree</strong> (Array)<br>完全树，也就是只要叶子节点那一层可以不满，这个可以用Array来实现。</p>
+<h3 id="One-more-operation-in-Prim"><a href="#One-more-operation-in-Prim" class="headerlink" title="One more operation in Prim:"></a>One more operation in Prim:</h3><p>H.decreaseKey($u$, $j$); reduce the key for item $u$ by $j$<br>Reduce the key –&gt; heapify up. $O(logn)$</p>
+<h3 id="Make-Heap"><a href="#Make-Heap" class="headerlink" title="Make Heap"></a>Make Heap</h3><ol>
+<li>put items in array arbitrarily</li>
+<li>for $i = n … 1$, heapify down(i)</li>
+</ol>
+<p>Total time =<br>$$ \sum_{h}h(n / 2^{h}) = n \sum h/{2^h} = O(n)  $$</p>
+<h2 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h2><p>An appllication of MST</p>
+<p><strong>Goal:</strong></p>
+<ol>
+<li>Divide $n$ items into $k$ groups</li>
+<li>so that the <strong>minimum distance</strong> between items in different groups is maxmized.</li>
+</ol>
+<p><strong>Idea:</strong><br>Kruskal’s and stop when there are k clusters</p>
+<p><strong>Correctness:</strong><br>Another  view:</p>
+<ol>
+<li>delete the k-1 most expensive edges from the <strong>MST</strong> (From MST not the graph)</li>
+<li>the spacing $d$ of the clustering $C$ that this produces is the length of the $(k - 1)^st$ most expensive edge.</li>
+</ol>
+<p>Let $C’$ be a different clustering.</p>
+<p>Since $C  \neq C’$, there must be some pair $p_i$, $p_j$ that are in same cluster in $C$, but different clusters in $C’$.</p>
+<p>Together in C, in the cluster containing $p_i$, $p_j$, all edges $\leqslant d$.<br>But some path in the cluster passes beteen two differnt clusters in $C’$</p>
+<p>Therefore, separationo of  $C’ \leqslant d$. So $C$ is the right clustering.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/art/diary/【随笔】五月骄阳/" rel="next" title="【随笔】回忆录——五月骄阳">
+                <i class="fa fa-chevron-left"></i> 【随笔】回忆录——五月骄阳
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/algorithm/cmu-15650/algorithm-15650-asymptotic/" rel="prev" title="CMU 15650 - Asymptotic Analysis">
+                CMU 15650 - Asymptotic Analysis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">373</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph"><span class="nav-number">1.</span> <span class="nav-text">Graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trees"><span class="nav-number">2.</span> <span class="nav-text">Trees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Minimum-Spanning-Tree"><span class="nav-number">3.</span> <span class="nav-text">The Minimum Spanning Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MST-Property-Summary"><span class="nav-number">4.</span> <span class="nav-text">MST Property Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MST-Cut-Property"><span class="nav-number">4.1.</span> <span class="nav-text">MST Cut Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MST-Cycle-Property"><span class="nav-number">4.2.</span> <span class="nav-text">MST Cycle Property</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim’s-MST-algorithm"><span class="nav-number">5.</span> <span class="nav-text">Prim’s MST algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reverse-Delete-Algorithm"><span class="nav-number">6.</span> <span class="nav-text">Reverse-Delete Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal’s-Algorithm"><span class="nav-number">7.</span> <span class="nav-text">Kruskal’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm"><span class="nav-number">7.1.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Structure-for-Kruskal-Algorithm"><span class="nav-number">7.2.</span> <span class="nav-text">Data Structure for Kruskal Algorithm:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-based-Union-Find"><span class="nav-number">7.3.</span> <span class="nav-text">Array based Union-Find</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Operations"><span class="nav-number">7.3.1.</span> <span class="nav-text">Operations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Structure"><span class="nav-number">7.3.2.</span> <span class="nav-text">Data Structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime-of-Union-Find-array-based"><span class="nav-number">7.3.3.</span> <span class="nav-text">Runtime of Union Find (array based):</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-time-of-Kruskal-using-Array-based-UF"><span class="nav-number">7.4.</span> <span class="nav-text">Running time of Kruskal using Array based UF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-based-Union-Find"><span class="nav-number">7.5.</span> <span class="nav-text">Tree based Union Find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-time-of-Kruskal-using-Tree-based-UF"><span class="nav-number">7.6.</span> <span class="nav-text">Running time of Kruskal using Tree based UF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-ClostVertex-in-Prim’s"><span class="nav-number">8.</span> <span class="nav-text">Implementing ClostVertex (in Prim’s)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Priority-Queue-ADT-amp-Heaps"><span class="nav-number">8.1.</span> <span class="nav-text">Priority Queue ADT & Heaps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-time"><span class="nav-number">8.2.</span> <span class="nav-text">Run time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#One-more-operation-in-Prim"><span class="nav-number">8.3.</span> <span class="nav-text">One more operation in Prim:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Heap"><span class="nav-number">8.4.</span> <span class="nav-text">Make Heap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clustering"><span class="nav-number">9.</span> <span class="nav-text">Clustering</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

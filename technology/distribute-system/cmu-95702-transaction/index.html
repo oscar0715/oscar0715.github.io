@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Distribution-System," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 95702 - Distributed System Transaction">
+<meta name="keywords" content="Distribution-System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 95702 - Transaction">
+<meta property="og:url" content="http://menuet.xyz/technology/distribute-system/cmu-95702-transaction/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 95702 - Distributed System Transaction">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/140/934/1409347274-571e3a2839ea7_articlex">
+<meta property="og:image" content="http://ogy9sznv2.bkt.clouddn.com/transaction/01.png">
+<meta property="og:image" content="http://ogy9sznv2.bkt.clouddn.com/transaction/02.png">
+<meta property="og:image" content="http://ogy9sznv2.bkt.clouddn.com/transaction/03.png">
+<meta property="og:image" content="http://ogy9sznv2.bkt.clouddn.com/transaction/04.png">
+<meta property="og:image" content="http://ogy9sznv2.bkt.clouddn.com/transaction/05.png">
+<meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 95702 - Transaction">
+<meta name="twitter:description" content="CMU 95702 - Distributed System Transaction">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/140/934/1409347274-571e3a2839ea7_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/technology/distribute-system/cmu-95702-transaction/"/>
+
+
+
+
+
+  <title>CMU 95702 - Transaction | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/technology/distribute-system/cmu-95702-transaction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 95702 - Transaction</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T16:09:45+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Distribution-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Distribution-System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 95702 - Distributed System</p>
+<p>Transaction</p>
+<a id="more"></a>
+<hr>
+<h1 id="Java-synchronized"><a href="#Java-synchronized" class="headerlink" title="Java synchronized"></a>Java synchronized</h1><p>放一个synchronized的用法的链接: <a href="http://www.jianshu.com/p/ea9a482ece5f" target="_blank" rel="external">synchronized的用法</a> </p>
+<p>一个类里面如果有多个synchronized的方法，访问其中一个synchronized方法的时候，别的synchronized方法也是不能访问的。我是不是可以理解成，一个实例反正就一个锁。</p>
+<p>下面代码实现一个queue<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">synchronized</span> <span class="title">first</span><span class="params">()</span> </span>&#123; </div><div class="line">	<span class="keyword">if</span> (Q is empty)</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span></div><div class="line">	<span class="keyword">else</span> </div><div class="line">		remove and <span class="keyword">return</span> front </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">synchronized</span> <span class="title">append</span><span class="params">()</span> </span>&#123; </div><div class="line">	add to rear </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的代码有一个问题，</p>
+<ol>
+<li>假设 queue 这时候是空的</li>
+<li>设 A 来调用 first() 方法，返回false</li>
+<li>这个时候 B 调用了 append()方法，queue 就有东西了</li>
+<li>然后 C 来调用 first() 方法，然后 C 把东西取走了</li>
+</ol>
+<p>问题就是 A 在第二步先调用的 first() 方法，却被第4步调用的 C 取走了，这就不好了。接下来我们把代码改进一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">synchronized</span> <span class="title">first</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> queue is empty call</div><div class="line">		wait()    <span class="comment">// 如果queue是空的，释放锁，进入睡眠状态</span></div><div class="line">	</div><div class="line">	remove from front </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">synchronized</span> <span class="title">append</span><span class="params">()</span> </span>&#123; </div><div class="line">	adds to rear </div><div class="line">	<span class="function">call <span class="title">notify</span><span class="params">()</span> <span class="comment">// 注意这里是notify，只会唤醒，之前wait()的那个一个thread</span></span></div><div class="line"><span class="function">	</span></div><div class="line"><span class="function">&#125;</span></div></pre></td></tr></table></figure>
+<p>注意：<br>notify() : </p>
+<ol>
+<li>notify，只会唤醒，之前wait()的那个一个thread</li>
+<li>notify() 方法其实并没有释放锁，它只是通知之前进入睡眠状态的thread，现在它可以被唤醒了。</li>
+<li>notify()的这个代码块全部执行完了以后，才会释放锁</li>
+</ol>
+<p>notifyall() : 就会唤醒所有在执行了wait()的，等待这个object的的threads</p>
+<p>参考 <a href="http://howtodoinjava.com/core-java/multi-threading/how-to-work-with-wait-notify-and-notifyall-in-java/" title="Work With wait(), notify() and notifyAll() in Java" target="_blank" rel="external">Work With wait(), notify() and notifyAll() in Java</a></p>
+<p>下面一张图来看看 Java进程的状态切换<br><img src="https://sfault-image.b0.upaiyun.com/140/934/1409347274-571e3a2839ea7_articlex" alt="Java线程状态切换" title="Java线程状态切换"><br>图片来自 <a href="https://segmentfault.com/a/1190000005006079" title="Java线程的状态及切换" target="_blank" rel="external">Java线程的状态及切换</a></p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Locking-to-Attain-Serializability"><a href="#Locking-to-Attain-Serializability" class="headerlink" title="Locking to Attain Serializability"></a>Locking to Attain Serializability</h1><p>r() 是读操作，w()是写操作</p>
+<p>r1(x) r2(x) 这两个操作不冲突，所以顺序无所谓<br>r1(x) w2(x) 这两个操作冲突了，顺序就有所谓了<br>w1(x) w2(x) 这两个操作也冲突了，顺序就有所谓了</p>
+<p>我们可以用锁来保证 Serializability</p>
+<p>两种锁：</p>
+<ol>
+<li>readlocks: rL1(x)</li>
+<li>writelocks: wL2(x).</li>
+</ol>
+<p>Before reading,a read lock is set. Before writing, a write lock is set.</p>
+<p>A transaction can obtain a lock only if no other transaction has a conflicting lock on the same data item.<br>这里很关键，注意是 conflicting lock </p>
+<ol>
+<li>我要读一个object，如果另一个线程有这个object的读的锁，没关系不冲突，我可以得到读操作的锁</li>
+<li>我要读一个object，如果另一个线程有写的锁，这就冲突了，我现在读不了</li>
+<li>我要写一个object，如果另一个线程有读的锁，那么也是冲突的，不能写</li>
+</ol>
+<p>Locks may be removed with wU1(y) or rU1(x)</p>
+<p>考虑下面的 transaction 的例子：<br>两个操作是在不同的机器上的，所以对整个操作加 synchronized 是没用的。所以我们只能在服务器端用上的面介绍的锁机制来保证一个好的顺序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Client 1 Transaction T;</div><div class="line">  // Get write lock on a</div><div class="line">  a.withdraw(100);</div><div class="line">  // Get write lock on b</div><div class="line">  b.deposit(100);</div><div class="line">  // Get write lock on c</div><div class="line">  c.withdraw(200); </div><div class="line">  b.deposit(200); </div><div class="line">  // Unlock a,b,c</div><div class="line"></div><div class="line">Client 2 Transaction W;</div><div class="line">  // Get a read lock on a</div><div class="line">  total = a.getBalance();</div><div class="line">  // Get a read lock on b</div><div class="line">  total = total + b.getBalance();</div><div class="line">  // Get a read lock on c</div><div class="line">  total = total + c.getBalance();</div><div class="line">  // Unlock a,b,1c8</div></pre></td></tr></table></figure></p>
+<p>下面是一个死锁的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Client 1 Transaction T;</div><div class="line">// Get a read lock on b</div><div class="line">bal = b.getBalance()</div><div class="line">// Upgrade to write</div><div class="line">b.setBalance(bal*1.1);</div><div class="line">Unlock b</div><div class="line"></div><div class="line">Client 2 Transaction W;</div><div class="line">// Get a read lock on b</div><div class="line">bal = b.getBalance();</div><div class="line">// Upgrade to write lock</div><div class="line">b.setBalance(bal*1.1);</div><div class="line">// Unlock b</div></pre></td></tr></table></figure></p>
+<ol>
+<li>Clinet 1 先拿到读的锁</li>
+<li>Clinet 2 也拿到读的锁，因为不冲突</li>
+<li>client 1 读完以后，拿不到写的锁，因为 client 2 在读</li>
+<li>同理 client 2 也拿不到写的锁，因为 client 1 在读</li>
+</ol>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="Two-phase-locking-2PL"><a href="#Two-phase-locking-2PL" class="headerlink" title="Two phase locking (2PL)"></a>Two phase locking (2PL)</h1><p>只有锁也还是不够的，我们还要保证一定的顺序</p>
+<p>Serially Equivalent : all pairs of conflicting operations of the two transactions be executed in the same order</p>
+<p>给个例子：<br><img src="http://ogy9sznv2.bkt.clouddn.com/transaction/01.png" alt="&quot;图1 Conflicts&quot;" title="图1 Conflicts"></p>
+<p>To be serially equivalent:<br>If r1(x) occurs before w2(x), then w1(y) must occur before r2(y) and<br>If r1(x) occurs after w2(x), then w1(y) must occur after r2(y).</p>
+<p>也就是说顺序呢<br>要么是 r1(x) -&gt; w1(y) -&gt; w2(x) -&gt; r2(y)<br>要么是 w2(x) -&gt; r2(y) -&gt; r1(x) -&gt; w1(y) </p>
+<p>但是如果只有锁的话，就会有↓图2这种情况</p>
+<p><img src="http://ogy9sznv2.bkt.clouddn.com/transaction/02.png" alt="&quot;图2&quot;" title="图2"><br>T1 执行到 rU1(x) 转到 T2， T2执行完了再回到 T1 继续执行</p>
+<p>也就是说 顺序是 r1(x) -&gt; r2(y) -&gt; w1(y) -&gt; w2(x) </p>
+<p>这个时候我们需要另外一个机制 Two phase locking (2PL):<br>2PL demands that all locks are obtained for each transaction before releasing any of them.</p>
+<p>如↓图3所示，感觉就是 synchronized 的机制很像了。</p>
+<p><img src="http://ogy9sznv2.bkt.clouddn.com/transaction/03.png" alt="&quot;图3 2PL&quot;" title="图3 2PL"></p>
+<h1 id="Lock-item-和-unlock-item-方法"><a href="#Lock-item-和-unlock-item-方法" class="headerlink" title="Lock_item 和 unlock_item() 方法"></a>Lock_item 和 unlock_item() 方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Lock_Item(x)</div><div class="line">  	if(Lock(x) == 0)</div><div class="line">  		// 如果这个对象没有锁，那么就把锁拿过来，加上</div><div class="line">		Lock(x) = 1 </div><div class="line">	else &#123;</div><div class="line">		// 如果这个对象现在有锁</div><div class="line">		// 那么就等着，直到被叫醒</div><div class="line">  		wait until Lock(x) == 0 and</div><div class="line">  		we are woken up.</div><div class="line">  	GOTO B </div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Unlock_Item(x)</div><div class="line">	Lock(x) = 0</div><div class="line">	if any transactions are waiting </div><div class="line">	then wake up one of the waiting transactions.</div></pre></td></tr></table></figure>
+<p>死锁 （Deadlock）</p>
+<p>Four Requirements for deadlock:<br>(1) Resources need mutual exclusion. They are not thread safe.<br>(2) Resources may be reserved while a process is waiting for more.<br>(3) Preemption is not allowed. You can’t force a process to give up a resource.<br>(4) Circular wait is possible. X wants what Y has and Y wants what Z has but Z wants what X has.</p>
+<p>Solutions (short course):<br>Prevention (disallow one of the four)<br>Avoidance (study what is required by all before beginning) Detection (using time-outs or wait-for graphs) and recovery</p>
+<p>一个例子<br><img src="http://ogy9sznv2.bkt.clouddn.com/transaction/04.png" alt="&quot;图4 Deadlock&quot;" title="图4 Deadlock"></p>
+<p>因为 2PL 要求在释放锁之前是要获得所有的锁的。<br>比如在 Transaction T 中，执行完对 A 的操作以后，要获得 B 的锁，才能释放 A 的锁，但是 B 的锁在 Transaction U 那里，但是 Transaction U 也不能释放 B 的锁，因为它要先 获得 A 的锁。这样就卡住了。</p>
+<h1 id="Two-phase-commit-2PC"><a href="#Two-phase-commit-2PC" class="headerlink" title="Two phase commit (2PC)"></a>Two phase commit (2PC)</h1><p><img src="http://ogy9sznv2.bkt.clouddn.com/transaction/05.png" alt="&quot;图5 Two phase commit &quot;" title="图5 Two phase commit "></p>
+<p>两阶段提交 不想解释了 偷懒………………</p>
+<hr>
+<p>Over！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Distribution-System/" rel="tag"># Distribution-System</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/technology/distribute-system/cmu-95702-project6/" rel="next" title="CMU 95702 - SnapShot算法">
+                <i class="fa fa-chevron-left"></i> CMU 95702 - SnapShot算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/art/book/笔记-汪曾祺-老人情/" rel="prev" title="读书笔记 汪曾祺《老人情》">
+                读书笔记 汪曾祺《老人情》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">373</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-synchronized"><span class="nav-number">1.</span> <span class="nav-text">Java synchronized</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Locking-to-Attain-Serializability"><span class="nav-number">2.</span> <span class="nav-text">Locking to Attain Serializability</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-phase-locking-2PL"><span class="nav-number">3.</span> <span class="nav-text">Two phase locking (2PL)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lock-item-和-unlock-item-方法"><span class="nav-number">4.</span> <span class="nav-text">Lock_item 和 unlock_item() 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-phase-commit-2PC"><span class="nav-number">5.</span> <span class="nav-text">Two phase commit (2PC)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

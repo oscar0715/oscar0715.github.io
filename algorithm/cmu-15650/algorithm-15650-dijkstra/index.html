@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Dijkstra Algorithm">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15650 - Dijkstra">
+<meta property="og:url" content="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-dijkstra/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Dijkstra Algorithm">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/dijkstra.jpeg">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/proof.jpeg">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/dijkstra-alg.jpeg">
+<meta property="og:updated_time" content="2017-10-15T07:02:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMU 15650 - Dijkstra">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Dijkstra Algorithm">
+<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/dijkstra.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-dijkstra/"/>
+
+
+
+
+
+  <title>CMU 15650 - Dijkstra | Revolutionary Road</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Revolutionary Road</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
+            
+            Technology
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-code-o"></i> <br />
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-art">
+          <a href="/art" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Art
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-dijkstra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMU 15650 - Dijkstra</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-04T23:21:45+08:00">
+                2016-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CMU 15650 - Algorithm and Data Structure </p>
+<p>Dijkstra Algorithm<br><a id="more"></a></p>
+<hr>
+<h1 id="Shortest-path"><a href="#Shortest-path" class="headerlink" title="Shortest path"></a>Shortest path</h1><p><strong>Shortest Paths:</strong><br>Given directed graph $G$ with $n$ nodes, and non-negative lengths on each edge, find the $n$ shortest paths from a given node $s$ to each $v_i$.（Every $v_i$ has its own shoertest path from $s$ to it.）</p>
+<p>给定一个图 $G$ 和一个起点 $s$ ，找到从起点 $s$ 到余下所有其他点的最短路径。</p>
+<hr>
+<h1 id="nextEdge-for-Shortest-Path"><a href="#nextEdge-for-Shortest-Path" class="headerlink" title="nextEdge for Shortest Path"></a>nextEdge for Shortest Path</h1><p>We discussed tree growing in the Graph Traversal<br>树的增长的算法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">TreeGrowing(graph G, vertex v, func nextEdge): </div><div class="line">    T = (v,∅)</div><div class="line">    S = set of edges incident to v</div><div class="line">    <span class="keyword">while</span> S is not empty:</div><div class="line">        e = nextEdge(G, S)</div><div class="line">        T = T + e                <span class="comment">// add edge e to T</span></div><div class="line">        S = updateFrontier(G, S, e)</div><div class="line">    <span class="keyword">return</span> T</div></pre></td></tr></table></figure></p>
+<p>Dijkstra’s algorithm is just a special case of tree growing.</p>
+<p><strong>nextEdge for Shortest Path （函数nextEdge）:</strong></p>
+<ul>
+<li>Let $u$ be some node that we have already visited (it will be in S).<br>  假设点$u$是我们已经访问过的一个点。我们把这些访问过的点的集合设为$S$</li>
+<li>Let $d(u)$ be the length of the $s−u$ path found for node $u∈S$.<br>  我们记 $d(u)$ 为从起点 $s$ 到点 $u$ 的路径的距离</li>
+<li>nextEdge: return the frontier edge $(u,v)$ for which $d(u)+length(u,v)$ is minimized.<br>  nextEdge这个函数呢，就是从集合 $s$ 中的点的邻点中找到一个点 $u$ ，使得 $d(u)+length(u,v)$ 最小</li>
+<li>The “$d(u)$” term is the difference from Prim’s algorithm.</li>
+</ul>
+<hr>
+<h1 id="Dijkstra’s-Algorithm-in-KT-book"><a href="#Dijkstra’s-Algorithm-in-KT-book" class="headerlink" title="Dijkstra’s Algorithm (in KT book)"></a>Dijkstra’s Algorithm (in KT book)</h1><h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/dijkstra.jpeg" alt="Dijkstra" title="Dijkstra"></p>
+<p>while loop: $u$ 是 heap 中的一个点</p>
+<p>For loop: 遍历 $u$ 的所有邻点 $v$，这个$v$ 可能是之前遍历到过的，因为 $v$ 可能同时是不同 $u$ 的邻点. For loop 结束以后要把 $u$ 从堆中删去，因为它的历史使命完成了，以它为跳板的路线的长度都已经确定了。</p>
+<h2 id="Proof-of-Correctness"><a href="#Proof-of-Correctness" class="headerlink" title="Proof of Correctness"></a>Proof of Correctness</h2><p><strong>Theorem.</strong><br>Let T be the set of nodes explored at some point during the algorithm. For each $u ∈ T$ , the path to $u$ found by Dijkstra’s algorithm is the shortest.<br>对于已经用 Dijkstra 算法访问过的任意点 $u$ ，从起点 $s$ 到点 $u$ 的距离都是最短的。</p>
+<p><strong>Proof:</strong><br>By induction on the size of $T$ . 用数学归纳法来证明</p>
+<ol>
+<li>Base case: When $|T| = 1$, the only node in $T$ is $s$, for which we’ve obviously found the shortest path.<br> 第一步，如果整个图只有一个起点 $s$ ，那么显然我们可以得到最短路。</li>
+<li>Induction Hypothesis: Assume theorem is true when $|T| ≤ k$. Let $v$ be the $(k+1)^{st}$ node added using edge$(u,v)$.<br> 归纳的假设：假设我们的定理在前 $k$ 个点都是对的，我们记 $v$ 是第 $(k+1)$ 个点</li>
+<li>Let $P_v$ be the path chosen by Dijkstra’s to $v$ and let $P$ be any other path from $s$ to $v$.<br> 我们记 $P_v$ 为用 dijkstra 算法找到的路径， $P$ 是任意一条别的路径</li>
+</ol>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/proof.jpeg" alt="proof" title="proof"></p>
+<p>The path to $v$ chosen by Dijkstra’s is of length ≤ the alternative blue path.<br>PS: Dijkstra’s choose $v$ as the next node so $d(y)$ must larger than $d(v)$</p>
+<p>如上图，根据 dijkstra 算法， $d(y)$ 都比 $d(v)$ 要小了，不用说 $d(y)+length(y,v)$ 了</p>
+<h2 id="Implementation-of-Dijkstra"><a href="#Implementation-of-Dijkstra" class="headerlink" title="Implementation of Dijkstra"></a>Implementation of Dijkstra</h2><p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-dijkstra/dijkstra-alg.jpeg" alt="Implementation of Dijkstra" title="Implementation of Dijkstra"></p>
+<h2 id="Runtime-of-Dijkstra’s-Algorithm"><a href="#Runtime-of-Dijkstra’s-Algorithm" class="headerlink" title="Runtime of Dijkstra’s Algorithm"></a>Runtime of Dijkstra’s Algorithm</h2><p>Same as Prim’s MST algorithm:</p>
+<ol>
+<li>Every edge is processed in the for loop at most once.<br> This is because the graph is directed<br> While 循环会遍历到每一个点的每一条边，因为边是有向的，我们只挑从 $S$ 出发的边，所以是每条边一次而不是两次</li>
+<li>In response to that processing, we may either<br> 遍历到这条边的时候，有下面这些选择：<br> (1. do nothing, $O(1)$; —— 不满足更新条件<br> (2. insert a item into the heap of at most $|V|$ items, $O(log|V|)$; —— 这是一个新的点，加到 heap 中<br> (3. reduce the key of an item in a heap of at most $|V|$ items, $O(log|V|)$; —— 点已经在 heap 中了，但是有更短的路径，所以我们要更新，然后 reduce key</li>
+</ol>
+<p>Total time is therefore: $O(|E|log|V|)$.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/algorithm/cmu-15650/algorithm-15650-bfs-dfs/" rel="next" title="CMU 15650 - Graph Traversals">
+                <i class="fa fa-chevron-left"></i> CMU 15650 - Graph Traversals
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/algorithm/cmu-15650/algorithm-15650-aster/" rel="prev" title="CMU 15650 - A *">
+                CMU 15650 - A * <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               alt="Jiaming Ni" />
+          <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+           
+              <p class="site-description motion-element" itemprop="description">你闻讯而来 我大喜过望</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">373</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shortest-path"><span class="nav-number">1.</span> <span class="nav-text">Shortest path</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nextEdge-for-Shortest-Path"><span class="nav-number">2.</span> <span class="nav-text">nextEdge for Shortest Path</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dijkstra’s-Algorithm-in-KT-book"><span class="nav-number">3.</span> <span class="nav-text">Dijkstra’s Algorithm (in KT book)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">3.1.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof-of-Correctness"><span class="nav-number">3.2.</span> <span class="nav-text">Proof of Correctness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-of-Dijkstra"><span class="nav-number">3.3.</span> <span class="nav-text">Implementation of Dijkstra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-of-Dijkstra’s-Algorithm"><span class="nav-number">3.4.</span> <span class="nav-text">Runtime of Dijkstra’s Algorithm</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    Theme &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
