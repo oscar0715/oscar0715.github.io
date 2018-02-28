@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Revolutionary Road">
 <meta property="og:description" content="Head First Desgin Pattern">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
+<meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.1-simple-extend.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.2-simple-extend.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/2-simple-interface.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
@@ -123,11 +123,11 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/problem-background.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/further-abstraction.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/template-pattern.png">
-<meta property="og:updated_time" content="2018-02-25T13:11:45.321Z">
+<meta property="og:updated_time" content="2018-02-27T08:47:00.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
-<meta name="twitter:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png">
+<meta name="twitter:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.1-simple-extend.png">
 
 
 
@@ -412,7 +412,7 @@
         <p>Head First Desgin Pattern<br><a id="more"></a></p>
 <hr>
 <h1 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h1><p>举个例子：Duck 类<br>不同种类的鸭子继承了 Duck 父类：</p>
-<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/3-strategy-pattern.png" alt="简单继承"></p>
+<p><img src="http://p0h985ofr.bkt.clouddn.com/design/pattern/strategy/1.1-simple-extend.png" alt="简单继承"></p>
 <p>但是，当我们要给鸭子加入一个 <code>fly()</code> 方法的时候，这样的方式就会遇到麻烦：不会飞的鸭子怎么办呢？只能在 Rubber Duck 中重写 <code>fly()</code> 方法。也就是说：</p>
 <ol>
 <li>我们改动了父类就会影响到所有的子类，</li>
@@ -733,6 +733,10 @@
 <p><br></p>
 <hr>
 <p><br></p>
+<h1 id="State-Pattern"><a href="#State-Pattern" class="headerlink" title="State Pattern"></a>State Pattern</h1><p>背景：一台糖果自动贩卖机</p>
+<p>状态图如下：<br><img src="" alt="State Diagram"></p>
+<p>接下来实现一个糖果机的类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 四种状态码</span></div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD_OUT = <span class="number">0</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> NO_QUARTER = <span class="number">1</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> HAS_QUARTER = <span class="number">2</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD = <span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 当前状态</span></div><div class="line">    <span class="keyword">int</span> state SOLD_OUT;</div><div class="line"></div><div class="line">    <span class="comment">// 剩余的糖果</span></div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 构造器</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GumballMachine</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.count = count;</div><div class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</div><div class="line">            state = NO_QUARTER;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 具体的Action</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">void</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
 
       
     </div>
@@ -858,7 +862,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">374</span>
+                <span class="site-state-item-count">375</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -915,7 +919,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Facade-Pattern"><span class="nav-number">8.</span> <span class="nav-text">Facade Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Template-Pattern"><span class="nav-number">9.</span> <span class="nav-text">Template Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator-Pattern"><span class="nav-number">10.</span> <span class="nav-text">Iterator Pattern</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Facade-Pattern"><span class="nav-number">8.</span> <span class="nav-text">Facade Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Template-Pattern"><span class="nav-number">9.</span> <span class="nav-text">Template Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator-Pattern"><span class="nav-number">10.</span> <span class="nav-text">Iterator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#State-Pattern"><span class="nav-number">11.</span> <span class="nav-text">State Pattern</span></a></li></ol></div>
             
 
           </div>
