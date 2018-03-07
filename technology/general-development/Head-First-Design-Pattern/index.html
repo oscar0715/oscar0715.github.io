@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/problem-background.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/further-abstraction.png">
 <meta property="og:image" content="http://p0h985ofr.bkt.clouddn.com/design/pattern/template/template-pattern.png">
-<meta property="og:updated_time" content="2018-02-28T12:14:28.621Z">
+<meta property="og:updated_time" content="2018-03-07T09:45:52.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解《Head First Design Pattern》">
 <meta name="twitter:description" content="Head First Desgin Pattern">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-02-28T20:14:28+08:00">
-                2018-02-28
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-07T17:45:52+08:00">
+                2018-03-07
               </time>
             
           </span>
@@ -735,8 +735,28 @@
 <p><br></p>
 <h1 id="State-Pattern"><a href="#State-Pattern" class="headerlink" title="State Pattern"></a>State Pattern</h1><p>背景：一台糖果自动贩卖机</p>
 <p>状态图如下：<br><img src="" alt="State Diagram"></p>
-<p>接下来实现一个糖果机的类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 四种状态码</span></div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD_OUT = <span class="number">0</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> NO_QUARTER = <span class="number">1</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> HAS_QUARTER = <span class="number">2</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD = <span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 当前状态</span></div><div class="line">    <span class="keyword">int</span> state SOLD_OUT;</div><div class="line"></div><div class="line">    <span class="comment">// 剩余的糖果</span></div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 构造器</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GumballMachine</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.count = count;</div><div class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</div><div class="line">            state = NO_QUARTER;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 具体的Action</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">void</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>
+<p>接下来实现一个糖果机的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</div><div class="line">    <span class="comment">// 四种状态码</span></div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD_OUT = <span class="number">0</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> NO_QUARTER = <span class="number">1</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> HAS_QUARTER = <span class="number">2</span>;</div><div class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD = <span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 当前状态</span></div><div class="line">    <span class="keyword">int</span> state SOLD_OUT;</div><div class="line"></div><div class="line">    <span class="comment">// 剩余的糖果</span></div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 构造器</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GumballMachine</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.count = count;</div><div class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</div><div class="line">            state = NO_QUARTER;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 具体的Action</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 针对不同的状态做出不同的处理</span></div><div class="line">        <span class="keyword">if</span> (state == HAS_QUARTER) &#123;</div><div class="line">            System.out.println(<span class="string">"You cannot insert another quarter"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == NO_QUARTER) &#123;</div><div class="line">            state = HAS_QUARTER;</div><div class="line">            System.out.println(<span class="string">"You inserted a quarter"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == SOLD_OUT) &#123;</div><div class="line">            <span class="comment">// implement</span></div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == SOLD) &#123;</div><div class="line">            <span class="comment">// implement</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 其他各个操作也会对不同的状态做出不同的处理</span></div><div class="line">    <span class="comment">// 此处不作重复的处理</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ejectQuarter</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnCrank</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispense</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这段代码有非常严重的问题，假如新增了一个状态，那么就要对每个 Action 都要进行改动，整个代码就无法维护。</p>
+<p>所以需要进行一次重构 refactor </p>
+<p>重构后如下图所示，并且增加一种 Winner 状态，即有十分之一的用户有可能得到两块糖：<br><img src="" alt=""></p>
+<ol>
+<li>定义了 State 接口，定义了糖果机所有的 Action 方法</li>
+<li>每种状态都会去实现这个 State 接口在特定状态下的对应的方法</li>
+</ol>
+<p>举个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoQuarterState</span> <span class="keyword">implements</span> <span class="title">State</span> </span>&#123;</div><div class="line">    GumballMachine gumballMachine;</div><div class="line"></div><div class="line">    <span class="comment">// 每个状态内会有一个 gumballMachine 的指针</span></div><div class="line">    <span class="comment">// 用来在别的方法里面去改变糖果机的状态</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NoQuarterState</span> <span class="params">(GumballMachine gumballMachine)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.gumballMachine = gumballMachine;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 具体的实现，</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 有些实现会涉及到状态的变化</span></div><div class="line">        gumballMachine.setState(gumballMachine.getHasQuarterState());</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ejectQuarter</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnCrank</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispense</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再来看看 GumballMachine 的实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</div><div class="line">    </div><div class="line">    State soldOutState;</div><div class="line">    State soldState;</div><div class="line">    State noQuarterState;</div><div class="line">    State hasQuarterState;</div><div class="line"></div><div class="line">    <span class="comment">// 这时候的 state 指向一个对象</span></div><div class="line">    State state = soldOutState;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">gumballMachine</span><span class="params">(<span class="keyword">int</span> numberGumballs)</span> </span>&#123;</div><div class="line">        <span class="comment">// 构造器给各个变量赋值</span></div><div class="line">        <span class="comment">// 省略了。。。。</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</div><div class="line">        state.insertQuarter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 别的方法以此类推</span></div><div class="line"></div><div class="line">    <span class="comment">// setter 方法</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setState</span><span class="params">(State state)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.state = state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总结一下我们所做的改变：</p>
+<ol>
+<li>我们把具体行为的实现放到了每个状态的实现类中</li>
+<li>我们再也不用处理一堆 if 代码</li>
+<li>GumballMachine 类变得可拓展，而不需要改变。所有的改变都在各个状态的实现类中实现。</li>
+</ol>
+<p>Client 对 GumballMachine 的操作最终会 delegate 到具体的状态实现中去操作。</p>
+<p>所以状态模式的定义为：<br>对象的行为可以随着内在的状态的改变而改变。</p>
+<p>状态模式的类图如下：</p>
+<p><img src="" alt="class diagram"></p>
+<p>Context 就是具有不同状态的对象，就是之前例子中的 Gumball Machine<br>每次接到一个请求，都回去调用 handle() 方法，然后 delegate 到给状态类去处理</p>
 
       
     </div>
@@ -815,6 +835,13 @@
           
   <div class="comments" id="comments">
     
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
   </div>
 
 
@@ -862,7 +889,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">375</span>
+                <span class="site-state-item-count">376</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1065,12 +1092,30 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
 
 
 
   
 
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://menuet.xyz/technology/general-development/Head-First-Design-Pattern/';
+          this.page.identifier = 'technology/general-development/Head-First-Design-Pattern/';
+          this.page.title = '图解《Head First Design Pattern》';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wolfprince-blue.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
   
 
@@ -1086,10 +1131,6 @@
   
 
 
-
-
-
-  
 
 
 
