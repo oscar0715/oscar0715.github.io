@@ -387,25 +387,40 @@
       
 
       
-        <p>Java 日志系统<br><a id="more"></a></p>
+        <p>Java 日志系统</p>
+<a id="more"></a>
 <hr>
-<h1 id="引用放在最前面"><a href="#引用放在最前面" class="headerlink" title="引用放在最前面"></a>引用放在最前面</h1><ol>
-<li><a href="http://www.importnew.com/16331.html" title="Java日志终极指南" target="_blank" rel="external">Java日志终极指南</a></li>
-<li><a href="http://www.cnblogs.com/mailingfeng/p/3499436.html" title="LogBack简易教程" target="_blank" rel="external">LogBack简易教程</a></li>
-<li><a href="http://www.bkjia.com/ASPjc/1047668.html" title="slf4j+logback配置及详解" target="_blank" rel="external">slf4j+logback配置及详解</a></li>
-<li><a href="http://aub.iteye.com/blog/1101222" title="logback 常用配置详解（序）" target="_blank" rel="external">logback 常用配置详解（序）</a> : 这篇很详细</li>
+<h1 id="引用放在最前面"><a class="markdownIt-Anchor" href="#引用放在最前面"></a> 引用放在最前面</h1>
+<ol>
+<li>
+<a href="http://www.importnew.com/16331.html" title="Java日志终极指南" target="_blank" rel="external">Java日志终极指南</a>
+</li>
+<li>
+<a href="http://www.cnblogs.com/mailingfeng/p/3499436.html" title="LogBack简易教程" target="_blank" rel="external">LogBack简易教程</a>
+</li>
+<li>
+<a href="http://www.bkjia.com/ASPjc/1047668.html" title="slf4j+logback配置及详解" target="_blank" rel="external">slf4j+logback配置及详解</a>
+</li>
+<li>
+<a href="http://aub.iteye.com/blog/1101222" title="logback 常用配置详解（序）" target="_blank" rel="external">logback 常用配置详解（序）</a> : 这篇很详细
+</li>
 </ol>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h2><p>在Java中，输出日志需要使用一个或者多个日志框架，这些框架提供了必要的对象、方法和配置来传输消息。</p>
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<h2 id="日志框架"><a class="markdownIt-Anchor" href="#日志框架"></a> 日志框架</h2>
+<p>在Java中，输出日志需要使用一个或者多个日志框架，这些框架提供了必要的对象、方法和配置来传输消息。</p>
 <ol>
 <li>Java在<code>java.util.logging</code>包中提供了一个默认的框架。</li>
 <li>除此之外，还有很多其它第三方框架，包括<code>Log4j</code>、<code>Logback</code>以及<code>tinylog</code>。</li>
 <li>还有其它一些开发包，例如<code>SLF4J</code>和<code>Apache Commons Logging</code>，它们提供了一些抽象层，对你的代码和日志框架进行解耦，从而允许你在不同的日志框架中进行切换。</li>
 </ol>
-<h2 id="抽象层"><a href="#抽象层" class="headerlink" title="抽象层"></a>抽象层</h2><p>诸如<code>SLF4J</code>这样的抽象层，会将你的应用程序从日志框架中解耦。</p>
+<h2 id="抽象层"><a class="markdownIt-Anchor" href="#抽象层"></a> 抽象层</h2>
+<p>诸如<code>SLF4J</code>这样的抽象层，会将你的应用程序从日志框架中解耦。</p>
 <p>应用程序可以在运行时选择绑定到一个特定的日志框架（例如<code>java.util.logging</code>、<code>Log4j</code>或者<code>Logback</code>），这通过在应用程序的类路径中添加对应的日志框架来实现。</p>
 <p>如果在类路径中配置的日志框架不可用，抽象层就会立刻取消调用日志的相应逻辑。抽象层可以让我们更加容易地改变项目现有的日志框架，或者集成那些使用了不同日志框架的项目。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>尽管所有的Java日志框架都可以通过代码进行配置，但是大部分配置还是通过外部配置文件完成的。这些文件决定了日志消息在何时通过什么方式进行处理，日志框架可以在运行时加载这些文件。</p>
-<h2 id="Java日志组件"><a href="#Java日志组件" class="headerlink" title="Java日志组件"></a>Java日志组件</h2><p>Java日志API由以下三个核心组件组成：</p>
+<h2 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h2>
+<p>尽管所有的Java日志框架都可以通过代码进行配置，但是大部分配置还是通过外部配置文件完成的。这些文件决定了日志消息在何时通过什么方式进行处理，日志框架可以在运行时加载这些文件。</p>
+<h2 id="java日志组件"><a class="markdownIt-Anchor" href="#java日志组件"></a> Java日志组件</h2>
+<p>Java日志API由以下三个核心组件组成：</p>
 <ol>
 <li>Loggers：Logger负责捕捉事件并将其发送给合适的Appender。</li>
 <li>Appenders：也被称为Handlers，负责将日志事件记录到目标位置。在将日志事件输出之前，Appenders使用Layouts来对事件进行格式化处理。</li>
@@ -556,7 +571,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -578,7 +593,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -613,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用放在最前面"><span class="nav-number">1.</span> <span class="nav-text">引用放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#日志框架"><span class="nav-number">2.1.</span> <span class="nav-text">日志框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象层"><span class="nav-number">2.2.</span> <span class="nav-text">抽象层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java日志组件"><span class="nav-number">2.4.</span> <span class="nav-text">Java日志组件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用放在最前面"><span class="nav-number">1.</span> <span class="nav-text"> 引用放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text"> 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#日志框架"><span class="nav-number">2.1.</span> <span class="nav-text"> 日志框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象层"><span class="nav-number">2.2.</span> <span class="nav-text"> 抽象层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.3.</span> <span class="nav-text"> 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java日志组件"><span class="nav-number">2.4.</span> <span class="nav-text"> Java日志组件</span></a></li></ol></li></ol></div>
             
 
           </div>

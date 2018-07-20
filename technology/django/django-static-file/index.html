@@ -392,7 +392,8 @@
 <a id="more"></a>
 <hr>
 <p>配置就按照官方文档来</p>
-<h1 id="App-中用到的-static-文件"><a href="#App-中用到的-static-文件" class="headerlink" title="App 中用到的 static 文件"></a>App 中用到的 static 文件</h1><p>setting 中设置</p>
+<h1 id="app-中用到的-static-文件"><a class="markdownIt-Anchor" href="#app-中用到的-static-文件"></a> App 中用到的 static 文件</h1>
+<p>setting 中设置</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">STATIC_URL = <span class="string">'/static/'</span></div></pre></td></tr></table></figure>
 <p>这样就可以在 app 文件夹中设置 static folder了</p>
 <p>然后我们讨论两种情况：</p>
@@ -400,26 +401,32 @@
 <li>在 template 中引用静态 css 文件</li>
 <li>在 css 中引用静态文件</li>
 </ol>
-<h2 id="在-template-中引用静态-css-文件"><a href="#在-template-中引用静态-css-文件" class="headerlink" title="在 template 中引用静态 css 文件"></a>在 template 中引用静态 css 文件</h2><ol>
+<h2 id="在-template-中引用静态-css-文件"><a class="markdownIt-Anchor" href="#在-template-中引用静态-css-文件"></a> 在 template 中引用静态 css 文件</h2>
+<ol>
 <li>在 app 目录下创建 static 文件夹</li>
 <li>然后在 static 文件夹下创建 以 app 为名字的文件夹</li>
-<li>然后里面就可以根据自己的需要来放静态文件了，例如<br> <code>my_app/static/my_app/css/example.css</code></li>
+<li>然后里面就可以根据自己的需要来放静态文件了，例如<br>
+<code>my_app/static/my_app/css/example.css</code></li>
 <li>然后在 template 中，首先 <code>{% load static %} </code></li>
 <li>然后用 <code> {% static 'my_app/css/example.css' %} </code> 来引用 css 文件</li>
 <li>这个 <code>static/my_app</code> 这个文件夹就是为了和其他 app 中的 static 文件夹区分开来</li>
 </ol>
-<h2 id="在-css-中引用静态文件"><a href="#在-css-中引用静态文件" class="headerlink" title="在 css 中引用静态文件"></a>在 css 中引用静态文件</h2><ol>
+<h2 id="在-css-中引用静态文件"><a class="markdownIt-Anchor" href="#在-css-中引用静态文件"></a> 在 css 中引用静态文件</h2>
+<ol>
 <li>比如，我们在 example.css 需要用到背景图片</li>
 <li>图片的路径是这样的 <code>my_app/static/my_app/image/a.jpg</code></li>
 <li>那我们 css 应该这样写 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"../image/a.jpg"</span>) ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="有些公共的静态文件"><a href="#有些公共的静态文件" class="headerlink" title="有些公共的静态文件"></a>有些公共的静态文件</h1><p>在base folder中建立 static 文件夹</p>
+<h1 id="有些公共的静态文件"><a class="markdownIt-Anchor" href="#有些公共的静态文件"></a> 有些公共的静态文件</h1>
+<p>在base folder中建立 static 文件夹</p>
 <p>但是 setting 文件的 STATICFILES_DIRS 数组中添加</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">STATICFILES_DIRS = [</div><div class="line">    os.path.join(BASE_DIR, <span class="string">"static"</span>),</div><div class="line">]</div><div class="line"></div><div class="line"><span class="comment"># BASE_DIR 已经设置过了</span></div><div class="line"><span class="comment"># BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</span></div></pre></td></tr></table></figure>
-<h1 id="deploy-环境下，要设置"><a href="#deploy-环境下，要设置" class="headerlink" title="deploy 环境下，要设置"></a>deploy 环境下，要设置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">"static_root/"</span>)</div></pre></td></tr></table></figure>
+<h1 id="deploy-环境下要设置"><a class="markdownIt-Anchor" href="#deploy-环境下要设置"></a> deploy 环境下，要设置</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">"static_root/"</span>)</div></pre></td></tr></table></figure>
 <p>然后把所有 static 文件夹中的静态文件 collect 到这个 root 中，然后服务器统一到这个 root 下取静态文件。</p>
-<p>命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py collectstatic</div></pre></td></tr></table></figure></p>
+<p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py collectstatic</div></pre></td></tr></table></figure>
 <hr>
 
       
@@ -555,7 +562,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -577,7 +584,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -612,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#App-中用到的-static-文件"><span class="nav-number">1.</span> <span class="nav-text">App 中用到的 static 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-template-中引用静态-css-文件"><span class="nav-number">1.1.</span> <span class="nav-text">在 template 中引用静态 css 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-css-中引用静态文件"><span class="nav-number">1.2.</span> <span class="nav-text">在 css 中引用静态文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有些公共的静态文件"><span class="nav-number">2.</span> <span class="nav-text">有些公共的静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deploy-环境下，要设置"><span class="nav-number">3.</span> <span class="nav-text">deploy 环境下，要设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#app-中用到的-static-文件"><span class="nav-number">1.</span> <span class="nav-text"> App 中用到的 static 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-template-中引用静态-css-文件"><span class="nav-number">1.1.</span> <span class="nav-text"> 在 template 中引用静态 css 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-css-中引用静态文件"><span class="nav-number">1.2.</span> <span class="nav-text"> 在 css 中引用静态文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有些公共的静态文件"><span class="nav-number">2.</span> <span class="nav-text"> 有些公共的静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deploy-环境下要设置"><span class="nav-number">3.</span> <span class="nav-text"> deploy 环境下，要设置</span></a></li></ol></div>
             
 
           </div>

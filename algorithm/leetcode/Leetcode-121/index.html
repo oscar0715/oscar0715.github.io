@@ -388,9 +388,11 @@
 
       
         <p>Best Time to Buy and Sell Stock</p>
-<p>动态规划，给一列数组，找出最大的差值，前小后大<br><a id="more"></a></p>
+<p>动态规划，给一列数组，找出最大的差值，前小后大</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
 <p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
 <pre><code>Example 1:
 Input: [7, 1, 5, 3, 6, 4]
@@ -401,11 +403,16 @@ Example 2:
 Input: [7, 6, 4, 3, 1]
 Output: 0
 In this case, no transaction is done, i.e. max profit = 0.
-</code></pre><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>时间复杂度O(n)</p>
+</code></pre>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>时间复杂度O(n)</p>
 <p>动态规划</p>
-<p>用一个指针，走完整个数组<br>同时，用一个maxDiff来存当前的最大差价</p>
-<p>从买入价这边来看，<br>跟着指针走的时候总找更小的买入价。</p>
-<p>从卖出价这边来看，<br>我们只关心当前价格与买入价的差值是否比当前的maxDiff大，如果大了就换。</p>
+<p>用一个指针，走完整个数组<br>
+同时，用一个maxDiff来存当前的最大差价</p>
+<p>从买入价这边来看，<br>
+跟着指针走的时候总找更小的买入价。</p>
+<p>从卖出价这边来看，<br>
+我们只关心当前价格与买入价的差值是否比当前的maxDiff大，如果大了就换。</p>
 <p>有时候最大差价的买入价不一定是买入价最小，但是没关系，maxDiff已经存下来了这个最大差价，所以买入价在后面被换掉也没有关系。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (prices.length &lt; <span class="number">2</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> minPrice = prices[<span class="number">0</span>];</div><div class="line">    <span class="keyword">int</span> maxDiff = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    <span class="comment">// 每次的价格都可以当做买入和卖出价两个方面来看</span></div><div class="line">    <span class="keyword">while</span> (i &lt; prices.length) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (minPrice &gt; prices[i]) &#123;</div><div class="line">            <span class="comment">// 当做买入价来看</span></div><div class="line">            minPrice = prices[i];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 当做卖出价来看</span></div><div class="line">            <span class="keyword">if</span> (prices[i] - minPrice &gt; maxDiff) &#123;</div><div class="line">                maxDiff = prices[i] - minPrice;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> maxDiff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
@@ -543,7 +550,7 @@ In this case, no transaction is done, i.e. max profit = 0.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -565,7 +572,7 @@ In this case, no transaction is done, i.e. max profit = 0.
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -600,7 +607,7 @@ In this case, no transaction is done, i.e. max profit = 0.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

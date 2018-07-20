@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Reverse Linked List反转单链表">
+<meta name="description" content="Reverse Linked List 反转单链表">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_206">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-206/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Reverse Linked List反转单链表">
+<meta property="og:description" content="Reverse Linked List 反转单链表">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_206">
-<meta name="twitter:description" content="Reverse Linked List反转单链表">
+<meta name="twitter:description" content="Reverse Linked List 反转单链表">
 
 
 
@@ -387,10 +387,16 @@
       
 
       
-        <p>Reverse Linked List<br>反转单链表<br><a id="more"></a></p>
+        <p>Reverse Linked List<br>
+反转单链表</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Reverse a singly linked list.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>当然可以用栈，但是太慢了<br>所以不用栈<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ListNode pre = head;</div><div class="line">    ListNode current = pre.next;</div><div class="line">    <span class="comment">// 这条不能漏,否则会变成环</span></div><div class="line">    pre.next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    ListNode post;</div><div class="line">    <span class="keyword">while</span> (current != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="comment">// post 后移</span></div><div class="line">        post = current.next;</div><div class="line"></div><div class="line">        <span class="comment">// post后移完以后,三个指针都归为初始的顺序,正式开始一轮新的反转工作</span></div><div class="line"></div><div class="line">        current.next = pre;</div><div class="line">        <span class="comment">// 关键在此处,current转向以后,马上赋值到pre</span></div><div class="line">        pre = current;</div><div class="line">        <span class="comment">//current后移</span></div><div class="line">        current = post;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 每次反转完,pre都会被负值到刚刚反转结束的那个节点,所以最后一次反转完成后,应该返回pre</span></div><div class="line">    <span class="keyword">return</span> pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Reverse a singly linked list.</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>当然可以用栈，但是太慢了<br>
+所以不用栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ListNode pre = head;</div><div class="line">    ListNode current = pre.next;</div><div class="line">    <span class="comment">// 这条不能漏,否则会变成环</span></div><div class="line">    pre.next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    ListNode post;</div><div class="line">    <span class="keyword">while</span> (current != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="comment">// post 后移</span></div><div class="line">        post = current.next;</div><div class="line"></div><div class="line">        <span class="comment">// post后移完以后,三个指针都归为初始的顺序,正式开始一轮新的反转工作</span></div><div class="line"></div><div class="line">        current.next = pre;</div><div class="line">        <span class="comment">// 关键在此处,current转向以后,马上赋值到pre</span></div><div class="line">        pre = current;</div><div class="line">        <span class="comment">//current后移</span></div><div class="line">        current = post;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 每次反转完,pre都会被负值到刚刚反转结束的那个节点,所以最后一次反转完成后,应该返回pre</span></div><div class="line">    <span class="keyword">return</span> pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -525,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -547,7 +553,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -582,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="CMU 95702 - Distributed System Final Reveiew期末复习！">
+<meta name="description" content="CMU 95702 - Distributed System Final Reveiew 期末复习！">
 <meta name="keywords" content="Distribution-System">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU 95702 - Final Reveiew">
 <meta property="og:url" content="http://menuet.xyz/technology/distribute-system/cmu-95702-final-review/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="CMU 95702 - Distributed System Final Reveiew期末复习！">
+<meta property="og:description" content="CMU 95702 - Distributed System Final Reveiew 期末复习！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://jitendrazaa.com/blog/wp-content/uploads/2011/02/Servlet-Life-Cycle.jpg">
 <meta property="og:image" content="https://www.safaribooksonline.com/library/view/head-first-servlets/9780596516680/httpatomoreillycomsourceoreillyimages1378412.png.jpg">
@@ -113,7 +113,7 @@
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 95702 - Final Reveiew">
-<meta name="twitter:description" content="CMU 95702 - Distributed System Final Reveiew期末复习！">
+<meta name="twitter:description" content="CMU 95702 - Distributed System Final Reveiew 期末复习！">
 <meta name="twitter:image" content="http://jitendrazaa.com/blog/wp-content/uploads/2011/02/Servlet-Life-Cycle.jpg">
 
 
@@ -397,127 +397,239 @@
 
       
         <p>CMU 95702 - Distributed System</p>
-<p>Final Reveiew<br>期末复习！<br><a id="more"></a></p>
+<p>Final Reveiew<br>
+期末复习！</p>
+<a id="more"></a>
 <hr>
-<h1 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h1><h2 id="Characterization-of-distributed-systems"><a href="#Characterization-of-distributed-systems" class="headerlink" title="Characterization of distributed systems."></a>Characterization of distributed systems.</h2><ol>
-<li>Components are located on networked computers and execute concurrently.<br>组成部件分布在网络上不同的电脑上，并且同时运行</li>
-<li>Components communicate and coordinate only by passing messages<br>各个部件是通过放消息来沟通和协调的</li>
-<li>Time differs on each system.<br>网络中不同的电脑和不同的系统上，时间是不一样的</li>
-<li>Many challenges associated with distributed systems are not new<br>问题多多啊</li>
+<h1 id="chapter-1-introduction"><a class="markdownIt-Anchor" href="#chapter-1-introduction"></a> Chapter 1 Introduction</h1>
+<h2 id="characterization-of-distributed-systems"><a class="markdownIt-Anchor" href="#characterization-of-distributed-systems"></a> Characterization of distributed systems.</h2>
+<ol>
+<li>Components are located on networked computers and execute concurrently.<br>
+组成部件分布在网络上不同的电脑上，并且同时运行</li>
+<li>Components communicate and coordinate only by passing messages<br>
+各个部件是通过放消息来沟通和协调的</li>
+<li>Time differs on each system.<br>
+网络中不同的电脑和不同的系统上，时间是不一样的</li>
+<li>Many challenges associated with distributed systems are not new<br>
+问题多多啊</li>
 </ol>
-<h2 id="Four-styles-of-application-integration"><a href="#Four-styles-of-application-integration" class="headerlink" title="Four styles of application integration."></a>Four styles of application integration.</h2><p>•  Shared files<br>•  Shared database<br>•  Procedure Call or Method Invocation<br>•  Messaging through a third party</p>
-<h2 id="Synchronous-and-asynchronous-communication"><a href="#Synchronous-and-asynchronous-communication" class="headerlink" title="Synchronous and asynchronous communication."></a>Synchronous and asynchronous communication.</h2><p>In asynchronous systems, the client makes a call and continues with other business. Perhaps it provides a means for a response.<br>非同步情况下，客户端发出一个请求以后，不管有没有回应可以现在别的事情</p>
-<p>In synchronous systems, the client calls, blocks and waits for the response.<br>同步情况下，客户端发出一个请求以后，就等着不干别的事情，block住了</p>
-<h2 id="Invocation-Indirect-communication"><a href="#Invocation-Indirect-communication" class="headerlink" title="Invocation, Indirect communication"></a>Invocation, Indirect communication</h2><p>Remote invocation：就是 RPC RMI 这种</p>
-<p>Indirect communication (less tightly coupled and involving a third party)<br>Communicating to a group be sending a message to a group identifier</p>
+<h2 id="four-styles-of-application-integration"><a class="markdownIt-Anchor" href="#four-styles-of-application-integration"></a> Four styles of application integration.</h2>
+<p>•  Shared files<br>
+•  Shared database<br>
+•  Procedure Call or Method Invocation<br>
+•  Messaging through a third party</p>
+<h2 id="synchronous-and-asynchronous-communication"><a class="markdownIt-Anchor" href="#synchronous-and-asynchronous-communication"></a> Synchronous and asynchronous communication.</h2>
+<p>In asynchronous systems, the client makes a call and continues with other business. Perhaps it provides a means for a response.<br>
+非同步情况下，客户端发出一个请求以后，不管有没有回应可以现在别的事情</p>
+<p>In synchronous systems, the client calls, blocks and waits for the response.<br>
+同步情况下，客户端发出一个请求以后，就等着不干别的事情，block住了</p>
+<h2 id="invocation-indirect-communication"><a class="markdownIt-Anchor" href="#invocation-indirect-communication"></a> Invocation, Indirect communication</h2>
+<p>Remote invocation：就是 RPC RMI 这种</p>
+<p>Indirect communication (less tightly coupled and involving a third party)<br>
+Communicating to a group be sending a message to a group identifier</p>
 <ul>
 <li>Publish-subscribe: (distributed event based systems) routes messages to interested parties. One-to-many style of communication. 一对多发消息</li>
 <li>Message queues: (channels) for point-to-point messaging.  点对点发消息</li>
-<li>Tuple spaces allows for the placement and withdrawal of structured sequences of data. </li>
+<li>Tuple spaces allows for the placement and withdrawal of structured sequences of data.</li>
 </ul>
-<h2 id="Time-and-space-coupling"><a href="#Time-and-space-coupling" class="headerlink" title="Time and space coupling"></a>Time and space coupling</h2><p>时间耦合就是双方同时参与<br>Coupled in time (both parties exist during interaction) </p>
-<p>空间耦合就是知道和谁交互<br>Coupled in space (parties likely know who they are interacting with) </p>
-<h2 id="Layered-architecture"><a href="#Layered-architecture" class="headerlink" title="Layered architecture"></a>Layered architecture</h2><p>分层架构：<br>•  applications and services 应用和服务<br>•  middleware<br>•  operating system</p>
+<h2 id="time-and-space-coupling"><a class="markdownIt-Anchor" href="#time-and-space-coupling"></a> Time and space coupling</h2>
+<p>时间耦合就是双方同时参与<br>
+Coupled in time (both parties exist during interaction)</p>
+<p>空间耦合就是知道和谁交互<br>
+Coupled in space (parties likely know who they are interacting with)</p>
+<h2 id="layered-architecture"><a class="markdownIt-Anchor" href="#layered-architecture"></a> Layered architecture</h2>
+<p>分层架构：<br>
+•  applications and services 应用和服务<br>
+•  middleware<br>
+•  operating system</p>
 <p>再下面是 hardware 硬件</p>
-<h2 id="Tiered-architecture"><a href="#Tiered-architecture" class="headerlink" title="Tiered architecture"></a>Tiered architecture</h2><p>分列架构：<br>•   usually applied to the applications and services layer 通常在应用层分列<br>•   presentation logic, business logic, and data logic 三个 tier<br>•   Main driver: To promote separation of concerns.</p>
-<h2 id="Software-engineering-principle-Separation-of-concerns"><a href="#Software-engineering-principle-Separation-of-concerns" class="headerlink" title="Software engineering principle: Separation of concerns"></a>Software engineering principle: Separation of concerns</h2><p>Transparency </p>
-<h2 id="Architectural-patterns-Proxy-pattern-brokerage-pattern"><a href="#Architectural-patterns-Proxy-pattern-brokerage-pattern" class="headerlink" title="Architectural patterns: Proxy pattern, brokerage pattern"></a>Architectural patterns: Proxy pattern, brokerage pattern</h2><p>The proxy pattern：<br>client 调用远端对象在本地的接口，接口背后的细节是对 client 透明的。</p>
-<p>The brokerage pattern：<br>service provider, service requestor and service broker 三方构成了 brokerage pattern.</p>
-<h2 id="Challenges-in-constructing-distributed-systems"><a href="#Challenges-in-constructing-distributed-systems" class="headerlink" title="Challenges in constructing distributed systems"></a>Challenges in constructing distributed systems</h2><ol>
-<li>Heterogeneity </li>
+<h2 id="tiered-architecture"><a class="markdownIt-Anchor" href="#tiered-architecture"></a> Tiered architecture</h2>
+<p>分列架构：<br>
+•   usually applied to the applications and services layer 通常在应用层分列<br>
+•   presentation logic, business logic, and data logic 三个 tier<br>
+•   Main driver: To promote separation of concerns.</p>
+<h2 id="software-engineering-principle-separation-of-concerns"><a class="markdownIt-Anchor" href="#software-engineering-principle-separation-of-concerns"></a> Software engineering principle: Separation of concerns</h2>
+<p>Transparency</p>
+<h2 id="architectural-patterns-proxy-pattern-brokerage-pattern"><a class="markdownIt-Anchor" href="#architectural-patterns-proxy-pattern-brokerage-pattern"></a> Architectural patterns: Proxy pattern, brokerage pattern</h2>
+<p>The proxy pattern：<br>
+client 调用远端对象在本地的接口，接口背后的细节是对 client 透明的。</p>
+<p>The brokerage pattern：<br>
+service provider, service requestor and service broker 三方构成了 brokerage pattern.</p>
+<h2 id="challenges-in-constructing-distributed-systems"><a class="markdownIt-Anchor" href="#challenges-in-constructing-distributed-systems"></a> Challenges in constructing distributed systems</h2>
+<ol>
+<li>Heterogeneity</li>
 <li>Security</li>
 <li>Scalability</li>
 <li>Failure handling</li>
 <li>Concurrency</li>
 <li>Openness</li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-2-System-Models"><a href="#Chapter-2-System-Models" class="headerlink" title="Chapter 2 System Models"></a>Chapter 2 System Models</h1><h2 id="Architectural-Models"><a href="#Architectural-Models" class="headerlink" title="Architectural Models"></a>Architectural Models</h2><p>An architectural model of a distributed system is concerned with the placement of its parts and the relationships between them.</p>
-<h2 id="Fundamentals-Models"><a href="#Fundamentals-Models" class="headerlink" title="Fundamentals Models"></a>Fundamentals Models</h2><p>A model contains only the essential ingredients needed to understand and reason about some aspects of a system’s behavior.</p>
-<h2 id="Agreement-in-Pepperland-pg-65"><a href="#Agreement-in-Pepperland-pg-65" class="headerlink" title="Agreement in Pepperland pg. 65"></a>Agreement in Pepperland pg. 65</h2><p>//  NULL</p>
-<h2 id="Failure-detection-in-Peperland-pg-69"><a href="#Failure-detection-in-Peperland-pg-69" class="headerlink" title="Failure detection in Peperland pg. 69"></a>Failure detection in Peperland pg. 69</h2><p>//  NULL</p>
-<h2 id="JEE-Servlets"><a href="#JEE-Servlets" class="headerlink" title="JEE Servlets"></a>JEE Servlets</h2><p>Java Enterprise Edition (JEE) 是用 Java 来构建分布式系统的平台</p>
+<br>
+***
+<br>
+<h1 id="chapter-2-system-models"><a class="markdownIt-Anchor" href="#chapter-2-system-models"></a> Chapter 2 System Models</h1>
+<h2 id="architectural-models"><a class="markdownIt-Anchor" href="#architectural-models"></a> Architectural Models</h2>
+<p>An architectural model of a distributed system is concerned with the placement of its parts and the relationships between them.</p>
+<h2 id="fundamentals-models"><a class="markdownIt-Anchor" href="#fundamentals-models"></a> Fundamentals Models</h2>
+<p>A model contains only the essential ingredients needed to understand and reason about some aspects of a system’s behavior.</p>
+<h2 id="agreement-in-pepperland-pg-65"><a class="markdownIt-Anchor" href="#agreement-in-pepperland-pg-65"></a> Agreement in Pepperland pg. 65</h2>
+<p>//  NULL</p>
+<h2 id="failure-detection-in-peperland-pg-69"><a class="markdownIt-Anchor" href="#failure-detection-in-peperland-pg-69"></a> Failure detection in Peperland pg. 69</h2>
+<p>//  NULL</p>
+<h2 id="jee-servlets"><a class="markdownIt-Anchor" href="#jee-servlets"></a> JEE Servlets</h2>
+<p>Java Enterprise Edition (JEE) 是用 Java 来构建分布式系统的平台</p>
 <p>HttpServlet 是用来处理 HTTP 请求的类</p>
-<p>Web Container 容器<br>• Communication support<br>• Instantiating classes, passing arguments 就这个知道点，用来新建类<br>• Multithreading (new thread for each request)<br>• Security</p>
-<p>Servlet 的生命周期:<br><img src="http://jitendrazaa.com/blog/wp-content/uploads/2011/02/Servlet-Life-Cycle.jpg" alt="Servlet-Life-Cycle" title="Servlet-Life-Cycle."></p>
-<p>↑上图描述了 Servlet 的生命周期<br>Web Container 负责发起 load Servlet class, init(), service(), destroy()</p>
-<p>在调用 init() 方法的时候，可能要做的事情是<br>• Initialize a database<br>• Open file(s)<br>• Register with other objects<br>• Connect (sockets) to otherservices</p>
-<p>调用 service() 也就是可能用到以下 HTTP Method<br>• doGet<br>• doPost<br>• doPut<br>• doDelete<br>• doHead</p>
-<p>destroy():<br>• Close a database or file<br>• Clean up relationships to other objects<br>• Close (sockets)</p>
-<p>一个 Servlet 实例对象处理多线程的情况（总之 Container 很忙）:<br><img src="https://www.safaribooksonline.com/library/view/head-first-servlets/9780596516680/httpatomoreillycomsourceoreillyimages1378412.png.jpg" alt="One servlet object, multiple threads" title="One servlet object, multiple threads"></p>
-<h2 id="Java-Server-Pages-JSP"><a href="#Java-Server-Pages-JSP" class="headerlink" title="Java Server Pages (JSP)"></a>Java Server Pages (JSP)</h2><ol>
-<li>Provides a higher-level abstraction to servlets<ul>
+<p>Web Container 容器<br>
+• Communication support<br>
+• Instantiating classes, passing arguments 就这个知道点，用来新建类<br>
+• Multithreading (new thread for each request)<br>
+• Security</p>
+<p>Servlet 的生命周期:<br>
+<img src="http://jitendrazaa.com/blog/wp-content/uploads/2011/02/Servlet-Life-Cycle.jpg" alt="Servlet-Life-Cycle" title="Servlet-Life-Cycle."></p>
+<p>↑上图描述了 Servlet 的生命周期<br>
+Web Container 负责发起 load Servlet class, init(), service(), destroy()</p>
+<p>在调用 init() 方法的时候，可能要做的事情是<br>
+• Initialize a database<br>
+• Open file(s)<br>
+• Register with other objects<br>
+• Connect (sockets) to otherservices</p>
+<p>调用 service() 也就是可能用到以下 HTTP Method<br>
+• doGet<br>
+• doPost<br>
+• doPut<br>
+• doDelete<br>
+• doHead</p>
+<p>destroy():<br>
+• Close a database or file<br>
+• Clean up relationships to other objects<br>
+• Close (sockets)</p>
+<p>一个 Servlet 实例对象处理多线程的情况（总之 Container 很忙）:<br>
+<img src="https://www.safaribooksonline.com/library/view/head-first-servlets/9780596516680/httpatomoreillycomsourceoreillyimages1378412.png.jpg" alt="One servlet object, multiple threads" title="One servlet object, multiple threads"></p>
+<h2 id="java-server-pages-jsp"><a class="markdownIt-Anchor" href="#java-server-pages-jsp"></a> Java Server Pages (JSP)</h2>
+<ol>
+<li>Provides a higher-level abstraction to servlets
+<ul>
 <li>JSP gets compiled into servlets</li>
 </ul>
 </li>
 <li>JSP is HTML, with Java code embedded in it. 可以在 HTML 里写 Java，通常用来接收从 Controller 或者 View 传过来的值</li>
 <li></li>
 </ol>
-<h2 id="Model-View-Controller"><a href="#Model-View-Controller" class="headerlink" title="Model View Controller"></a>Model View Controller</h2><p><img src="http://ogy9sznv2.bkt.clouddn.com/final-review/01.png" alt="JEE MVC" title="JEE MVC"></p>
+<h2 id="model-view-controller"><a class="markdownIt-Anchor" href="#model-view-controller"></a> Model View Controller</h2>
+<p><img src="http://ogy9sznv2.bkt.clouddn.com/final-review/01.png" alt="JEE MVC" title="JEE MVC"></p>
 <p>从 Container 到 Controller， 然后进入 MVC 交互，再从 View 离开，回到 Container</p>
-<h2 id="WWW"><a href="#WWW" class="headerlink" title="WWW"></a>WWW</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>Hypertext Transfer Protocol (HTTP):</p>
+<h2 id="www"><a class="markdownIt-Anchor" href="#www"></a> WWW</h2>
+<h2 id="http-protocol"><a class="markdownIt-Anchor" href="#http-protocol"></a> HTTP Protocol</h2>
+<h3 id="http"><a class="markdownIt-Anchor" href="#http"></a> HTTP</h3>
+<p>Hypertext Transfer Protocol (HTTP):</p>
 <ol>
-<li><p>Http 是一个应用层协议. 作用在在浏览器和网站交互的时候</p>
+<li>
+<p>Http 是一个应用层协议. 作用在在浏览器和网站交互的时候</p>
 </li>
-<li><p>Request / Response Pattern</p>
+<li>
+<p>Request / Response Pattern</p>
 <ul>
 <li>Client: 客户端和服务端简历连接，并发送一个请求（request），然后等待（wait）</li>
 <li>Server: 服务端处理收到的请求，并在之前建立好的连接上返回一个回应(response)</li>
 </ul>
 </li>
-<li><p>Coupled in time 时间耦合</p>
+<li>
+<p>Coupled in time 时间耦合</p>
 </li>
-<li><p>Coupled in space 空间耦合</p>
+<li>
+<p>Coupled in space 空间耦合</p>
 <ul>
 <li>Both client and server must know the address of each other</li>
 <li>客户端和服务端互相知道地址，然后进行点对点沟通</li>
 </ul>
 </li>
-<li><p>Can also be used for Request / Acknowledge</p>
+<li>
+<p>Can also be used for Request / Acknowledge</p>
 </li>
 </ol>
-<h3 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// General Format</div><div class="line"><span class="tag">&lt;<span class="name">method</span>&gt;</span> <span class="tag">&lt;<span class="name">resource</span> <span class="attr">identifier</span>&gt;</span> <span class="tag">&lt;<span class="name">HTTP</span> <span class="attr">Version</span>&gt;</span>  </div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">...</div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">a blank line</div><div class="line">[entity body]</div><div class="line"></div><div class="line">// Example</div><div class="line">GET /course/95-702/ HTTP/1.1 </div><div class="line">Host: www.andrew.cmu.edu</div><div class="line">User-Agent: Joe typing </div><div class="line">Accept: text/html</div><div class="line">This line intentionally left blank</div></pre></td></tr></table></figure>
+<h3 id="http-request"><a class="markdownIt-Anchor" href="#http-request"></a> HTTP Request</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// General Format</div><div class="line"><span class="tag">&lt;<span class="name">method</span>&gt;</span> <span class="tag">&lt;<span class="name">resource</span> <span class="attr">identifier</span>&gt;</span> <span class="tag">&lt;<span class="name">HTTP</span> <span class="attr">Version</span>&gt;</span>  </div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">...</div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">a blank line</div><div class="line">[entity body]</div><div class="line"></div><div class="line">// Example</div><div class="line">GET /course/95-702/ HTTP/1.1 </div><div class="line">Host: www.andrew.cmu.edu</div><div class="line">User-Agent: Joe typing </div><div class="line">Accept: text/html</div><div class="line">This line intentionally left blank</div></pre></td></tr></table></figure>
 <ol>
-<li>Method 方法<br> – GET, PUT, DELETE, HEAD, POST</li>
-<li>Resource identifier 指定了目标资源的名字<ul>
+<li>Method 方法<br>
+– GET, PUT, DELETE, HEAD, POST</li>
+<li>Resource identifier 指定了目标资源的名字
+<ul>
 <li>如果是 Get 方法，Resource identifier 后面加 name=value 的键值对来传递变量， 用‘&amp;’作间隔.</li>
 <li>如果是 POST 方法， 键值对则包含在 [entity body] 里面</li>
 </ul>
 </li>
 <li>HTTP version identifies the protocol used by the client.</li>
 </ol>
-<h3 id="HTTP-Response"><a href="#HTTP-Response" class="headerlink" title="HTTP Response"></a>HTTP Response</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// General Format</div><div class="line"><span class="tag">&lt;<span class="name">HTTP</span> <span class="attr">Version</span>&gt;</span> <span class="tag">&lt;<span class="name">Status</span>&gt;</span>  </div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">...</div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">a blank line</div><div class="line">[response body]</div><div class="line"></div><div class="line">// Example</div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 13 Jan 2014 15:43:08 GMT</div><div class="line">Server: Apache/1.3.39 (Unix) mod_throttle/3.1.2 ... </div><div class="line">Set-Cookie: webstats-cmu=cmu128.2.87.50.8400; ... </div><div class="line">Last-Modified: Sun, 12 Jan 2014 21:46:30 GMT </div><div class="line">Accept-Ranges : bytes</div><div class="line">Content-Length: 9014</div><div class="line">Content-Type: text/html</div><div class="line">This line intentionally left blank</div><div class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span> ...</div></pre></td></tr></table></figure>
-<p>Status indicates the result of the request.<br>常见的状态码:<br>• 301 Moved Permanently<br>• 400 Bad Request<br>• 401 Unauthorized<br>• 404 Not found<br>• 500 Internal Server Error (server program throws an uncaught exception.)</p>
-<h2 id="Safe-operations-Idempotent-operations"><a href="#Safe-operations-Idempotent-operations" class="headerlink" title="Safe operations, Idempotent operations"></a>Safe operations, Idempotent operations</h2><p>Safe: 不改变服务器上资源的状态<br>• GET: 应该只用来获取数据<br>• Head: Requests headers only, but not content</p>
-<p>Idempotence: 多次执行的结果都是一样的<br>• GET<br>• PUT: PUT 是对整个资源操作，添加或者替换; 要做 PUT 操作的时候，必须知道资源的 ID<br>• DELETE<br>•  HEAD</p>
-<p>另外， POST 比较特殊，既不是 Safe ，也不是 Idempotent<br>• 做 POST 操作的时候你可能不知道资源的 ID.<br>• 用来 更改某个资源 / 提交 Query<br>• 比如，你点击 Purchase 两次，可能就完成了两次购买（原因应该就在于不知道 ID ）</p>
-<h2 id="URI’s"><a href="#URI’s" class="headerlink" title="URI’s"></a>URI’s</h2><p>Uniform Resource Identifiers (URI)<br>• UR Locators (URL): <a href="http://cmu.edu/heinz" target="_blank" rel="external">http://cmu.edu/heinz</a><br><em>scheme://domain:port/path?query_string#fragment_id</em><br>• UR Names (URN) : urn:isbn:0132143011<br><em>urn:namespace_identifier:namespace_specific_string</em></p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>Hypertext Markup Language (HTML)</p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Cloudlet-article-“Mobile-Computing-the-Next-Decade”"><a href="#Cloudlet-article-“Mobile-Computing-the-Next-Decade”" class="headerlink" title="Cloudlet article “Mobile Computing the Next Decade”"></a>Cloudlet article “Mobile Computing the Next Decade”</h1><p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-3-Networking-and-Internetworking"><a href="#Chapter-3-Networking-and-Internetworking" class="headerlink" title="Chapter 3 Networking and Internetworking"></a>Chapter 3 Networking and Internetworking</h1><h2 id="Protocol-layers"><a href="#Protocol-layers" class="headerlink" title="Protocol layers"></a>Protocol layers</h2><p>先上图：</p>
+<h3 id="http-response"><a class="markdownIt-Anchor" href="#http-response"></a> HTTP Response</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// General Format</div><div class="line"><span class="tag">&lt;<span class="name">HTTP</span> <span class="attr">Version</span>&gt;</span> <span class="tag">&lt;<span class="name">Status</span>&gt;</span>  </div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">...</div><div class="line">[<span class="tag">&lt;<span class="name">Header</span>&gt;</span>: <span class="tag">&lt;<span class="name">value</span>&gt;</span>] </div><div class="line">a blank line</div><div class="line">[response body]</div><div class="line"></div><div class="line">// Example</div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 13 Jan 2014 15:43:08 GMT</div><div class="line">Server: Apache/1.3.39 (Unix) mod_throttle/3.1.2 ... </div><div class="line">Set-Cookie: webstats-cmu=cmu128.2.87.50.8400; ... </div><div class="line">Last-Modified: Sun, 12 Jan 2014 21:46:30 GMT </div><div class="line">Accept-Ranges : bytes</div><div class="line">Content-Length: 9014</div><div class="line">Content-Type: text/html</div><div class="line">This line intentionally left blank</div><div class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span> ...</div></pre></td></tr></table></figure>
+<p>Status indicates the result of the request.<br>
+常见的状态码:<br>
+• 301 Moved Permanently<br>
+• 400 Bad Request<br>
+• 401 Unauthorized<br>
+• 404 Not found<br>
+• 500 Internal Server Error (server program throws an uncaught exception.)</p>
+<h2 id="safe-operations-idempotent-operations"><a class="markdownIt-Anchor" href="#safe-operations-idempotent-operations"></a> Safe operations, Idempotent operations</h2>
+<p>Safe: 不改变服务器上资源的状态<br>
+• GET: 应该只用来获取数据<br>
+• Head: Requests headers only, but not content</p>
+<p>Idempotence: 多次执行的结果都是一样的<br>
+• GET<br>
+• PUT: PUT 是对整个资源操作，添加或者替换; 要做 PUT 操作的时候，必须知道资源的 ID<br>
+• DELETE<br>
+•  HEAD</p>
+<p>另外， POST 比较特殊，既不是 Safe ，也不是 Idempotent<br>
+• 做 POST 操作的时候你可能不知道资源的 ID.<br>
+• 用来 更改某个资源 / 提交 Query<br>
+• 比如，你点击 Purchase 两次，可能就完成了两次购买（原因应该就在于不知道 ID ）</p>
+<h2 id="uris"><a class="markdownIt-Anchor" href="#uris"></a> URI’s</h2>
+<p>Uniform Resource Identifiers (URI)<br>
+• UR Locators (URL): <a href="http://cmu.edu/heinz" target="_blank" rel="external">http://cmu.edu/heinz</a><br>
+<em>scheme://domain:port/path?query_string#fragment_id</em><br>
+• UR Names (URN) : urn:isbn:0132143011<br>
+<em>urn:namespace_identifier:namespace_specific_string</em></p>
+<h2 id="html"><a class="markdownIt-Anchor" href="#html"></a> HTML</h2>
+<p>Hypertext Markup Language (HTML)</p>
+<br>
+***
+<br>
+<h1 id="cloudlet-article-mobile-computing-the-next-decade"><a class="markdownIt-Anchor" href="#cloudlet-article-mobile-computing-the-next-decade"></a> Cloudlet article “Mobile Computing the Next Decade”</h1>
+<br>
+***
+<br>
+# Chapter 3 Networking and Internetworking
+<h2 id="protocol-layers"><a class="markdownIt-Anchor" href="#protocol-layers"></a> Protocol layers</h2>
+<p>先上图：</p>
 <p><img src="https://people.cs.pitt.edu/~xianeizhang/notes/net_img/layer.png" alt="&quot;Protocol layers&quot;" title="Protocol layers"></p>
 <p>上图中的网络层课件上写的是 Internet Layer / 数据链路层课件上是 Data Link Layer</p>
-<h2 id="Common-Application-Protocols"><a href="#Common-Application-Protocols" class="headerlink" title="Common Application Protocols"></a>Common Application Protocols</h2><p>列举一些重要的应用层协议:</p>
+<h2 id="common-application-protocols"><a class="markdownIt-Anchor" href="#common-application-protocols"></a> Common Application Protocols</h2>
+<p>列举一些重要的应用层协议:</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/final-review/02.png" alt="Application Protocols" title="Application Protocols"></p>
-<h2 id="addressing"><a href="#addressing" class="headerlink" title="addressing"></a>addressing</h2><h3 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h3><p>Media Access Control address</p>
+<h2 id="addressing"><a class="markdownIt-Anchor" href="#addressing"></a> addressing</h2>
+<h3 id="mac"><a class="markdownIt-Anchor" href="#mac"></a> MAC</h3>
+<p>Media Access Control address</p>
 <ol>
 <li>每一台机器都有一个 Mac 地址，是由生产商设置的一个固定的地址</li>
-<li>笔记本电脑有：<br> • Ethernet: 60:fb:42:ff:fe:f8:b5:08 以太网 Mac 地址<br> • Wifi: 60:fb:42:f8:b5:08 Wifi Mac 地址<br> • Bluetooth: 60:fb:42:72:08:4c 蓝牙 Mac 地址</li>
+<li>笔记本电脑有：<br>
+• Ethernet: 60:fb:42:ff:fe:f8:b5:08 以太网 Mac 地址<br>
+• Wifi: 60:fb:42:f8:b5:08 Wifi Mac 地址<br>
+• Bluetooth: 60:fb:42:72:08:4c 蓝牙 Mac 地址</li>
 </ol>
-<p>MAC addresses are used to pass messages around <em>*a single physical network</em> segment*<br>Mac 地址是用来在一个物理网络内部传输消息的</p>
-<h3 id="Internet-Protocol"><a href="#Internet-Protocol" class="headerlink" title="Internet Protocol"></a>Internet Protocol</h3><p>IP 地址 </p>
-<p>IP addresses are used to pass messages around <strong>between networks</strong><br>IP 地址是用来在不同的网络中传递消息的</p>
-<p>IP 地址哪儿来的呢？<br>• Static: from a network administrator<br>• Dynamic: Dynamic Host Configuration Protocol （DHCP）</p>
-<p>An internetwork is an interconnected collection of networks.<br>整个互联网是一系列小网络构成的</p>
-<p>The Internet Protocol (IP) is the key tool used today to build scalable, heterogeneous internetworks<br>IP 协议就是建立一个可拓展的异质的互联网的关键所在</p>
-<h3 id="IP-Addressing"><a href="#IP-Addressing" class="headerlink" title="IP Addressing"></a>IP Addressing</h3><p>Network prefix:</p>
+<p>MAC addresses are used to pass messages around <em><em>a single physical network</em> segment</em><br>
+Mac 地址是用来在一个物理网络内部传输消息的</p>
+<h3 id="internet-protocol"><a class="markdownIt-Anchor" href="#internet-protocol"></a> Internet Protocol</h3>
+<p>IP 地址</p>
+<p>IP addresses are used to pass messages around <strong>between networks</strong><br>
+IP 地址是用来在不同的网络中传递消息的</p>
+<p>IP 地址哪儿来的呢？<br>
+• Static: from a network administrator<br>
+• Dynamic: Dynamic Host Configuration Protocol （DHCP）</p>
+<p>An internetwork is an interconnected collection of networks.<br>
+整个互联网是一系列小网络构成的</p>
+<p>The Internet Protocol (IP) is the key tool used today to build scalable, heterogeneous internetworks<br>
+IP 协议就是建立一个可拓展的异质的互联网的关键所在</p>
+<h3 id="ip-addressing"><a class="markdownIt-Anchor" href="#ip-addressing"></a> IP Addressing</h3>
+<p>Network prefix:</p>
 <ol>
 <li>每一个 IP 数据报都有目标主机的 IP 地址</li>
 <li>IP 地址的 network prefix 唯一指定了互联网（larger Internet）中的一个小网络（single network）</li>
@@ -525,33 +637,61 @@
 <li>所以 IP 地址的 network prefix 就是用来确定一个小网络的</li>
 <li>互联网中的每一个小网络都至少有一个路由器，也至少连接到一个其他的网络；这个路由器可以和其他网络中的主机或者路由器交换数据报</li>
 </ol>
-<h3 id="Subnet-Addressing"><a href="#Subnet-Addressing" class="headerlink" title="Subnet Addressing"></a>Subnet Addressing</h3><p>Subnetting allows an organization to break their address space into smaller networks.</p>
+<h3 id="subnet-addressing"><a class="markdownIt-Anchor" href="#subnet-addressing"></a> Subnet Addressing</h3>
+<p>Subnetting allows an organization to break their address space into smaller networks.</p>
 <p>子网就是在一个组织的小网络内继续分成更小的部分</p>
-<p>Creating a subnet by dividing the host identifier:<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Subnetting_operation.svg/300px-Subnetting_operation.svg.png" alt="Creating a subnet by dividing the host identifier"></p>
-<h3 id="ports-and-port-assignment"><a href="#ports-and-port-assignment" class="headerlink" title="ports and port assignment"></a>ports and port assignment</h3><p>Ports：<br>• Port is a transport-layer software construct<br>• Port is a 16 bit integer</p>
-<p>端口的分配 assignment：<br>• 0 - 1023 Well Known Ports<br>Should not be used without IANA registration – Loosely, system-type-services ports<br>• 1024 - 49151 Registered Ports<br>Also should not be used without IANA registration – Loosely, application-level ports<br>• 49152 - 65535 Dynamic and/or Private Ports<br>Anything</p>
-<h2 id="DHCP-ARP-protocols"><a href="#DHCP-ARP-protocols" class="headerlink" title="DHCP, ARP protocols"></a>DHCP, ARP protocols</h2><h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>DHCP 就是动态分配 IP 地址的过程</p>
-<p>先上图，DHCP的流程：<br><img src="https://docs.oracle.com/cd/E19455-01/806-5529/images/dhcp-diag.epsi.gif" alt="DHCP 流程" title="DHCP 流程"></p>
-<p>DHCP offer，offer里提供了哪些东西:<br>• IP Address being offerred to the client<br>• Subnet mask for the local network<br>• Gateway IP (default router out of this network)<br>• DNS servers<br>• Lease duration</p>
-<h3 id="Address-Resolution-Protocal-ARP"><a href="#Address-Resolution-Protocal-ARP" class="headerlink" title="Address Resolution Protocal ARP"></a>Address Resolution Protocal ARP</h3><p>ARP 是用来获取另一台机器的 MAC 地址的协议</p>
+<p>Creating a subnet by dividing the host identifier:<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Subnetting_operation.svg/300px-Subnetting_operation.svg.png" alt="Creating a subnet by dividing the host identifier"></p>
+<h3 id="ports-and-port-assignment"><a class="markdownIt-Anchor" href="#ports-and-port-assignment"></a> ports and port assignment</h3>
+<p>Ports：<br>
+• Port is a transport-layer software construct<br>
+• Port is a 16 bit integer</p>
+<p>端口的分配 assignment：<br>
+• 0 - 1023 Well Known Ports<br>
+Should not be used without IANA registration – Loosely, system-type-services ports<br>
+• 1024 - 49151 Registered Ports<br>
+Also should not be used without IANA registration – Loosely, application-level ports<br>
+• 49152 - 65535 Dynamic and/or Private Ports<br>
+Anything</p>
+<h2 id="dhcp-arp-protocols"><a class="markdownIt-Anchor" href="#dhcp-arp-protocols"></a> DHCP, ARP protocols</h2>
+<h3 id="dhcp"><a class="markdownIt-Anchor" href="#dhcp"></a> DHCP</h3>
+<p>DHCP 就是动态分配 IP 地址的过程</p>
+<p>先上图，DHCP的流程：<br>
+<img src="https://docs.oracle.com/cd/E19455-01/806-5529/images/dhcp-diag.epsi.gif" alt="DHCP 流程" title="DHCP 流程"></p>
+<p>DHCP offer，offer里提供了哪些东西:<br>
+• IP Address being offerred to the client<br>
+• Subnet mask for the local network<br>
+• Gateway IP (default router out of this network)<br>
+• DNS servers<br>
+• Lease duration</p>
+<h3 id="address-resolution-protocal-arp"><a class="markdownIt-Anchor" href="#address-resolution-protocal-arp"></a> Address Resolution Protocal ARP</h3>
+<p>ARP 是用来获取另一台机器的 MAC 地址的协议</p>
 <ol>
 <li>Host1 想联系 Host2</li>
-<li>H1 检查一下自己有没有 Host2 的 IP/Mac 地址<ul>
+<li>H1 检查一下自己有没有 Host2 的 IP/Mac 地址
+<ul>
 <li>如果有的话就用Mac地址联系了</li>
 </ul>
 </li>
-<li>如果没有的话 H1 就广播 H2 的 IP 地址，问一句这是谁的 IP <ul>
+<li>如果没有的话 H1 就广播 H2 的 IP 地址，问一句这是谁的 IP
+<ul>
 <li>广播的 MAC 用的是 FF:FF:FF:FF:FF:FF 全是 1</li>
 </ul>
 </li>
 <li>然后 H2 收到了这个 IP， 发现是自己的 IP，于是就给 H1 发送自己的 Mac 地址</li>
 <li>H1 收到以后，把这个 Mac 地址添加到自己的缓存里面</li>
 </ol>
-<h2 id="Datagrams"><a href="#Datagrams" class="headerlink" title="Datagrams"></a>Datagrams</h2><p>// null</p>
-<h2 id="routing"><a href="#routing" class="headerlink" title="routing"></a>routing</h2><p>路由表：<br>Routers maintain routing tables, indicating the best paths to other networks.</p>
-<p>定时发送：<br>At least every 30 seconds, each router will send its routing table to each of its neighbors.</p>
-<p>接收后更新：<br>When receiving a neighbor’s table, a router will update its own tables.</p>
-<h2 id="RIP-algorithm"><a href="#RIP-algorithm" class="headerlink" title="RIP algorithm"></a>RIP algorithm</h2><p>Routing Information Protocol (RIP)</p>
+<h2 id="datagrams"><a class="markdownIt-Anchor" href="#datagrams"></a> Datagrams</h2>
+<p>// null</p>
+<h2 id="routing"><a class="markdownIt-Anchor" href="#routing"></a> routing</h2>
+<p>路由表：<br>
+Routers maintain routing tables, indicating the best paths to other networks.</p>
+<p>定时发送：<br>
+At least every 30 seconds, each router will send its routing table to each of its neighbors.</p>
+<p>接收后更新：<br>
+When receiving a neighbor’s table, a router will update its own tables.</p>
+<h2 id="rip-algorithm"><a class="markdownIt-Anchor" href="#rip-algorithm"></a> RIP algorithm</h2>
+<p>Routing Information Protocol (RIP)</p>
 <p>如果从线路 n 接收到隔壁的路由表以后，就要更新自己的路由表，遵循以下原则：</p>
 <ol>
 <li>如果到目标 host 的这条路经过自己，那么不更新，因为我更清楚</li>
@@ -560,119 +700,229 @@
 <li>如果不是一个新的目标主机，那么只有比现在 cost 小的路径才更新本地的路由表</li>
 </ol>
 <p>说起来很麻烦，其实直接看表反而是很清楚的</p>
-<h2 id="TCP-and-UDP-Comparasion"><a href="#TCP-and-UDP-Comparasion" class="headerlink" title="TCP and UDP Comparasion"></a>TCP and UDP Comparasion</h2><p><img src="http://rtcmagazine.com/files/images/4061/rtc1211p53_large.jpg" alt="Comparasion" title="Comparasion"></p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-11-Security-and-Cryptography"><a href="#Chapter-11-Security-and-Cryptography" class="headerlink" title="Chapter 11 Security and Cryptography"></a>Chapter 11 Security and Cryptography</h1><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2><h2 id="Cryptographic-protocols"><a href="#Cryptographic-protocols" class="headerlink" title="Cryptographic protocols"></a>Cryptographic protocols</h2><h2 id="Cryptographic-notation"><a href="#Cryptographic-notation" class="headerlink" title="Cryptographic notation"></a>Cryptographic notation</h2><h2 id="Symmetric-key-crypto"><a href="#Symmetric-key-crypto" class="headerlink" title="Symmetric key crypto"></a>Symmetric key crypto</h2><h2 id="Asymmetric-key-crypto"><a href="#Asymmetric-key-crypto" class="headerlink" title="Asymmetric key crypto"></a>Asymmetric key crypto</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><h3 id="Two-kinds-of-Usage"><a href="#Two-kinds-of-Usage" class="headerlink" title="Two kinds of Usage"></a>Two kinds of Usage</h3><h2 id="Four-Scenario"><a href="#Four-Scenario" class="headerlink" title="Four Scenario"></a>Four Scenario</h2><p>Scenario 1 (like TEA and WWII enigma)<br>Scenario 2 (Like Needham-Schroeder, Like Kerberos)<br>Scenario 3 (Authentication<br>MACs)<br>Scenario 4 (Like SSL)<br><a href="http://localhost:4000/distribute-system/cmu-95702-cryptography/#Scenario-1-Like-WWII-amp-TEA" target="_blank" rel="external">http://localhost:4000/distribute-system/cmu-95702-cryptography/#Scenario-1-Like-WWII-amp-TEA</a></p>
-<h2 id="Programming-Java-SSL-sockets"><a href="#Programming-Java-SSL-sockets" class="headerlink" title="Programming Java SSL sockets"></a>Programming Java SSL sockets</h2><h2 id="Digital-signatures"><a href="#Digital-signatures" class="headerlink" title="Digital signatures"></a>Digital signatures</h2><p>这个不就在 senarios 里面的么<br>DS 的两个老师都是逻辑不清楚的</p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-9-Web-Services"><a href="#Chapter-9-Web-Services" class="headerlink" title="Chapter 9 Web Services"></a>Chapter 9 Web Services</h1><h2 id="Web-service-design-patterns"><a href="#Web-service-design-patterns" class="headerlink" title="Web service design patterns"></a>Web service design patterns</h2><h2 id="Binary-schemes-and-performance"><a href="#Binary-schemes-and-performance" class="headerlink" title="Binary schemes and performance"></a>Binary schemes and performance</h2><h2 id="Coupling-in-space-and-time"><a href="#Coupling-in-space-and-time" class="headerlink" title="Coupling in space and time"></a>Coupling in space and time</h2><ol>
+<h2 id="tcp-and-udp-comparasion"><a class="markdownIt-Anchor" href="#tcp-and-udp-comparasion"></a> TCP and UDP Comparasion</h2>
+<p><img src="http://rtcmagazine.com/files/images/4061/rtc1211p53_large.jpg" alt="Comparasion" title="Comparasion"></p>
+<br>
+***
+<br>
+<h1 id="chapter-11-security-and-cryptography"><a class="markdownIt-Anchor" href="#chapter-11-security-and-cryptography"></a> Chapter 11 Security and Cryptography</h1>
+<h2 id="rsa"><a class="markdownIt-Anchor" href="#rsa"></a> RSA</h2>
+<h2 id="cryptographic-protocols"><a class="markdownIt-Anchor" href="#cryptographic-protocols"></a> Cryptographic protocols</h2>
+<h2 id="cryptographic-notation"><a class="markdownIt-Anchor" href="#cryptographic-notation"></a> Cryptographic notation</h2>
+<h2 id="symmetric-key-crypto"><a class="markdownIt-Anchor" href="#symmetric-key-crypto"></a> Symmetric key crypto</h2>
+<h2 id="asymmetric-key-crypto"><a class="markdownIt-Anchor" href="#asymmetric-key-crypto"></a> Asymmetric key crypto</h2>
+<h3 id="definition"><a class="markdownIt-Anchor" href="#definition"></a> Definition</h3>
+<h3 id="two-kinds-of-usage"><a class="markdownIt-Anchor" href="#two-kinds-of-usage"></a> Two kinds of Usage</h3>
+<h2 id="four-scenario"><a class="markdownIt-Anchor" href="#four-scenario"></a> Four Scenario</h2>
+<p>Scenario 1 (like TEA and WWII enigma)<br>
+Scenario 2 (Like Needham-Schroeder, Like Kerberos)<br>
+Scenario 3 (Authentication<br>
+MACs)<br>
+Scenario 4 (Like SSL)<br>
+<a href="http://localhost:4000/distribute-system/cmu-95702-cryptography/#Scenario-1-Like-WWII-amp-TEA" target="_blank" rel="external">http://localhost:4000/distribute-system/cmu-95702-cryptography/#Scenario-1-Like-WWII-amp-TEA</a></p>
+<h2 id="programming-java-ssl-sockets"><a class="markdownIt-Anchor" href="#programming-java-ssl-sockets"></a> Programming Java SSL sockets</h2>
+<h2 id="digital-signatures"><a class="markdownIt-Anchor" href="#digital-signatures"></a> Digital signatures</h2>
+<p>这个不就在 senarios 里面的么<br>
+DS 的两个老师都是逻辑不清楚的</p>
+<br>
+***
+<br>
+<h1 id="chapter-9-web-services"><a class="markdownIt-Anchor" href="#chapter-9-web-services"></a> Chapter 9 Web Services</h1>
+<h2 id="web-service-design-patterns"><a class="markdownIt-Anchor" href="#web-service-design-patterns"></a> Web service design patterns</h2>
+<h2 id="binary-schemes-and-performance"><a class="markdownIt-Anchor" href="#binary-schemes-and-performance"></a> Binary schemes and performance</h2>
+<h2 id="coupling-in-space-and-time"><a class="markdownIt-Anchor" href="#coupling-in-space-and-time"></a> Coupling in space and time</h2>
+<ol>
 <li>Coupled in time: they must both be ready to interact at a certain moment.</li>
-<li>Coupled in space: the clients must know the location of the services handling requests. </li>
-<li>If a client must provide an ordered list of<br>typed parameters this is more tightly coupled than one that does not.</li>
+<li>Coupled in space: the clients must know the location of the services handling requests.</li>
+<li>If a client must provide an ordered list of<br>
+typed parameters this is more tightly coupled than one that does not.</li>
 </ol>
-<h2 id="Separation-of-concerns-and-examples"><a href="#Separation-of-concerns-and-examples" class="headerlink" title="Separation of concerns and examples"></a>Separation of concerns and examples</h2><ol>
+<h2 id="separation-of-concerns-and-examples"><a class="markdownIt-Anchor" href="#separation-of-concerns-and-examples"></a> Separation of concerns and examples</h2>
+<ol>
 <li>Separate systems into distinct sections</li>
 <li>increases modularity</li>
 <li>promoted by encapsulation and Information hiding</li>
-<li>Application tiers separates concerns<br> e.g., a web site may be based on MVC design</li>
-<li>Layered architectures separate concerns<br> e.g., the layers of HTTP/TCP/IP/Ethernet</li>
+<li>Application tiers separates concerns<br>
+e.g., a web site may be based on MVC design</li>
+<li>Layered architectures separate concerns<br>
+e.g., the layers of HTTP/TCP/IP/Ethernet</li>
 </ol>
-<h2 id="Jon-Postel’s-Law"><a href="#Jon-Postel’s-Law" class="headerlink" title="Jon Postel’s Law"></a>Jon Postel’s Law</h2><p>Be liberal in what you accept.<br>Be conservative in what you send.</p>
-<h2 id="Productivity-and-Adaptability"><a href="#Productivity-and-Adaptability" class="headerlink" title="Productivity and Adaptability"></a>Productivity and Adaptability</h2><p>// null</p>
-<h2 id="Web-service-Design"><a href="#Web-service-Design" class="headerlink" title="Web service Design"></a>Web service Design</h2><p>Web service API styles: RPC, Message, Resource<br>Style considerations<br>REST architectural principles<br>Linked services pattern<br>Client server interaction styles</p>
-<p>上面的这些知识点都在这里<br><a href="menuet.xyz/distribute-system/cmu-95702-service-design/">Web service Design </a></p>
-<h2 id="Odata"><a href="#Odata" class="headerlink" title="Odata"></a>Odata</h2><p>// null</p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-4-Interprocess-Communications"><a href="#Chapter-4-Interprocess-Communications" class="headerlink" title="Chapter 4 Interprocess Communications"></a>Chapter 4 Interprocess Communications</h1><p>Middleware<br>External Data Representations<br>CORBA CDR<br>Java serialization<br>XML and JSON<br>UDP based request response protocol<br>Fault tolerance measures for the UDP request response<br>RPC Exchange protocols (R, RR, RRA)</p>
-<p>上面的这些知识点都在这里<br><a href="menuet.xyz/distribute-system/cmu-95702-interprocess-communication/">Interprocess Communication</a></p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Article-covering-The-End-To-End-Argument"><a href="#Article-covering-The-End-To-End-Argument" class="headerlink" title="Article covering The End-To-End Argument"></a>Article covering The End-To-End Argument</h1><p>下面链接转到这篇文章的总结：<br><a href="http://menuet.xyz/distribute-system/cmu-95702-end-to-end-Arguments">The End-To-End Argument</a></p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Android-and-Mobile-Devices"><a href="#Android-and-Mobile-Devices" class="headerlink" title="Android and Mobile Devices"></a>Android and Mobile Devices</h1><h2 id="The-rise-of-mobile-platforms"><a href="#The-rise-of-mobile-platforms" class="headerlink" title="The rise of mobile platforms"></a>The rise of mobile platforms</h2><p>// null</p>
-<h2 id="Building-a-native-application"><a href="#Building-a-native-application" class="headerlink" title="Building a native application"></a>Building a native application</h2><p>// null</p>
-<h2 id="Android-architecture"><a href="#Android-architecture" class="headerlink" title="Android architecture"></a>Android architecture</h2><p>// null</p>
-<h2 id="Flow-of-control"><a href="#Flow-of-control" class="headerlink" title="Flow of control"></a>Flow of control</h2><p>Java -&gt; Any POJO -&gt; main() -&gt; None<br>Web Application -&gt; Extend HttpServlet -&gt; doGet(), init(), doPost() -&gt; web.xml<br>Android Application -&gt;  Extend Activity -&gt; onCreate(), onPause(), -&gt; AndriodManifest.xml</p>
-<h2 id="Android-UI-definition"><a href="#Android-UI-definition" class="headerlink" title="Android UI definition"></a>Android UI definition</h2><ol>
-<li>An Android app’s UI is defined<br> – in xml files<br> – within the res directory</li>
-<li>Two editing modes:<br> – Design (WYSIWYG)<br> – Text (xml)</li>
+<h2 id="jon-postels-law"><a class="markdownIt-Anchor" href="#jon-postels-law"></a> Jon Postel’s Law</h2>
+<p>Be liberal in what you accept.<br>
+Be conservative in what you send.</p>
+<h2 id="productivity-and-adaptability"><a class="markdownIt-Anchor" href="#productivity-and-adaptability"></a> Productivity and Adaptability</h2>
+<p>// null</p>
+<h2 id="web-service-design"><a class="markdownIt-Anchor" href="#web-service-design"></a> Web service Design</h2>
+<p>Web service API styles: RPC, Message, Resource<br>
+Style considerations<br>
+REST architectural principles<br>
+Linked services pattern<br>
+Client server interaction styles</p>
+<p>上面的这些知识点都在这里<br>
+<a href="menuet.xyz/distribute-system/cmu-95702-service-design/">Web service Design </a></p>
+<h2 id="odata"><a class="markdownIt-Anchor" href="#odata"></a> Odata</h2>
+<p>// null</p>
+<br>
+***
+<br>
+<h1 id="chapter-4-interprocess-communications"><a class="markdownIt-Anchor" href="#chapter-4-interprocess-communications"></a> Chapter 4 Interprocess Communications</h1>
+<p>Middleware<br>
+External Data Representations<br>
+CORBA CDR<br>
+Java serialization<br>
+XML and JSON<br>
+UDP based request response protocol<br>
+Fault tolerance measures for the UDP request response<br>
+RPC Exchange protocols (R, RR, RRA)</p>
+<p>上面的这些知识点都在这里<br>
+<a href="menuet.xyz/distribute-system/cmu-95702-interprocess-communication/">Interprocess Communication</a></p>
+<br>
+***
+<br>
+<h1 id="article-covering-the-end-to-end-argument"><a class="markdownIt-Anchor" href="#article-covering-the-end-to-end-argument"></a> Article covering The End-To-End Argument</h1>
+<p>下面链接转到这篇文章的总结：<br>
+<a href="http://menuet.xyz/distribute-system/cmu-95702-end-to-end-Arguments">The End-To-End Argument</a></p>
+<br>
+***
+<br>
+<h1 id="android-and-mobile-devices"><a class="markdownIt-Anchor" href="#android-and-mobile-devices"></a> Android and Mobile Devices</h1>
+<h2 id="the-rise-of-mobile-platforms"><a class="markdownIt-Anchor" href="#the-rise-of-mobile-platforms"></a> The rise of mobile platforms</h2>
+<p>// null</p>
+<h2 id="building-a-native-application"><a class="markdownIt-Anchor" href="#building-a-native-application"></a> Building a native application</h2>
+<p>// null</p>
+<h2 id="android-architecture"><a class="markdownIt-Anchor" href="#android-architecture"></a> Android architecture</h2>
+<p>// null</p>
+<h2 id="flow-of-control"><a class="markdownIt-Anchor" href="#flow-of-control"></a> Flow of control</h2>
+<p>Java -&gt; Any POJO -&gt; main() -&gt; None<br>
+Web Application -&gt; Extend HttpServlet -&gt; doGet(), init(), doPost() -&gt; web.xml<br>
+Android Application -&gt;  Extend Activity -&gt; onCreate(), onPause(), -&gt; AndriodManifest.xml</p>
+<h2 id="android-ui-definition"><a class="markdownIt-Anchor" href="#android-ui-definition"></a> Android UI definition</h2>
+<ol>
+<li>An Android app’s UI is defined<br>
+– in xml files<br>
+– within the res directory</li>
+<li>Two editing modes:<br>
+– Design (WYSIWYG)<br>
+– Text (xml)</li>
 <li>The complete res directory is compiled from xml into Java classes that define the R object</li>
-<li>Therefore R. refers to UI elements defined in the res directory<br> – If R is undefined, it means the res xml has an error.</li>
+<li>Therefore R. refers to UI elements defined in the res directory<br>
+– If R is undefined, it means the res xml has an error.</li>
 </ol>
-<h2 id="Network-latency-and-AsyncTask"><a href="#Network-latency-and-AsyncTask" class="headerlink" title="Network latency and AsyncTask"></a>Network latency and AsyncTask</h2><p>UI can pass off requests that will take a long time to Helper<br>UI 就是 Android 应用的主界面，如果用户的某个请求需要花很长的时间，那么 UI 就把这个请求交给一个 helper 去完成。这个 helper 可以理解成在后台运行的线程，用户是看不见的，用户只能看见 UI.</p>
-<p>When Helper is finished, it can pass the results back to UI<br>当这个 Helper 完成了这个请求需要执行的任务以后再把结果传到 UI. 这个过程中 UI 可以做别的事情。</p>
+<h2 id="network-latency-and-asynctask"><a class="markdownIt-Anchor" href="#network-latency-and-asynctask"></a> Network latency and AsyncTask</h2>
+<p>UI can pass off requests that will take a long time to Helper<br>
+UI 就是 Android 应用的主界面，如果用户的某个请求需要花很长的时间，那么 UI 就把这个请求交给一个 helper 去完成。这个 helper 可以理解成在后台运行的线程，用户是看不见的，用户只能看见 UI.</p>
+<p>When Helper is finished, it can pass the results back to UI<br>
+当这个 Helper 完成了这个请求需要执行的任务以后再把结果传到 UI. 这个过程中 UI 可以做别的事情。</p>
 <p>AsyncTask is a class that makes doing work in a helper thread easy.</p>
 <ul>
-<li>Create a class that extends AsyncTask 新建一个继承了 AsyncTask 的类<br>– Implement doInBackground and onPostExecute 这个类有这两个方法<br>– Instantiate the class, and call its execute method  创建这个类的实例，然后执行</li>
+<li>Create a class that extends AsyncTask 新建一个继承了 AsyncTask 的类<br>
+– Implement doInBackground and onPostExecute 这个类有这两个方法<br>
+– Instantiate the class, and call its execute method  创建这个类的实例，然后执行</li>
 </ul>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-5-Remote-Method-Invocation"><a href="#Chapter-5-Remote-Method-Invocation" class="headerlink" title="Chapter 5 Remote Method Invocation"></a>Chapter 5 Remote Method Invocation</h1><h2 id="Interface-Definition-Language-IDL"><a href="#Interface-Definition-Language-IDL" class="headerlink" title="Interface Definition Language (IDL)"></a>Interface Definition Language (IDL)</h2><ol>
-<li>Definition: An interface definition language (IDL) provides a notation for defining interfaces in which each of the parameters of a method may be described as for input or output in addition to having its type specified.<br>接口描述语言，定义了接口的每个方法的入参或者输出的格式</li>
-<li>These may be used to allow objects written in different languages to invoke one another. Think Code Generation<br>定义了 IDL 以后，对象可以用不同的语言来写，但是还是能够互相调用</li>
+<br>
+***
+<br>
+<h1 id="chapter-5-remote-method-invocation"><a class="markdownIt-Anchor" href="#chapter-5-remote-method-invocation"></a> Chapter 5 Remote Method Invocation</h1>
+<h2 id="interface-definition-language-idl"><a class="markdownIt-Anchor" href="#interface-definition-language-idl"></a> Interface Definition Language (IDL)</h2>
+<ol>
+<li>Definition: An interface definition language (IDL) provides a notation for defining interfaces in which each of the parameters of a method may be described as for input or output in addition to having its type specified.<br>
+接口描述语言，定义了接口的每个方法的入参或者输出的格式</li>
+<li>These may be used to allow objects written in different languages to invoke one another. Think Code Generation<br>
+定义了 IDL 以后，对象可以用不同的语言来写，但是还是能够互相调用</li>
 </ol>
-<h2 id="Goals-of-Java-RMI"><a href="#Goals-of-Java-RMI" class="headerlink" title="Goals of Java RMI"></a>Goals of Java RMI</h2><ol>
+<h2 id="goals-of-java-rmi"><a class="markdownIt-Anchor" href="#goals-of-java-rmi"></a> Goals of Java RMI</h2>
+<ol>
 <li>Distributed Java</li>
-<li>Almost the same syntax and semantics used by non-distributed applications<br>RMI 的最终目标就是使分布式系统下的语意和本地语意相近</li>
+<li>Almost the same syntax and semantics used by non-distributed applications<br>
+RMI 的最终目标就是使分布式系统下的语意和本地语意相近</li>
 <li>Promote separation of concerns – the implementation is separate from the interface</li>
 <li>The transport layer is TCP/IP</li>
 </ol>
-<h2 id="EJB-remote-and-local-interfaces"><a href="#EJB-remote-and-local-interfaces" class="headerlink" title="EJB remote and local interfaces"></a>EJB remote and local interfaces</h2><ol>
+<h2 id="ejb-remote-and-local-interfaces"><a class="markdownIt-Anchor" href="#ejb-remote-and-local-interfaces"></a> EJB remote and local interfaces</h2>
+<ol>
 <li>Enterprise Java Beans (EJB’s) provide a remote and local interface.</li>
-<li>EJB’s are a component based middleware technology.<br>EJB 是一项中间层技术</li>
-<li>EJB’s live in a container. The container provides a managed server side hosting environment ensuring that non-functional properties are achieved.<br>EJB 是在容器中的，容器提供了一种可管理的服务端环境，可以保证一些非功能性的性质</li>
+<li>EJB’s are a component based middleware technology.<br>
+EJB 是一项中间层技术</li>
+<li>EJB’s live in a container. The container provides a managed server side hosting environment ensuring that non-functional properties are achieved.<br>
+EJB 是在容器中的，容器提供了一种可管理的服务端环境，可以保证一些非功能性的性质</li>
 <li>Middleware supporting the container pattern is called an application server.</li>
 </ol>
-<p>下面链接转到这篇文章的总结可以看剩下的知识点：<br><a href="http://menuet.xyz/distribute-system/cmu-95702-remote-invocation">Remote Invocation</a></p>
-<p>Generic RMI component interactions<br>Registries<br>Java RMI code examples</p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-12-Distributed-File-Systems"><a href="#Chapter-12-Distributed-File-Systems" class="headerlink" title="Chapter 12 Distributed File Systems"></a>Chapter 12 Distributed File Systems</h1><pre><code>NFS, AFS
-</code></pre><h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><ol>
+<p>下面链接转到这篇文章的总结可以看剩下的知识点：<br>
+<a href="http://menuet.xyz/distribute-system/cmu-95702-remote-invocation">Remote Invocation</a></p>
+<p>Generic RMI component interactions<br>
+Registries<br>
+Java RMI code examples</p>
+<br>
+***
+<br>
+<h1 id="chapter-12-distributed-file-systems"><a class="markdownIt-Anchor" href="#chapter-12-distributed-file-systems"></a> Chapter 12 Distributed File Systems</h1>
+<pre><code>NFS, AFS
+</code></pre>
+<h2 id="nfs"><a class="markdownIt-Anchor" href="#nfs"></a> NFS</h2>
+<ol>
 <li>Goal: Be unsurprising and look like a UNIX FS. 包装成 UNIX 系统</li>
 <li>Goal: Implement full POSIX API. The Portable Operating System Interface is an IEEE family of standards that describe how Unix like Operating Systems should behave.</li>
-<li>Goal: Your files are available from any machine. </li>
-<li>Goal: Distribute the files and we will not have to implement new<br>protocols. </li>
+<li>Goal: Your files are available from any machine.</li>
+<li>Goal: Distribute the files and we will not have to implement new<br>
+protocols.</li>
 <li>NFS was originally based on UDP and was stateless. TCP added later.</li>
-<li>NFS defines a virtual file system. The NFS client pretends to be a real file system but is making RPC calls instead. </li>
+<li>NFS defines a virtual file system. The NFS client pretends to be a real file system but is making RPC calls instead.</li>
 <li>NFS uses RPC over TCP or UDP. External requests are translated into RPC calls on the server. The virtual file system module provides access transparency.</li>
 </ol>
-<h2 id="AFS"><a href="#AFS" class="headerlink" title="AFS"></a>AFS</h2><ol>
-<li>Unlike NFS, the most important design goal is scalability.</li>
-<li>To achieve scalability, whole files are cached in client nodes. Why does this help with scalability? We reduce client server interactions.</li>
-<li>A client cache would typically hold several hundreds of files most recently used on that computer. The cache is permanent, surviving reboots.</li>
-<li><p>When the client opens a file, the cache is examined and used if the file is available there.</p>
-</li>
-<li><p>If the client code tries to open a file the client cache is tried first. If not there, a server is located and the server is called for the file.<br>想要打开一个文件，先到缓存中找，找不到再去远程的服务器</p>
-</li>
-<li>The copy is stored on the client side and is opened.<br>然后服务器会把文件存到 client 端，在 client 端打开它</li>
-<li>Subsequent reads and writes hit the copy on the client.<br>所有的读写都发生在本地</li>
-<li>When the client closes the file - if the files has changed it is sent back to the server. The client side copy is retained for possible more use.<br>在 client 关闭文件的时候，如果文件被修改了，那就把改动发回到服务器端，本地的文件继续被保存下来。</li>
-<li>Consider UNIX commands and libraries copied to the client. Consider files only used by a single user. These last two cases represent the vast majority of cases. 其实很多文件都是单个用户用的</li>
-<li>Gain: Your files are available from any workstation.</li>
-<li>Principle: Make the common case fast. See Amdahl’s Law. Measurements show only 0.4% percent of changed files were updated by more than one user during one week. </li>
-</ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-21-Google-Case-Study"><a href="#Chapter-21-Google-Case-Study" class="headerlink" title="Chapter 21 Google Case Study"></a>Chapter 21 Google Case Study</h1><h2 id="GFS"><a href="#GFS" class="headerlink" title="GFS"></a>GFS</h2><h3 id="Requirements-of-Google-File-System-GFS"><a href="#Requirements-of-Google-File-System-GFS" class="headerlink" title="Requirements of Google File System (GFS)"></a>Requirements of Google File System (GFS)</h3><p>Goal:</p>
+<h2 id="afs"><a class="markdownIt-Anchor" href="#afs"></a> AFS</h2>
 <ol>
-<li>Run reliably with component failures. </li>
-<li>Solve problems that Google needs solved – not a massive number of files but massively large files are common. Write once, append, read many times.<br>Google 文件的特点通常是只写一次，会有一些 append，大多数是读的</li>
+<li>
+<p>Unlike NFS, the most important design goal is scalability.</p>
+</li>
+<li>
+<p>To achieve scalability, whole files are cached in client nodes. Why does this help with scalability? We reduce client server interactions.</p>
+</li>
+<li>
+<p>A client cache would typically hold several hundreds of files most recently used on that computer. The cache is permanent, surviving reboots.</p>
+</li>
+<li>
+<p>When the client opens a file, the cache is examined and used if the file is available there.</p>
+</li>
+<li>
+<p>If the client code tries to open a file the client cache is tried first. If not there, a server is located and the server is called for the file.<br>
+想要打开一个文件，先到缓存中找，找不到再去远程的服务器</p>
+</li>
+<li>
+<p>The copy is stored on the client side and is opened.<br>
+然后服务器会把文件存到 client 端，在 client 端打开它</p>
+</li>
+<li>
+<p>Subsequent reads and writes hit the copy on the client.<br>
+所有的读写都发生在本地</p>
+</li>
+<li>
+<p>When the client closes the file - if the files has changed it is sent back to the server. The client side copy is retained for possible more use.<br>
+在 client 关闭文件的时候，如果文件被修改了，那就把改动发回到服务器端，本地的文件继续被保存下来。</p>
+</li>
+<li>
+<p>Consider UNIX commands and libraries copied to the client. Consider files only used by a single user. These last two cases represent the vast majority of cases. 其实很多文件都是单个用户用的</p>
+</li>
+<li>
+<p>Gain: Your files are available from any workstation.</p>
+</li>
+<li>
+<p>Principle: Make the common case fast. See Amdahl’s Law. Measurements show only 0.4% percent of changed files were updated by more than one user during one week.</p>
+</li>
+</ol>
+<br>
+***
+<br>
+<h1 id="chapter-21-google-case-study"><a class="markdownIt-Anchor" href="#chapter-21-google-case-study"></a> Chapter 21 Google Case Study</h1>
+<h2 id="gfs"><a class="markdownIt-Anchor" href="#gfs"></a> GFS</h2>
+<h3 id="requirements-of-google-file-system-gfs"><a class="markdownIt-Anchor" href="#requirements-of-google-file-system-gfs"></a> Requirements of Google File System (GFS)</h3>
+<p>Goal:</p>
+<ol>
+<li>Run reliably with component failures.</li>
+<li>Solve problems that Google needs solved – not a massive number of files but massively large files are common. Write once, append, read many times.<br>
+Google 文件的特点通常是只写一次，会有一些 append，大多数是读的</li>
 <li>Access is dominated by long sequential streaming reads and sequential appends. No need for caching on the client. 不需要存在客户端</li>
 <li>Throughput more important than latency. 高吞吐的重要性大于低延迟</li>
-<li>Think of very large files each holding a very large number of HTML documents scanned from the web. These need read and analyzed. </li>
+<li>Think of very large files each holding a very large number of HTML documents scanned from the web. These need read and analyzed.</li>
 <li>This is not your everyday use of a distributed file system (NFS and AFS). Not POSIX.</li>
 </ol>
 <p>File System:</p>
@@ -682,23 +932,32 @@
 <li>Each cluster has a single master and multiple (usually hundreds) of chunk servers. 单 Master 和 多 Slave</li>
 <li>Each chunk is replicated on three different chunk servers. 每个 chunk 保存三份</li>
 <li>The master knows the locations of chunk replicas. Master 维护 chunk 的地址</li>
-<li>The chunk servers know what replicas they have and are polled by the master on startup. </li>
+<li>The chunk servers know what replicas they have and are polled by the master on startup.</li>
 </ol>
-<h3 id="Read-Operation"><a href="#Read-Operation" class="headerlink" title="Read Operation"></a>Read Operation</h3><p>Suppose a client wants to perform a sequential read, processing a very large file from a particular byte offset.</p>
+<h3 id="read-operation"><a class="markdownIt-Anchor" href="#read-operation"></a> Read Operation</h3>
+<p>Suppose a client wants to perform a sequential read, processing a very large file from a particular byte offset.</p>
 <ol>
-<li>The client can compute the chunk index from the byte offset.<br>客户端计算出文件的 chunk index</li>
-<li>Client calls master with file name and chunk index.<br>客户端向 master 提交文件名和 chunk index</li>
-<li>Master returns chunk identifier and the locations of replicas.<br>Master 返回给客户端 chunk identifier 和 副本的位置</li>
-<li>Client makes call on a chunk server for the chunk and it is processed sequentially with no caching. It may ask for and receive several chunks.<br>Client 再根据 Master 提供的信息去 chunk server 上去找需要的文件</li>
+<li>The client can compute the chunk index from the byte offset.<br>
+客户端计算出文件的 chunk index</li>
+<li>Client calls master with file name and chunk index.<br>
+客户端向 master 提交文件名和 chunk index</li>
+<li>Master returns chunk identifier and the locations of replicas.<br>
+Master 返回给客户端 chunk identifier 和 副本的位置</li>
+<li>Client makes call on a chunk server for the chunk and it is processed sequentially with no caching. It may ask for and receive several chunks.<br>
+Client 再根据 Master 提供的信息去 chunk server 上去找需要的文件</li>
 </ol>
-<h3 id="Write-Operation"><a href="#Write-Operation" class="headerlink" title="Write Operation"></a>Write Operation</h3><p>Suppose a client wants to perform sequential writes to the end of a file.</p>
+<h3 id="write-operation"><a class="markdownIt-Anchor" href="#write-operation"></a> Write Operation</h3>
+<p>Suppose a client wants to perform sequential writes to the end of a file.</p>
 <ol>
 <li>The client can compute the chunk index from the byte offset. This is the chunk holding End Of File.</li>
 <li>Client calls master with file name and chunk index.</li>
-<li>Master returns chunk identifier and the locations of replicas. One is designated as the primary.<br>前两步都是一样的，这里 master return给 client 多了一个指定的 primary</li>
-<li>The client sends all data to all replicas. The primary coordinates with replicas to update files consistently across replicas.<br>改动以后，由 primary 负责更新并保持三个副本的 consistency</li>
+<li>Master returns chunk identifier and the locations of replicas. One is designated as the primary.<br>
+前两步都是一样的，这里 master return给 client 多了一个指定的 primary</li>
+<li>The client sends all data to all replicas. The primary coordinates with replicas to update files consistently across replicas.<br>
+改动以后，由 primary 负责更新并保持三个副本的 consistency</li>
 </ol>
-<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>综述：</p>
+<h2 id="mapreduce"><a class="markdownIt-Anchor" href="#mapreduce"></a> MapReduce</h2>
+<p>综述：</p>
 <ol>
 <li>Provide a clean abstraction on top of parallelization and fault tolerance.</li>
 <li>Easy to program. The parallelization and fault tolerance is automatic.</li>
@@ -713,52 +972,77 @@
 <li>Reduce combines the intermediate values into one or more final values for the same output key (usually one final value per key)</li>
 <li>The master tries to place the mapper on the same machines as the data or nearby.</li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-6-9-Indirect-Communication-and-Naming"><a href="#Chapter-6-9-Indirect-Communication-and-Naming" class="headerlink" title="Chapter 6, 9 Indirect Communication and Naming"></a>Chapter 6, 9 Indirect Communication and Naming</h1><h2 id="Indirect-Messaging"><a href="#Indirect-Messaging" class="headerlink" title="Indirect Messaging"></a>Indirect Messaging</h2><ol>
-<li>Decoupled in space<ul>
+<br>
+***
+<br>
+<h1 id="chapter-6-9-indirect-communication-and-naming"><a class="markdownIt-Anchor" href="#chapter-6-9-indirect-communication-and-naming"></a> Chapter 6, 9 Indirect Communication and Naming</h1>
+<h2 id="indirect-messaging"><a class="markdownIt-Anchor" href="#indirect-messaging"></a> Indirect Messaging</h2>
+<ol>
+<li>Decoupled in space
+<ul>
 <li>Sender does not need to know the identify of the receiver(s) and visa-versa</li>
 </ul>
 </li>
-<li>Decoupled in time<ul>
+<li>Decoupled in time
+<ul>
 <li>A component need not even be running</li>
 <li>The messaging system can store messages until they are successfully delivered</li>
-<li>Reliable delivery is insured<h2 id="Java’s-JMS-API"><a href="#Java’s-JMS-API" class="headerlink" title="Java’s JMS API"></a>Java’s JMS API</h2>Java Message Service (JMS)</li>
+<li>Reliable delivery is insured</li>
 </ul>
 </li>
+</ol>
+<h2 id="javas-jms-api"><a class="markdownIt-Anchor" href="#javas-jms-api"></a> Java’s JMS API</h2>
+<p>Java Message Service (JMS)</p>
+<ol>
 <li>An API for performing indirect messaging. 实现间接消息传送</li>
 <li>It is an abstraction API like JNDI and JDBC. 抽象API</li>
 <li>Interacts with some Message Oriented Middleware (MOM) 面向消息的中间层</li>
-<li>JMS is a client-facing interface, meant to abstract way the particulars of any MOM. </li>
+<li>JMS is a client-facing interface, meant to abstract way the particulars of any MOM.</li>
 <li>In theory, you should have portability of systems written with JMS such that they can work with any MOM.</li>
 </ol>
 <p>Compatiblity:</p>
 <ol>
 <li>JMS systems can interact with non-JMS systems. Such as another system that uses the native messaging system’s API</li>
-<li>The JMS connector is responsible for matching message formats.<br>JMS connector 负责沟通不同 format 的消息</li>
-<li>Two vendor options<ul>
-<li>Translate JMS into native mode<br>翻译 JMS 到本地模式<br>Can interoperate with non-JMS clients<br>这样 JMS 可以和 非 JMS 的 client 交互<br>–  Encapsulate JMS within native mode<br>Only JMS clients can communicate<br>把本地的包装成 JMS，那么只能和 JMS 交互了</li>
+<li>The JMS connector is responsible for matching message formats.<br>
+JMS connector 负责沟通不同 format 的消息</li>
+<li>Two vendor options
+<ul>
+<li>Translate JMS into native mode<br>
+翻译 JMS 到本地模式<br>
+Can interoperate with non-JMS clients<br>
+这样 JMS 可以和 非 JMS 的 client 交互<br>
+–  Encapsulate JMS within native mode<br>
+Only JMS clients can communicate<br>
+把本地的包装成 JMS，那么只能和 JMS 交互了</li>
 </ul>
 </li>
 </ol>
-<h2 id="Point-to-point"><a href="#Point-to-point" class="headerlink" title="Point-to-point"></a>Point-to-point</h2><p>Point to point (In JMS called Queues)<br>    –  Decoupled<br>    –  Guaranteed delivery to one and only one message handler<br>     –  Might be multiple such handlers that could take a request</p>
-<h2 id="Publish-subscribe"><a href="#Publish-subscribe" class="headerlink" title="Publish subscribe"></a>Publish subscribe</h2><p>Publish Subscribe (In JMS called Topics) –  Decoupled</p>
+<h2 id="point-to-point"><a class="markdownIt-Anchor" href="#point-to-point"></a> Point-to-point</h2>
+<p>Point to point (In JMS called Queues)<br>
+–  Decoupled<br>
+–  Guaranteed delivery to one and only one message handler<br>
+–  Might be multiple such handlers that could take a request</p>
+<h2 id="publish-subscribe"><a class="markdownIt-Anchor" href="#publish-subscribe"></a> Publish subscribe</h2>
+<p>Publish Subscribe (In JMS called Topics) –  Decoupled</p>
 <ol>
-<li>Similar to a bulletin board or newsgroup <ul>
+<li>Similar to a bulletin board or newsgroup
+<ul>
 <li>Potentially one to many</li>
 </ul>
 </li>
 <li>One publishes to a topic and zero to many subscribe to it</li>
-<li>Guarantees may be configured.<ul>
-<li>If no consumer currently cares about this event it expires </li>
+<li>Guarantees may be configured.
+<ul>
+<li>If no consumer currently cares about this event it expires</li>
 <li>Or messages can be held until consumers are available</li>
 </ul>
 </li>
 </ol>
-<h2 id="JMS-Queues-and-topics"><a href="#JMS-Queues-and-topics" class="headerlink" title="JMS Queues and topics"></a>JMS Queues and topics</h2><ol>
-<li>Queues and Topics are administratively managed resources<ul>
-<li>They are not part of the client’s software </li>
+<h2 id="jms-queues-and-topics"><a class="markdownIt-Anchor" href="#jms-queues-and-topics"></a> JMS Queues and topics</h2>
+<ol>
+<li>Queues and Topics are administratively managed resources
+<ul>
+<li>They are not part of the client’s software</li>
 <li>They are created and destroyed by the MOM, not by the client</li>
 <li>Queue 和 Topic 是由 administrator 管理的资源，不是客户端的一部分</li>
 </ul>
@@ -766,56 +1050,92 @@
 <li>You log into the MOM administrative interface and create or destroy them.</li>
 <li>Or you define them in a deployment descriptor or an annotation.</li>
 </ol>
-<h2 id="JMS-message-types"><a href="#JMS-message-types" class="headerlink" title="JMS message types"></a>JMS message types</h2><ol>
-<li>Stream<br> –  Sequential stream of Java primitive data types.</li>
-<li>Map<br> –  Set of name-value pairs<br> • Names are String objects<br> • Values are Java primitives (including String)<br> –  Can be accessed sequentially or randomly by name.</li>
-<li>Text<br> –  Message is a String object<br> • Plain-text message<br> XML messages</li>
-<li>Object<br> –  Serialized Java object<br> • Simple if in Java-only environment </li>
-<li>Bytes<br> –  Stream of un-interpreted bytes.<br> –  To encode a message body to match an existing message format</li>
+<h2 id="jms-message-types"><a class="markdownIt-Anchor" href="#jms-message-types"></a> JMS message types</h2>
+<ol>
+<li>Stream<br>
+–  Sequential stream of Java primitive data types.</li>
+<li>Map<br>
+–  Set of name-value pairs<br>
+• Names are String objects<br>
+• Values are Java primitives (including String)<br>
+–  Can be accessed sequentially or randomly by name.</li>
+<li>Text<br>
+–  Message is a String object<br>
+• Plain-text message<br>
+XML messages</li>
+<li>Object<br>
+–  Serialized Java object<br>
+• Simple if in Java-only environment</li>
+<li>Bytes<br>
+–  Stream of un-interpreted bytes.<br>
+–  To encode a message body to match an existing message format</li>
 </ol>
-<h2 id="Message-driven-beans"><a href="#Message-driven-beans" class="headerlink" title="Message driven beans"></a>Message driven beans</h2><p>// null</p>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-14-Time-and-Global-State"><a href="#Chapter-14-Time-and-Global-State" class="headerlink" title="Chapter 14 Time and Global State"></a>Chapter 14 Time and Global State</h1><h2 id="Internal-and-external-synchronization"><a href="#Internal-and-external-synchronization" class="headerlink" title="Internal and external synchronization"></a>Internal and external synchronization</h2><ol>
-<li><p>Internal Synchronization:</p>
+<h2 id="message-driven-beans"><a class="markdownIt-Anchor" href="#message-driven-beans"></a> Message driven beans</h2>
+<p>// null</p>
+<br>
+***
+<br>
+<h1 id="chapter-14-time-and-global-state"><a class="markdownIt-Anchor" href="#chapter-14-time-and-global-state"></a> Chapter 14 Time and Global State</h1>
+<h2 id="internal-and-external-synchronization"><a class="markdownIt-Anchor" href="#internal-and-external-synchronization"></a> Internal and external synchronization</h2>
+<ol>
+<li>
+<p>Internal Synchronization:</p>
 <ul>
 <li>两个系统相互之间校对时间</li>
 <li>Peer systems synchronize among themselves</li>
-<li>Bound<br>• If the synchronization scheme has a bound D (i.e. two clocks will have max D skew)<br>• Then all clocks will agree within D.</li>
+<li>Bound<br>
+• If the synchronization scheme has a bound D (i.e. two clocks will have max D skew)<br>
+• Then all clocks will agree within D.</li>
 </ul>
 </li>
-<li><p>External Synchronization<br> 系统都和一个外部的更权威的时间校对</p>
+<li>
+<p>External Synchronization<br>
+系统都和一个外部的更权威的时间校对</p>
 <ul>
 <li>Systems all synchronize with a more authoritative external clock</li>
 <li>I.e. UTC (Coordinated Universal Time)</li>
-<li>Bound:<br>• Each clock is accurate to UTC within D</li>
+<li>Bound:<br>
+• Each clock is accurate to UTC within D</li>
 </ul>
 </li>
 </ol>
-<h2 id="The-network-time-protocol-NTP"><a href="#The-network-time-protocol-NTP" class="headerlink" title="The network time protocol (NTP)"></a>The network time protocol (NTP)</h2><p>// null</p>
-<h2 id="Global-state-terminology"><a href="#Global-state-terminology" class="headerlink" title="Global state terminology"></a>Global state terminology</h2><p>(histories, happens-before relation, cuts, linearization)</p>
-<h2 id="Lamport-clocks"><a href="#Lamport-clocks" class="headerlink" title="Lamport clocks"></a>Lamport clocks</h2><p>Two rules for assigning logical times to events:</p>
+<h2 id="the-network-time-protocol-ntp"><a class="markdownIt-Anchor" href="#the-network-time-protocol-ntp"></a> The network time protocol (NTP)</h2>
+<p>// null</p>
+<h2 id="global-state-terminology"><a class="markdownIt-Anchor" href="#global-state-terminology"></a> Global state terminology</h2>
+<p>(histories, happens-before relation, cuts, linearization)</p>
+<h2 id="lamport-clocks"><a class="markdownIt-Anchor" href="#lamport-clocks"></a> Lamport clocks</h2>
+<p>Two rules for assigning logical times to events:</p>
 <ol>
-<li>Events on one process happen in order 在同一个进程上的事件都是有顺序的<br> • Each happens-before the next 先后顺序<br> • Increment the logical clock by 1 for each event 后发生的时间的逻辑时间比之前一个多1</li>
-<li>The passing of messages can be used to indicate happens-before between processes<br> • The sending of the message happens-before the receiving of the message. Send 肯定发生在 Receive 之前<br> • Take the larger of the logical clock (+1) value from the process or the message</li>
+<li>Events on one process happen in order 在同一个进程上的事件都是有顺序的<br>
+• Each happens-before the next 先后顺序<br>
+• Increment the logical clock by 1 for each event 后发生的时间的逻辑时间比之前一个多1</li>
+<li>The passing of messages can be used to indicate happens-before between processes<br>
+• The sending of the message happens-before the receiving of the message. Send 肯定发生在 Receive 之前<br>
+• Take the larger of the logical clock (+1) value from the process or the message</li>
 </ol>
 <p>Total &amp; Causal Ordering</p>
 <ol>
 <li>Lamport Clocks can be used to coordinate the ordering of distributed events so that each process executes events in the same order (e.g. updating a database)</li>
 </ol>
-<h2 id="Chandy-and-Lamport-Snapshot-Algorithm"><a href="#Chandy-and-Lamport-Snapshot-Algorithm" class="headerlink" title="Chandy and Lamport Snapshot Algorithm"></a>Chandy and Lamport Snapshot Algorithm</h2><ol>
-<li>Assumptions:<br> – Reliable channels</li>
-<li>A channel is a network path from one process to another<br> – Every message sent is reliably received<br> •  Once (not more than once)<br> •  In order (FIFO)</li>
+<h2 id="chandy-and-lamport-snapshot-algorithm"><a class="markdownIt-Anchor" href="#chandy-and-lamport-snapshot-algorithm"></a> Chandy and Lamport Snapshot Algorithm</h2>
+<ol>
+<li>Assumptions:<br>
+– Reliable channels</li>
+<li>A channel is a network path from one process to another<br>
+– Every message sent is reliably received<br>
+•  Once (not more than once)<br>
+•  In order (FIFO)</li>
 <li>There is a channel (path) between every 2 processes</li>
 <li>Any process may initiate a snapshot</li>
 <li>Processes continue as normal while snapshot is taking place.</li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-16-17-Local-and-Distributed-Transactions"><a href="#Chapter-16-17-Local-and-Distributed-Transactions" class="headerlink" title="Chapter 16, 17 Local and Distributed Transactions"></a>Chapter 16, 17 Local and Distributed Transactions</h1><p>下面链接转到Transactions的总结:<br><a href="http://menuet.xyz/distribute-system/cmu-95702-transaction/">Transactions</a></p>
-<pre><code> ACID Transactions
+<br>
+***
+<br>
+<h1 id="chapter-16-17-local-and-distributed-transactions"><a class="markdownIt-Anchor" href="#chapter-16-17-local-and-distributed-transactions"></a> Chapter 16, 17 Local and Distributed Transactions</h1>
+<p>下面链接转到Transactions的总结:<br>
+<a href="http://menuet.xyz/distribute-system/cmu-95702-transaction/">Transactions</a></p>
+<pre><code>ACID Transactions
 Concurrency control
 Recoverable objects
 Locks and deadlock
@@ -827,77 +1147,142 @@ wait and notify
 2PL
 2PC
 CAP Theorem
-</code></pre><p><br></p>
-<hr>
-<p><br></p>
-<h1 id="Chapter-19-Mobile-and-ubiquitous-computing"><a href="#Chapter-19-Mobile-and-ubiquitous-computing" class="headerlink" title="Chapter 19 Mobile and ubiquitous computing"></a>Chapter 19 Mobile and ubiquitous computing</h1><p>Association<br>Sensing and Context Awareness<br>Location sensing<br>Adaptation<br>Device awareness / browser detection<br>Feature detection<br>Graceful degradation<br>Progressive enhancement<br>Responsive web design<br>Mobile first<br>Mobile deployment strategies</p>
-<h1 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h1><h2 id="Cloudlets"><a href="#Cloudlets" class="headerlink" title="Cloudlets"></a>Cloudlets</h2><ol>
-<li>The interaction between a cloudlet and a phone is of what type？<br> request/acknowlege/callback</li>
+</code></pre>
+<br>
+***
+<br>
+<h1 id="chapter-19-mobile-and-ubiquitous-computing"><a class="markdownIt-Anchor" href="#chapter-19-mobile-and-ubiquitous-computing"></a> Chapter 19 Mobile and ubiquitous computing</h1>
+<p>Association<br>
+Sensing and Context Awareness<br>
+Location sensing<br>
+Adaptation<br>
+Device awareness / browser detection<br>
+Feature detection<br>
+Graceful degradation<br>
+Progressive enhancement<br>
+Responsive web design<br>
+Mobile first<br>
+Mobile deployment strategies</p>
+<h1 id="lab"><a class="markdownIt-Anchor" href="#lab"></a> Lab</h1>
+<h2 id="cloudlets"><a class="markdownIt-Anchor" href="#cloudlets"></a> Cloudlets</h2>
+<ol>
+<li>The interaction between a cloudlet and a phone is of what type？<br>
+request/acknowlege/callback</li>
 </ol>
-<h2 id="Quiz-1-on-Coulouris-Chapter-1"><a href="#Quiz-1-on-Coulouris-Chapter-1" class="headerlink" title="Quiz 1 on Coulouris Chapter 1"></a>Quiz 1 on Coulouris Chapter 1</h2><ol>
-<li>In Figure 1.2, the purpose of the Reuters Adapter and the FIX Adapter are to:<br> Convert messages from different formats into a common internal format.</li>
-<li>Blade servers are:<br>minimal computational elements containing for example processing and main memory storage capabilities.</li>
-<li>Distributed systems may fail partially. Some failures that have been detected can be <strong>hidden</strong> or <strong>made less severe</strong>. This hiding of failures is called:<br>Masking.</li>
+<h2 id="quiz-1-on-coulouris-chapter-1"><a class="markdownIt-Anchor" href="#quiz-1-on-coulouris-chapter-1"></a> Quiz 1 on Coulouris Chapter 1</h2>
+<ol>
+<li>In Figure 1.2, the purpose of the Reuters Adapter and the FIX Adapter are to:<br>
+Convert messages from different formats into a common internal format.</li>
+<li>Blade servers are:<br>
+minimal computational elements containing for example processing and main memory storage capabilities.</li>
+<li>Distributed systems may fail partially. Some failures that have been detected can be <strong>hidden</strong> or <strong>made less severe</strong>. This hiding of failures is called:<br>
+Masking.</li>
 <li>The three main standard technological components of the world wide web are HTML, URL’s and HTTP.</li>
 </ol>
-<h2 id="Quiz-2-on-Coulouris-Chapter-2"><a href="#Quiz-2-on-Coulouris-Chapter-2" class="headerlink" title="Quiz 2 on Coulouris Chapter 2"></a>Quiz 2 on Coulouris Chapter 2</h2><ol>
-<li>A synchronous distributed system is one where we know<br>a.  that the time it takes to execute each step in a process has a known upper and lower bound.<br>b.  that each message sent over a channel is received within a known bounded time.<br>c.  that each process has a local clock whose drift rate from real time has a known bound.</li>
+<h2 id="quiz-2-on-coulouris-chapter-2"><a class="markdownIt-Anchor" href="#quiz-2-on-coulouris-chapter-2"></a> Quiz 2 on Coulouris Chapter 2</h2>
+<ol>
+<li>A synchronous distributed system is one where we know<br>
+a.  that the time it takes to execute each step in a process has a known upper and lower bound.<br>
+b.  that each message sent over a channel is received within a known bounded time.<br>
+c.  that each process has a local clock whose drift rate from real time has a known bound.</li>
 <li>Interprocess communication refers to a relatively low-level approach that often involves message passing over sockets.</li>
 <li>Components and objects are similar but a component is typically deployed to a container and makes all of its dependencies clear.</li>
-<li>Indirect communication<br>a.  may include tightly coupled communication with a third party.<br>b.  may include low level socket programming.<br>c.  may allow two parties to communicate through a third party.<br>d. may allow two parties to communicate in a space and time uncoupled way.</li>
+<li>Indirect communication<br>
+a.  may include tightly coupled communication with a third party.<br>
+b.  may include low level socket programming.<br>
+c.  may allow two parties to communicate through a third party.<br>
+d. may allow two parties to communicate in a space and time uncoupled way.</li>
 <li>A tuple space allows one process to place tuples in an area accessible to another process and these processes may be distributed.</li>
 </ol>
-<h2 id="Chapter-3-Networking-amp-Internetworking"><a href="#Chapter-3-Networking-amp-Internetworking" class="headerlink" title="Chapter 3 - Networking &amp; Internetworking"></a>Chapter 3 - Networking &amp; Internetworking</h2><ol>
-<li>TCP transit protocol<br>http / telnet / ftp / http</li>
-<li>If a router has 3 network interfaces, then how many unique subnet masks will it use?<br>Each network interface would have a subnet mask, but each would not necessarily be unique.  The router could have 1, 2, or 3, unique masks.</li>
+<h2 id="chapter-3-networking-internetworking"><a class="markdownIt-Anchor" href="#chapter-3-networking-internetworking"></a> Chapter 3 - Networking &amp; Internetworking</h2>
+<ol>
+<li>TCP transit protocol 	<br>
+http / telnet / ftp / http</li>
+<li>If a router has 3 network interfaces, then how many unique subnet masks will it use?<br>
+Each network interface would have a subnet mask, but each would not necessarily be unique.  The router could have 1, 2, or 3, unique masks.</li>
 <li>If a router has 3 network interfaces, then how many unique network addresses does it have? Three</li>
 </ol>
-<h2 id="Quiz-4-On-Crypto"><a href="#Quiz-4-On-Crypto" class="headerlink" title="Quiz 4 On Crypto"></a>Quiz 4 On Crypto</h2><ol>
-<li>Bitcoin is an example of a cryptographic protocol.</li>
-<li>Which of the following is true about Java’s keystore and truststore？<br>The keystore may be used to hold private keys.</li>
-<li>Suppose we want to use SSL (TLS) for secure communication. Suppose too that we want to authentic the client with a user name and password. Which one of the following makes the most sense?<br>Establish a keystore on the server and a truststore on the client.</li>
-<li>Kerberos is designed to provide authentication between clients and servers in networks that form a single management domain (intranets).</li>
-<li><p>Needham-Schroeder protocol 也就是 Kerberos</p>
+<h2 id="quiz-4-on-crypto"><a class="markdownIt-Anchor" href="#quiz-4-on-crypto"></a> Quiz 4 On Crypto</h2>
+<ol>
+<li>
+<p>Bitcoin is an example of a cryptographic protocol.</p>
 </li>
-<li><p>In Project 2, we need for Spy Commander Beggs to communicate with spies in the field. We want to use symmetric key cryptography because it is fast. How do we plan on solving the key exchange problem?  The spy commander provided the keys to his spies before they left Hamburg Hall.</p>
+<li>
+<p>Which of the following is true about Java’s keystore and truststore？<br>
+The keystore may be used to hold private keys.</p>
 </li>
-<li>The following constructor signature is found in the class TEA.java.<br> public TEA(byte[] x)<br>In this constructor, x is used to reference a sixteen byte key.</li>
+<li>
+<p>Suppose we want to use SSL (TLS) for secure communication. Suppose too that we want to authentic the client with a user name and password. Which one of the following makes the most sense?<br>
+Establish a keystore on the server and a truststore on the client.</p>
+</li>
+<li>
+<p>Kerberos is designed to provide authentication between clients and servers in networks that form a single management domain (intranets).</p>
+</li>
+<li>
+<p>Needham-Schroeder protocol 也就是 Kerberos</p>
+</li>
+<li>
+<p>In Project 2, we need for Spy Commander Beggs to communicate with spies in the field. We want to use symmetric key cryptography because it is fast. How do we plan on solving the key exchange problem?  The spy commander provided the keys to his spies before they left Hamburg Hall.</p>
+</li>
+<li>
+<p>The following constructor signature is found in the class TEA.java.<br>
+public TEA(byte[] x)<br>
+In this constructor, x is used to reference a sixteen byte key.</p>
+</li>
 <li></li>
 </ol>
-<h2 id="Quiz-6-on-Chapter-4"><a href="#Quiz-6-on-Chapter-4" class="headerlink" title="Quiz 6 on Chapter 4"></a>Quiz 6 on Chapter 4</h2><ol>
+<h2 id="quiz-6-on-chapter-4"><a class="markdownIt-Anchor" href="#quiz-6-on-chapter-4"></a> Quiz 6 on Chapter 4</h2>
+<ol>
 <li>Java provides the following two types of sockets for interprocess communications:  TCP and UDP sockets.</li>
 <li>This type of socket might be described as a fire and forget: UDP</li>
 <li>We examined four ways to represent external data. These four ways were: XML, JSON, CDR, and Java Serialization</li>
 </ol>
-<h2 id="Quiz-7-on-Chapter-5"><a href="#Quiz-7-on-Chapter-5" class="headerlink" title="Quiz 7 on Chapter 5"></a>Quiz 7 on Chapter 5</h2><ol>
+<h2 id="quiz-7-on-chapter-5"><a class="markdownIt-Anchor" href="#quiz-7-on-chapter-5"></a> Quiz 7 on Chapter 5</h2>
+<ol>
 <li>Java RMI runs over TCP/IP</li>
-<li>In the generic RMI module that we studied,<br>there was one proxy on the client for each remote object.<br>A skeleton on the server associated with the class of the remote object.</li>
-<li>In Java RMI, after creating a remote object on the server, the server will<br>typically, call the bind method on the rmiregistry, passing the object’s name and a remote reference. </li>
+<li>In the generic RMI module that we studied,<br>
+there was one proxy on the client for each remote object.<br>
+A skeleton on the server associated with the class of the remote object.</li>
+<li>In Java RMI, after creating a remote object on the server, the server will<br>
+typically, call the bind method on the rmiregistry, passing the object’s name and a remote reference.</li>
 </ol>
-<h2 id="Quiz-10-on-Distributed-File-Systems-and-Map-Reduce"><a href="#Quiz-10-on-Distributed-File-Systems-and-Map-Reduce" class="headerlink" title="Quiz 10 on Distributed File Systems and Map Reduce"></a>Quiz 10 on Distributed File Systems and Map Reduce</h2><h2 id="Quiz-on-Web-Service-Design-Styles"><a href="#Quiz-on-Web-Service-Design-Styles" class="headerlink" title="Quiz on Web Service Design Styles"></a>Quiz on Web Service Design Styles</h2><ol>
+<h2 id="quiz-10-on-distributed-file-systems-and-map-reduce"><a class="markdownIt-Anchor" href="#quiz-10-on-distributed-file-systems-and-map-reduce"></a> Quiz 10 on Distributed File Systems and Map Reduce</h2>
+<h2 id="quiz-on-web-service-design-styles"><a class="markdownIt-Anchor" href="#quiz-on-web-service-design-styles"></a> Quiz on Web Service Design Styles</h2>
+<ol>
 <li>One pattern that we reviewed said that we might only publish the addresses of a few root web services. Include the addresses of related services in each response. Let clients parse responses to discover subsequent service URIs. This pattern was called the Linked Services Pattern.</li>
 <li>Protocol Buffers is a scheme for serializing data into a binary byte stream. There is no type information included in the stream. An IDL is needed to understand the message. Who created protocol buffers? Google</li>
 <li>Protocol buffers does not include type information in a message, that is, the message is not self describing. Nor does the message contain any pointers to the schema for the message. Why is this done? speed</li>
-<li>A tolerant reader<br>a. is able to process messages that may contain some variety.<br>b. is very fussy about field size and field type.</li>
+<li>A tolerant reader<br>
+a. is able to process messages that may contain some variety.<br>
+b. is very fussy about field size and field type.</li>
 <li>An asynchronous response handler is less tightly coupled than simple request/response</li>
-<li>JAX-RS是JAVA EE6 引入的一个新技术。 JAX-RS即Java API for RESTful Web Services，是一个Java 编程语言的应用程序接口，支持按照表述性状态转移（REST）架构风格创建Web服务。JAX-RS使用了Java SE5引入的Java标注来简化Web服务的客户端和服务端的开发和部署。<br>JAX-WS(Java API for XML Web Services)规范是一组XML web services的JAVA API，JAX-WS允许开发者可以选择RPC-oriented或者message-oriented 来实现自己的web services。</li>
+<li>JAX-RS是JAVA EE6 引入的一个新技术。 JAX-RS即Java API for RESTful Web Services，是一个Java 编程语言的应用程序接口，支持按照表述性状态转移（REST）架构风格创建Web服务。JAX-RS使用了Java SE5引入的Java标注来简化Web服务的客户端和服务端的开发和部署。<br>
+JAX-WS(Java API for XML Web Services)规范是一组XML web services的JAVA API，JAX-WS允许开发者可以选择RPC-oriented或者message-oriented 来实现自己的web services。</li>
 <li>RPC API’s may have 0 or more parameters. Message API’s have 1 parameter</li>
-<li>Which of the following is true about OData?<br>b. OData uses URL’s to identify resources that are operated upon by HTTP operations.<br>c. OData may use name value pairs to pass arguments within the URL.<br>d. OData takes URL design seriously.<br>e. OData is based on REST.</li>
-<li>The “Linked Services Pattern” is<br>a. central to the REST architectural style.<br>b. used by the Odata collection document.<br>Correctc.<br>d. the pattern that we use when browsing the web.<br>e. central to HATEOS.</li>
+<li>Which of the following is true about OData?<br>
+b. OData uses URL’s to identify resources that are operated upon by HTTP operations.<br>
+c. OData may use name value pairs to pass arguments within the URL.<br>
+d. OData takes URL design seriously.<br>
+e. OData is based on REST.</li>
+<li>The “Linked Services Pattern” is<br>
+a. central to the REST architectural style.<br>
+b. used by the Odata collection document.<br>
+Correctc.<br>
+d. the pattern that we use when browsing the web.<br>
+e. central to HATEOS.</li>
 <li>n OData, there is an important document called the “service document”. It contains a list of collections.</li>
 </ol>
-<h2 id="Transactions-quiz-for-flipped-class"><a href="#Transactions-quiz-for-flipped-class" class="headerlink" title="Transactions quiz for flipped class"></a>Transactions quiz for flipped class</h2><ol>
+<h2 id="transactions-quiz-for-flipped-class"><a class="markdownIt-Anchor" href="#transactions-quiz-for-flipped-class"></a> Transactions quiz for flipped class</h2>
+<ol>
 <li>synchronized 的时候, 后来的 thread will be suspended but not rejected.</li>
 <li>With respect to transactions, which of the following best characterizes ‘serializable’? two transactions T1and T2 are running, we want it to appear as if T1 was followed by T2 or T2 was followed  by T1. This is true even though the two transactions may have run concurrently.</li>
-<li>A transaction has an “all or nothing” characteristic. Which of the following is often used to recover from transactions that only execute partially?  a strategy where only a copy of a resource has been changed. </li>
+<li>A transaction has an “all or nothing” characteristic. Which of the following is often used to recover from transactions that only execute partially?  a strategy where only a copy of a resource has been changed.</li>
 <li>An interleaving of the operations of transactions in which the combined effect is the same as if the transactions had been performed one at a time in some order is called a serially equivalent interleaving.</li>
-<li>Consider the following class:<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeChangeToValue</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123; <span class="keyword">int</span> value = <span class="number">0</span>; value = value + <span class="number">1</span>; &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeChangeToValue2</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123; <span class="keyword">int</span> value = <span class="number">0</span>; value = value + <span class="number">2</span>; &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>Consider the following class:</li>
 </ol>
-<p>If two threads are running (one in makeChangeToValue()  and another in makeChangeToValue2()) then they will each have their own copy of value. That is, they will not interfere with each other. </p>
-<ol>
-<li>This approach is an alternative to locking. optimistic concurrency control.</li>
-</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeChangeToValue</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123; <span class="keyword">int</span> value = <span class="number">0</span>; value = value + <span class="number">1</span>; &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeChangeToValue2</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123; <span class="keyword">int</span> value = <span class="number">0</span>; value = value + <span class="number">2</span>; &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If two threads are running (one in makeChangeToValue()  and another in makeChangeToValue2()) then they will each have their own copy of value. That is, they will not interfere with each other.<br>
+6. This approach is an alternative to locking. optimistic concurrency control.</p>
 <hr>
 <p>Over！</p>
 
@@ -1032,7 +1417,7 @@ CAP Theorem
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1054,7 +1439,7 @@ CAP Theorem
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -1089,7 +1474,7 @@ CAP Theorem
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Characterization-of-distributed-systems"><span class="nav-number">1.1.</span> <span class="nav-text">Characterization of distributed systems.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Four-styles-of-application-integration"><span class="nav-number">1.2.</span> <span class="nav-text">Four styles of application integration.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronous-and-asynchronous-communication"><span class="nav-number">1.3.</span> <span class="nav-text">Synchronous and asynchronous communication.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Invocation-Indirect-communication"><span class="nav-number">1.4.</span> <span class="nav-text">Invocation, Indirect communication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-and-space-coupling"><span class="nav-number">1.5.</span> <span class="nav-text">Time and space coupling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layered-architecture"><span class="nav-number">1.6.</span> <span class="nav-text">Layered architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tiered-architecture"><span class="nav-number">1.7.</span> <span class="nav-text">Tiered architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software-engineering-principle-Separation-of-concerns"><span class="nav-number">1.8.</span> <span class="nav-text">Software engineering principle: Separation of concerns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architectural-patterns-Proxy-pattern-brokerage-pattern"><span class="nav-number">1.9.</span> <span class="nav-text">Architectural patterns: Proxy pattern, brokerage pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenges-in-constructing-distributed-systems"><span class="nav-number">1.10.</span> <span class="nav-text">Challenges in constructing distributed systems</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-System-Models"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 System Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architectural-Models"><span class="nav-number">2.1.</span> <span class="nav-text">Architectural Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fundamentals-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Fundamentals Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Agreement-in-Pepperland-pg-65"><span class="nav-number">2.3.</span> <span class="nav-text">Agreement in Pepperland pg. 65</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Failure-detection-in-Peperland-pg-69"><span class="nav-number">2.4.</span> <span class="nav-text">Failure detection in Peperland pg. 69</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JEE-Servlets"><span class="nav-number">2.5.</span> <span class="nav-text">JEE Servlets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Server-Pages-JSP"><span class="nav-number">2.6.</span> <span class="nav-text">Java Server Pages (JSP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-View-Controller"><span class="nav-number">2.7.</span> <span class="nav-text">Model View Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WWW"><span class="nav-number">2.8.</span> <span class="nav-text">WWW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-Protocol"><span class="nav-number">2.9.</span> <span class="nav-text">HTTP Protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">2.9.1.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-Request"><span class="nav-number">2.9.2.</span> <span class="nav-text">HTTP Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-Response"><span class="nav-number">2.9.3.</span> <span class="nav-text">HTTP Response</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Safe-operations-Idempotent-operations"><span class="nav-number">2.10.</span> <span class="nav-text">Safe operations, Idempotent operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI’s"><span class="nav-number">2.11.</span> <span class="nav-text">URI’s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">2.12.</span> <span class="nav-text">HTML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cloudlet-article-“Mobile-Computing-the-Next-Decade”"><span class="nav-number">3.</span> <span class="nav-text">Cloudlet article “Mobile Computing the Next Decade”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Networking-and-Internetworking"><span class="nav-number">4.</span> <span class="nav-text">Chapter 3 Networking and Internetworking</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-layers"><span class="nav-number">4.1.</span> <span class="nav-text">Protocol layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Common-Application-Protocols"><span class="nav-number">4.2.</span> <span class="nav-text">Common Application Protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addressing"><span class="nav-number">4.3.</span> <span class="nav-text">addressing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC"><span class="nav-number">4.3.1.</span> <span class="nav-text">MAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Internet-Protocol"><span class="nav-number">4.3.2.</span> <span class="nav-text">Internet Protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-Addressing"><span class="nav-number">4.3.3.</span> <span class="nav-text">IP Addressing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnet-Addressing"><span class="nav-number">4.3.4.</span> <span class="nav-text">Subnet Addressing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ports-and-port-assignment"><span class="nav-number">4.3.5.</span> <span class="nav-text">ports and port assignment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP-ARP-protocols"><span class="nav-number">4.4.</span> <span class="nav-text">DHCP, ARP protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP"><span class="nav-number">4.4.1.</span> <span class="nav-text">DHCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Address-Resolution-Protocal-ARP"><span class="nav-number">4.4.2.</span> <span class="nav-text">Address Resolution Protocal ARP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datagrams"><span class="nav-number">4.5.</span> <span class="nav-text">Datagrams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#routing"><span class="nav-number">4.6.</span> <span class="nav-text">routing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP-algorithm"><span class="nav-number">4.7.</span> <span class="nav-text">RIP algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-and-UDP-Comparasion"><span class="nav-number">4.8.</span> <span class="nav-text">TCP and UDP Comparasion</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-11-Security-and-Cryptography"><span class="nav-number">5.</span> <span class="nav-text">Chapter 11 Security and Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA"><span class="nav-number">5.1.</span> <span class="nav-text">RSA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-protocols"><span class="nav-number">5.2.</span> <span class="nav-text">Cryptographic protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-notation"><span class="nav-number">5.3.</span> <span class="nav-text">Cryptographic notation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetric-key-crypto"><span class="nav-number">5.4.</span> <span class="nav-text">Symmetric key crypto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-key-crypto"><span class="nav-number">5.5.</span> <span class="nav-text">Asymmetric key crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">5.5.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-kinds-of-Usage"><span class="nav-number">5.5.2.</span> <span class="nav-text">Two kinds of Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Four-Scenario"><span class="nav-number">5.6.</span> <span class="nav-text">Four Scenario</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-Java-SSL-sockets"><span class="nav-number">5.7.</span> <span class="nav-text">Programming Java SSL sockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digital-signatures"><span class="nav-number">5.8.</span> <span class="nav-text">Digital signatures</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-9-Web-Services"><span class="nav-number">6.</span> <span class="nav-text">Chapter 9 Web Services</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-service-design-patterns"><span class="nav-number">6.1.</span> <span class="nav-text">Web service design patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-schemes-and-performance"><span class="nav-number">6.2.</span> <span class="nav-text">Binary schemes and performance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coupling-in-space-and-time"><span class="nav-number">6.3.</span> <span class="nav-text">Coupling in space and time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Separation-of-concerns-and-examples"><span class="nav-number">6.4.</span> <span class="nav-text">Separation of concerns and examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jon-Postel’s-Law"><span class="nav-number">6.5.</span> <span class="nav-text">Jon Postel’s Law</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Productivity-and-Adaptability"><span class="nav-number">6.6.</span> <span class="nav-text">Productivity and Adaptability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-service-Design"><span class="nav-number">6.7.</span> <span class="nav-text">Web service Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Odata"><span class="nav-number">6.8.</span> <span class="nav-text">Odata</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4-Interprocess-Communications"><span class="nav-number">7.</span> <span class="nav-text">Chapter 4 Interprocess Communications</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Article-covering-The-End-To-End-Argument"><span class="nav-number">8.</span> <span class="nav-text">Article covering The End-To-End Argument</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-and-Mobile-Devices"><span class="nav-number">9.</span> <span class="nav-text">Android and Mobile Devices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-rise-of-mobile-platforms"><span class="nav-number">9.1.</span> <span class="nav-text">The rise of mobile platforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-native-application"><span class="nav-number">9.2.</span> <span class="nav-text">Building a native application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-architecture"><span class="nav-number">9.3.</span> <span class="nav-text">Android architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-of-control"><span class="nav-number">9.4.</span> <span class="nav-text">Flow of control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-UI-definition"><span class="nav-number">9.5.</span> <span class="nav-text">Android UI definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-latency-and-AsyncTask"><span class="nav-number">9.6.</span> <span class="nav-text">Network latency and AsyncTask</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-Remote-Method-Invocation"><span class="nav-number">10.</span> <span class="nav-text">Chapter 5 Remote Method Invocation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Interface-Definition-Language-IDL"><span class="nav-number">10.1.</span> <span class="nav-text">Interface Definition Language (IDL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Goals-of-Java-RMI"><span class="nav-number">10.2.</span> <span class="nav-text">Goals of Java RMI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EJB-remote-and-local-interfaces"><span class="nav-number">10.3.</span> <span class="nav-text">EJB remote and local interfaces</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-12-Distributed-File-Systems"><span class="nav-number">11.</span> <span class="nav-text">Chapter 12 Distributed File Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS"><span class="nav-number">11.1.</span> <span class="nav-text">NFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AFS"><span class="nav-number">11.2.</span> <span class="nav-text">AFS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-21-Google-Case-Study"><span class="nav-number">12.</span> <span class="nav-text">Chapter 21 Google Case Study</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GFS"><span class="nav-number">12.1.</span> <span class="nav-text">GFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Requirements-of-Google-File-System-GFS"><span class="nav-number">12.1.1.</span> <span class="nav-text">Requirements of Google File System (GFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Operation"><span class="nav-number">12.1.2.</span> <span class="nav-text">Read Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Operation"><span class="nav-number">12.1.3.</span> <span class="nav-text">Write Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce"><span class="nav-number">12.2.</span> <span class="nav-text">MapReduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-6-9-Indirect-Communication-and-Naming"><span class="nav-number">13.</span> <span class="nav-text">Chapter 6, 9 Indirect Communication and Naming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Indirect-Messaging"><span class="nav-number">13.1.</span> <span class="nav-text">Indirect Messaging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java’s-JMS-API"><span class="nav-number">13.2.</span> <span class="nav-text">Java’s JMS API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Point-to-point"><span class="nav-number">13.3.</span> <span class="nav-text">Point-to-point</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Publish-subscribe"><span class="nav-number">13.4.</span> <span class="nav-text">Publish subscribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JMS-Queues-and-topics"><span class="nav-number">13.5.</span> <span class="nav-text">JMS Queues and topics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JMS-message-types"><span class="nav-number">13.6.</span> <span class="nav-text">JMS message types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message-driven-beans"><span class="nav-number">13.7.</span> <span class="nav-text">Message driven beans</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-14-Time-and-Global-State"><span class="nav-number">14.</span> <span class="nav-text">Chapter 14 Time and Global State</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Internal-and-external-synchronization"><span class="nav-number">14.1.</span> <span class="nav-text">Internal and external synchronization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-network-time-protocol-NTP"><span class="nav-number">14.2.</span> <span class="nav-text">The network time protocol (NTP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-state-terminology"><span class="nav-number">14.3.</span> <span class="nav-text">Global state terminology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lamport-clocks"><span class="nav-number">14.4.</span> <span class="nav-text">Lamport clocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chandy-and-Lamport-Snapshot-Algorithm"><span class="nav-number">14.5.</span> <span class="nav-text">Chandy and Lamport Snapshot Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-16-17-Local-and-Distributed-Transactions"><span class="nav-number">15.</span> <span class="nav-text">Chapter 16, 17 Local and Distributed Transactions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-19-Mobile-and-ubiquitous-computing"><span class="nav-number">16.</span> <span class="nav-text">Chapter 19 Mobile and ubiquitous computing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab"><span class="nav-number">17.</span> <span class="nav-text">Lab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloudlets"><span class="nav-number">17.1.</span> <span class="nav-text">Cloudlets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-1-on-Coulouris-Chapter-1"><span class="nav-number">17.2.</span> <span class="nav-text">Quiz 1 on Coulouris Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-2-on-Coulouris-Chapter-2"><span class="nav-number">17.3.</span> <span class="nav-text">Quiz 2 on Coulouris Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-Networking-amp-Internetworking"><span class="nav-number">17.4.</span> <span class="nav-text">Chapter 3 - Networking & Internetworking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-4-On-Crypto"><span class="nav-number">17.5.</span> <span class="nav-text">Quiz 4 On Crypto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-6-on-Chapter-4"><span class="nav-number">17.6.</span> <span class="nav-text">Quiz 6 on Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-7-on-Chapter-5"><span class="nav-number">17.7.</span> <span class="nav-text">Quiz 7 on Chapter 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-10-on-Distributed-File-Systems-and-Map-Reduce"><span class="nav-number">17.8.</span> <span class="nav-text">Quiz 10 on Distributed File Systems and Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quiz-on-Web-Service-Design-Styles"><span class="nav-number">17.9.</span> <span class="nav-text">Quiz on Web Service Design Styles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transactions-quiz-for-flipped-class"><span class="nav-number">17.10.</span> <span class="nav-text">Transactions quiz for flipped class</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-introduction"><span class="nav-number">1.</span> <span class="nav-text"> Chapter 1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#characterization-of-distributed-systems"><span class="nav-number">1.1.</span> <span class="nav-text"> Characterization of distributed systems.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#four-styles-of-application-integration"><span class="nav-number">1.2.</span> <span class="nav-text"> Four styles of application integration.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronous-and-asynchronous-communication"><span class="nav-number">1.3.</span> <span class="nav-text"> Synchronous and asynchronous communication.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invocation-indirect-communication"><span class="nav-number">1.4.</span> <span class="nav-text"> Invocation, Indirect communication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#time-and-space-coupling"><span class="nav-number">1.5.</span> <span class="nav-text"> Time and space coupling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layered-architecture"><span class="nav-number">1.6.</span> <span class="nav-text"> Layered architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tiered-architecture"><span class="nav-number">1.7.</span> <span class="nav-text"> Tiered architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#software-engineering-principle-separation-of-concerns"><span class="nav-number">1.8.</span> <span class="nav-text"> Software engineering principle: Separation of concerns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#architectural-patterns-proxy-pattern-brokerage-pattern"><span class="nav-number">1.9.</span> <span class="nav-text"> Architectural patterns: Proxy pattern, brokerage pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#challenges-in-constructing-distributed-systems"><span class="nav-number">1.10.</span> <span class="nav-text"> Challenges in constructing distributed systems</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-system-models"><span class="nav-number">2.</span> <span class="nav-text"> Chapter 2 System Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#architectural-models"><span class="nav-number">2.1.</span> <span class="nav-text"> Architectural Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fundamentals-models"><span class="nav-number">2.2.</span> <span class="nav-text"> Fundamentals Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agreement-in-pepperland-pg-65"><span class="nav-number">2.3.</span> <span class="nav-text"> Agreement in Pepperland pg. 65</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#failure-detection-in-peperland-pg-69"><span class="nav-number">2.4.</span> <span class="nav-text"> Failure detection in Peperland pg. 69</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jee-servlets"><span class="nav-number">2.5.</span> <span class="nav-text"> JEE Servlets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-server-pages-jsp"><span class="nav-number">2.6.</span> <span class="nav-text"> Java Server Pages (JSP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-view-controller"><span class="nav-number">2.7.</span> <span class="nav-text"> Model View Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#www"><span class="nav-number">2.8.</span> <span class="nav-text"> WWW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-protocol"><span class="nav-number">2.9.</span> <span class="nav-text"> HTTP Protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">2.9.1.</span> <span class="nav-text"> HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">2.9.2.</span> <span class="nav-text"> HTTP Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-response"><span class="nav-number">2.9.3.</span> <span class="nav-text"> HTTP Response</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#safe-operations-idempotent-operations"><span class="nav-number">2.10.</span> <span class="nav-text"> Safe operations, Idempotent operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uris"><span class="nav-number">2.11.</span> <span class="nav-text"> URI’s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html"><span class="nav-number">2.12.</span> <span class="nav-text"> HTML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cloudlet-article-mobile-computing-the-next-decade"><span class="nav-number">3.</span> <span class="nav-text"> Cloudlet article “Mobile Computing the Next Decade”</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#protocol-layers"><span class="nav-number">3.1.</span> <span class="nav-text"> Protocol layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-application-protocols"><span class="nav-number">3.2.</span> <span class="nav-text"> Common Application Protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addressing"><span class="nav-number">3.3.</span> <span class="nav-text"> addressing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac"><span class="nav-number">3.3.1.</span> <span class="nav-text"> MAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#internet-protocol"><span class="nav-number">3.3.2.</span> <span class="nav-text"> Internet Protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip-addressing"><span class="nav-number">3.3.3.</span> <span class="nav-text"> IP Addressing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subnet-addressing"><span class="nav-number">3.3.4.</span> <span class="nav-text"> Subnet Addressing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ports-and-port-assignment"><span class="nav-number">3.3.5.</span> <span class="nav-text"> ports and port assignment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dhcp-arp-protocols"><span class="nav-number">3.4.</span> <span class="nav-text"> DHCP, ARP protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dhcp"><span class="nav-number">3.4.1.</span> <span class="nav-text"> DHCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#address-resolution-protocal-arp"><span class="nav-number">3.4.2.</span> <span class="nav-text"> Address Resolution Protocal ARP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datagrams"><span class="nav-number">3.5.</span> <span class="nav-text"> Datagrams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#routing"><span class="nav-number">3.6.</span> <span class="nav-text"> routing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rip-algorithm"><span class="nav-number">3.7.</span> <span class="nav-text"> RIP algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcp-and-udp-comparasion"><span class="nav-number">3.8.</span> <span class="nav-text"> TCP and UDP Comparasion</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-11-security-and-cryptography"><span class="nav-number">4.</span> <span class="nav-text"> Chapter 11 Security and Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rsa"><span class="nav-number">4.1.</span> <span class="nav-text"> RSA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cryptographic-protocols"><span class="nav-number">4.2.</span> <span class="nav-text"> Cryptographic protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cryptographic-notation"><span class="nav-number">4.3.</span> <span class="nav-text"> Cryptographic notation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-key-crypto"><span class="nav-number">4.4.</span> <span class="nav-text"> Symmetric key crypto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asymmetric-key-crypto"><span class="nav-number">4.5.</span> <span class="nav-text"> Asymmetric key crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition"><span class="nav-number">4.5.1.</span> <span class="nav-text"> Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-kinds-of-usage"><span class="nav-number">4.5.2.</span> <span class="nav-text"> Two kinds of Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#four-scenario"><span class="nav-number">4.6.</span> <span class="nav-text"> Four Scenario</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#programming-java-ssl-sockets"><span class="nav-number">4.7.</span> <span class="nav-text"> Programming Java SSL sockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#digital-signatures"><span class="nav-number">4.8.</span> <span class="nav-text"> Digital signatures</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-9-web-services"><span class="nav-number">5.</span> <span class="nav-text"> Chapter 9 Web Services</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web-service-design-patterns"><span class="nav-number">5.1.</span> <span class="nav-text"> Web service design patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-schemes-and-performance"><span class="nav-number">5.2.</span> <span class="nav-text"> Binary schemes and performance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coupling-in-space-and-time"><span class="nav-number">5.3.</span> <span class="nav-text"> Coupling in space and time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#separation-of-concerns-and-examples"><span class="nav-number">5.4.</span> <span class="nav-text"> Separation of concerns and examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jon-postels-law"><span class="nav-number">5.5.</span> <span class="nav-text"> Jon Postel’s Law</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#productivity-and-adaptability"><span class="nav-number">5.6.</span> <span class="nav-text"> Productivity and Adaptability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-service-design"><span class="nav-number">5.7.</span> <span class="nav-text"> Web service Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#odata"><span class="nav-number">5.8.</span> <span class="nav-text"> Odata</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-4-interprocess-communications"><span class="nav-number">6.</span> <span class="nav-text"> Chapter 4 Interprocess Communications</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#article-covering-the-end-to-end-argument"><span class="nav-number">7.</span> <span class="nav-text"> Article covering The End-To-End Argument</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android-and-mobile-devices"><span class="nav-number">8.</span> <span class="nav-text"> Android and Mobile Devices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-rise-of-mobile-platforms"><span class="nav-number">8.1.</span> <span class="nav-text"> The rise of mobile platforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#building-a-native-application"><span class="nav-number">8.2.</span> <span class="nav-text"> Building a native application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-architecture"><span class="nav-number">8.3.</span> <span class="nav-text"> Android architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-of-control"><span class="nav-number">8.4.</span> <span class="nav-text"> Flow of control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-ui-definition"><span class="nav-number">8.5.</span> <span class="nav-text"> Android UI definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-latency-and-asynctask"><span class="nav-number">8.6.</span> <span class="nav-text"> Network latency and AsyncTask</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-5-remote-method-invocation"><span class="nav-number">9.</span> <span class="nav-text"> Chapter 5 Remote Method Invocation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface-definition-language-idl"><span class="nav-number">9.1.</span> <span class="nav-text"> Interface Definition Language (IDL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goals-of-java-rmi"><span class="nav-number">9.2.</span> <span class="nav-text"> Goals of Java RMI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ejb-remote-and-local-interfaces"><span class="nav-number">9.3.</span> <span class="nav-text"> EJB remote and local interfaces</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-12-distributed-file-systems"><span class="nav-number">10.</span> <span class="nav-text"> Chapter 12 Distributed File Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs"><span class="nav-number">10.1.</span> <span class="nav-text"> NFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#afs"><span class="nav-number">10.2.</span> <span class="nav-text"> AFS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-21-google-case-study"><span class="nav-number">11.</span> <span class="nav-text"> Chapter 21 Google Case Study</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gfs"><span class="nav-number">11.1.</span> <span class="nav-text"> GFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requirements-of-google-file-system-gfs"><span class="nav-number">11.1.1.</span> <span class="nav-text"> Requirements of Google File System (GFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read-operation"><span class="nav-number">11.1.2.</span> <span class="nav-text"> Read Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write-operation"><span class="nav-number">11.1.3.</span> <span class="nav-text"> Write Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mapreduce"><span class="nav-number">11.2.</span> <span class="nav-text"> MapReduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-6-9-indirect-communication-and-naming"><span class="nav-number">12.</span> <span class="nav-text"> Chapter 6, 9 Indirect Communication and Naming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#indirect-messaging"><span class="nav-number">12.1.</span> <span class="nav-text"> Indirect Messaging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javas-jms-api"><span class="nav-number">12.2.</span> <span class="nav-text"> Java’s JMS API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#point-to-point"><span class="nav-number">12.3.</span> <span class="nav-text"> Point-to-point</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#publish-subscribe"><span class="nav-number">12.4.</span> <span class="nav-text"> Publish subscribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jms-queues-and-topics"><span class="nav-number">12.5.</span> <span class="nav-text"> JMS Queues and topics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jms-message-types"><span class="nav-number">12.6.</span> <span class="nav-text"> JMS message types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-driven-beans"><span class="nav-number">12.7.</span> <span class="nav-text"> Message driven beans</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-14-time-and-global-state"><span class="nav-number">13.</span> <span class="nav-text"> Chapter 14 Time and Global State</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#internal-and-external-synchronization"><span class="nav-number">13.1.</span> <span class="nav-text"> Internal and external synchronization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-network-time-protocol-ntp"><span class="nav-number">13.2.</span> <span class="nav-text"> The network time protocol (NTP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#global-state-terminology"><span class="nav-number">13.3.</span> <span class="nav-text"> Global state terminology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lamport-clocks"><span class="nav-number">13.4.</span> <span class="nav-text"> Lamport clocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chandy-and-lamport-snapshot-algorithm"><span class="nav-number">13.5.</span> <span class="nav-text"> Chandy and Lamport Snapshot Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-16-17-local-and-distributed-transactions"><span class="nav-number">14.</span> <span class="nav-text"> Chapter 16, 17 Local and Distributed Transactions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-19-mobile-and-ubiquitous-computing"><span class="nav-number">15.</span> <span class="nav-text"> Chapter 19 Mobile and ubiquitous computing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab"><span class="nav-number">16.</span> <span class="nav-text"> Lab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cloudlets"><span class="nav-number">16.1.</span> <span class="nav-text"> Cloudlets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-1-on-coulouris-chapter-1"><span class="nav-number">16.2.</span> <span class="nav-text"> Quiz 1 on Coulouris Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-2-on-coulouris-chapter-2"><span class="nav-number">16.3.</span> <span class="nav-text"> Quiz 2 on Coulouris Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-3-networking-internetworking"><span class="nav-number">16.4.</span> <span class="nav-text"> Chapter 3 - Networking & Internetworking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-4-on-crypto"><span class="nav-number">16.5.</span> <span class="nav-text"> Quiz 4 On Crypto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-6-on-chapter-4"><span class="nav-number">16.6.</span> <span class="nav-text"> Quiz 6 on Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-7-on-chapter-5"><span class="nav-number">16.7.</span> <span class="nav-text"> Quiz 7 on Chapter 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-10-on-distributed-file-systems-and-map-reduce"><span class="nav-number">16.8.</span> <span class="nav-text"> Quiz 10 on Distributed File Systems and Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quiz-on-web-service-design-styles"><span class="nav-number">16.9.</span> <span class="nav-text"> Quiz on Web Service Design Styles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transactions-quiz-for-flipped-class"><span class="nav-number">16.10.</span> <span class="nav-text"> Transactions quiz for flipped class</span></a></li></ol></li></ol></div>
             
 
           </div>

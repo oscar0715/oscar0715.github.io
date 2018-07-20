@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Splay Tree">
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure Splay Tree">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU 15650 - Splay Tree">
 <meta property="og:url" content="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-splay-tree/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Splay Tree">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure Splay Tree">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-10-15T07:02:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 15650 - Splay Tree">
-<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Splay Tree">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure Splay Tree">
 
 
 
@@ -387,36 +387,48 @@
       
 
       
-        <p>CMU 15650 - Algorithm and Data Structure </p>
-<p>Splay Tree<br><a id="more"></a></p>
+        <p>CMU 15650 - Algorithm and Data Structure</p>
+<p>Splay Tree</p>
+<a id="more"></a>
 <hr>
-<h1 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h1><p>二叉查找树的原则就是，左子树的所有节点都比右子树要小。<br><a href="/ucb61b/lecture26-BalancedSearchTree/">Here is a link to Introduction of BST in UCB 61B</a></p>
+<h1 id="binary-search-tree"><a class="markdownIt-Anchor" href="#binary-search-tree"></a> Binary Search Tree</h1>
+<p>二叉查找树的原则就是，左子树的所有节点都比右子树要小。<br>
+<a href="/ucb61b/lecture26-BalancedSearchTree/">Here is a link to Introduction of BST in UCB 61B</a></p>
 <p>二叉查找树的缺点是不稳定。所以我们需要一个更加稳定的结构，</p>
-<h1 id="Splay-Tree"><a href="#Splay-Tree" class="headerlink" title="Splay Tree"></a>Splay Tree</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ol>
-<li>no extra storage requirement </li>
+<h1 id="splay-tree"><a class="markdownIt-Anchor" href="#splay-tree"></a> Splay Tree</h1>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<ol>
+<li>no extra storage requirement</li>
 <li>simple to implement</li>
-<li>Main idea: move frequently accessed items up in tree<ul>
+<li>Main idea: move frequently accessed items up in tree
+<ul>
 <li>主要的思想就是，把经常被access的项往上移动。</li>
 </ul>
 </li>
-<li>amortized $O(log n)$ performance <ul>
+<li>amortized <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> performance
+<ul>
 <li>摊销时间能够保证O(log n)</li>
 </ul>
 </li>
-<li>worst case single operation is $Ω(n)$<ul>
+<li>worst case single operation is Ω(n)
+<ul>
 <li>我们说的是摊销时间保证，但是对于单个操作，不一定。</li>
 </ul>
 </li>
 </ol>
-<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p><a href="/ucb61b/lecture34-SplayTrees/">Link to Introduction of Splay Trees in UCB 61B</a></p>
-<p><strong>splay(T, k)</strong>:<br>if $k ∈ T$, then move $k$ to the <em>root</em> using a particular set of transformations of the tree.<br>Otherwise, move either the inorder successor or predecessor of $k$ to the root.</p>
+<h2 id="operation"><a class="markdownIt-Anchor" href="#operation"></a> Operation</h2>
+<p><a href="/ucb61b/lecture34-SplayTrees/">Link to Introduction of Splay Trees in UCB 61B</a></p>
+<p><strong>splay(T, k)</strong>:<br>
+if k ∈ T, then move <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> to the <em>root</em> using a particular set of transformations of the tree.<br>
+Otherwise, move either the inorder successor or predecessor of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> to the root.</p>
 <p><strong>Amortized logarithmic cost</strong></p>
 <ol>
-<li>Self adjusting binary search trees。<ul>
+<li>Self adjusting binary search trees。
+<ul>
 <li>其实Splay操作就是不断地调整二叉查找树，让它变得平衡</li>
 </ul>
 </li>
-<li>Guarantee that any $m$ consecutive tree operations starting from an empty tree take $O(m log n)$ time, where $n$ is the maximum number of elements in tree at any time.</li>
+<li>Guarantee that any <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span> consecutive tree operations starting from an empty tree take <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> time, where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> is the maximum number of elements in tree at any time.</li>
 <li>Another way of saying this is that the average cost of an operation (averaged over all the operations) is O(log n)</li>
 <li>Call this amortized logarithmic cost. 摊销时间是对数阶的</li>
 </ol>
@@ -426,10 +438,11 @@
 <li>Splay is implemented by doing a standard BST “find” and then applying particular rotations <em>walking back up toward the root</em>. Splay操作呢，先要找到这个node，然后把它想办法已到root</li>
 <li>Splay may actually make the tree worse, but over a series of operations the tree always gets better。有可能在某一次Splay操作以后，会看起来更加不平衡，但是在多次操作以后，肯定平衡起来。</li>
 </ol>
-<h2 id="Amortized-Analysis"><a href="#Amortized-Analysis" class="headerlink" title="Amortized Analysis"></a>Amortized Analysis</h2><p>Concept：</p>
+<h2 id="amortized-analysis"><a class="markdownIt-Anchor" href="#amortized-analysis"></a> Amortized Analysis</h2>
+<p>Concept：</p>
 <ol>
 <li>Some operations will be costly, some will be cheap</li>
-<li>$n$ general, when a sequence of $m$ operations has a total worst-case running time $O(m f(n))$, we say the amortized running time of each operation is $O(f(n))$</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> general, when a sequence of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span> operations has a total worst-case running time <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m f(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>, we say the amortized running time of each operation is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(f(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></li>
 </ol>
 
       
@@ -563,7 +576,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +598,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -620,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-Search-Tree"><span class="nav-number">1.</span> <span class="nav-text">Binary Search Tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Splay-Tree"><span class="nav-number">2.</span> <span class="nav-text">Splay Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.2.</span> <span class="nav-text">Operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amortized-Analysis"><span class="nav-number">2.3.</span> <span class="nav-text">Amortized Analysis</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search-tree"><span class="nav-number">1.</span> <span class="nav-text"> Binary Search Tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree"><span class="nav-number">2.</span> <span class="nav-text"> Splay Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">2.1.</span> <span class="nav-text"> Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operation"><span class="nav-number">2.2.</span> <span class="nav-text"> Operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amortized-analysis"><span class="nav-number">2.3.</span> <span class="nav-text"> Amortized Analysis</span></a></li></ol></li></ol></div>
             
 
           </div>

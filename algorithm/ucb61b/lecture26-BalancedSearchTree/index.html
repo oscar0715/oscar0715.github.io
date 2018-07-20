@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="Lecture26 Balanced Search Tree 参考:浅谈算法和数据结构: 八 平衡查找树之2-3树">
+<meta name="description" content="Lecture26 Balanced Search Tree 参考: 浅谈算法和数据结构: 八 平衡查找树之2-3树">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lecture26 Balanced Search Tree">
 <meta property="og:url" content="http://menuet.xyz/algorithm/ucb61b/lecture26-BalancedSearchTree/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Lecture26 Balanced Search Tree 参考:浅谈算法和数据结构: 八 平衡查找树之2-3树">
+<meta property="og:description" content="Lecture26 Balanced Search Tree 参考: 浅谈算法和数据结构: 八 平衡查找树之2-3树">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/23tree.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/find.png">
@@ -112,7 +112,7 @@
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lecture26 Balanced Search Tree">
-<meta name="twitter:description" content="Lecture26 Balanced Search Tree 参考:浅谈算法和数据结构: 八 平衡查找树之2-3树">
+<meta name="twitter:description" content="Lecture26 Balanced Search Tree 参考: 浅谈算法和数据结构: 八 平衡查找树之2-3树">
 <meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/23tree.png">
 
 
@@ -396,42 +396,62 @@
 
       
         <p>Lecture26 Balanced Search Tree</p>
-<p><strong>参考:</strong><br><a href="http://www.cnblogs.com/yangecnu/p/Introduce-2-3-Search-Tree.html" title="浅谈算法和数据结构: 八 平衡查找树之2-3树" target="_blank" rel="external">浅谈算法和数据结构: 八 平衡查找树之2-3树</a></p>
+<p><strong>参考:</strong></p>
+<a href="http://www.cnblogs.com/yangecnu/p/Introduce-2-3-Search-Tree.html" title="浅谈算法和数据结构: 八 平衡查找树之2-3树" target="_blank" rel="external">浅谈算法和数据结构: 八 平衡查找树之2-3树</a>
 <a id="more"></a>
 <hr>
-<h3 id="Two-Three-Four-Trees"><a href="#Two-Three-Four-Trees" class="headerlink" title="Two-Three-Four Trees"></a>Two-Three-Four Trees</h3><p>Pferfectly balanced tree</p>
+<h3 id="two-three-four-trees"><a class="markdownIt-Anchor" href="#two-three-four-trees"></a> Two-Three-Four Trees</h3>
+<p>Pferfectly balanced tree</p>
 <ol>
 <li>find, insert, remove, all in worst-case O(log n) time</li>
 <li>Every node has 2, 3 or 4 children （除了叶子节点）</li>
-<li>Every node stores 1, 2 or 3 entries </li>
+<li>Every node stores 1, 2 or 3 entries</li>
 <li>numbers of children is entries + 1 or Zero</li>
 </ol>
 <p><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/23tree.png" alt=""><br></p>
 <p>二叉查找树的拓展版本</p>
-<h3 id="Object-find-Object-k"><a href="#Object-find-Object-k" class="headerlink" title="Object find( Object k );"></a>Object find( Object k );</h3><p>图中是个2，3数，最多只能有3个children，然后最多2个entries<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/find.png" alt=""><br></p>
-<h3 id="void-insert-Object-k"><a href="#void-insert-Object-k" class="headerlink" title="void insert( Object k );"></a>void insert( Object k );</h3><ol>
-<li><p>如果插入的地方，entries个数不满<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert1.png" alt=""><br></p>
+<h3 id="object-find-object-k"><a class="markdownIt-Anchor" href="#object-find-object-k"></a> Object find( Object k );</h3>
+<p>图中是个2，3数，最多只能有3个children，然后最多2个entries<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/find.png" alt=""><br></p>
+<h3 id="void-insert-object-k"><a class="markdownIt-Anchor" href="#void-insert-object-k"></a> void insert( Object k );</h3>
+<ol>
+<li>
+<p>如果插入的地方，entries个数不满<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert1.png" alt=""><br></p>
 </li>
-<li><p>如果满了 （这个例子还是2，3树）<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert2.png" alt=""><br></p>
+<li>
+<p>如果满了 （这个例子还是2，3树）<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert2.png" alt=""><br></p>
 </li>
-<li><p>如果这个节点满了，父节点没满<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert3.png" alt=""><br></p>
+<li>
+<p>如果这个节点满了，父节点没满<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert3.png" alt=""><br></p>
 </li>
-<li><p>如果这个节点满了，父节点也满了<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert4.png" alt=""><br></p>
+<li>
+<p>如果这个节点满了，父节点也满了<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/insert4.png" alt=""><br></p>
 </li>
 </ol>
 <p>反正一直往上拆</p>
-<h3 id="remove（Object-k）"><a href="#remove（Object-k）" class="headerlink" title="remove（Object k）"></a>remove（Object k）</h3><ol>
+<h3 id="removeobject-k"><a class="markdownIt-Anchor" href="#removeobject-k"></a> remove（Object k）</h3>
+<ol start="0">
 <li>Find Key k</li>
 <li>如果是叶节点，直接remove</li>
 <li>如果是在中间的节点，那么用下一个key最大的替换它</li>
 </ol>
-<p>在插入的时候我们碰到的问题是一个node里的entry数满了，怎么办<br>remove遇到的问题相反，如果一个node里的entry数为零了，怎么办<br>（想办法把它弄到leaf节点里？？？</p>
+<p>在插入的时候我们碰到的问题是一个node里的entry数满了，怎么办<br>
+remove遇到的问题相反，如果一个node里的entry数为零了，怎么办<br>
+（想办法把它弄到leaf节点里？？？</p>
 <ol>
-<li>remove() 1-key node<br>从sibling节点里偷一个节点过来，操作是当，父节点，sibling节点中的entry转一个圈，然后父节点的一个entry就到当前节点了，父节点entry数不变，sibling节点entry少了一个，当前节点则多了一个，然后就可以愉快地remove了</li>
-<li>如果sibling节点也只有1个entry<br>从父节点偷一个过来entry过来，这样导致的结果就是，sibling里的那一个entry也会跟到当前节点来。sibling就毁灭掉了。两个子节点合并在了一起（fusion operation）</li>
-<li>如果父节点和sibling节点都只一个entry<br>那就把这三个都fusion在一起，然后这是唯一的一种数的深度降低的情况</li>
+<li>remove() 1-key node<br>
+从sibling节点里偷一个节点过来，操作是当，父节点，sibling节点中的entry转一个圈，然后父节点的一个entry就到当前节点了，父节点entry数不变，sibling节点entry少了一个，当前节点则多了一个，然后就可以愉快地remove了</li>
+<li>如果sibling节点也只有1个entry<br>
+从父节点偷一个过来entry过来，这样导致的结果就是，sibling里的那一个entry也会跟到当前节点来。sibling就毁灭掉了。两个子节点合并在了一起（fusion operation）</li>
+<li>如果父节点和sibling节点都只一个entry<br>
+那就把这三个都fusion在一起，然后这是唯一的一种数的深度降低的情况</li>
 </ol>
-<p>栗子<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/remove.jpg" alt=""></p>
+<p>栗子<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture26-BalancedSearchTree/remove.jpg" alt=""></p>
 <hr>
 
       
@@ -565,7 +585,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -587,7 +607,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -622,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-Three-Four-Trees"><span class="nav-number">1.</span> <span class="nav-text">Two-Three-Four Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-find-Object-k"><span class="nav-number">2.</span> <span class="nav-text">Object find( Object k );</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#void-insert-Object-k"><span class="nav-number">3.</span> <span class="nav-text">void insert( Object k );</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove（Object-k）"><span class="nav-number">4.</span> <span class="nav-text">remove（Object k）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#two-three-four-trees"><span class="nav-number">1.</span> <span class="nav-text"> Two-Three-Four Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#object-find-object-k"><span class="nav-number">2.</span> <span class="nav-text"> Object find( Object k );</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#void-insert-object-k"><span class="nav-number">3.</span> <span class="nav-text"> void insert( Object k );</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#removeobject-k"><span class="nav-number">4.</span> <span class="nav-text"> remove（Object k）</span></a></li></ol></div>
             
 
           </div>

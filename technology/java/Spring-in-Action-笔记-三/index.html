@@ -388,39 +388,63 @@
 
       
         <p>如题，阅读《Spring_in_Action》的笔记</p>
-<p>(三)Aspect-oriented Spring<br><a id="more"></a></p>
+<p>(三)Aspect-oriented Spring</p>
+<a id="more"></a>
 <hr>
-<h3 id="What-is-AOP"><a href="#What-is-AOP" class="headerlink" title="What is AOP"></a>What is AOP</h3><p>As stated earlier, aspects help to modularize cross-cutting concerns. </p>
-<p>In short, a cross- cutting concern can be described as any functionality that affects multiple points of an application. </p>
-<p>With AOP, you define the common functionality in one<br>place, but you can declaratively define how and where this functionality is applied without having to modify the class to which you’re applying the new feature. Cross- cutting concerns can now be modularized into special classes called aspects. </p>
-<p>This has two benefits. </p>
+<h3 id="what-is-aop"><a class="markdownIt-Anchor" href="#what-is-aop"></a> What is AOP</h3>
+<p>As stated earlier, aspects help to modularize cross-cutting concerns.</p>
+<p>In short, a cross- cutting concern can be described as any functionality that affects multiple points of an application.</p>
+<p>With AOP, you define the common functionality in one<br>
+place, but you can declaratively define how and where this functionality is applied without having to modify the class to which you’re applying the new feature. Cross- cutting concerns can now be modularized into special classes called aspects.</p>
+<p>This has two benefits.</p>
 <ul>
-<li>First, the logic for each concern is in one place, as opposed to being scat- tered all over the code base. </li>
+<li>First, the logic for each concern is in one place, as opposed to being scat- tered all over the code base.</li>
 <li>Second, your service modules are cleaner because they only contain code for their primary concern (or core functionality), and secondary concerns have been moved to aspects.</li>
 </ul>
-<h3 id="AOP-Terminology"><a href="#AOP-Terminology" class="headerlink" title="AOP Terminology"></a>AOP Terminology</h3><ol>
-<li><p>Advice<br>Aspects have a purpose—a job they’re meant to do. In AOP terms, the job of an aspect is called advice.</p>
+<h3 id="aop-terminology"><a class="markdownIt-Anchor" href="#aop-terminology"></a> AOP Terminology</h3>
+<ol>
+<li>
+<p>Advice<br>
+Aspects have a purpose—a job they’re meant to do. In AOP terms, the job of an aspect is called advice.</p>
 </li>
-<li><p>Join Points<br>A join point is a point in the execution of the application where an aspect can be plugged in.<br>This point could be a method being called, an exception being thrown, or even a field being modified.<br>These are the points where your aspect’s code can be inserted into the normal flow of your application to add new behavior.</p>
+<li>
+<p>Join Points<br>
+A join point is a point in the execution of the application where an aspect can be plugged in.<br>
+This point could be a method being called, an exception being thrown, or even a field being modified.<br>
+These are the points where your aspect’s code can be inserted into the normal flow of your application to add new behavior.</p>
 </li>
-<li><p>Pointcuts<br>If advice defines the what and when of aspects, then pointcuts define the where. A pointcut definition matches one or more join points at which advice should be woven.</p>
+<li>
+<p>Pointcuts<br>
+If advice defines the what and when of aspects, then pointcuts define the where. A pointcut definition matches one or more join points at which advice should be woven.</p>
 </li>
-<li><p>Aspects<br>An aspect is the merger of advice and pointcuts. Taken together, advice and point- cuts define everything there is to know about an aspect—what it does and where and when it does it.</p>
+<li>
+<p>Aspects<br>
+An aspect is the merger of advice and pointcuts. Taken together, advice and point- cuts define everything there is to know about an aspect—what it does and where and when it does it.</p>
 </li>
-<li><p>Introductions<br>An introduction allows you to add new methods or attributes to existing classes.</p>
+<li>
+<p>Introductions<br>
+An introduction allows you to add new methods or attributes to existing classes.</p>
 </li>
-<li><p>Weaving<br>Weaving is the process of applying aspects to a target object to create a new proxied object.</p>
+<li>
+<p>Weaving<br>
+Weaving is the process of applying aspects to a target object to create a new proxied object.</p>
 </li>
 </ol>
-<h3 id="Spring’s-AOP-support"><a href="#Spring’s-AOP-support" class="headerlink" title="Spring’s AOP support"></a>Spring’s AOP support</h3><p>The ability to create pointcuts that define the join points at which aspects should be woven is what makes it an AOP framework. </p>
-<h4 id="SPRING-ADVICE-IS-WRITTEN-IN-JAVA"><a href="#SPRING-ADVICE-IS-WRITTEN-IN-JAVA" class="headerlink" title="SPRING ADVICE IS WRITTEN IN JAVA"></a>SPRING ADVICE IS WRITTEN IN JAVA</h4><p>All the advice you create in Spring is written in a standard Java class. </p>
+<h3 id="springs-aop-support"><a class="markdownIt-Anchor" href="#springs-aop-support"></a> Spring’s AOP support</h3>
+<p>The ability to create pointcuts that define the join points at which aspects should be woven is what makes it an AOP framework.</p>
+<h4 id="spring-advice-is-written-in-java"><a class="markdownIt-Anchor" href="#spring-advice-is-written-in-java"></a> SPRING ADVICE IS WRITTEN IN JAVA</h4>
+<p>All the advice you create in Spring is written in a standard Java class.</p>
 <p>The pointcuts that define where advice should be applied may be specified with annotations or configured in a Spring XML configuration.</p>
-<h4 id="SPRING-ADVISES-OBJECTS-AT-RUNTIME"><a href="#SPRING-ADVISES-OBJECTS-AT-RUNTIME" class="headerlink" title="SPRING ADVISES OBJECTS AT RUNTIME"></a>SPRING ADVISES OBJECTS AT RUNTIME</h4><p>In Spring, aspects are woven into Spring-managed beans at runtime by wrapping them with a proxy class. </p>
-<p>Spring doesn’t create a proxied object until that proxied bean is needed by the application. </p>
-<p>If you’re using an ApplicationContext, the proxied objects will be cre- ated when it loads all the beans from the BeanFactory. </p>
-<h4 id="SPRING-ONLY-SUPPORTS-METHOD-JOIN-POINTS"><a href="#SPRING-ONLY-SUPPORTS-METHOD-JOIN-POINTS" class="headerlink" title="SPRING ONLY SUPPORTS METHOD JOIN POINTS"></a>SPRING ONLY SUPPORTS METHOD JOIN POINTS</h4><p>Because it’s based on dynamic proxies, Spring only supports method join points. </p>
+<h4 id="spring-advises-objects-at-runtime"><a class="markdownIt-Anchor" href="#spring-advises-objects-at-runtime"></a> SPRING ADVISES OBJECTS AT RUNTIME</h4>
+<p>In Spring, aspects are woven into Spring-managed beans at runtime by wrapping them with a proxy class.</p>
+<p>Spring doesn’t create a proxied object until that proxied bean is needed by the application.</p>
+<p>If you’re using an ApplicationContext, the proxied objects will be cre- ated when it loads all the beans from the BeanFactory.</p>
+<h4 id="spring-only-supports-method-join-points"><a class="markdownIt-Anchor" href="#spring-only-supports-method-join-points"></a> SPRING ONLY SUPPORTS METHOD JOIN POINTS</h4>
+<p>Because it’s based on dynamic proxies, Spring only supports method join points.</p>
 <p>Spring’s lack of field pointcuts prevents you from creating very fine-grained advice, such as intercepting updates to an object’s field. And without constructor pointcuts, there’s no way to apply advice when a bean is instantiated.</p>
-<h3 id="Selecting-join-points-with-pointcuts"><a href="#Selecting-join-points-with-pointcuts" class="headerlink" title="Selecting join points with pointcuts"></a>Selecting join points with pointcuts</h3><h4 id="Annotating-introductions"><a href="#Annotating-introductions" class="headerlink" title="Annotating introductions"></a>Annotating introductions</h4><p>Using an AOP concept known as introduction, aspects can attach new methods to Spring beans.</p>
+<h3 id="selecting-join-points-with-pointcuts"><a class="markdownIt-Anchor" href="#selecting-join-points-with-pointcuts"></a> Selecting join points with pointcuts</h3>
+<h4 id="annotating-introductions"><a class="markdownIt-Anchor" href="#annotating-introductions"></a> Annotating introductions</h4>
+<p>Using an AOP concept known as introduction, aspects can attach new methods to Spring beans.</p>
 <pre><code>此处报了一个错
 Maven: Failed to read artifact descriptor
 解决：
@@ -433,14 +457,17 @@ public class EncoreableIntroducer {
                   defaultImpl=DefaultEncoreable.class)
   public static Encoreable encoreable;
 }
-</code></pre><p>The @DeclareParents annotation is made up of three parts:</p>
+</code></pre>
+<p>The @DeclareParents annotation is made up of three parts:</p>
 <ol>
 <li>The value attribute identifies the kinds of beans that should be introduced with the interface. In this case, that’s anything that implements the Performance interface. (The plus sign at the end specifies any subtype of Performance, as opposed to Performance itself.)</li>
 <li>The defaultImpl attribute identifies the class that will provide the implemen- tation for the introduction. Here you’re saying that DefaultEncoreable will provide that implementation.</li>
 <li>The static property that is annotated by @DeclareParents specifies the inter- face that’s to be introduced. In this case, you’re introducing the Encoreable interface.</li>
 </ol>
-<h3 id="Declaring-aspects-in-XML"><a href="#Declaring-aspects-in-XML" class="headerlink" title="Declaring aspects in XML"></a>Declaring aspects in XML</h3><p>XML略过不看了</p>
-<h3 id="Injecting-AspectJ-aspects"><a href="#Injecting-AspectJ-aspects" class="headerlink" title="Injecting AspectJ aspects"></a>Injecting AspectJ aspects</h3><p>Spring 不够就用 AspectJ</p>
+<h3 id="declaring-aspects-in-xml"><a class="markdownIt-Anchor" href="#declaring-aspects-in-xml"></a> Declaring aspects in XML</h3>
+<p>XML略过不看了</p>
+<h3 id="injecting-aspectj-aspects"><a class="markdownIt-Anchor" href="#injecting-aspectj-aspects"></a> Injecting AspectJ aspects</h3>
+<p>Spring 不够就用 AspectJ</p>
 
       
     </div>
@@ -577,7 +604,7 @@ public class EncoreableIntroducer {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -599,7 +626,7 @@ public class EncoreableIntroducer {
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -634,7 +661,7 @@ public class EncoreableIntroducer {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-AOP"><span class="nav-number">1.</span> <span class="nav-text">What is AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP-Terminology"><span class="nav-number">2.</span> <span class="nav-text">AOP Terminology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring’s-AOP-support"><span class="nav-number">3.</span> <span class="nav-text">Spring’s AOP support</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SPRING-ADVICE-IS-WRITTEN-IN-JAVA"><span class="nav-number">3.1.</span> <span class="nav-text">SPRING ADVICE IS WRITTEN IN JAVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPRING-ADVISES-OBJECTS-AT-RUNTIME"><span class="nav-number">3.2.</span> <span class="nav-text">SPRING ADVISES OBJECTS AT RUNTIME</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPRING-ONLY-SUPPORTS-METHOD-JOIN-POINTS"><span class="nav-number">3.3.</span> <span class="nav-text">SPRING ONLY SUPPORTS METHOD JOIN POINTS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selecting-join-points-with-pointcuts"><span class="nav-number">4.</span> <span class="nav-text">Selecting join points with pointcuts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Annotating-introductions"><span class="nav-number">4.1.</span> <span class="nav-text">Annotating introductions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Declaring-aspects-in-XML"><span class="nav-number">5.</span> <span class="nav-text">Declaring aspects in XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Injecting-AspectJ-aspects"><span class="nav-number">6.</span> <span class="nav-text">Injecting AspectJ aspects</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-aop"><span class="nav-number">1.</span> <span class="nav-text"> What is AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#aop-terminology"><span class="nav-number">2.</span> <span class="nav-text"> AOP Terminology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springs-aop-support"><span class="nav-number">3.</span> <span class="nav-text"> Spring’s AOP support</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-advice-is-written-in-java"><span class="nav-number">3.1.</span> <span class="nav-text"> SPRING ADVICE IS WRITTEN IN JAVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-advises-objects-at-runtime"><span class="nav-number">3.2.</span> <span class="nav-text"> SPRING ADVISES OBJECTS AT RUNTIME</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-only-supports-method-join-points"><span class="nav-number">3.3.</span> <span class="nav-text"> SPRING ONLY SUPPORTS METHOD JOIN POINTS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selecting-join-points-with-pointcuts"><span class="nav-number">4.</span> <span class="nav-text"> Selecting join points with pointcuts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#annotating-introductions"><span class="nav-number">4.1.</span> <span class="nav-text"> Annotating introductions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#declaring-aspects-in-xml"><span class="nav-number">5.</span> <span class="nav-text"> Declaring aspects in XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#injecting-aspectj-aspects"><span class="nav-number">6.</span> <span class="nav-text"> Injecting AspectJ aspects</span></a></li></ol></div>
             
 
           </div>

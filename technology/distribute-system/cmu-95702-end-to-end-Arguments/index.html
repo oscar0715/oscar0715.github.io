@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design分布式系统下端到端的系统设计原则这是老师上课让我们看的一篇论文">
+<meta name="description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design 分布式系统下端到端的系统设计原则 这是老师上课让我们看的一篇论文">
 <meta name="keywords" content="Distribution-System">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU 95702 - End to End Arguments in System Design">
 <meta property="og:url" content="http://menuet.xyz/technology/distribute-system/cmu-95702-end-to-end-Arguments/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design分布式系统下端到端的系统设计原则这是老师上课让我们看的一篇论文">
+<meta property="og:description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design 分布式系统下端到端的系统设计原则 这是老师上课让我们看的一篇论文">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://webcms3.cse.unsw.edu.au/static/uploads/pic/z3116703/c80a6729e4b0f7ad17782c5ac32461ebb32110f1b5d07b494579f705eb26d5f5/step_by_step_reliability.png">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 95702 - End to End Arguments in System Design">
-<meta name="twitter:description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design分布式系统下端到端的系统设计原则这是老师上课让我们看的一篇论文">
+<meta name="twitter:description" content="CMU 95702 - End to End Arguments in System Design End to End Arguments in System Design 分布式系统下端到端的系统设计原则 这是老师上课让我们看的一篇论文">
 <meta name="twitter:image" content="https://webcms3.cse.unsw.edu.au/static/uploads/pic/z3116703/c80a6729e4b0f7ad17782c5ac32461ebb32110f1b5d07b494579f705eb26d5f5/step_by_step_reliability.png">
 
 
@@ -390,20 +390,28 @@
 
       
         <p>CMU 95702 - End to End Arguments in System Design</p>
-<p>End to End Arguments in System Design<br>分布式系统下端到端的系统设计原则<br>这是老师上课让我们看的一篇论文<br><a id="more"></a></p>
+<p>End to End Arguments in System Design<br>
+分布式系统下端到端的系统设计原则<br>
+这是老师上课让我们看的一篇论文</p>
+<a id="more"></a>
 <hr>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>这篇文章主要讲的就是在分布式系统中的各个模块的功能要怎么实现。</p>
+<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
+<p>这篇文章主要讲的就是在分布式系统中的各个模块的功能要怎么实现。</p>
 <p>两个方向：</p>
 <ol>
 <li>利用底层网络实现</li>
 <li>利用高层网络实现，</li>
 </ol>
-<p>作者从位错误恢复、安全加密、重复消息限制、系统崩溃、确认机制等进行比较，得出进行端到端系统设计的优越性。即网络设计应当尽量简单化，可以将一部分功能赋予<strong>高层网络</strong>进行实现，反而能得到更大的效率。 </p>
-<h1 id="端到端系统文件传输过程"><a href="#端到端系统文件传输过程" class="headerlink" title="端到端系统文件传输过程"></a>端到端系统文件传输过程</h1><p>放一张简陋的图：<br><img src="https://webcms3.cse.unsw.edu.au/static/uploads/pic/z3116703/c80a6729e4b0f7ad17782c5ac32461ebb32110f1b5d07b494579f705eb26d5f5/step_by_step_reliability.png" alt="文件传输过程" title="文件传输过程"></p>
-<p>要从主机A传输文件到主机B，在很多节点都可以发生错误。<br>作者假设有这些步骤：</p>
+<p>作者从位错误恢复、安全加密、重复消息限制、系统崩溃、确认机制等进行比较，得出进行端到端系统设计的优越性。即网络设计应当尽量简单化，可以将一部分功能赋予<strong>高层网络</strong>进行实现，反而能得到更大的效率。</p>
+<h1 id="端到端系统文件传输过程"><a class="markdownIt-Anchor" href="#端到端系统文件传输过程"></a> 端到端系统文件传输过程</h1>
+<p>放一张简陋的图：<br>
+<img src="https://webcms3.cse.unsw.edu.au/static/uploads/pic/z3116703/c80a6729e4b0f7ad17782c5ac32461ebb32110f1b5d07b494579f705eb26d5f5/step_by_step_reliability.png" alt="文件传输过程" title="文件传输过程"></p>
+<p>要从主机A传输文件到主机B，在很多节点都可以发生错误。<br>
+作者假设有这些步骤：</p>
 <ol>
 <li>主机A的文件系统（file system）中从disk中读取文件，这个文件可能在很多个tracks上，然后文件系统把这个文件传到文件传输系统（file communication system）中。在文件传输系统中的这个文件被分成大小相同的很多个块(block)</li>
-<li>同样在主机A中的，文件传输系统请求数据传输系统（data communication system）利用一些通信协议（communication protocol）传输文件。这些协议涉及到，把文件拆分成包（packets），这些包的大小和文件传输系统的中的块的大小通常是不一样的。<br>PS：我觉得file communication system负责主机内部的文件传输，而Data communication system负责主机间的数据传输</li>
+<li>同样在主机A中的，文件传输系统请求数据传输系统（data communication system）利用一些通信协议（communication protocol）传输文件。这些协议涉及到，把文件拆分成包（packets），这些包的大小和文件传输系统的中的块的大小通常是不一样的。<br>
+PS：我觉得file communication system负责主机内部的文件传输，而Data communication system负责主机间的数据传输</li>
 <li>数据传输系统把文件从主机A传到主机B</li>
 <li>在主机B，数据传输系统把文件的内容从包里面取出来，然后递交给主机B的文件传输系统。</li>
 <li>主机B的文件传输系统再请求文件系统把文件写到disk上</li>
@@ -413,20 +421,29 @@
 <li>主机A中从disk读数据读错了怎么办，磁盘坏道怎么办</li>
 <li>文件传输系统或者数据传输系统出错了怎么办</li>
 <li>传输数据的时候掉包了怎么办，或者包出错了怎么办</li>
-<li>数据在传输途中，主机挂掉了怎么办<br>总之每个节点都有可能出错嘛</li>
+<li>数据在传输途中，主机挂掉了怎么办<br>
+总之每个节点都有可能出错嘛</li>
 </ol>
-<p>作者讨论了当前技术条件下解决文件传输错误的几种途径：<br>1、进行多次的文件复制，通过多次的简单传输保证数据写入的正确性；<br>2、端到端的数据确认和请求重传<br>主机B的计算校验和发回到主机A，校验通过，通信方能完成。如果不通过，那就重新传输。<br>3、进行错误检测，宕机恢复等措施。</p>
+<p>作者讨论了当前技术条件下解决文件传输错误的几种途径：<br>
+1、进行多次的文件复制，通过多次的简单传输保证数据写入的正确性；<br>
+2、端到端的数据确认和请求重传<br>
+主机B的计算校验和发回到主机A，校验通过，通信方能完成。如果不通过，那就重新传输。<br>
+3、进行错误检测，宕机恢复等措施。</p>
 <p>总之代价太大了：我们无法保证写出这么完美的程序，也没有办法用这么大的代价去保证一个可靠的系统。而且就算底层的通信系统是可信的，应用层还是需要做校验的，所以负担并没有减轻。（哪怕进入到host B 以后文件传输也有可能出各种错）</p>
-<p>不过也不是说底层不需要保证可靠性。如果底层没有措施，性能必然很差。<br>中心思想是：<strong>底层不需要在可靠性上做到完美</strong></p>
+<p>不过也不是说底层不需要保证可靠性。如果底层没有措施，性能必然很差。<br>
+中心思想是：<strong>底层不需要在可靠性上做到完美</strong></p>
 <p>底层包办措施有两点不好的地方</p>
 <ol>
 <li>有些应用不需要完善的机制来保证可靠性，但是底层也做了，增加了额外负担</li>
 <li>底层的信息没有高层来的多，操作起来效率低</li>
 </ol>
 <p>所以目标就变了，底层可靠性的改进的目的是为了提升性能。这里就是trade off</p>
-<h1 id="一些其他的端到端原则"><a href="#一些其他的端到端原则" class="headerlink" title="一些其他的端到端原则"></a>一些其他的端到端原则</h1><h2 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h2><p>数据传输系统（data communication system）可以在把数据传到主机B的时候，给主机A发一个Acknowledge，说我送到了。但是有时候数据传输到主机B并没有什么卵用，用户关心的是，主机B有没有正确收到消息，并作出正确的执行。</p>
+<h1 id="一些其他的端到端原则"><a class="markdownIt-Anchor" href="#一些其他的端到端原则"></a> 一些其他的端到端原则</h1>
+<h2 id="数据传输"><a class="markdownIt-Anchor" href="#数据传输"></a> 数据传输</h2>
+<p>数据传输系统（data communication system）可以在把数据传到主机B的时候，给主机A发一个Acknowledge，说我送到了。但是有时候数据传输到主机B并没有什么卵用，用户关心的是，主机B有没有正确收到消息，并作出正确的执行。</p>
 <p>所以应用层的end-to-end acknowledge才是最重要的</p>
-<h2 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h2><p>如果底层的数据传输系统来做数据加密的话</p>
+<h2 id="数据安全"><a class="markdownIt-Anchor" href="#数据安全"></a> 数据安全</h2>
+<p>如果底层的数据传输系统来做数据加密的话</p>
 <ol>
 <li>怎么保证密钥的正确性</li>
 <li>数据到主机B以后，到达application之前，是明文，万一被别的application读去了怎么办</li>
@@ -434,9 +451,13 @@
 </ol>
 <p>所以还不如在application层做数据加密。</p>
 <p>不过底层多加一层加密也是有好处，万一数据不小心被泄露了，也能多加一层防火墙</p>
-<h2 id="重复数据"><a href="#重复数据" class="headerlink" title="重复数据"></a>重复数据</h2><p>底层的数据传输系统做重复消息筛选的话，可以用于筛选那些因为timeout重新发送的消息，但是万一在主机A的应用层不小心（或者因为别的原因）生成了重复的消息，这些重复消息对于底层来说就是不同的包，所以没法筛选。所以应用层还是逃不掉要做一次筛选。</p>
-<h2 id="消息的顺序"><a href="#消息的顺序" class="headerlink" title="消息的顺序"></a>消息的顺序</h2><p>在先进先出的信息传输机制中，信息的序列可能被打乱，高层则可以重组信息序列</p>
-<h1 id="确认应用需求"><a href="#确认应用需求" class="headerlink" title="确认应用需求"></a>确认应用需求</h1><p>当然应用上述原则的时候还是要好好确认需求。<br>例如voice packets，对掉包比较包容，不需要因为retry而造成的延迟。</p>
+<h2 id="重复数据"><a class="markdownIt-Anchor" href="#重复数据"></a> 重复数据</h2>
+<p>底层的数据传输系统做重复消息筛选的话，可以用于筛选那些因为timeout重新发送的消息，但是万一在主机A的应用层不小心（或者因为别的原因）生成了重复的消息，这些重复消息对于底层来说就是不同的包，所以没法筛选。所以应用层还是逃不掉要做一次筛选。</p>
+<h2 id="消息的顺序"><a class="markdownIt-Anchor" href="#消息的顺序"></a> 消息的顺序</h2>
+<p>在先进先出的信息传输机制中，信息的序列可能被打乱，高层则可以重组信息序列</p>
+<h1 id="确认应用需求"><a class="markdownIt-Anchor" href="#确认应用需求"></a> 确认应用需求</h1>
+<p>当然应用上述原则的时候还是要好好确认需求。<br>
+例如voice packets，对掉包比较包容，不需要因为retry而造成的延迟。</p>
 <hr>
 <p>Over！</p>
 
@@ -571,7 +592,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -593,7 +614,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -628,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#端到端系统文件传输过程"><span class="nav-number">2.</span> <span class="nav-text">端到端系统文件传输过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些其他的端到端原则"><span class="nav-number">3.</span> <span class="nav-text">一些其他的端到端原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传输"><span class="nav-number">3.1.</span> <span class="nav-text">数据传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据安全"><span class="nav-number">3.2.</span> <span class="nav-text">数据安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复数据"><span class="nav-number">3.3.</span> <span class="nav-text">重复数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息的顺序"><span class="nav-number">3.4.</span> <span class="nav-text">消息的顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确认应用需求"><span class="nav-number">4.</span> <span class="nav-text">确认应用需求</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text"> Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#端到端系统文件传输过程"><span class="nav-number">2.</span> <span class="nav-text"> 端到端系统文件传输过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些其他的端到端原则"><span class="nav-number">3.</span> <span class="nav-text"> 一些其他的端到端原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传输"><span class="nav-number">3.1.</span> <span class="nav-text"> 数据传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据安全"><span class="nav-number">3.2.</span> <span class="nav-text"> 数据安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复数据"><span class="nav-number">3.3.</span> <span class="nav-text"> 重复数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息的顺序"><span class="nav-number">3.4.</span> <span class="nav-text"> 消息的顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确认应用需求"><span class="nav-number">4.</span> <span class="nav-text"> 确认应用需求</span></a></li></ol></div>
             
 
           </div>

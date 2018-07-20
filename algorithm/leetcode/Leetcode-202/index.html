@@ -390,16 +390,22 @@
         <p>Happy Number</p>
 <a id="more"></a>
 <hr>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Write an algorithm to determine if a number is “happy”.</p>
+<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
+<p>Write an algorithm to determine if a number is “happy”.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
 <p>Example: 19 is a happy number</p>
-<ul style="list-style: none;"><br><li>1<sup>2</sup> + 9<sup>2</sup> = 82</li><br><li>8<sup>2</sup> + 2<sup>2</sup> = 68</li><br><li>6<sup>2</sup> + 8<sup>2</sup> = 100</li><br><li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li><br></ul>
-
-
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>如果出现永远循环的话，终端条件就是出现了平方和以后出现同样的结果。</p>
+<ul style="list-style: none;">
+<li>1<sup>2</sup> + 9<sup>2</sup> = 82</li>
+<li>8<sup>2</sup> + 2<sup>2</sup> = 68</li>
+<li>6<sup>2</sup> + 8<sup>2</sup> = 100</li>
+<li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li>
+</ul>
+<h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h1>
+<p>如果出现永远循环的话，终端条件就是出现了平方和以后出现同样的结果。</p>
 <p>用一个set的add方法做判断，如果添加已有的元素，那么返回为false</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (set.add(n))&#123;</div><div class="line">        n = squreSum(n);</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">squreSum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> m = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</div><div class="line">        m += Math.pow(n % <span class="number">10</span>, <span class="number">2</span>);</div><div class="line">        n = n / <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> m;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h1><p>这个方法在 Solution Discussion 看到的。我觉得非常萌，用的快慢指针。</p>
+<h1 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution</h1>
+<p>这个方法在 Solution Discussion 看到的。我觉得非常萌，用的快慢指针。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">digitSquareSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>, tmp;</div><div class="line">    <span class="keyword">while</span> (n) &#123;</div><div class="line">        tmp = n % <span class="number">10</span>;</div><div class="line">        sum += tmp * tmp;</div><div class="line">        n /= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">bool <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> slow, fast;</div><div class="line">    slow = fast = n;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        slow = digitSquareSum(slow);</div><div class="line">        fast = digitSquareSum(fast);</div><div class="line">        fast = digitSquareSum(fast);</div><div class="line">    &#125; <span class="keyword">while</span>(slow != fast);</div><div class="line">    <span class="keyword">if</span> (slow == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -535,7 +541,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -557,7 +563,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -592,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution-2"><span class="nav-number">3.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

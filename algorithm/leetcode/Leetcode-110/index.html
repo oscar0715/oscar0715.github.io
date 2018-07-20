@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Balanced Binary Tree判断二叉树是否是平衡二叉树">
+<meta name="description" content="Balanced Binary Tree 判断二叉树是否是平衡二叉树">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_110">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-110/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Balanced Binary Tree判断二叉树是否是平衡二叉树">
+<meta property="og:description" content="Balanced Binary Tree 判断二叉树是否是平衡二叉树">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_110">
-<meta name="twitter:description" content="Balanced Binary Tree判断二叉树是否是平衡二叉树">
+<meta name="twitter:description" content="Balanced Binary Tree 判断二叉树是否是平衡二叉树">
 
 
 
@@ -387,14 +387,20 @@
       
 
       
-        <p>Balanced Binary Tree<br>判断二叉树是否是平衡二叉树<br><a id="more"></a></p>
+        <p>Balanced Binary Tree<br>
+判断二叉树是否是平衡二叉树</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree, determine if it is height-balanced.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Given a binary tree, determine if it is height-balanced.</p>
 <p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
-<h3 id="Solution-思路1"><a href="#Solution-思路1" class="headerlink" title="Solution 思路1"></a>Solution 思路1</h3><p>利用了求数组深度的函数</p>
+<h3 id="solution-思路1"><a class="markdownIt-Anchor" href="#solution-思路1"></a> Solution 思路1</h3>
+<p>利用了求数组深度的函数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 求深度的以后，判断放在主函数里</span></div><div class="line">  <span class="keyword">if</span> (Math.abs(depth(root.left) - depth(root.right)) &gt; <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 递归！</span></div><div class="line">  <span class="keyword">return</span> isBalanced(root.left)&amp;&amp;isBalanced(root.right);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode p)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (p == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> left = depth(p.left);</div><div class="line">  <span class="keyword">int</span> right = depth(p.right);</div><div class="line">  <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
-<h3 id="Solution-思路2"><a href="#Solution-思路2" class="headerlink" title="Solution 思路2"></a>Solution 思路2</h3><p>判断也放在求深度的函数里。</p>
-<p>这个能到1ms哦<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主函数</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> findDepth(root)==-<span class="number">1</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findDepth</span><span class="params">(TreeNode p)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (p == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 1. 当前节点的左子树不是平衡树</span></div><div class="line">  <span class="keyword">int</span> leftDepth = findDepth(p.left);</div><div class="line">  <span class="keyword">if</span> (leftDepth == -<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 2. 当前节点的右子树不是平衡树</span></div><div class="line">  <span class="keyword">int</span> rightDepth = findDepth(p.right);</div><div class="line">  <span class="keyword">if</span> (rightDepth == -<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 3. 当前节点的左右子树各自都是平衡树，但是当前节点的左右不平衡了</span></div><div class="line">  <span class="keyword">if</span> (leftDepth - rightDepth &gt; <span class="number">1</span> || rightDepth - leftDepth &gt; <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 当前节点是平衡树，继续求深度</span></div><div class="line">  <span class="keyword">return</span> (leftDepth &gt; rightDepth ? leftDepth : rightDepth) + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure></p>
+<h3 id="solution-思路2"><a class="markdownIt-Anchor" href="#solution-思路2"></a> Solution 思路2</h3>
+<p>判断也放在求深度的函数里。</p>
+<p>这个能到1ms哦</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主函数</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> findDepth(root)==-<span class="number">1</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findDepth</span><span class="params">(TreeNode p)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (p == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 1. 当前节点的左子树不是平衡树</span></div><div class="line">  <span class="keyword">int</span> leftDepth = findDepth(p.left);</div><div class="line">  <span class="keyword">if</span> (leftDepth == -<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 2. 当前节点的右子树不是平衡树</span></div><div class="line">  <span class="keyword">int</span> rightDepth = findDepth(p.right);</div><div class="line">  <span class="keyword">if</span> (rightDepth == -<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 3. 当前节点的左右子树各自都是平衡树，但是当前节点的左右不平衡了</span></div><div class="line">  <span class="keyword">if</span> (leftDepth - rightDepth &gt; <span class="number">1</span> || rightDepth - leftDepth &gt; <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 当前节点是平衡树，继续求深度</span></div><div class="line">  <span class="keyword">return</span> (leftDepth &gt; rightDepth ? leftDepth : rightDepth) + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -529,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -551,7 +557,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -586,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-思路1"><span class="nav-number">2.</span> <span class="nav-text">Solution 思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-思路2"><span class="nav-number">3.</span> <span class="nav-text">Solution 思路2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-思路1"><span class="nav-number">2.</span> <span class="nav-text"> Solution 思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-思路2"><span class="nav-number">3.</span> <span class="nav-text"> Solution 思路2</span></a></li></ol></div>
             
 
           </div>

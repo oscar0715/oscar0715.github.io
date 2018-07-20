@@ -391,39 +391,49 @@
 <p>还有上节课没讲完的hashcode</p>
 <a id="more"></a>
 <hr>
-<h2 id="Hash-Table"><a href="#Hash-Table" class="headerlink" title="Hash Table"></a>Hash Table</h2><p>string –&gt; hashcode –&gt;(compression function) bucket</p>
-<h3 id="Good-HashCode"><a href="#Good-HashCode" class="headerlink" title="Good HashCode"></a>Good HashCode</h3><p>一个好的对字符串的hashcode算法<br><figure class="highlight java"><figcaption><span>HashCode Function</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(String key)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> hashcode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; key.length(); i++)&#123;</div><div class="line">        hashVal = (<span class="number">127</span> * hashVal + key.charAt(i)) % <span class="number">16908799</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="hash-table"><a class="markdownIt-Anchor" href="#hash-table"></a> Hash Table</h2>
+<p>string --&gt; hashcode --&gt;(compression function) bucket</p>
+<h3 id="good-hashcode"><a class="markdownIt-Anchor" href="#good-hashcode"></a> Good HashCode</h3>
+<p>一个好的对字符串的hashcode算法</p>
+<figure class="highlight java"><figcaption><span>HashCode Function</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(String key)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> hashcode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; key.length(); i++)&#123;</div><div class="line">        hashVal = (<span class="number">127</span> * hashVal + key.charAt(i)) % <span class="number">16908799</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
 <li>127 * hashVal的作用是：不同位置上的相同字母也会对hashVal有不同的影响</li>
 <li>16908799 是一个大的质数，保证有足够多的buckets可以用，也保证hashVal不会overflow</li>
-<li>127 和 16908799 最好都是质数<ul>
+<li>127 和 16908799 最好都是质数
+<ul>
 <li>否则当他们有公因子x时</li>
 <li>当最后的hashVal = ax+b, 那b只由最后一个字母决定（Bias）</li>
 <li>127这个位置的数不能太小，否则也有buckets数量太小的问题</li>
 </ul>
 </li>
 </ol>
-<h3 id="BadHashcode"><a href="#BadHashcode" class="headerlink" title="BadHashcode"></a>BadHashcode</h3><ol>
-<li>Sum ASCII values of characters<ul>
+<h3 id="badhashcode"><a class="markdownIt-Anchor" href="#badhashcode"></a> BadHashcode</h3>
+<ol>
+<li>Sum ASCII values of characters
+<ul>
 <li>和总小于500，buckets最多也就500个</li>
 <li>Anagram太多 “apt”, “pat”, “tap”</li>
 </ul>
 </li>
-<li>First 3 letters of the words<ul>
-<li>很多单词共有相同的前缀，例如”pre”</li>
-<li>有些”xzp”有些前缀压根没有</li>
+<li>First 3 letters of the words
+<ul>
+<li>很多单词共有相同的前缀，例如&quot;pre&quot;</li>
+<li>有些&quot;xzp&quot;有些前缀压根没有</li>
 </ul>
 </li>
-<li>Suppose the prime module to 127<ul>
+<li>Suppose the prime module to 127
+<ul>
 <li>(127 * hashVal + key.charAt(i)) % 127 = key.charAt(i)</li>
 <li>所以只有最后一个字母有影响</li>
 </ul>
 </li>
 </ol>
-<h3 id="Black-Art"><a href="#Black-Art" class="headerlink" title="Black Art"></a>Black Art</h3><ol>
-<li>Resizing the hash tables<ul>
+<h3 id="black-art"><a class="markdownIt-Anchor" href="#black-art"></a> Black Art</h3>
+<ol>
+<li>Resizing the hash tables
+<ul>
 <li>if load factor n/N is to larger, we lose O(1) time</li>
-<li>load factor &gt; c, typically 0.75, resize it </li>
+<li>load factor &gt; c, typically 0.75, resize it</li>
 <li>Allocate new Array (at leat twice as large)</li>
 <li>Walk the old array, rehash entries into new hash table</li>
 <li>同理 shrink hash tables when n/N &lt; 0.25 to free memory</li>
@@ -431,20 +441,24 @@
 </ul>
 </li>
 </ol>
-<h3 id="Transposition-Table-Speed-Game-Trees"><a href="#Transposition-Table-Speed-Game-Trees" class="headerlink" title="Transposition Table: Speed Game Trees"></a>Transposition Table: Speed Game Trees</h3><ul>
-<li>MiniMax Alg checks if grid is in table<ul>
+<h3 id="transposition-table-speed-game-trees"><a class="markdownIt-Anchor" href="#transposition-table-speed-game-trees"></a> Transposition Table: Speed Game Trees</h3>
+<ul>
+<li>MiniMax Alg checks if grid is in table
+<ul>
 <li>Yes: return score</li>
-<li>No: evaluate score (by minimax recursively) &amp; store it </li>
+<li>No: evaluate score (by minimax recursively) &amp; store it</li>
 </ul>
 </li>
 </ul>
 <p>这一段不知所云</p>
-<h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><ol>
+<h2 id="stacks"><a class="markdownIt-Anchor" href="#stacks"></a> Stacks</h2>
+<ol>
 <li>push</li>
 <li>pop</li>
 <li>top</li>
 </ol>
-<p>Single-Linked List<br>All operations take O(1) time</p>
+<p>Single-Linked List<br>
+All operations take O(1) time</p>
 <p>Parenthesis Matching</p>
 
       
@@ -578,7 +592,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -600,7 +614,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -635,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Table"><span class="nav-number">1.</span> <span class="nav-text">Hash Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Good-HashCode"><span class="nav-number">1.1.</span> <span class="nav-text">Good HashCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BadHashcode"><span class="nav-number">1.2.</span> <span class="nav-text">BadHashcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Black-Art"><span class="nav-number">1.3.</span> <span class="nav-text">Black Art</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transposition-Table-Speed-Game-Trees"><span class="nav-number">1.4.</span> <span class="nav-text">Transposition Table: Speed Game Trees</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stacks"><span class="nav-number">2.</span> <span class="nav-text">Stacks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hash-table"><span class="nav-number">1.</span> <span class="nav-text"> Hash Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#good-hashcode"><span class="nav-number">1.1.</span> <span class="nav-text"> Good HashCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#badhashcode"><span class="nav-number">1.2.</span> <span class="nav-text"> BadHashcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#black-art"><span class="nav-number">1.3.</span> <span class="nav-text"> Black Art</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transposition-table-speed-game-trees"><span class="nav-number">1.4.</span> <span class="nav-text"> Transposition Table: Speed Game Trees</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stacks"><span class="nav-number">2.</span> <span class="nav-text"> Stacks</span></a></li></ol></div>
             
 
           </div>

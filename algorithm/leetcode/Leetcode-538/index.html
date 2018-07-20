@@ -390,9 +390,13 @@
         <p>Convert BST to Greater Tree</p>
 <a id="more"></a>
 <hr>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>给出一个 BST , 每个节点都加上那些自己节点大的所有节点的值</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>BST 的先序遍历是从小到大。</p>
-<p>那么先一直访问右边的就是从大到小。<br>只要一直加上前一个比自己大的数的更新以后的数值就行了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        </div><div class="line">        dfs(root);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode cur)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(cur == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 先一直向右访问</span></div><div class="line">        <span class="comment">// 找到最大的数</span></div><div class="line">        dfs(cur.right);</div><div class="line">        </div><div class="line">        <span class="comment">// 右节点加上，比自己大的数的合</span></div><div class="line">        cur.val += sum;</div><div class="line">        <span class="comment">// 更新sum为当前节点的数值</span></div><div class="line">        <span class="comment">// 也就是所有大于等于自己的节点的合</span></div><div class="line">        <span class="comment">// 供下一个较大节点来加上</span></div><div class="line">        sum = cur.val;</div><div class="line">        </div><div class="line">        dfs(cur.left);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
+<p>给出一个 BST , 每个节点都加上那些自己节点大的所有节点的值</p>
+<h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h1>
+<p>BST 的先序遍历是从小到大。</p>
+<p>那么先一直访问右边的就是从大到小。<br>
+只要一直加上前一个比自己大的数的更新以后的数值就行了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        </div><div class="line">        dfs(root);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode cur)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(cur == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 先一直向右访问</span></div><div class="line">        <span class="comment">// 找到最大的数</span></div><div class="line">        dfs(cur.right);</div><div class="line">        </div><div class="line">        <span class="comment">// 右节点加上，比自己大的数的合</span></div><div class="line">        cur.val += sum;</div><div class="line">        <span class="comment">// 更新sum为当前节点的数值</span></div><div class="line">        <span class="comment">// 也就是所有大于等于自己的节点的合</span></div><div class="line">        <span class="comment">// 供下一个较大节点来加上</span></div><div class="line">        sum = cur.val;</div><div class="line">        </div><div class="line">        dfs(cur.left);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -423,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-537/" rel="next" title="Leetcode_537">
-                <i class="fa fa-chevron-left"></i> Leetcode_537
+              <a href="/algorithm/leetcode/Leetcode-539/" rel="next" title="Leetcode_539">
+                <i class="fa fa-chevron-left"></i> Leetcode_539
               </a>
             
           </div>
@@ -433,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-530/" rel="prev" title="Leetcode_530">
-                Leetcode_530 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-537/" rel="prev" title="Leetcode_537">
+                Leetcode_537 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +529,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">378</span>
+                <span class="site-state-item-count">380</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -547,7 +551,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -582,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>
