@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Python 中使用的工具: (1). virtualenv">
+<meta name="description" content="Python 中使用的工具:(1). virtualenv">
 <meta name="keywords" content="Python,Tool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Tools">
 <meta property="og:url" content="http://menuet.xyz/technology/django/python-tools/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Python 中使用的工具: (1). virtualenv">
+<meta property="og:description" content="Python 中使用的工具:(1). virtualenv">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Tools">
-<meta name="twitter:description" content="Python 中使用的工具: (1). virtualenv">
+<meta name="twitter:description" content="Python 中使用的工具:(1). virtualenv">
 
 
 
@@ -387,17 +387,12 @@
       
 
       
-        <p>Python 中使用的工具:<br>
-(1). virtualenv</p>
-<a id="more"></a>
+        <p>Python 中使用的工具:<br>(1). virtualenv<br><a id="more"></a></p>
 <hr>
-<h1 id="virtualenv"><a class="markdownIt-Anchor" href="#virtualenv"></a> virtualenv</h1>
-<p>Reference: <a href="http://www.nowamagic.net/academy/detail/1330228" target="_blank" rel="external">用virtualenv建立多个Python独立开发环境</a></p>
+<h1 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h1><p>Reference: <a href="http://www.nowamagic.net/academy/detail/1330228" target="_blank" rel="external">用virtualenv建立多个Python独立开发环境</a></p>
 <p>virtualenv 就是你可以新建不同的 python 环境，不同的环境下分别安装不同的或者不同版本的第三方包，然后你的 application 只要选择相应的 python 环境就好了。这样不同 python 环境下的包是独立，也就以为着你的 application 可以有自己独立的环境，不会和别的 application 混在在一起</p>
-<p>安装：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mkdir envs <span class="comment"># 新建一个文件夹创建不同的环境</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> envs </div><div class="line">virtualenv new-env <span class="comment"># 创建一个新的环境，同时创建了一个文件夹</span></div><div class="line"><span class="comment"># virtualenv -p python3 new-env 在python 3 环境下安装</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> new-env</div><div class="line"><span class="built_in">source</span> bin/activate <span class="comment"># 启动当前这个 python 环境</span></div><div class="line"></div><div class="line"><span class="comment"># 可以用 which python 或者 which pip 来看到我们已经是在新的 python 环境下</span></div></pre></td></tr></table></figure>
+<p>安装：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div></pre></td></tr></table></figure></p>
+<p>使用：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mkdir envs <span class="comment"># 新建一个文件夹创建不同的环境</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> envs </div><div class="line">virtualenv new-env <span class="comment"># 创建一个新的环境，同时创建了一个文件夹</span></div><div class="line"><span class="comment"># virtualenv -p python3 new-env 在python 3 环境下安装</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> new-env</div><div class="line"><span class="built_in">source</span> bin/activate <span class="comment"># 启动当前这个 python 环境</span></div><div class="line"></div><div class="line"><span class="comment"># 可以用 which python 或者 which pip 来看到我们已经是在新的 python 环境下</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -532,7 +527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -554,7 +549,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -589,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#virtualenv"><span class="nav-number">1.</span> <span class="nav-text"> virtualenv</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#virtualenv"><span class="nav-number">1.</span> <span class="nav-text">virtualenv</span></a></li></ol></div>
             
 
           </div>

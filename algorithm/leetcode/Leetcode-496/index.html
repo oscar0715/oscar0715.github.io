@@ -390,13 +390,8 @@
         <p>Next Greater Element I</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>给定两个数组<br>
-例如：<code>nums1 = [4,1,2], nums2 = [1,3,4,2]</code>.<br>
-nums1 是 nums2 的子集，nums2 中所有数字都唯一，找出 nums 中每个元素，在 nums2 中的下一个比自己大的数字。<br>
-<code>Output: [-1,3,-1]</code></p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>用 Stack 维护一个递减子序列</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定两个数组<br>例如：<code>nums1 = [4,1,2], nums2 = [1,3,4,2]</code>.<br>nums1 是 nums2 的子集，nums2 中所有数字都唯一，找出 nums 中每个元素，在 nums2 中的下一个比自己大的数字。<br><code>Output: [-1,3,-1]</code></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>用 Stack 维护一个递减子序列</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] findNums, <span class="keyword">int</span>[] nums) &#123;</div><div class="line">        </div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">            <span class="keyword">while</span>(!stack.isEmpty() &amp;&amp; stack.peek() &lt; num)</div><div class="line">                <span class="comment">// 不断弹出栈中比当前数字小的元素</span></div><div class="line">                <span class="comment">// 弹出来的元素都可以构成都是符合要求的键值对</span></div><div class="line">                map.put(stack.pop(), num);</div><div class="line">            <span class="comment">// 直到栈顶元素比自己大了，或者空栈了</span></div><div class="line">            <span class="comment">// 再把自己push进去，这样保证stack是一个倒序的。    </span></div><div class="line">            stack.push(num);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; findNums.length; i++) &#123;</div><div class="line">            findNums[i] = map.getOrDefault(findNums[i], -<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> findNums;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -530,7 +525,7 @@ nums1 是 nums2 的子集，nums2 中所有数字都唯一，找出 nums 中每�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -552,7 +547,7 @@ nums1 是 nums2 的子集，nums2 中所有数字都唯一，找出 nums 中每�
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -587,7 +582,7 @@ nums1 是 nums2 的子集，nums2 中所有数字都唯一，找出 nums 中每�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

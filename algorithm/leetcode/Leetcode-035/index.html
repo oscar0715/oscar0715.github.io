@@ -387,17 +387,14 @@
       
 
       
-        <p>Search Insert Position</p>
-<a id="more"></a>
+        <p>Search Insert Position<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>给定一个有序数组，和一个目标数字。</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定一个有序数组，和一个目标数字。</p>
 <ol>
 <li>如果目标数字在数组中，返回目标数字在数组中的位置</li>
 <li>否则，返回按顺序插入的下一个位置</li>
 </ol>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>二叉查找</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>二叉查找</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> binarySearch(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>, target);   </div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (low &gt; high) &#123;</div><div class="line">			<span class="keyword">return</span> low;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>( nums[mid] &lt; target) &#123;</div><div class="line">			<span class="keyword">return</span> binarySearch(nums, mid + <span class="number">1</span>, high, target);</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> ( nums[mid] &gt; target ) &#123;</div><div class="line">			<span class="keyword">return</span> binarySearch(nums, low, mid - <span class="number">1</span>, target);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> mid;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -533,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -555,7 +552,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -590,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

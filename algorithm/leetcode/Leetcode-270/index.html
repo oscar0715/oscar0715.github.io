@@ -390,11 +390,8 @@
         <p>Closest Binary Search Tree Value</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>二叉查找树<br>
-迭代可以写</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>二叉查找树<br>迭代可以写</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">closestValue</span><span class="params">(TreeNode root, <span class="keyword">double</span> target)</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> result = root.val;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span>(root != <span class="keyword">null</span> ) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (root.val == target) &#123;</div><div class="line">            <span class="keyword">return</span> root.val;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(Math.abs(root.val - target) &lt; Math.abs(result - target)) &#123;</div><div class="line">            result = root.val;</div><div class="line">        &#125; </div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(root.val &gt; target) &#123;</div><div class="line">            root = root.left;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            root = root.right;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -530,7 +527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -552,7 +549,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -587,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

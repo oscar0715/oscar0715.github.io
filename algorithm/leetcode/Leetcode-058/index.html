@@ -387,22 +387,15 @@
       
 
       
-        <p>Length of Last Word</p>
-<a id="more"></a>
+        <p>Length of Last Word<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a string s consists of upper/lower-case alphabets and empty space characters ’ ', return the length of last word in the string.</p>
-<p>If the last word does not exist, return 0.  这句话干什么用的太扯了。<br>
-只有一个单词的时候就返回这个单词的长度。也不是返回0</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a string s consists of upper/lower-case alphabets and empty space characters ‘ ‘, return the length of last word in the string.</p>
+<p>If the last word does not exist, return 0.  这句话干什么用的太扯了。<br>只有一个单词的时候就返回这个单词的长度。也不是返回0</p>
 <p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
-<p>For example,<br>
-Given s = “Hello World”,<br>
-return 5.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>s要先trim一下</p>
+<p>For example,<br>Given s = “Hello World”,<br>return 5.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>s要先trim一下</p>
 <p>从后往前数快一些。</p>
-<p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.trim();</div><div class="line">    <span class="keyword">char</span>[] array = s.toCharArray();</div><div class="line">    <span class="keyword">int</span> i = s.length()-<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (array[i] == <span class="string">' '</span>) &#123;</div><div class="line">            <span class="keyword">return</span> s.length()-i-<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        i--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s.length()-i-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.trim();</div><div class="line">    <span class="keyword">char</span>[] array = s.toCharArray();</div><div class="line">    <span class="keyword">int</span> i = s.length()-<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (array[i] == <span class="string">' '</span>) &#123;</div><div class="line">            <span class="keyword">return</span> s.length()-i-<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        i--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s.length()-i-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -537,7 +530,7 @@ return 5.</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -559,7 +552,7 @@ return 5.</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -594,7 +587,7 @@ return 5.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

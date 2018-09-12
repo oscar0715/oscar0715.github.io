@@ -390,12 +390,9 @@
         <p>Compare Version Numbers</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>判断两个版本号的大小</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>判断两个版本号的大小</p>
 <p>“0.0.1” &lt; “0.1”, “1.0.0” == “1”</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>用Queue来取每一层的版本号<br>
-相当于自己写了个 split</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>用Queue来取每一层的版本号<br>相当于自己写了个 split</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareVersion</span><span class="params">(String version1, String version2)</span> </span>&#123;</div><div class="line">        Queue&lt;Integer&gt; q1 = getQueue(version1);</div><div class="line">        Queue&lt;Integer&gt; q2 = getQueue(version2);</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!q1.isEmpty() &amp;&amp; !q2.isEmpty()) &#123;</div><div class="line">            Integer num1 = q1.poll();</div><div class="line">            Integer num2 = q2.poll();</div><div class="line">            </div><div class="line">            <span class="keyword">if</span>(num1.compareTo(num2) != <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">return</span> num1.compareTo(num2);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// queue 可能非空，但是可能剩下都是 0</span></div><div class="line">        <span class="keyword">while</span>(!q1.isEmpty())&#123;</div><div class="line">            <span class="keyword">if</span>(q1.poll() !=<span class="number">0</span> )&#123;</div><div class="line">                <span class="keyword">return</span>  <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!q2.isEmpty())&#123;</div><div class="line">            <span class="keyword">if</span>(q2.poll() !=<span class="number">0</span> )&#123;</div><div class="line">                <span class="keyword">return</span>  -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125; </div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> Queue&lt;Integer&gt; <span class="title">getQueue</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'.'</span>)&#123;</div><div class="line">                q.add(num);</div><div class="line">                num = <span class="number">0</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                num = num * <span class="number">10</span> + Character.getNumericValue(s.charAt(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 不要忘了最后这一次add</span></div><div class="line">        q.add(num);</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> q;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -531,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -553,7 +550,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -588,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

@@ -387,48 +387,31 @@
       
 
       
-        <p>Paint Fence</p>
+        <p>Paint Fence </p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>There is a fence with n posts, each post can be painted with one of the k colors.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>There is a fence with n posts, each post can be painted with one of the k colors.</p>
 <p>You have to paint all the posts such that no more than two adjacent fence posts have the same color.</p>
 <p>Return the total number of ways you can paint the fence.</p>
-<p>Note:<br>
-n and k are non-negative integers.</p>
+<p>Note:<br>n and k are non-negative integers.</p>
 <p>数篱笆木桩的涂色方法数量，规则是，不能出现连着三根木桩都是同色的。</p>
-<h3 id="solution1"><a class="markdownIt-Anchor" href="#solution1"></a> Solution1</h3>
-<p>动态规划</p>
-<p>用两个数组<br>
-same[i] 记录第i根木桩与前一根木桩相同的涂色方法<br>
-diff[i] 记录第i根木桩与前一根木桩不同的涂色方法</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>动态规划</p>
+<p>用两个数组<br>same[i] 记录第i根木桩与前一根木桩相同的涂色方法<br>diff[i] 记录第i根木桩与前一根木桩不同的涂色方法</p>
 <p>same[i] + diff[i] 就是第i根木桩总的涂色方法。</p>
 <p>但是这种方法 空间复杂度为O(n)， 实际上用了2n</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> k;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span>[] same = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">  <span class="keyword">int</span>[] diff = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line"></div><div class="line">  same[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">  diff[<span class="number">0</span>] = k;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">    same[i] = diff[i - <span class="number">1</span>];</div><div class="line">    diff[i] = (k - <span class="number">1</span>) * (same[i - <span class="number">1</span>] + diff[i - <span class="number">1</span>]);</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> same[n - <span class="number">1</span>] + diff[n - <span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="solution2"><a class="markdownIt-Anchor" href="#solution2"></a> Solution2</h3>
-<p>动态规划</p>
-<p>之前用了2个数组<br>
-状态转移方程为<br>
-diff[i] = (k - 1) * (same[i - 1] + diff[i - 1]);</p>
-<p>又因为<br>
-same[i] = diff[i - 1];<br>
-same[i - 1] = diff[i - 2];</p>
-<p>所以状态转移方程为<br>
-diff[i] = (k - 1) * (diff[i - 2] + diff[i - 1]);</p>
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>动态规划</p>
+<p>之前用了2个数组<br>状态转移方程为<br>  diff[i] = (k - 1) * (same[i - 1] + diff[i - 1]);</p>
+<p>又因为<br>  same[i] = diff[i - 1];<br>  same[i - 1] = diff[i - 2];</p>
+<p>所以状态转移方程为<br>  diff[i] = (k - 1) * (diff[i - 2] + diff[i - 1]);</p>
 <p>空间复杂度仍然为O(n)， 不过实际已经减少到n了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> k;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line"></div><div class="line"></div><div class="line">  dp[<span class="number">0</span>] = k;</div><div class="line">  <span class="comment">// 此处dp数组还是表示不同的数量</span></div><div class="line">  dp[<span class="number">1</span>] = k * (k - <span class="number">1</span>);</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">    dp[i] = (k - <span class="number">1</span>) * (dp[i - <span class="number">2</span>] + dp[i - <span class="number">1</span>]);</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 这里 dp[n - 2] 其实代表着 same[i - 1]</span></div><div class="line">  <span class="keyword">return</span> dp[n - <span class="number">1</span>] + dp[n - <span class="number">2</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>做一下改动<br>
-dp[1] = k * k;</p>
-<p>状态转移方程的理解为<br>
-dp[i] = (k - 1) * (dp[i - 2] + dp[i - 1]);</p>
-<p>dp[i - 2] 为第i-2根柱子的涂色方法<br>
-dp[i - 1] 为第i-1根柱子的涂色方法<br>
-第i根要么与i-2根不同，要么与i-1根不同</p>
+<p>做一下改动<br>  dp[1] = k * k;</p>
+<p>状态转移方程的理解为<br>dp[i] = (k - 1) * (dp[i - 2] + dp[i - 1]);</p>
+<p>dp[i - 2] 为第i-2根柱子的涂色方法<br>dp[i - 1] 为第i-1根柱子的涂色方法<br>第i根要么与i-2根不同，要么与i-1根不同</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> k;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line"></div><div class="line"></div><div class="line">  dp[<span class="number">0</span>] = k;</div><div class="line">  <span class="comment">// 此处dp[i] 包含了 same和diff的两种情况</span></div><div class="line">  dp[<span class="number">1</span>] = k * k;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">    dp[i] = (k - <span class="number">1</span>) * (dp[i - <span class="number">2</span>] + dp[i - <span class="number">1</span>]);</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 这里 dp[n - 1] 也已经代表了总数量 </span></div><div class="line">  <span class="keyword">return</span> dp[n - <span class="number">1</span>] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="solution3"><a class="markdownIt-Anchor" href="#solution3"></a> Solution3</h3>
-<p>动态规划</p>
-<p>用爬楼梯那道题的节约空间的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> k;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line"></div><div class="line">  dp[<span class="number">0</span>] = k;</div><div class="line">  dp[<span class="number">1</span>] = k * k;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> i = <span class="number">2</span>;</div><div class="line">  <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">    dp[i % <span class="number">3</span>] = (k - <span class="number">1</span>) * (dp[(i - <span class="number">1</span>) % <span class="number">3</span>] + dp[(i - <span class="number">2</span>) % <span class="number">3</span>]);</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">return</span> dp[(n - <span class="number">1</span>) % <span class="number">3</span>] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h3><p>动态规划</p>
+<p>用爬楼梯那道题的节约空间的方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> k;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line"></div><div class="line">  dp[<span class="number">0</span>] = k;</div><div class="line">  dp[<span class="number">1</span>] = k * k;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> i = <span class="number">2</span>;</div><div class="line">  <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">    dp[i % <span class="number">3</span>] = (k - <span class="number">1</span>) * (dp[(i - <span class="number">1</span>) % <span class="number">3</span>] + dp[(i - <span class="number">2</span>) % <span class="number">3</span>]);</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">return</span> dp[(n - <span class="number">1</span>) % <span class="number">3</span>] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -563,7 +546,7 @@ dp[i - 1] 为第i-1根柱子的涂色方法<br>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +568,7 @@ dp[i - 1] 为第i-1根柱子的涂色方法<br>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -620,7 +603,7 @@ dp[i - 1] 为第i-1根柱子的涂色方法<br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution1"><span class="nav-number">2.</span> <span class="nav-text"> Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution2"><span class="nav-number">3.</span> <span class="nav-text"> Solution2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution3"><span class="nav-number">4.</span> <span class="nav-text"> Solution3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution1"><span class="nav-number">2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2"><span class="nav-number">3.</span> <span class="nav-text">Solution2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution3"><span class="nav-number">4.</span> <span class="nav-text">Solution3</span></a></li></ol></div>
             
 
           </div>

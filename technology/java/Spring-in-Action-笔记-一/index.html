@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction 介绍 injection dependency, wiring, aspect oriented programming等概念">
+<meta name="description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction介绍 injection dependency, wiring, aspect oriented programming等概念">
 <meta name="keywords" content="Java,Spring,MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring_in_Action_笔记(一)">
 <meta property="og:url" content="http://menuet.xyz/technology/java/Spring-in-Action-笔记-一/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction 介绍 injection dependency, wiring, aspect oriented programming等概念">
+<meta property="og:description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction介绍 injection dependency, wiring, aspect oriented programming等概念">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-06-01T09:30:59.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring_in_Action_笔记(一)">
-<meta name="twitter:description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction 介绍 injection dependency, wiring, aspect oriented programming等概念">
+<meta name="twitter:description" content="如题，阅读《Spring_in_Action》的笔记 (一)Introduction介绍 injection dependency, wiring, aspect oriented programming等概念">
 
 
 
@@ -388,37 +388,23 @@
 
       
         <p>如题，阅读《Spring_in_Action》的笔记</p>
-<p>(一)Introduction<br>
-介绍 injection dependency, wiring, aspect oriented programming等概念</p>
-<a id="more"></a>
+<p>(一)Introduction<br>介绍 injection dependency, wiring, aspect oriented programming等概念<br><a id="more"></a></p>
 <hr>
-<h2 id="injection-dependency"><a class="markdownIt-Anchor" href="#injection-dependency"></a> Injection dependency</h2>
-<h3 id="braveknight类"><a class="markdownIt-Anchor" href="#braveknight类"></a> BraveKnight类</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.springinaction.knights;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BraveKnight</span> <span class="keyword">implements</span> <span class="title">Knight</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Quest quest;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BraveKnight</span><span class="params">(Quest quest)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.quest = quest;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">embarkOnQuest</span><span class="params">()</span> </span>&#123;</div><div class="line">        quest.embark();</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Injection-dependency"><a href="#Injection-dependency" class="headerlink" title="Injection dependency"></a>Injection dependency</h2><h3 id="BraveKnight类"><a href="#BraveKnight类" class="headerlink" title="BraveKnight类"></a>BraveKnight类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.springinaction.knights;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BraveKnight</span> <span class="keyword">implements</span> <span class="title">Knight</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Quest quest;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BraveKnight</span><span class="params">(Quest quest)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.quest = quest;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">embarkOnQuest</span><span class="params">()</span> </span>&#123;</div><div class="line">        quest.embark();</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>As you can see, BraveKnight, unlike DamselRescuingKnight, doesn’t create his own quest. Instead, he’s given a quest at construction time as a constructor argument. This is a type of DI known as constructor injection.</p>
-<p>What’s more, the quest he’s given is typed as Quest, an interface that all quests implement.</p>
+<p>What’s more, the quest he’s given is typed as Quest, an interface that all quests implement. </p>
 <p>The point is that BraveKnight isn’t coupled to any specific implementation of Quest. It doesn’t matter to him what kind of quest he’s asked to embark on, as long as it implements the Quest interface. That’s the key benefit of DI—loose coupling.</p>
 <p>If an object only knows about its dependencies by their interface (not by their implementation or how they’re instantiated), then the dependency can be swapped out with a different implementation without the depending object knowing the difference. One of the most common ways a dependency is swapped out is with a mock imple- mentation during testing.</p>
-<h3 id="mock-quest"><a class="markdownIt-Anchor" href="#mock-quest"></a> mock Quest</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.springinaction.knights;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.mockito.Mockito.*;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BraveKnightTest</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">knightShouldEmbarkOnQuest</span><span class="params">()</span> </span>&#123;</div><div class="line">        Quest mockQuest = mock(Quest.class);</div><div class="line">        BraveKnight knight = <span class="keyword">new</span> BraveKnight(mockQuest);</div><div class="line">        knight.embarkOnQuest();</div><div class="line">        <span class="comment">// ask Mockito to verify that the mock Quest’s embark() method was called exactly once.</span></div><div class="line">        verify(mockQuest, times(<span class="number">1</span>)).embark();</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="wiring"><a class="markdownIt-Anchor" href="#wiring"></a> wiring</h3>
-<p>The act of creating associations between application components is commonly referred to as wiring.<br>
-In Spring, there are many ways to wire components together, but a common approach has always been via XML.<br>
-If XML configuration doesn’t suit your tastes, you might like to know that Spring also allows you to express configuration using Java.<br>
-This makes it possible to change those dependencies with no changes to the depending classes.<br>
-In a Spring application, an application context loads bean definitions and wires them together.</p>
-<h2 id="declarative-programming-through-aspects"><a class="markdownIt-Anchor" href="#declarative-programming-through-aspects"></a> declarative programming through aspects.</h2>
-<p>Systems are composed of several components, each responsible for a spe- cific piece of functionality. But often these components also carry additional respon- sibilities beyond their core functionality.<br>
-System services such as logging, transaction management, and security often find their way into components whose core responsi- bilities is something else<br>
-These system services are commonly referred to as cross-cut- ting concerns</p>
+<h3 id="mock-Quest"><a href="#mock-Quest" class="headerlink" title="mock Quest"></a>mock Quest</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.springinaction.knights;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.mockito.Mockito.*;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BraveKnightTest</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">knightShouldEmbarkOnQuest</span><span class="params">()</span> </span>&#123;</div><div class="line">        Quest mockQuest = mock(Quest.class);</div><div class="line">        BraveKnight knight = <span class="keyword">new</span> BraveKnight(mockQuest);</div><div class="line">        knight.embarkOnQuest();</div><div class="line">        <span class="comment">// ask Mockito to verify that the mock Quest’s embark() method was called exactly once.</span></div><div class="line">        verify(mockQuest, times(<span class="number">1</span>)).embark();</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="wiring"><a href="#wiring" class="headerlink" title="wiring"></a>wiring</h3><p>The act of creating associations between application components is commonly referred to as wiring.<br>In Spring, there are many ways to wire components together, but a common approach has always been via XML.<br>If XML configuration doesn’t suit your tastes, you might like to know that Spring also allows you to express configuration using Java.<br>This makes it possible to change those dependencies with no changes to the depending classes.<br>In a Spring application, an application context loads bean definitions and wires them together. </p>
+<h2 id="declarative-programming-through-aspects"><a href="#declarative-programming-through-aspects" class="headerlink" title="declarative programming through aspects."></a>declarative programming through aspects.</h2><p>Systems are composed of several components, each responsible for a spe- cific piece of functionality. But often these components also carry additional respon- sibilities beyond their core functionality.<br>System services such as logging, transaction management, and security often find their way into components whose core responsi- bilities is something else<br>These system services are commonly referred to as cross-cut- ting concerns</p>
 <ul>
 <li>The code that implements the system-wide concerns is duplicated across multi- ple components.</li>
-<li>Your components are littered with code that isn’t aligned with their core func- tionality.</li>
+<li>Your components are littered with code that isn’t aligned with their core func- tionality. </li>
 </ul>
 <p>AOP makes components more cohesive and that focus on their own specific concerns. In short, aspects ensure that POJOs remain plain.</p>
 <p>At its core, an application consists of modules that implement business functionality. With AOP, you can then cover your core application with layers of functionality. These layers can be applied declaratively throughout your application in a flexible manner without your core application even knowing they exist.</p>
-<h2 id="spring-container"><a class="markdownIt-Anchor" href="#spring-container"></a> Spring container</h2>
-<p>the container creates the objects, wires them together, configures them, and manages their com- plete lifecycle from cradle to grave (or new to finalize(), as the case may be).</p>
+<h2 id="Spring-container"><a href="#Spring-container" class="headerlink" title="Spring container"></a>Spring container</h2><p>the container creates the objects, wires them together, configures them, and manages their com- plete lifecycle from cradle to grave (or new to finalize(), as the case may be).</p>
 <blockquote>
 <p>学到一个词组，from cradle to grave，感觉很不错的样子</p>
 </blockquote>
@@ -563,7 +549,7 @@ These system services are commonly referred to as cross-cut- ting concerns</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +571,7 @@ These system services are commonly referred to as cross-cut- ting concerns</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -620,7 +606,7 @@ These system services are commonly referred to as cross-cut- ting concerns</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#injection-dependency"><span class="nav-number">1.</span> <span class="nav-text"> Injection dependency</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#braveknight类"><span class="nav-number">1.1.</span> <span class="nav-text"> BraveKnight类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mock-quest"><span class="nav-number">1.2.</span> <span class="nav-text"> mock Quest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wiring"><span class="nav-number">1.3.</span> <span class="nav-text"> wiring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#declarative-programming-through-aspects"><span class="nav-number">2.</span> <span class="nav-text"> declarative programming through aspects.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-container"><span class="nav-number">3.</span> <span class="nav-text"> Spring container</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Injection-dependency"><span class="nav-number">1.</span> <span class="nav-text">Injection dependency</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BraveKnight类"><span class="nav-number">1.1.</span> <span class="nav-text">BraveKnight类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mock-Quest"><span class="nav-number">1.2.</span> <span class="nav-text">mock Quest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wiring"><span class="nav-number">1.3.</span> <span class="nav-text">wiring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#declarative-programming-through-aspects"><span class="nav-number">2.</span> <span class="nav-text">declarative programming through aspects.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-container"><span class="nav-number">3.</span> <span class="nav-text">Spring container</span></a></li></ol></div>
             
 
           </div>

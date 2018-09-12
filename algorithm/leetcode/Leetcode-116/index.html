@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Populating Next Right Pointers in Each Node 满二叉树的情况">
+<meta name="description" content="Populating Next Right Pointers in Each Node满二叉树的情况">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_116">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-116/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Populating Next Right Pointers in Each Node 满二叉树的情况">
+<meta property="og:description" content="Populating Next Right Pointers in Each Node满二叉树的情况">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_116">
-<meta name="twitter:description" content="Populating Next Right Pointers in Each Node 满二叉树的情况">
+<meta name="twitter:description" content="Populating Next Right Pointers in Each Node满二叉树的情况">
 
 
 
@@ -387,25 +387,19 @@
       
 
       
-        <p>Populating Next Right Pointers in Each Node<br>
-满二叉树的情况</p>
+        <p>Populating Next Right Pointers in Each Node<br>满二叉树的情况</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a binary tree</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree</p>
 <pre><code>struct TreeLinkNode {
   TreeLinkNode *left;
   TreeLinkNode *right;
   TreeLinkNode *next;
 }
-</code></pre>
-<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.</p>
+</code></pre><p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.</p>
 <p>Initially, all next pointers are set to NULL.</p>
 <p>Note:</p>
-<p>You may only use constant extra space.<br>
-You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).<br>
-For example,<br>
-Given the following perfect binary tree,</p>
+<p>You may only use constant extra space.<br>You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).<br>For example,<br>Given the following perfect binary tree,</p>
 <pre>
         1
        /  \
@@ -413,7 +407,7 @@ Given the following perfect binary tree,</p>
      / \  / \
     4  5  6  7
 </pre>
-<p>After calling your function, the tree should look like:</p>
+After calling your function, the tree should look like:
 <pre>
          1 -> NULL
        /  \
@@ -421,8 +415,9 @@ Given the following perfect binary tree,</p>
      / \  / \
     4->5->6->7 -> NULL
 </pre>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>基本思路就是走当前这一层，连下一层</p>
+
+
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>基本思路就是走当前这一层，连下一层</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(TreeLinkNode root)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  TreeLinkNode current;</div><div class="line">  </div><div class="line">  <span class="comment">// 遍历current(root)层，指定current层的下一层的next指针</span></div><div class="line">  <span class="keyword">while</span> (root.left != <span class="keyword">null</span>) &#123;</div><div class="line">    current = root;</div><div class="line">    <span class="keyword">while</span> (current != <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="comment">//指定left节点的next</span></div><div class="line">      current.left.next = current.right;</div><div class="line">      <span class="keyword">if</span> (current.next != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="comment">// 若current的next节点不为空</span></div><div class="line">        <span class="comment">// 则可指定right节点的next</span></div><div class="line">        current.right.next = current.next.left;</div><div class="line">      &#125;</div><div class="line">      current = current.next;</div><div class="line">    &#125;</div><div class="line">    root = root.left;</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -558,7 +553,7 @@ Given the following perfect binary tree,</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -580,7 +575,7 @@ Given the following perfect binary tree,</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -615,7 +610,7 @@ Given the following perfect binary tree,</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

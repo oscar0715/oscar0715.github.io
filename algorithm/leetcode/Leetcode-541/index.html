@@ -390,12 +390,8 @@
         <p>Reverse String II</p>
 <a id="more"></a>
 <hr>
-<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
-<p>给定字符串和一个整数k<br>
-每2k个长度，reverse 前 k 个字符，然后后k 个保持不变<br>
-如果最后剩下了 小于 k 个长度，那么就全部 reverse</p>
-<h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h1>
-<p>这一种思路就是直接拿 stringbuilder append</p>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>给定字符串和一个整数k<br>每2k个长度，reverse 前 k 个字符，然后后k 个保持不变<br>如果最后剩下了 小于 k 个长度，那么就全部 reverse</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这一种思路就是直接拿 stringbuilder append</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseStr</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = s.length();</div><div class="line">        <span class="keyword">int</span> times = len / (<span class="number">2</span>*k);</div><div class="line">        </div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> j = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(j &lt;= times) &#123;</div><div class="line">            <span class="keyword">int</span> index = k + (j-<span class="number">1</span>) * <span class="number">2</span> * k - <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> i = k;</div><div class="line">            <span class="comment">// reverse part</span></div><div class="line">            <span class="comment">// length = k</span></div><div class="line">            <span class="keyword">while</span>(i &gt; <span class="number">0</span>) &#123;</div><div class="line">                sb.append(s.charAt(index));</div><div class="line">                i--;</div><div class="line">                index--;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="comment">// not reverse part</span></div><div class="line">            <span class="comment">// length == k</span></div><div class="line">            i = k;</div><div class="line">            index = k + (j-<span class="number">1</span>) * <span class="number">2</span> * k;</div><div class="line">            <span class="keyword">while</span>(i &gt; <span class="number">0</span>) &#123;</div><div class="line">                sb.append(s.charAt(index));</div><div class="line">                i--;</div><div class="line">                index++;</div><div class="line">            &#125;</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// reverse </span></div><div class="line">        <span class="keyword">int</span> index = Math.min(times * <span class="number">2</span> * k + k - <span class="number">1</span>, s.length() - <span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span>(index &gt;= (times * <span class="number">2</span> * k ) ) &#123;</div><div class="line">            sb.append(s.charAt(index));</div><div class="line">            index--;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">// append what is left</span></div><div class="line">        index = Math.min(times * <span class="number">2</span> * k + k, s.length());</div><div class="line">        <span class="keyword">while</span>(index &lt; s.length())&#123;</div><div class="line">            sb.append(s.charAt(index));</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        </div><div class="line">       <span class="keyword">return</span> sb.toString();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -529,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -551,7 +547,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -586,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

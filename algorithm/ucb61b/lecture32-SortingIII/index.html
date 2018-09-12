@@ -389,15 +389,13 @@
       
         <p>Lecture32 Sorting III</p>
 <a id="more"></a>
-<br>
+<p><br></p>
 <hr>
-<br>
-<h1 id="selection"><a class="markdownIt-Anchor" href="#selection"></a> Selection</h1>
-<p>Select kth smallest key in list</p>
+<p><br></p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>Select kth smallest key in list </p>
 <p>Qucik Select</p>
 <p>Partition <code>I</code> into List <code>I1, Iv, I2</code></p>
-<p>Item with same key as v go into any list<br>
-(list-based <code>Iv</code>; array-basd <code>I1&amp;I2</code>)</p>
+<p>Item with same key as v go into any list<br>(list-based <code>Iv</code>; array-basd <code>I1&amp;I2</code>)</p>
 <pre><code>if (j &lt; |I1|) {
     Recursivly find item with index j in I1;
     return it;
@@ -407,19 +405,12 @@
     Recusively find tiem with index j - |I1| - |Iv| in I2;
     return it;
 }
-</code></pre>
-<p>和 Quick Sort 比起来，每次只要递归一个<code>I1 I2</code>其中的一个就可以了，所以会快一些<br>
-(Quick sort 里的i 就是 <code>|I2|</code>)</p>
+</code></pre><p>和 Quick Sort 比起来，每次只要递归一个<code>I1 I2</code>其中的一个就可以了，所以会快一些<br>(Quick sort 里的i 就是 <code>|I2|</code>)</p>
 <p>O(n) average time if we select pivot properly</p>
-<h1 id="a-lower-bound-on-comparision-based-sorting"><a class="markdownIt-Anchor" href="#a-lower-bound-on-comparision-based-sorting"></a> A Lower Bound on comparision-based sorting</h1>
-<p><code>Lower Bound</code> 最快情况</p>
-<p>comparasion-based:<br>
-all decisions based on comparing keys (If statements)</p>
+<h1 id="A-Lower-Bound-on-comparision-based-sorting"><a href="#A-Lower-Bound-on-comparision-based-sorting" class="headerlink" title="A Lower Bound on comparision-based sorting"></a>A Lower Bound on comparision-based sorting</h1><p><code>Lower Bound</code> 最快情况</p>
+<p>comparasion-based:<br>all decisions based on comparing keys (If statements)</p>
 <p>A correct sorting algorithm must generate a <code>different</code> sequence of true/false answer for each permutation of 1 … n</p>
-<h1 id="linear-time-sorting"><a class="markdownIt-Anchor" href="#linear-time-sorting"></a> Linear-time sorting</h1>
-<p>Bucket Sort<br>
-works when keys are in small range<br>
-e.g 0 to q-1 ——i.e when q in O(n)</p>
+<h1 id="Linear-time-sorting"><a href="#Linear-time-sorting" class="headerlink" title="Linear-time sorting"></a>Linear-time sorting</h1><p>Bucket Sort<br>works when keys are in small range<br>e.g 0 to q-1 ——i.e when q in O(n)</p>
 <p>Array of q queues, numbered from O to q-1.</p>
 <p>enqueue each item: key i goes to queue i</p>
 
@@ -554,7 +545,7 @@ e.g 0 to q-1 ——i.e when q in O(n)</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -576,7 +567,7 @@ e.g 0 to q-1 ——i.e when q in O(n)</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -611,7 +602,7 @@ e.g 0 to q-1 ——i.e when q in O(n)</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#selection"><span class="nav-number">1.</span> <span class="nav-text"> Selection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a-lower-bound-on-comparision-based-sorting"><span class="nav-number">2.</span> <span class="nav-text"> A Lower Bound on comparision-based sorting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-time-sorting"><span class="nav-number">3.</span> <span class="nav-text"> Linear-time sorting</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Selection"><span class="nav-number">1.</span> <span class="nav-text">Selection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Lower-Bound-on-comparision-based-sorting"><span class="nav-number">2.</span> <span class="nav-text">A Lower Bound on comparision-based sorting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-time-sorting"><span class="nav-number">3.</span> <span class="nav-text">Linear-time sorting</span></a></li></ol></div>
             
 
           </div>

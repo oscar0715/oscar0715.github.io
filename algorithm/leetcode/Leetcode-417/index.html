@@ -390,41 +390,13 @@
         <p>Pacific Atlantic Water Flow</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Example:</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Example:</p>
 <p>Given the following 5x5 matrix:</p>
-<dl>
-<dt>Pacific ~   ~   ~   ~   ~</dt>
-<dd>1   2   2   3  (5) *</dd>
-<dd>3   2   3  (4) (4) *</dd>
-<dd>2   4  (5)  3   1  *</dd>
-<dd>(6) (7)  1   4   5  *</dd>
-<dd>(5)  1   1   2   4  *
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>Atlantic</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</dd>
-</dl>
-<p>Return:</p>
+<p>  Pacific ~   ~   ~   ~   ~<br>       ~  1   2   2   3  (5) <em><br>       ~  3   2   3  (4) (4) </em><br>       ~  2   4  (5)  3   1  <em><br>       ~ (6) (7)  1   4   5  </em><br>       ~ (5)  1   1   2   4  *</p>
+<pre><code>*   *   *   *   * Atlantic
+</code></pre><p>Return:</p>
 <p>[[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]] (positions with parentheses in above matrix).</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>DFS</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>DFS</p>
 <ol>
 <li>分别用两个数组来判断，每个节点是否能流向 Pacific 或者 Atlantic</li>
 </ol>
@@ -561,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">380</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -583,7 +555,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -618,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
