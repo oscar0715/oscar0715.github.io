@@ -388,72 +388,123 @@
 
       
         <p>CMU 95702 - Distributed System</p>
-<p>Cryptography<br><a id="more"></a></p>
+<p>Cryptography</p>
+<a id="more"></a>
 <hr>
-<h2 id="Symmetric-key"><a href="#Symmetric-key" class="headerlink" title="Symmetric key"></a>Symmetric key</h2><h3 id="Julius-Caesar-Shift-cipher"><a href="#Julius-Caesar-Shift-cipher" class="headerlink" title="Julius Caesar (Shift) cipher"></a>Julius Caesar (Shift) cipher</h3><ol>
+<h2 id="symmetric-key"><a class="markdownIt-Anchor" href="#symmetric-key"></a> Symmetric key</h2>
+<h3 id="julius-caesar-shift-cipher"><a class="markdownIt-Anchor" href="#julius-caesar-shift-cipher"></a> Julius Caesar (Shift) cipher</h3>
+<ol>
 <li>Pick a key (a number)</li>
 <li>Shift the letters of the plaintext by the key to create the ciphertext.</li>
-<li>E.g.<br> – Plaintext: Yellow cake<br> – Key: 3<br> – Ciphertext: Bhoorz fdnh</li>
-<li>Secret key algorithm<br> – The sender and the receiver share a secret key</li>
-<li>Symmetric algorithm<br> – Trivially-related keys are used to encode and decode the message<ul>
+<li>E.g.<br>
+– Plaintext: Yellow cake<br>
+– Key: 3<br>
+– Ciphertext: Bhoorz fdnh</li>
+<li>Secret key algorithm<br>
+– The sender and the receiver share a secret key</li>
+<li>Symmetric algorithm<br>
+– Trivially-related keys are used to encode and decode the message
+<ul>
 <li>Trivially-related: uses the same key, or keys require only a simple transformation.</li>
 </ul>
 </li>
 </ol>
-<h3 id="Block-Cipher"><a href="#Block-Cipher" class="headerlink" title="Block Cipher"></a>Block Cipher</h3><ol>
-<li>Symmetric key cipher </li>
-<li>Works on blocks of text<br> – E.g. 128 bit blocks</li>
+<h3 id="block-cipher"><a class="markdownIt-Anchor" href="#block-cipher"></a> Block Cipher</h3>
+<ol>
+<li>Symmetric key cipher</li>
+<li>Works on blocks of text<br>
+– E.g. 128 bit blocks</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">初始块 01001</div><div class="line">key   00001</div><div class="line">原文   00011000010101100101</div><div class="line"></div><div class="line">    00011 00001 01011 00101 </div><div class="line">xor 01001                   \\ 与初始块做XOR</div><div class="line">=   01010                   </div><div class="line">+ k 00001                   \\ 加上key</div><div class="line">=   01011</div><div class="line"></div><div class="line">xor       01011             \\ 上一轮的输出作为这一轮的作XOR的块</div><div class="line">=         01010</div><div class="line">+ k       00001             \\ 加上key</div><div class="line">=         01011</div><div class="line"></div><div class="line">xor             01011</div><div class="line">=               00000</div><div class="line">+ k             00001</div><div class="line">=               00001</div><div class="line"></div><div class="line">xor                   00001</div><div class="line">                      00100</div><div class="line">+ k                   00001</div><div class="line">=                     00101 </div><div class="line"></div><div class="line">    01011 01011 00001 00101</div></pre></td></tr></table></figure>
 <p>Block cipher chaining:</p>
 <ol>
-<li>Each block is XOR’ed with the previous block before encrypting<br> –  The first block is XOR’ed with an initialization vector<br> –  Thein initialization is typically a randomn number<br> 用一个随机得到的初始块作为第一轮的作异或的块</li>
+<li>Each block is XOR’ed with the previous block before encrypting<br>
+–  The first block is XOR’ed with an initialization vector<br>
+–  Thein initialization is typically a randomn number<br>
+用一个随机得到的初始块作为第一轮的作异或的块</li>
 <li>Therefore each block is dependent on all plaintext blocks up to that point</li>
 </ol>
-<h2 id="Asymmetric-key"><a href="#Asymmetric-key" class="headerlink" title="Asymmetric key"></a>Asymmetric key</h2><ol>
-<li>Uses asymmetric keys </li>
-<li>Single public key 公钥<br>– Let the world see 大家都知道你的公钥</li>
-<li>Single private key 密钥<br>– You keep secret 只有你自己知道你的密钥</li>
+<h2 id="asymmetric-key"><a class="markdownIt-Anchor" href="#asymmetric-key"></a> Asymmetric key</h2>
+<ol>
+<li>Uses asymmetric keys</li>
+<li>Single public key 公钥<br>
+– Let the world see 大家都知道你的公钥</li>
+<li>Single private key 密钥<br>
+– You keep secret 只有你自己知道你的密钥</li>
 </ol>
-<h3 id="Twos-of-Public-Private-key"><a href="#Twos-of-Public-Private-key" class="headerlink" title="Twos of Public/Private key"></a>Twos of Public/Private key</h3><ol>
-<li><strong>Encryption / Decryption:</strong> 加密解密<ul>
+<h3 id="twos-of-publicprivate-key"><a class="markdownIt-Anchor" href="#twos-of-publicprivate-key"></a> Twos of Public/Private key</h3>
+<ol>
+<li><strong>Encryption / Decryption:</strong> 加密解密
+<ul>
 <li>别人用你的公钥加密消息，传给你</li>
 <li>你收到密文以后，用自己的私钥解密。</li>
 </ul>
 </li>
-<li><strong>Signing / Verification:</strong><ul>
+<li><strong>Signing / Verification:</strong>
+<ul>
 <li>你用自己的私钥对文档进行加密</li>
 <li>别人用你的公钥对密文进行解密，然后验证文档是不是你当初签名过的文档。</li>
 </ul>
 </li>
 </ol>
-<h2 id="Cryptographic-protocols"><a href="#Cryptographic-protocols" class="headerlink" title="Cryptographic protocols"></a>Cryptographic protocols</h2><p><strong>protocols:</strong></p>
+<h2 id="cryptographic-protocols"><a class="markdownIt-Anchor" href="#cryptographic-protocols"></a> Cryptographic protocols</h2>
+<p><strong>protocols:</strong></p>
 <ol>
-<li>Cryptographic protocols build on the use of cryptographic algorithms<br>加密协议是建立在加密算法之上的</li>
-<li>Two prominent protocols:<br> – Transport Layer Security (TLS) (newer)<br> – Secure Socket Layer (SSL) (older)</li>
-<li>Both are application-level protocols, that work above the transport layer (especially TCP) to provide safe end-to-end communication.<br>两种协议都是在传输层之上</li>
+<li>Cryptographic protocols build on the use of cryptographic algorithms<br>
+加密协议是建立在加密算法之上的</li>
+<li>Two prominent protocols:<br>
+– Transport Layer Security (TLS) (newer)<br>
+– Secure Socket Layer (SSL) (older)</li>
+<li>Both are application-level protocols, that work above the transport layer (especially TCP) to provide safe end-to-end communication.<br>
+两种协议都是在传输层之上</li>
 </ol>
 <p><strong>Secure Email &amp; Web:</strong></p>
 <ol>
-<li><em>SMTP</em> and <em>IMAP</em> (email protocols) can work above TLS or SSL to provide secure email transmission<br>两个邮件协议，也是通过TLS或者SSL来提供邮件加密的。</li>
+<li><em>SMTP</em> and <em>IMAP</em> (email protocols) can work above TLS or SSL to provide secure email transmission<br>
+两个邮件协议，也是通过TLS或者SSL来提供邮件加密的。</li>
 <li>HTTPS is HTTP over TLS/SSL to provide secure web communication</li>
 </ol>
 <p><strong>Comparation:</strong></p>
 <ol>
-<li>Symmetric:<br> –  Fast 加密算法更快，效率高<br> –  Difficult to distribute and and keep keys secure 但是怎么让所有人都有对称密钥是个麻烦的问题。</li>
-<li>Asymmetric:<br> –  100 to 1000 times slower 非对称加密要慢100倍以上<br> –  Can allow for public keys </li>
-<li>TLS / SSL uses the best of both worlds:<br> –  Use asymmetric keys to exchange symmetric keys at the beginning of a conversation。<br> 先用非对称加密把对称密钥传到所有人手中。<br> –  Symmetric keys will have the lifespan of that conversation<br> 之后就能用对称加密来加密了。</li>
+<li>Symmetric:<br>
+–  Fast 加密算法更快，效率高<br>
+–  Difficult to distribute and and keep keys secure 但是怎么让所有人都有对称密钥是个麻烦的问题。</li>
+<li>Asymmetric:<br>
+–  100 to 1000 times slower 非对称加密要慢100倍以上<br>
+–  Can allow for public keys</li>
+<li>TLS / SSL uses the best of both worlds:<br>
+–  Use asymmetric keys to exchange symmetric keys at the beginning of a conversation。<br>
+先用非对称加密把对称密钥传到所有人手中。<br>
+–  Symmetric keys will have the lifespan of that conversation<br>
+之后就能用对称加密来加密了。</li>
 </ol>
-<h2 id="TLS-SSL-Protocal-HandShake"><a href="#TLS-SSL-Protocal-HandShake" class="headerlink" title="TLS/SSL Protocal HandShake"></a>TLS/SSL Protocal HandShake</h2><ol>
-<li>Start with RSA Public/Private keys<br> –  Ask Amazon for their Public key<br> –  Amazon replies with their Public key<br> 向亚马逊要到公钥</li>
-<li>Generate a 128 bit(or bigger) random number<br> – This is your “session” new AES key<br> 这个是对称加密的对称密钥，这个对称密钥是随机的，只对这次session有用<br> – Encrypt the new AES key with the Amazon Public Key<br> 用公钥把对称密钥加密<br> – Send the encrypted key to Amazon<br> 把密文传给亚马逊</li>
-<li>Amazon receives the encrypted key<br> –  They (and only they) can decrypt the AES key with their RSA Private key<br> 亚马逊用自己的私钥对密文进行解密，然后就能得到对称加密要用到的对称密钥。<br> –  They now have the AES key you created for this session<br> 这样大家收发双方都有对称加密的对称密钥了</li>
-<li>Amazon and your browser communicate by encrypting and decrypting all messages with the same AES 128 bit random-number key.<br> –  At the end of this session, both forget the AES key<br> 这次session结束以后，这个对称密钥就可以退休了。</li>
+<h2 id="tlsssl-protocal-handshake"><a class="markdownIt-Anchor" href="#tlsssl-protocal-handshake"></a> TLS/SSL Protocal HandShake</h2>
+<ol>
+<li>Start with RSA Public/Private keys<br>
+–  Ask Amazon for their Public key<br>
+–  Amazon replies with their Public key<br>
+向亚马逊要到公钥</li>
+<li>Generate a 128 bit(or bigger) random number<br>
+– This is your “session” new AES key<br>
+这个是对称加密的对称密钥，这个对称密钥是随机的，只对这次session有用<br>
+– Encrypt the new AES key with the Amazon Public Key<br>
+用公钥把对称密钥加密<br>
+– Send the encrypted key to Amazon<br>
+把密文传给亚马逊</li>
+<li>Amazon receives the encrypted key<br>
+–  They (and only they) can decrypt the AES key with their RSA Private key<br>
+亚马逊用自己的私钥对密文进行解密，然后就能得到对称加密要用到的对称密钥。<br>
+–  They now have the AES key you created for this session<br>
+这样大家收发双方都有对称加密的对称密钥了</li>
+<li>Amazon and your browser communicate by encrypting and decrypting all messages with the same AES 128 bit random-number key.<br>
+–  At the end of this session, both forget the AES key<br>
+这次session结束以后，这个对称密钥就可以退休了。</li>
 </ol>
-<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><p><strong>Digital Signature</strong></p>
+<h2 id="digital-signature"><a class="markdownIt-Anchor" href="#digital-signature"></a> Digital Signature</h2>
+<p><strong>Digital Signature</strong></p>
 <ol>
 <li>Public key encryption can be used to provide digital signatures to validate authenticity 公钥加密可以被用来做数字签名</li>
-<li>Digital signatures are better that real signatures, for people can alter a paper document once you have signed it. </li>
+<li>Digital signatures are better that real signatures, for people can alter a paper document once you have signed it.</li>
 <li>With digital signatures, if the document is changed, then the signature becomes invalid.</li>
 <li>This is because the signature is a number based on the content of the document.</li>
 <li>Or more specifically, on the hash value of a document.</li>
@@ -463,7 +514,9 @@
 <li>Takes a file (application, document, picture, etc.)</li>
 <li>Returns a large, but fixed-size number. (Hash)</li>
 <li>The file being encoded is called the “message”</li>
-<li>The resulting hash value is also called the<br> – “Message Digest”<br> – Or simply “Digest”</li>
+<li>The resulting hash value is also called the<br>
+– “Message Digest”<br>
+– Or simply “Digest”</li>
 </ol>
 <p>一个好的hash funciton：</p>
 <ol>
@@ -471,31 +524,52 @@
 <li>如果改变了原文，那么hash value 也一定会改变</li>
 <li>两个不同的原文，不能得到相同的hash value</li>
 </ol>
-<p><strong>Digital Signature</strong><br>The sender:</p>
+<p><strong>Digital Signature</strong><br>
+The sender:</p>
 <ol>
 <li>Take your document (email message, etc)</li>
-<li>Calculate a hash function on it.<br> – e.g. SHA2</li>
-<li>Encrypt the resulting hash value with your private key.<br>对哈希值用私钥进行加密</li>
-<li>The encrypted hash value is the digital signature.<br>加密得到的结果就是数字签名</li>
+<li>Calculate a hash function on it.<br>
+– e.g. SHA2</li>
+<li>Encrypt the resulting hash value with your private key.<br>
+对哈希值用私钥进行加密</li>
+<li>The encrypted hash value is the digital signature.<br>
+加密得到的结果就是数字签名</li>
 <li>Send it …</li>
 </ol>
 <p>The recipient:</p>
 <ol>
 <li>Receives the document (email message, etc) and the digital signature.</li>
-<li>Decrypts the signature with public key<br>用公钥对数字签名进行解密</li>
-<li>Calculate a hash of the document &amp; compare it with the sender’s hash value<br>对原文做哈希</li>
-<li>They should be equal<br>比较哈希的结果和解密的结果来验证</li>
+<li>Decrypts the signature with public key<br>
+用公钥对数字签名进行解密</li>
+<li>Calculate a hash of the document &amp; compare it with the sender’s hash value<br>
+对原文做哈希</li>
+<li>They should be equal<br>
+比较哈希的结果和解密的结果来验证</li>
 </ol>
-<p><strong>Digital Cetificates</strong><br>还有一个不安全的地方是，我们向亚马逊要公钥，我们怎么知道发来公钥的这个人到底是不是亚马逊。这个时候就要数字证书这个东西。</p>
+<p><strong>Digital Cetificates</strong><br>
+还有一个不安全的地方是，我们向亚马逊要公钥，我们怎么知道发来公钥的这个人到底是不是亚马逊。这个时候就要数字证书这个东西。</p>
 <ol>
-<li>A Digital Certificate is a document that provides information about an organization<br> – Most importantly, its public key</li>
-<li>And the Digital Certificate is digitally signed by some trusted party.<br>数字证书是可信的第三方签发的</li>
-<li>Typically contains<br> –  Owner’s name<br> –  Owner’s public key<br> –  Expiration date<br> –  Name of certificate issuer –  Serial number<br> –  Issuer’s digital signature</li>
+<li>A Digital Certificate is a document that provides information about an organization<br>
+– Most importantly, its public key</li>
+<li>And the Digital Certificate is digitally signed by some trusted party.<br>
+数字证书是可信的第三方签发的</li>
+<li>Typically contains<br>
+–  Owner’s name<br>
+–  Owner’s public key<br>
+–  Expiration date<br>
+–  Name of certificate issuer –  Serial number<br>
+–  Issuer’s digital signature</li>
 </ol>
 <p><strong>Certification Authority</strong></p>
-<h2 id="Cryptographic-Protocols"><a href="#Cryptographic-Protocols" class="headerlink" title="Cryptographic Protocols"></a>Cryptographic Protocols</h2><p>A protocol is a series of steps, involving two or more parties, designed to<br>accomplish a task.<br>协议就是一系列的步骤，用于多方一起来完成同一个任务</p>
-<p>cryptographic protocol：<br>A cryptographic protocol is a protocol that uses cryptography<br>加密协议就是用到加密算法的协议（Orz 真是跪了</p>
-<h3 id="Some-Attacks-and-an-Assumption"><a href="#Some-Attacks-and-an-Assumption" class="headerlink" title="Some Attacks and an Assumption"></a>Some Attacks and an Assumption</h3><p><strong>攻击的种类：</strong></p>
+<h2 id="cryptographic-protocols-2"><a class="markdownIt-Anchor" href="#cryptographic-protocols-2"></a> Cryptographic Protocols</h2>
+<p>A protocol is a series of steps, involving two or more parties, designed to<br>
+accomplish a task.<br>
+协议就是一系列的步骤，用于多方一起来完成同一个任务</p>
+<p>cryptographic protocol：<br>
+A cryptographic protocol is a protocol that uses cryptography<br>
+加密协议就是用到加密算法的协议（Orz 真是跪了</p>
+<h3 id="some-attacks-and-an-assumption"><a class="markdownIt-Anchor" href="#some-attacks-and-an-assumption"></a> Some Attacks and an Assumption</h3>
+<p><strong>攻击的种类：</strong></p>
 <ol>
 <li>Eavesdropping or listening in 窃听</li>
 <li>Masquerading or pretending to be someone you are not 身份伪装</li>
@@ -515,61 +589,84 @@
 </ol>
 <p><strong>标记</strong></p>
 <ol>
-<li>$K_{A}$ Alice’s key that she keeps secret.</li>
-<li>$K_{B}$ Bob’s key that he keeps secret.</li>
-<li>$K_{AB}$ Secret key shared between Alice and Bob</li>
-<li>$K_{Apriv}$ Alice’s private key (known only to Alice in asymmetric key crypto)</li>
-<li>$K_{Apub}$ Alice’s public key (published by Alice for all to read)</li>
-<li>$\{M\}_K$ Message M encrypted with key K</li>
-<li>$[M]_K$ Message M signed with key K</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{A}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Alice’s key that she keeps secret.</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Bob’s key that he keeps secret.</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Secret key shared between Alice and Bob</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{Apriv}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit">p</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Alice’s private key (known only to Alice in asymmetric key crypto)</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>p</mi><mi>u</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{Apub}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit">p</span><span class="mord mathit">u</span><span class="mord mathit">b</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Alice’s public key (published by Alice for all to read)</li>
+<li>\\{M\\}_K Message M encrypted with key K</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>M</mi><msub><mo>]</mo><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">[M]_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose"><span class="mclose">]</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.07153em;">K</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> Message M signed with key K</li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h2 id="Four-Important-Cryptographic-Protocols"><a href="#Four-Important-Cryptographic-Protocols" class="headerlink" title="Four Important Cryptographic Protocols"></a>Four Important Cryptographic Protocols</h2><h3 id="Scenario-1-Like-WWII-amp-TEA"><a href="#Scenario-1-Like-WWII-amp-TEA" class="headerlink" title="Scenario 1 (Like WWII &amp; TEA)"></a>Scenario 1 (Like WWII &amp; TEA)</h3><p>就是对称加密</p>
+<br>
+***
+<br>
+<h2 id="four-important-cryptographic-protocols"><a class="markdownIt-Anchor" href="#four-important-cryptographic-protocols"></a> Four Important Cryptographic Protocols</h2>
+<h3 id="scenario-1-like-wwii-tea"><a class="markdownIt-Anchor" href="#scenario-1-like-wwii-tea"></a> Scenario 1 (Like WWII &amp; TEA)</h3>
+<p>就是对称加密</p>
 <ol>
 <li>Communication with a shared secret key.</li>
-<li>Alice and Bob share $K_{AB}$.<br>双方都已经知道对称密钥了</li>
-<li>Alice computes $E(K_{AB},M_i)$ for each message $i$.<br>加密 </li>
+<li>Alice and Bob share <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>.<br>
+双方都已经知道对称密钥了</li>
+<li>Alice computes <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo separator="true">,</mo><msub><mi>M</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">E(K_{AB},M_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span> for each message <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>.<br>
+加密</li>
 <li>She sends these to Bob.</li>
-<li>Bob uses $D(K_{AB}, \{M_i\} K_{AB})$ and reads each $M_i$.<br>解密</li>
+<li>Bob uses $D(K_{AB}, \{M_i\} K_{AB})$ and reads each <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">M_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>.<br>
+解密</li>
 </ol>
 <hr>
-<h3 id="Scenario-2-Like-Kerberos"><a href="#Scenario-2-Like-Kerberos" class="headerlink" title="Scenario 2 (Like Kerberos)"></a>Scenario 2 (Like Kerberos)</h3><p>设计三方的一种安全认证系统</p>
+<h3 id="scenario-2-like-kerberos"><a class="markdownIt-Anchor" href="#scenario-2-like-kerberos"></a> Scenario 2 (Like Kerberos)</h3>
+<p>设计三方的一种安全认证系统</p>
 <p>Alice想要和Bob进行加密沟通</p>
 <ol>
 <li>Alice asks Sarah for a ticket to talk to Bob.</li>
-<li>Sarah knows Alice’s password so she can compute $K_A$.<br>这个$K_A$，Sarah和Alice都知道。Sarah是全知视角。这个$K_A$也就是Alice的密码，可以看做Alice和Sarah共享的对称密码。</li>
+<li>Sarah knows Alice’s password so she can compute <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">K_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">A</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>.<br>
+这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">K_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">A</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>，Sarah和Alice都知道。Sarah是全知视角。这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">K_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">A</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>也就是Alice的密码，可以看做Alice和Sarah共享的对称密码。</li>
 <li>Sarah send to Alice $\{\{Ticket\}K_B,K_{AB}\}K_A$</li>
-<li>Alice knows her password and is able to compute $K_A$.<br>所以Alice可以解密，之后得到了可以供A，B加密的对称密钥$K_{AB}$ 和 加密好的$\{Ticket\}K_B$</li>
-<li>Alice sends a read request to Bob. She sends <strong>$\{Ticket\}K_B$,Alice,Read</strong>. Another challenge!</li>
-<li>Bob uses $K_B$ to read the content of the Ticket.同样$K_B$也是Bob和Sarah之间共享的对称密钥</li>
-<li>The Ticket is $K_{AB}$,Alice. Bob and Alice then use this session key to communicate.</li>
+<li>Alice knows her password and is able to compute $K_A$.<br>
+所以Alice可以解密，之后得到了可以供A，B加密的对称密钥<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> 和 加密好的\\{Ticket\\}K_B</li>
+<li>Alice sends a read request to Bob. She sends <strong>\\{Ticket\\}K_B,Alice,Read</strong>. Another challenge!</li>
+<li>Bob uses <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">K_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> to read the content of the Ticket.同样<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">K_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>也是Bob和Sarah之间共享的对称密钥</li>
+<li>The Ticket is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>,Alice. Bob and Alice then use this session key to communicate.</li>
 </ol>
-<p>Does not scale well : Sarah must know $K_A$, $K_B$ ….<br>Sarah is a single point of failure.</p>
+<p>Does not scale well : Sarah must know <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">K_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">A</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>K</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">K_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> …<br>
+Sarah is a single point of failure.</p>
 <hr>
-<h3 id="Scenario-3-Authentication"><a href="#Scenario-3-Authentication" class="headerlink" title="Scenario 3 (Authentication)"></a>Scenario 3 (Authentication)</h3><p>Alice wishes to convince Bob that she sent the message M.<br>Alice要发一个经过签名的文档给Bob</p>
+<h3 id="scenario-3-authentication"><a class="markdownIt-Anchor" href="#scenario-3-authentication"></a> Scenario 3 (Authentication)</h3>
+<p>Alice wishes to convince Bob that she sent the message M.<br>
+Alice要发一个经过签名的文档给Bob</p>
 <ol>
-<li>She computes a digest of $M$, $Digest(M)$.</li>
-<li>If the Digest method is a good one, it is very difficult to find another message $M’$ so that $Digest(M) == Digest(M’)$.</li>
-<li>Alice makes the following available to the intended users: $M,{Digest(M)}K_{Apriv}$.</li>
-<li>Bob obtains the signed document, extracts $M$ and computes $Digest(M)$.<br>Bob decrypts ${Digest(M)}K_{Apriv}$ using KApub and compares the<br>result with his calculated $Digest(M)$. </li>
+<li>She computes a digest of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>i</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">Digest(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>.</li>
+<li>If the Digest method is a good one, it is very difficult to find another message M’ so that Digest(M) == Digest(M’).</li>
+<li>Alice makes the following available to the intended users: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mo separator="true">,</mo><mrow><mi>D</mi><mi>i</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi></mrow></msub></mrow><annotation encoding="application/x-tex">M,{Digest(M)}K_{Apriv}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mpunct">,</span><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit">p</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>.</li>
+<li>Bob obtains the signed document, extracts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span></span></span></span> and computes <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>i</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">Digest(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>.<br>
+Bob decrypts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi>D</mi><mi>i</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{Digest(M)}K_{Apriv}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07153em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">A</span><span class="mord mathit">p</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> using KApub and compares the<br>
+result with his calculated <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>i</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">Digest(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>.</li>
 <li>If they match, the signature is valid.</li>
 </ol>
-<p>另外<br>MAC algorithm is a symmetric key cryptographic technique to provide message authentication. For establishing MAC process, the sender and receiver share a symmetric key $K$.<br>MAC 算法是就是就是运用对称加密的方式来进行签名的方法，这里用 A B 共有的 session key， 而不是非对称的密钥。<br>Message Authentication Codes (MACs) 就是hash以后的结果。</p>
+<p>另外<br>
+MAC algorithm is a symmetric key cryptographic technique to provide message authentication. For establishing MAC process, the sender and receiver share a symmetric key <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">K</span></span></span></span>.<br>
+MAC 算法是就是就是运用对称加密的方式来进行签名的方法，这里用 A B 共有的 session key， 而不是非对称的密钥。<br>
+Message Authentication Codes (MACs) 就是hash以后的结果。</p>
 <hr>
-<h3 id="Scenario-4-Like-SSL"><a href="#Scenario-4-Like-SSL" class="headerlink" title="Scenario 4 (Like SSL)"></a>Scenario 4 (Like SSL)</h3><p>这个就是先RSA 在 DEA（先非对称，再对称）</p>
+<h3 id="scenario-4-like-ssl"><a class="markdownIt-Anchor" href="#scenario-4-like-ssl"></a> Scenario 4 (Like SSL)</h3>
+<p>这个就是先RSA 在 DEA（先非对称，再对称）</p>
 <hr>
-<h3 id="keystore-truststore"><a href="#keystore-truststore" class="headerlink" title="keystore/truststore"></a>keystore/truststore</h3><p>一种解释：<br>A <strong>keystore</strong> contains private keys, and the certificates with their corresponding public keys.</p>
+<h3 id="keystoretruststore"><a class="markdownIt-Anchor" href="#keystoretruststore"></a> keystore/truststore</h3>
+<p>一种解释：<br>
+A <strong>keystore</strong> contains private keys, and the certificates with their corresponding public keys.</p>
 <p>A <strong>truststore</strong> contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties.</p>
 <p>顾名思义：keystore 记录的是你的 key 和证书，而 trust store 记录的是你信任的证书，一般是对方服务器的证书(当然也可能是 SSL 客户端证书，比如金融交易中要求客户端也必须有证书)。</p>
 <hr>
-<p>更详细的解释：<br>In a SSL handshake the purpose of trustStore is to verify credentials and the purpose of keyStore is to provide credential.</p>
-<p><strong>KeyStore</strong>:<br>keyStore in Java stores <em>private key</em> and <em>certificates</em> corresponding to their public keys and require if you are SSL Server or SSL requires client authentication.</p>
-<p><strong>TrustStore</strong>:<br>TrustStore stores certificates <em>from third party</em>, your Java application communicate or certificates signed by CA(certificate authorities like Verisign, Thawte, Geotrust or GoDaddy) which can be used to identify third party.</p>
-<p><strong>TrustManager</strong>:<br>TrustManager determines whether remote connection should be trusted or not i.e. whether remote party is who it claims to and KeyManager decides which authentication credentials should be sent to the remote host for authentication during SSL handshake.</p>
+<p>更详细的解释：<br>
+In a SSL handshake the purpose of trustStore is to verify credentials and the purpose of keyStore is to provide credential.</p>
+<p><strong>KeyStore</strong>:<br>
+keyStore in Java stores <em>private key</em> and <em>certificates</em> corresponding to their public keys and require if you are SSL Server or SSL requires client authentication.</p>
+<p><strong>TrustStore</strong>:<br>
+TrustStore stores certificates <em>from third party</em>, your Java application communicate or certificates signed by CA(certificate authorities like Verisign, Thawte, Geotrust or GoDaddy) which can be used to identify third party.</p>
+<p><strong>TrustManager</strong>:<br>
+TrustManager determines whether remote connection should be trusted or not i.e. whether remote party is who it claims to and KeyManager decides which authentication credentials should be sent to the remote host for authentication during SSL handshake.</p>
 <hr>
-<p>If you are an SSL Server you will use private key during key exchange algorithm and send certificates corresponding to your public keys to client, this certificate is acquired from keyStore. </p>
+<p>If you are an SSL Server you will use private key during key exchange algorithm and send certificates corresponding to your public keys to client, this certificate is acquired from keyStore.</p>
 <p>On SSL client side, if its written in Java, it will use certificates stored in trustStore to verify identity of Server. SSL certificates are most commonly comes as .cer file which is added into keyStore or trustStore by using any key management utility e.g. keytool.</p>
 <hr>
 <p>Over!</p>
@@ -705,7 +802,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -762,7 +859,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetric-key"><span class="nav-number">1.</span> <span class="nav-text">Symmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Julius-Caesar-Shift-cipher"><span class="nav-number">1.1.</span> <span class="nav-text">Julius Caesar (Shift) cipher</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Cipher"><span class="nav-number">1.2.</span> <span class="nav-text">Block Cipher</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-key"><span class="nav-number">2.</span> <span class="nav-text">Asymmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Twos-of-Public-Private-key"><span class="nav-number">2.1.</span> <span class="nav-text">Twos of Public/Private key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-protocols"><span class="nav-number">3.</span> <span class="nav-text">Cryptographic protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TLS-SSL-Protocal-HandShake"><span class="nav-number">4.</span> <span class="nav-text">TLS/SSL Protocal HandShake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">5.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic-Protocols"><span class="nav-number">6.</span> <span class="nav-text">Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-Attacks-and-an-Assumption"><span class="nav-number">6.1.</span> <span class="nav-text">Some Attacks and an Assumption</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Four-Important-Cryptographic-Protocols"><span class="nav-number">7.</span> <span class="nav-text">Four Important Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-1-Like-WWII-amp-TEA"><span class="nav-number">7.1.</span> <span class="nav-text">Scenario 1 (Like WWII & TEA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-2-Like-Kerberos"><span class="nav-number">7.2.</span> <span class="nav-text">Scenario 2 (Like Kerberos)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-3-Authentication"><span class="nav-number">7.3.</span> <span class="nav-text">Scenario 3 (Authentication)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario-4-Like-SSL"><span class="nav-number">7.4.</span> <span class="nav-text">Scenario 4 (Like SSL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keystore-truststore"><span class="nav-number">7.5.</span> <span class="nav-text">keystore/truststore</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-key"><span class="nav-number">1.</span> <span class="nav-text"> Symmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#julius-caesar-shift-cipher"><span class="nav-number">1.1.</span> <span class="nav-text"> Julius Caesar (Shift) cipher</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block-cipher"><span class="nav-number">1.2.</span> <span class="nav-text"> Block Cipher</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asymmetric-key"><span class="nav-number">2.</span> <span class="nav-text"> Asymmetric key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#twos-of-publicprivate-key"><span class="nav-number">2.1.</span> <span class="nav-text"> Twos of Public/Private key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cryptographic-protocols"><span class="nav-number">3.</span> <span class="nav-text"> Cryptographic protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tlsssl-protocal-handshake"><span class="nav-number">4.</span> <span class="nav-text"> TLS/SSL Protocal HandShake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#digital-signature"><span class="nav-number">5.</span> <span class="nav-text"> Digital Signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cryptographic-protocols-2"><span class="nav-number">6.</span> <span class="nav-text"> Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#some-attacks-and-an-assumption"><span class="nav-number">6.1.</span> <span class="nav-text"> Some Attacks and an Assumption</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#four-important-cryptographic-protocols"><span class="nav-number">7.</span> <span class="nav-text"> Four Important Cryptographic Protocols</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scenario-1-like-wwii-tea"><span class="nav-number">7.1.</span> <span class="nav-text"> Scenario 1 (Like WWII & TEA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scenario-2-like-kerberos"><span class="nav-number">7.2.</span> <span class="nav-text"> Scenario 2 (Like Kerberos)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scenario-3-authentication"><span class="nav-number">7.3.</span> <span class="nav-text"> Scenario 3 (Authentication)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scenario-4-like-ssl"><span class="nav-number">7.4.</span> <span class="nav-text"> Scenario 4 (Like SSL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keystoretruststore"><span class="nav-number">7.5.</span> <span class="nav-text"> keystore/truststore</span></a></li></ol></li></ol></div>
             
 
           </div>

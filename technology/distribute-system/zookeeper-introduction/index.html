@@ -390,71 +390,92 @@
         <p>Zookeeper Introduction</p>
 <a id="more"></a>
 <hr>
-<h1 id="Zookeeper-是什么"><a href="#Zookeeper-是什么" class="headerlink" title="Zookeeper 是什么"></a>Zookeeper 是什么</h1><p>Zookeeper：</p>
+<h1 id="zookeeper-是什么"><a class="markdownIt-Anchor" href="#zookeeper-是什么"></a> Zookeeper 是什么</h1>
+<p>Zookeeper：</p>
 <ol>
 <li>Zookeeper 是源代码开放的</li>
-<li>分布式协调服务，解决数据一致性的问题：<ul>
-<li>顺序一致性<br>  一个客户端发起一个请求，会严格按照发起的顺序，应用到zookeeper中。</li>
-<li>原子性<br>  所有事务处理结果中在整个集群上的应用结果是一致的。</li>
-<li>单一视图<br>  无论客户端连接到集群中的哪一个服务器，看到的服务端数据都是一样的。</li>
-<li>可靠性<br>  一旦服务端成功应用了一个事务，并对客户端完成了响应，那么这个事务对服务端状态所产生的变更，会一直保留下来。</li>
-<li>实时性<br>  zookeeper 在保证在一段时间内，客户端一定能从服务端读到最新的状态。</li>
+<li>分布式协调服务，解决数据一致性的问题：
+<ul>
+<li>顺序一致性<br>
+一个客户端发起一个请求，会严格按照发起的顺序，应用到zookeeper中。</li>
+<li>原子性<br>
+所有事务处理结果中在整个集群上的应用结果是一致的。</li>
+<li>单一视图<br>
+无论客户端连接到集群中的哪一个服务器，看到的服务端数据都是一样的。</li>
+<li>可靠性<br>
+一旦服务端成功应用了一个事务，并对客户端完成了响应，那么这个事务对服务端状态所产生的变更，会一直保留下来。</li>
+<li>实时性<br>
+zookeeper 在保证在一段时间内，客户端一定能从服务端读到最新的状态。</li>
 </ul>
 </li>
 <li>高性能</li>
 <li>可以通过调用 Zookeeper 提供的接口来解决分布式应用中的实际问题。</li>
 </ol>
-<h1 id="Zookeeper-的应用场景"><a href="#Zookeeper-的应用场景" class="headerlink" title="Zookeeper 的应用场景"></a>Zookeeper 的应用场景</h1><p>应用场景：</p>
+<h1 id="zookeeper-的应用场景"><a class="markdownIt-Anchor" href="#zookeeper-的应用场景"></a> Zookeeper 的应用场景</h1>
+<p>应用场景：</p>
 <ol>
-<li>数据订阅/发布：<ul>
+<li>数据订阅/发布：
+<ul>
 <li>推模式：服务端主动向客户端推送</li>
 <li>拉模式：客户端主动去服务端获取（通常采用定时轮询的方式）</li>
-<li>Zookeeper 采用两种方式相结合：<br>  客户端通过一定方式告诉服务器，对那些节点的数据感兴趣。服务器在这些节点的数据发生变化的时候，就通知客户端。客户端在接到通知后，主动去服务端获取数据。</li>
+<li>Zookeeper 采用两种方式相结合：<br>
+客户端通过一定方式告诉服务器，对那些节点的数据感兴趣。服务器在这些节点的数据发生变化的时候，就通知客户端。客户端在接到通知后，主动去服务端获取数据。</li>
 </ul>
 </li>
 <li>负载均衡</li>
-<li>命名服务：<br> 数据库表格的ID有两种：<ul>
+<li>命名服务：<br>
+数据库表格的ID有两种：
+<ul>
 <li>自动增长的ID：易于理解，适合单库单表</li>
 <li>UUID：适合在分布式场景下使用，但是因为没有规律而难于理解</li>
 <li>因此可以利用Zookeeper来生成顺序增长的ID，这样可以在集群下使用易于理解的ID</li>
 </ul>
 </li>
-<li>分布式协调/通知:<ul>
+<li>分布式协调/通知:
+<ul>
 <li>心跳检测：所有机器在 Zookeeper 上注册一个临时节点，判断一个机器是否可用，只要判断，这个临时节点在 Zookeeper 中是否存在即可。这样就不需要直接去连接机器，降低复杂度。</li>
 </ul>
 </li>
 </ol>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
-<li>集群角色<ul>
+<h1 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h1>
+<ol>
+<li>集群角色
+<ul>
 <li>Leader</li>
 <li>Follower</li>
 <li>Observer</li>
 </ul>
 </li>
-<li>会话<ul>
+<li>会话
+<ul>
 <li>会话是客户端和 Zookeeper 服务器建立连接， Zookeeper 中的会话叫做 Session 。</li>
 <li>Session 通过客户端和服务器建立一个 TCP 的长连接来维持一个 Session</li>
 <li>通过 Session ， 客户端能够通过心跳检测与服务器保持有效绘画，也能向服务器发出请求并且获得响应。</li>
 </ul>
 </li>
-<li>数据节点<ul>
+<li>数据节点
+<ul>
 <li>集群中的一台机器。</li>
-<li>也可以指，数据模型中的数据单元 Znode ，分为持久节点和临时节点<br>  zk 的数据模型是一棵树，树的节点就是 Znode ，Znode 中可以保持信息。</li>
+<li>也可以指，数据模型中的数据单元 Znode ，分为持久节点和临时节点<br>
+zk 的数据模型是一棵树，树的节点就是 Znode ，Znode 中可以保持信息。</li>
 </ul>
 </li>
-<li>版本<ul>
+<li>版本
+<ul>
 <li>悲观锁 / 乐观锁</li>
 <li>乐观锁：修改数据之前，先读出数据，得到数据的<code>版本号</code>，把版本号写入修改语句中。</li>
 <li>Zookeeper版本类型：version / cversion / aversion</li>
 </ul>
 </li>
-<li>事件监听器（Watcher）<ul>
+<li>事件监听器（Watcher）
+<ul>
 <li>ZK 允许用户在指定节点上注册一些 watcher。</li>
 <li>数据节点发生变化的时候，watcher 就会把变化的通知发给对这些数据节点感兴趣的客户端。</li>
 <li>（这里是不是和订阅就相关起来了）</li>
 </ul>
 </li>
-<li>ACL 权限控制<ul>
+<li>ACL 权限控制
+<ul>
 <li>ACL 就是 Access Control Lists 的缩写，有以下权限：</li>
 <li>CREATE ：创建子节点的权限</li>
 <li>READ ：获取节点和子节点数据的权限</li>
@@ -596,7 +617,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -653,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zookeeper-是什么"><span class="nav-number">1.</span> <span class="nav-text">Zookeeper 是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zookeeper-的应用场景"><span class="nav-number">2.</span> <span class="nav-text">Zookeeper 的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper-是什么"><span class="nav-number">1.</span> <span class="nav-text"> Zookeeper 是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper-的应用场景"><span class="nav-number">2.</span> <span class="nav-text"> Zookeeper 的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text"> 基本概念</span></a></li></ol></div>
             
 
           </div>

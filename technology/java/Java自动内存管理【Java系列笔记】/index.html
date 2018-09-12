@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="Java 自动内存管理Reference: JVM自动内存管理：视频">
+<meta name="description" content="Java 自动内存管理 Reference: JVM自动内存管理：视频">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java自动内存管理【Java系列笔记】">
 <meta property="og:url" content="http://menuet.xyz/technology/java/Java自动内存管理【Java系列笔记】/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Java 自动内存管理Reference: JVM自动内存管理：视频">
+<meta property="og:description" content="Java 自动内存管理 Reference: JVM自动内存管理：视频">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/runtime-shujuqu.png">
 <meta property="og:image" content="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/stackandheap.png">
@@ -109,7 +109,7 @@
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java自动内存管理【Java系列笔记】">
-<meta name="twitter:description" content="Java 自动内存管理Reference: JVM自动内存管理：视频">
+<meta name="twitter:description" content="Java 自动内存管理 Reference: JVM自动内存管理：视频">
 <meta name="twitter:image" content="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/runtime-shujuqu.png">
 
 
@@ -392,9 +392,12 @@
       
 
       
-        <p>Java 自动内存管理<br>Reference: <a href="http://www.jikexueyuan.com/course/1793_2.html" title="JVM自动内存管理：视频" target="_blank" rel="external">JVM自动内存管理：视频</a><br><a id="more"></a></p>
+        <p>Java 自动内存管理<br>
+Reference: <a href="http://www.jikexueyuan.com/course/1793_2.html" title="JVM自动内存管理：视频" target="_blank" rel="external">JVM自动内存管理：视频</a></p>
+<a id="more"></a>
 <hr>
-<h1 id="Java-内存区域基础概念"><a href="#Java-内存区域基础概念" class="headerlink" title="Java 内存区域基础概念"></a>Java 内存区域基础概念</h1><p>Java 虚拟机运行时数据区</p>
+<h1 id="java-内存区域基础概念"><a class="markdownIt-Anchor" href="#java-内存区域基础概念"></a> Java 内存区域基础概念</h1>
+<p>Java 虚拟机运行时数据区</p>
 <ol>
 <li>程序计数器</li>
 <li>Java 堆</li>
@@ -403,7 +406,8 @@
 <li>方法区</li>
 </ol>
 <p><img src="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/runtime-shujuqu.png" alt="数据区" title="数据区"></p>
-<h1 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h1><p>Program Counter Register</p>
+<h1 id="程序计数器"><a class="markdownIt-Anchor" href="#程序计数器"></a> 程序计数器</h1>
+<p>Program Counter Register</p>
 <ul>
 <li>一块较小的内存空间</li>
 <li>当前线程所执行的<code>字节码</code>的行号指示器</li>
@@ -411,22 +415,27 @@
 <li>如果线程正在执行一个java方法，计数器记录的是正在执行的虚拟机<code>字节码指令</code>的内存 地址。</li>
 <li>如果执行本地Native方法，计数器则为空</li>
 </ul>
-<h1 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h1><ul>
+<h1 id="虚拟机栈"><a class="markdownIt-Anchor" href="#虚拟机栈"></a> 虚拟机栈</h1>
+<ul>
 <li>线程私有，生命周期与线程相同</li>
 <li>后进先出栈（LIFO）</li>
-<li>描述 Java 方法<code>调用，执行，退出</code>的内存概念模型<br>  每个方法执行的时候都会创建一个栈帧，用来创建这个方法的操作数栈，局部变量表，方法出口，动态链接等信息。<br>  每个方法调用和结束的过程就对应了一个栈帧在虚拟机栈中入栈和出栈的过程</li>
+<li>描述 Java 方法<code>调用，执行，退出</code>的内存概念模型<br>
+每个方法执行的时候都会创建一个栈帧，用来创建这个方法的操作数栈，局部变量表，方法出口，动态链接等信息。<br>
+每个方法调用和结束的过程就对应了一个栈帧在虚拟机栈中入栈和出栈的过程</li>
 <li>可能出现 OutOfMemoryError 和 StackOverflowError</li>
 </ul>
-<h1 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h1><ul>
+<h1 id="本地方法栈"><a class="markdownIt-Anchor" href="#本地方法栈"></a> 本地方法栈</h1>
+<ul>
 <li>线程私有</li>
 <li>后进先出栈</li>
 <li>描述 Native 方法<code>调用，执行，退出</code></li>
 <li>可能出现 OutOfMemoryError 和 StackOverflowError</li>
 </ul>
-<h1 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h1><p>栈帧</p>
+<h1 id="栈帧"><a class="markdownIt-Anchor" href="#栈帧"></a> 栈帧</h1>
+<p>栈帧</p>
 <ul>
 <li>Java 虚拟机栈中存储的内容</li>
-<li>用于存储<code>数据</code>和<code>部分过程结果</code>的数据结构 </li>
+<li>用于存储<code>数据</code>和<code>部分过程结果</code>的数据结构</li>
 <li>同时也用来处理<code>动态链接</code>，<code>方法返回值</code>和<code>异常分派</code></li>
 <li>一个完整的栈帧包括：局部变量表，操作数栈，动态连接信息表，方法返回地址和异常信息</li>
 </ul>
@@ -435,7 +444,8 @@
 <li>是一组变量值的存储空间，长度由编译器决定</li>
 <li>由若干slot组成</li>
 <li>Slot可以存储一个类型为 boolean，byte，char，short，float，reference 和 returnAddress 的数据，两个slot可以存储一个类型为long或double的数据（64位）</li>
-<li>Reference<ol>
+<li>Reference
+<ol>
 <li>对象实例的引用，查找到对象实例在Java堆中的地址</li>
 <li>可以查找到这个对象类型在Java方法区中的数据类型信息</li>
 </ol>
@@ -447,22 +457,27 @@
 <ul>
 <li>是一个后进先出栈，</li>
 <li>由若干 Entry 组成，长度由编译器决定</li>
-<li>在方法执行过程中，栈帧用于存储<code>计算参数</code>和<code>计算结果</code>；<br>  在方法调用时，操作数栈也用来准备<code>调用方法</code>的<code>参数</code>以及接受方法的<code>返回结果</code>。</li>
+<li>在方法执行过程中，栈帧用于存储<code>计算参数</code>和<code>计算结果</code>；<br>
+在方法调用时，操作数栈也用来准备<code>调用方法</code>的<code>参数</code>以及接受方法的<code>返回结果</code>。</li>
 </ul>
-<h1 id="Java-堆"><a href="#Java-堆" class="headerlink" title="Java 堆"></a>Java 堆</h1><p>Java 堆</p>
+<h1 id="java-堆"><a class="markdownIt-Anchor" href="#java-堆"></a> Java 堆</h1>
+<p>Java 堆</p>
 <ol>
 <li>全局共享</li>
 <li>通常是 JVM 中最大的一块区域</li>
 <li>作为Java对象的主要存储区域</li>
-<li>要求实现自动内存管理，也就是GC </li>
+<li>要求实现自动内存管理，也就是GC</li>
 </ol>
-<p><img src="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/stackandheap.png" alt="堆和栈1" title="堆和栈1"><br>Reference 直接指向对象的地址，对象的对象头中有一个到对象类型数据的指针，再通过这个指针到方法区找对象的类型数据。这个方法的好处是，更快（更直接嘛），指针内存更少。</p>
-<p><img src="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/stackandheap2.png" alt="堆和栈2" title="堆和栈2"><br>Reference指向一个句柄。这种方法的好处是，对象实例被移动或者回收以后，Reference本身是不用被修改的，存储的值是稳定的，只会改变句柄池中到对象实例数据的指针。</p>
+<p><img src="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/stackandheap.png" alt="堆和栈1" title="堆和栈1"><br>
+Reference 直接指向对象的地址，对象的对象头中有一个到对象类型数据的指针，再通过这个指针到方法区找对象的类型数据。这个方法的好处是，更快（更直接嘛），指针内存更少。</p>
+<p><img src="http://ogy9ohfjc.bkt.clouddn.com/neicunguanli/stackandheap2.png" alt="堆和栈2" title="堆和栈2"><br>
+Reference指向一个句柄。这种方法的好处是，对象实例被移动或者回收以后，Reference本身是不用被修改的，存储的值是稳定的，只会改变句柄池中到对象实例数据的指针。</p>
 <p>Java堆异常</p>
 <ol>
 <li>OutOfMemory</li>
 </ol>
-<h1 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h1><p>方法区特征：</p>
+<h1 id="方法区"><a class="markdownIt-Anchor" href="#方法区"></a> 方法区</h1>
+<p>方法区特征：</p>
 <ol>
 <li>全局共享</li>
 <li>存储 Java 类的结构信息</li>
@@ -475,13 +490,16 @@
 <li>作用是存储 Java 类文件常量池中的符号信息</li>
 <li>可能出现 OutOfMemoryError</li>
 </ol>
-<h1 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h1><p>特征</p>
+<h1 id="直接内存"><a class="markdownIt-Anchor" href="#直接内存"></a> 直接内存</h1>
+<p>特征</p>
 <ol>
 <li>全局共享</li>
 <li>并非 JVMS 定义的标准 Java 运行时内存区域</li>
 <li>可能出现 OutOfMemoryError</li>
 </ol>
-<h1 id="遗补"><a href="#遗补" class="headerlink" title="遗补"></a>遗补</h1><p>Java 内存区域模型：<br><img src="http://www.hollischuang.com/wp-content/uploads/2015/04/2354447461.jpg" alt="Java 内存区域模型" title="Java 内存区域模型"></p>
+<h1 id="遗补"><a class="markdownIt-Anchor" href="#遗补"></a> 遗补</h1>
+<p>Java 内存区域模型：<br>
+<img src="http://www.hollischuang.com/wp-content/uploads/2015/04/2354447461.jpg" alt="Java 内存区域模型" title="Java 内存区域模型"></p>
 
       
     </div>
@@ -614,7 +632,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -671,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-内存区域基础概念"><span class="nav-number">1.</span> <span class="nav-text">Java 内存区域基础概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈帧"><span class="nav-number">5.</span> <span class="nav-text">栈帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-堆"><span class="nav-number">6.</span> <span class="nav-text">Java 堆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法区"><span class="nav-number">7.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接内存"><span class="nav-number">8.</span> <span class="nav-text">直接内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗补"><span class="nav-number">9.</span> <span class="nav-text">遗补</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-内存区域基础概念"><span class="nav-number">1.</span> <span class="nav-text"> Java 内存区域基础概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text"> 程序计数器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text"> 虚拟机栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text"> 本地方法栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈帧"><span class="nav-number">5.</span> <span class="nav-text"> 栈帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-堆"><span class="nav-number">6.</span> <span class="nav-text"> Java 堆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法区"><span class="nav-number">7.</span> <span class="nav-text"> 方法区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接内存"><span class="nav-number">8.</span> <span class="nav-text"> 直接内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗补"><span class="nav-number">9.</span> <span class="nav-text"> 遗补</span></a></li></ol></div>
             
 
           </div>

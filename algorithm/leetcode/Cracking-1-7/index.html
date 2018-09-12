@@ -390,8 +390,10 @@
         <p>Rotate matrix</p>
 <a id="more"></a>
 <hr>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Rotate a N*N matrix</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] rotate(<span class="keyword">int</span>[][] matrix) &#123;</div><div class="line">	<span class="keyword">int</span> n = matrix.length - <span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> layer = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (layer &lt;= n) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = layer; i &lt; n - layer; i++) &#123;</div><div class="line">			<span class="keyword">int</span> first = matrix[layer][i];</div><div class="line">			<span class="keyword">int</span> second = matrix[i][n - layer];</div><div class="line">			<span class="keyword">int</span> third = matrix[n - layer][n - i];</div><div class="line">			<span class="keyword">int</span> fourth = matrix[n - i][layer];</div><div class="line"></div><div class="line">			matrix[layer][i] = fourth;</div><div class="line">			matrix[i][n - layer] = first;</div><div class="line">			matrix[n - layer][n - i] = second;</div><div class="line">			matrix[n - i][layer] = third;</div><div class="line">		&#125;</div><div class="line">		layer++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> matrix;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
+<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
+<p>Rotate a N*N matrix</p>
+<h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] rotate(<span class="keyword">int</span>[][] matrix) &#123;</div><div class="line">	<span class="keyword">int</span> n = matrix.length - <span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> layer = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (layer &lt;= n) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = layer; i &lt; n - layer; i++) &#123;</div><div class="line">			<span class="keyword">int</span> first = matrix[layer][i];</div><div class="line">			<span class="keyword">int</span> second = matrix[i][n - layer];</div><div class="line">			<span class="keyword">int</span> third = matrix[n - layer][n - i];</div><div class="line">			<span class="keyword">int</span> fourth = matrix[n - i][layer];</div><div class="line"></div><div class="line">			matrix[layer][i] = fourth;</div><div class="line">			matrix[i][n - layer] = first;</div><div class="line">			matrix[n - layer][n - i] = second;</div><div class="line">			matrix[n - i][layer] = third;</div><div class="line">		&#125;</div><div class="line">		layer++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> matrix;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -526,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -583,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

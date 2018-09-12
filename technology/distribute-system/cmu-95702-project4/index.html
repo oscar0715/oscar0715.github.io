@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="CMU 95702 - Distributed System Project 4感觉几个点还挺有用的，记录一下">
+<meta name="description" content="CMU 95702 - Distributed System Project 4 感觉几个点还挺有用的，记录一下">
 <meta name="keywords" content="Distribution-System">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU 95702 - Project 4">
 <meta property="og:url" content="http://menuet.xyz/technology/distribute-system/cmu-95702-project4/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="CMU 95702 - Distributed System Project 4感觉几个点还挺有用的，记录一下">
+<meta property="og:description" content="CMU 95702 - Distributed System Project 4 感觉几个点还挺有用的，记录一下">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 95702 - Project 4">
-<meta name="twitter:description" content="CMU 95702 - Distributed System Project 4感觉几个点还挺有用的，记录一下">
+<meta name="twitter:description" content="CMU 95702 - Distributed System Project 4 感觉几个点还挺有用的，记录一下">
 
 
 
@@ -388,22 +388,34 @@
 
       
         <p>CMU 95702 - Distributed System</p>
-<p>Project 4<br>感觉几个点还挺有用的，记录一下</p>
+<p>Project 4<br>
+感觉几个点还挺有用的，记录一下</p>
 <a id="more"></a>
 <hr>
-<h1 id="引用Quote的API"><a href="#引用Quote的API" class="headerlink" title="引用Quote的API"></a>引用Quote的API</h1><p><a href="http://forismatic.com/en/api/" target="_blank" rel="external">http://forismatic.com/en/api/</a></p>
-<p>还有一个API的集合的网站<br><a href="https://github.com/toddmotto/public-apis" target="_blank" rel="external">https://github.com/toddmotto/public-apis</a></p>
-<h1 id="Java-中Json的解析"><a href="#Java-中Json的解析" class="headerlink" title="Java 中Json的解析"></a>Java 中Json的解析</h1><p>这个链接写的很清楚了，不造轮子了：<br>Reference:<br><a href="https://www.mkyong.com/java/json-simple-example-read-and-write-json/" target="_blank" rel="external">https://www.mkyong.com/java/json-simple-example-read-and-write-json/</a></p>
-<h1 id="Java-Http"><a href="#Java-Http" class="headerlink" title="Java Http"></a>Java Http</h1><p>用 Apache HttpClient来发送HTTP Get/Post 的请求：<br><a href="https://www.mkyong.com/java/apache-httpclient-examples/" target="_blank" rel="external">https://www.mkyong.com/java/apache-httpclient-examples/</a><br>Apache写的很好了，也不要自己用什么Socket，Httpservlet造轮子</p>
-<h1 id="把的Task1服务布置到heroku"><a href="#把的Task1服务布置到heroku" class="headerlink" title="把的Task1服务布置到heroku"></a>把的Task1服务布置到heroku</h1><p>heroku.com</p>
+<h1 id="引用quote的api"><a class="markdownIt-Anchor" href="#引用quote的api"></a> 引用Quote的API</h1>
+<p><a href="http://forismatic.com/en/api/" target="_blank" rel="external">http://forismatic.com/en/api/</a></p>
+<p>还有一个API的集合的网站<br>
+<a href="https://github.com/toddmotto/public-apis" target="_blank" rel="external">https://github.com/toddmotto/public-apis</a></p>
+<h1 id="java-中json的解析"><a class="markdownIt-Anchor" href="#java-中json的解析"></a> Java 中Json的解析</h1>
+<p>这个链接写的很清楚了，不造轮子了：<br>
+Reference:<br>
+<a href="https://www.mkyong.com/java/json-simple-example-read-and-write-json/" target="_blank" rel="external">https://www.mkyong.com/java/json-simple-example-read-and-write-json/</a></p>
+<h1 id="java-http"><a class="markdownIt-Anchor" href="#java-http"></a> Java Http</h1>
+<p>用 Apache HttpClient来发送HTTP Get/Post 的请求：<br>
+<a href="https://www.mkyong.com/java/apache-httpclient-examples/" target="_blank" rel="external">https://www.mkyong.com/java/apache-httpclient-examples/</a><br>
+Apache写的很好了，也不要自己用什么Socket，Httpservlet造轮子</p>
+<h1 id="把的task1服务布置到heroku"><a class="markdownIt-Anchor" href="#把的task1服务布置到heroku"></a> 把的Task1服务布置到heroku</h1>
+<p><a href="http://heroku.com" target="_blank" rel="external">heroku.com</a></p>
 <ol>
 <li>注册好账号</li>
 <li>安装 Heroku toolbelt （command-line tools. Mac用brew装就行啦</li>
-<li>Install the heroku-deploy command line plugin by running:<br>heroku plugins:install <a href="https://github.com/heroku/heroku-deploy" target="_blank" rel="external">https://github.com/heroku/heroku-deploy</a></li>
-<li>Create a new Heroku application by running:<br><code>heroku create</code> 然后得到一个名字 比如 fathomless-beach-44891</li>
+<li>Install the heroku-deploy command line plugin by running:<br>
+heroku plugins:install <a href="https://github.com/heroku/heroku-deploy" target="_blank" rel="external">https://github.com/heroku/heroku-deploy</a></li>
+<li>Create a new Heroku application by running:<br>
+<code>heroku create</code> 然后得到一个名字 比如 fathomless-beach-44891</li>
 <li>找到你的要布置的网络服务的war包。</li>
 <li><code>heroku deploy:war --war Project4Task1-1.0-SNAPSHOT.war --app fathomless-beach-44891</code></li>
-<li>访问<a href="https://fathomless-beach-44891.herokuapp.com/quote/?key=1" target="_blank" rel="external">https://fathomless-beach-44891.herokuapp.com/quote/?key=1</a></li>
+<li>访问https://fathomless-beach-44891.herokuapp.com/quote/?key=1</li>
 </ol>
 <hr>
 <p>Over！</p>
@@ -539,7 +551,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -596,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用Quote的API"><span class="nav-number">1.</span> <span class="nav-text">引用Quote的API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-中Json的解析"><span class="nav-number">2.</span> <span class="nav-text">Java 中Json的解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-Http"><span class="nav-number">3.</span> <span class="nav-text">Java Http</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把的Task1服务布置到heroku"><span class="nav-number">4.</span> <span class="nav-text">把的Task1服务布置到heroku</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用quote的api"><span class="nav-number">1.</span> <span class="nav-text"> 引用Quote的API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-中json的解析"><span class="nav-number">2.</span> <span class="nav-text"> Java 中Json的解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-http"><span class="nav-number">3.</span> <span class="nav-text"> Java Http</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把的task1服务布置到heroku"><span class="nav-number">4.</span> <span class="nav-text"> 把的Task1服务布置到heroku</span></a></li></ol></div>
             
 
           </div>

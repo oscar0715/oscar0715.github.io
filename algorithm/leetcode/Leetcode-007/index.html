@@ -387,17 +387,23 @@
       
 
       
-        <p>Reverse Integer<br><a id="more"></a></p>
+        <p>Reverse Integer</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Reverse digits of an integer.</p>
-<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
-<p><strong>Have you thought about this?</strong><br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Reverse digits of an integer.</p>
+<p>Example1: x = 123, return 321<br>
+Example2: x = -123, return -321</p>
+<p><strong>Have you thought about this?</strong><br>
+Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
 <p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
 <p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
 <p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>这个题目吧，主要考的是特殊情况</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>这个题目吧，主要考的是特殊情况</p>
 <ol>
-<li>超过了int的范围怎么办，比如1000000003reverse的结果就是3000000001。<br>此题中要求超出范围返回0</li>
+<li>超过了int的范围怎么办，比如1000000003reverse的结果就是3000000001。<br>
+此题中要求超出范围返回0</li>
 <li>最后一位是0怎么办</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">    <span class="comment">// 此处是精髓啊！类型先设置为long，这样就不怕overflow了</span></div><div class="line">    <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</div><div class="line">        flag = -<span class="number">1</span>;</div><div class="line">        x = -x;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</div><div class="line">        result = result * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">        x = x / <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    result = result*flag;</div><div class="line">    <span class="comment">// 如果overflow再判断嘛</span></div><div class="line">    <span class="keyword">if</span> (result&gt;Integer.MAX_VALUE||result&lt;Integer.MIN_VALUE) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span> ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -431,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-003/" rel="next" title="Leetcode_003">
-                <i class="fa fa-chevron-left"></i> Leetcode_003
+              <a href="/algorithm/leetcode/Leetcode-006/" rel="next" title="Leetcode_006">
+                <i class="fa fa-chevron-left"></i> Leetcode_006
               </a>
             
           </div>
@@ -533,7 +539,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">384</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -590,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>
