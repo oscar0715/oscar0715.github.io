@@ -390,11 +390,8 @@
         <p>Second Highest Salary</p>
 <a id="more"></a>
 <hr>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>可以用 max 解决</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">max</span>(Salary) <span class="keyword">as</span> SecondHighestSalary</div><div class="line"><span class="keyword">FROM</span> Employee</div><div class="line"><span class="keyword">WHERE</span> Salary &lt; (<span class="keyword">SELECT</span> <span class="keyword">max</span>(Salary) <span class="keyword">FROM</span> Employee)</div></pre></td></tr></table></figure>
-<p>也可以用 Distinct，limit，offset</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> (</div><div class="line">  <span class="keyword">select</span> <span class="keyword">distinct</span> Salary <span class="keyword">from</span> Employee <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">Desc</span> <span class="keyword">limit</span> <span class="number">1</span> <span class="keyword">offset</span> <span class="number">1</span></div><div class="line">) <span class="keyword">as</span> SecondHighestSalary</div></pre></td></tr></table></figure>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>可以用 max 解决<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">max</span>(Salary) <span class="keyword">as</span> SecondHighestSalary</div><div class="line"><span class="keyword">FROM</span> Employee</div><div class="line"><span class="keyword">WHERE</span> Salary &lt; (<span class="keyword">SELECT</span> <span class="keyword">max</span>(Salary) <span class="keyword">FROM</span> Employee)</div></pre></td></tr></table></figure></p>
+<p>也可以用 Distinct，limit，offset<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> (</div><div class="line">  <span class="keyword">select</span> <span class="keyword">distinct</span> Salary <span class="keyword">from</span> Employee <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">Desc</span> <span class="keyword">limit</span> <span class="number">1</span> <span class="keyword">offset</span> <span class="number">1</span></div><div class="line">) <span class="keyword">as</span> SecondHighestSalary</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -529,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -586,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">1.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

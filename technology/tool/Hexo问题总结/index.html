@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="报错问题  Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
+<meta name="description" content="报错问题   Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
 <meta name="keywords" content="Tool,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo问题总结">
 <meta property="og:url" content="http://menuet.xyz/technology/tool/Hexo问题总结/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="报错问题  Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
+<meta property="og:description" content="报错问题   Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-05-23T07:53:25.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo问题总结">
-<meta name="twitter:description" content="报错问题  Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
+<meta name="twitter:description" content="报错问题   Hexo s 报错解决方案  Tips  网站图标设置 favicon 小图标设置 主页添加menu选项">
 
 
 
@@ -387,7 +387,7 @@
       
 
       
-        <p>报错问题</p>
+        <p>报错问题 </p>
 <ol>
 <li>Hexo s 报错解决方案</li>
 </ol>
@@ -399,71 +399,50 @@
 </ol>
 <a id="more"></a>
 <hr>
-<h2 id="报错"><a class="markdownIt-Anchor" href="#报错"></a> 报错</h2>
-<h3 id="hexo-s-g报错"><a class="markdownIt-Anchor" href="#hexo-s-g报错"></a> Hexo s -g报错</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">OscarMacBook:Hexo oscar$ hexo s -g</div><div class="line">INFO  Start processing</div><div class="line">ERROR Process failed: layout/.DS_Store</div><div class="line">TypeError: Cannot read property &apos;compile&apos; of undefined</div><div class="line">    省略一堆乱七八糟的</div></pre></td></tr></table></figure>
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><h3 id="Hexo-s-g报错"><a href="#Hexo-s-g报错" class="headerlink" title="Hexo s -g报错"></a>Hexo s -g报错</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">OscarMacBook:Hexo oscar$ hexo s -g</div><div class="line">INFO  Start processing</div><div class="line">ERROR Process failed: layout/.DS_Store</div><div class="line">TypeError: Cannot read property &apos;compile&apos; of undefined</div><div class="line">    省略一堆乱七八糟的</div></pre></td></tr></table></figure>
 <p>解决方法</p>
 <blockquote>
-<p>cd 进到你使用的theme对应的目录，再进到layout/和layout/_partial/下.<br>
-分别执行rm .DS_Store</p>
+<p>cd 进到你使用的theme对应的目录，再进到layout/和layout/_partial/下.<br>分别执行rm .DS_Store</p>
 </blockquote>
-<h3 id="站点设置文件中的-auto_detect-会出现很多问题"><a class="markdownIt-Anchor" href="#站点设置文件中的-auto_detect-会出现很多问题"></a> 站点设置文件中的 <code>auto_detect</code> 会出现很多问题</h3>
-<p>讲其设置为 <code>auto_detect : false</code></p>
-<h2 id="小伎俩-tips"><a class="markdownIt-Anchor" href="#小伎俩-tips"></a> 小伎俩 tips</h2>
-<h3 id="页面显示文章数量控制"><a class="markdownIt-Anchor" href="#页面显示文章数量控制"></a> 页面显示文章数量控制</h3>
-<p>在hexo根目录下安装插件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-archive --save</div><div class="line">npm install hexo-generator-index --save</div><div class="line">npm install hexo-generator-tag --save</div></pre></td></tr></table></figure>
-<p>在站点配置文件_config.yml文件中添加</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attr">index_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">5</span></div><div class="line"></div><div class="line"><span class="attr">archive_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">0</span>  <span class="string">//为0时表示不分页全展示</span></div><div class="line"><span class="attr">  yearly:</span> <span class="literal">true</span>  <span class="string">//按年生成归档</span></div><div class="line"><span class="attr">  monthly:</span> <span class="literal">true</span> <span class="string">//按月生成归档</span></div><div class="line"></div><div class="line"><span class="attr">tag_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>参考</p>
-<a href="http://www.yuzhewo.com/2015/11/21/Hexo%E7%A8%8B%E5%BA%8Farchive%E9%A1%B5%E9%9D%A2%E6%95%B0%E9%87%8F%E8%AE%BE%E7%BD%AE/" target="_blank" rel="external">Hexo程序archive页面数量设置</a>
-<h3 id="小图标设置"><a class="markdownIt-Anchor" href="#小图标设置"></a> 小图标设置</h3>
-<ol>
+<h3 id="站点设置文件中的-auto-detect-会出现很多问题"><a href="#站点设置文件中的-auto-detect-会出现很多问题" class="headerlink" title="站点设置文件中的 auto_detect 会出现很多问题"></a>站点设置文件中的 <code>auto_detect</code> 会出现很多问题</h3><p>讲其设置为 <code>auto_detect : false</code></p>
+<h2 id="小伎俩-tips"><a href="#小伎俩-tips" class="headerlink" title="小伎俩 tips"></a>小伎俩 tips</h2><h3 id="页面显示文章数量控制"><a href="#页面显示文章数量控制" class="headerlink" title="页面显示文章数量控制"></a>页面显示文章数量控制</h3><p>在hexo根目录下安装插件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-archive --save</div><div class="line">npm install hexo-generator-index --save</div><div class="line">npm install hexo-generator-tag --save</div></pre></td></tr></table></figure></p>
+<p>在站点配置文件_config.yml文件中添加<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attr">index_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">5</span></div><div class="line"></div><div class="line"><span class="attr">archive_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">0</span>  <span class="string">//为0时表示不分页全展示</span></div><div class="line"><span class="attr">  yearly:</span> <span class="literal">true</span>  <span class="string">//按年生成归档</span></div><div class="line"><span class="attr">  monthly:</span> <span class="literal">true</span> <span class="string">//按月生成归档</span></div><div class="line"></div><div class="line"><span class="attr">tag_generator:</span></div><div class="line"><span class="attr">  per_page:</span> <span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>参考<br><a href="http://www.yuzhewo.com/2015/11/21/Hexo%E7%A8%8B%E5%BA%8Farchive%E9%A1%B5%E9%9D%A2%E6%95%B0%E9%87%8F%E8%AE%BE%E7%BD%AE/" target="_blank" rel="external">Hexo程序archive页面数量设置</a></p>
+<h3 id="小图标设置"><a href="#小图标设置" class="headerlink" title="小图标设置"></a>小图标设置</h3><ol>
 <li>下载一个自己喜欢的你的网站图标（就是chrome标签栏会出现的那个图标，或者自己做一个）</li>
 </ol>
 <ul>
 <li>提供一个在线转换成icon文件的<a href="http://tool.lu/favicon/" title="icon生成" target="_blank" rel="external">地址</a></li>
 </ul>
-<ol start="2">
+<ol>
 <li>把文件名改成favicon.ico，放到 <code>hexo/source</code> 文件夹下</li>
 <li>主题配置文件 <code>/themes/{你的主题}/_config.yml</code> 中 设置 <code>favicon: /favicon.ico</code></li>
 <li>小图标更新这个浏览器缓存是个坑，如果更新没成功，清除一下浏览器缓存，重新打开浏览器试试</li>
 </ol>
-<h3 id="主页添加menu选项"><a class="markdownIt-Anchor" href="#主页添加menu选项"></a> 主页添加menu选项</h3>
-<p>例如，我想在主页菜单栏添加 technology 和 art 两个选项</p>
+<h3 id="主页添加menu选项"><a href="#主页添加menu选项" class="headerlink" title="主页添加menu选项"></a>主页添加menu选项</h3><p>例如，我想在主页菜单栏添加 technology 和 art 两个选项</p>
 <ol>
-<li>在主题设置文件中添加menu项目，设置icon</li>
-</ol>
+<li><p>在主题设置文件中添加menu项目，设置icon</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  technology : /technology</div><div class="line">  algorithm : /algorithm</div><div class="line">  art : /art</div><div class="line">  archives: /archives</div><div class="line">  about: /about</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>在主题的语言文件中添加对应的翻译<br>
-Hexo/themes/next/languages目录下，打开对应的语言文件，添加</li>
-</ol>
+</li>
+<li><p>在主题的语言文件中添加对应的翻译<br>Hexo/themes/next/languages目录下，打开对应的语言文件，添加</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 在hexo 的 config 里面设置language，根据那个language找相应的语言文件</div><div class="line">menu:</div><div class="line">  home: Home</div><div class="line">  archives: Archives</div><div class="line">  categories: Categories</div><div class="line">  tags: Tags</div><div class="line">  about: About</div><div class="line">  search: Search</div><div class="line">  technology: Technology</div><div class="line">  art : Art</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>修改菜单栏选项图标</li>
-</ol>
+</li>
+<li><p>修改菜单栏选项图标</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu_icons:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line">  <span class="comment">#KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome</span></div><div class="line">  <span class="comment">#对应图标名称对照网址 http://fontawesome.dashgame.com/</span></div><div class="line"><span class="attr">  home:</span> <span class="string">home</span></div><div class="line"><span class="attr">  about:</span> <span class="string">user</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">th</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">tags</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">archive</span></div><div class="line"><span class="attr">  commonweal:</span> <span class="string">heartbeat</span></div><div class="line"><span class="attr">  technology:</span> <span class="string">laptop</span></div><div class="line"><span class="attr">  art:</span> <span class="string">book</span></div><div class="line"><span class="attr">  algorithm:</span> <span class="string">file-code-o</span></div></pre></td></tr></table></figure>
-<ol start="4">
-<li>在Hexo/sources文件夹下<br>
-添加名为technology的文件夹<br>
-在文件夹中添加index.md文件<br>
-文件头为</li>
-</ol>
+</li>
+<li><p>在Hexo/sources文件夹下<br>添加名为technology的文件夹<br>在文件夹中添加index.md文件<br>文件头为</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">technology</span></div><div class="line"><span class="attr">date:</span> <span class="number">2016</span><span class="bullet">-05</span><span class="bullet">-12</span> <span class="number">22</span><span class="string">:20:55</span></div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
 <p><a href="http://blog.junyu.io/posts/0005-next-theme-settings.html" target="_blank" rel="external">参考</a></p>
-<h3 id="next-mist-副标题不显示"><a class="markdownIt-Anchor" href="#next-mist-副标题不显示"></a> next mist 副标题不显示</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># /themes/next/source/css/_schemes/Mist/_logo.styl</div><div class="line">.site-subtitle &#123; display: true; &#125;</div></pre></td></tr></table></figure>
+<h3 id="next-mist-副标题不显示"><a href="#next-mist-副标题不显示" class="headerlink" title="next mist 副标题不显示"></a>next mist 副标题不显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># /themes/next/source/css/_schemes/Mist/_logo.styl</div><div class="line">.site-subtitle &#123; display: true; &#125;</div></pre></td></tr></table></figure>
 <p>但是好丑啊</p>
-<h3 id="post-生成路径"><a class="markdownIt-Anchor" href="#post-生成路径"></a> post 生成路径</h3>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">url:</span> <span class="attr">http://menuet.xyz</span></div><div class="line"><span class="attr">root:</span> <span class="string">/</span></div><div class="line"><span class="attr">permalink:</span> <span class="string">:title/</span></div><div class="line"><span class="attr">permalink_defaults:</span></div></pre></td></tr></table></figure>
+<h3 id="post-生成路径"><a href="#post-生成路径" class="headerlink" title="post 生成路径"></a>post 生成路径</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">url:</span> <span class="attr">http://menuet.xyz</span></div><div class="line"><span class="attr">root:</span> <span class="string">/</span></div><div class="line"><span class="attr">permalink:</span> <span class="string">:title/</span></div><div class="line"><span class="attr">permalink_defaults:</span></div></pre></td></tr></table></figure>
 <p><a href="https://github.com/hexojs/hexo/issues/125" target="_blank" rel="external">hexo url</a></p>
 <hr>
-<h3 id="重新安装-hexo"><a class="markdownIt-Anchor" href="#重新安装-hexo"></a> 重新安装 hexo</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall -g hexo-cli</div><div class="line">$ npm install -g hexo-cli</div><div class="line">$ rm -rf node_modules</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<h2 id="hexo-写-latex"><a class="markdownIt-Anchor" href="#hexo-写-latex"></a> Hexo 写 Latex</h2>
-<ol>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi mathvariant="normal">_</mi><mrow><mi>u</mi><mi>i</mi></mrow></mrow><annotation encoding="application/x-tex">r\_{ui}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.9695199999999999em;vertical-align:-0.31em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathrm" style="margin-right:0.02778em;">_</span><span class="mord textstyle uncramped"><span class="mord mathit">u</span><span class="mord mathit">i</span></span></span></span></span> 短横要加反斜杠转义</li>
+<h3 id="重新安装-hexo"><a href="#重新安装-hexo" class="headerlink" title="重新安装 hexo"></a>重新安装 hexo</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall -g hexo-cli</div><div class="line">$ npm install -g hexo-cli</div><div class="line">$ rm -rf node_modules</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<h2 id="Hexo-写-Latex"><a href="#Hexo-写-Latex" class="headerlink" title="Hexo 写 Latex"></a>Hexo 写 Latex</h2><ol>
+<li>$r_{ui}$ 短横要加反斜杠转义</li>
 </ol>
 
       
@@ -599,7 +578,7 @@ Hexo/themes/next/languages目录下，打开对应的语言文件，添加</li>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -656,7 +635,7 @@ Hexo/themes/next/languages目录下，打开对应的语言文件，添加</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错"><span class="nav-number">1.</span> <span class="nav-text"> 报错</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-s-g报错"><span class="nav-number">1.1.</span> <span class="nav-text"> Hexo s -g报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#站点设置文件中的-auto_detect-会出现很多问题"><span class="nav-number">1.2.</span> <span class="nav-text"> 站点设置文件中的 auto_detect 会出现很多问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小伎俩-tips"><span class="nav-number">2.</span> <span class="nav-text"> 小伎俩 tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#页面显示文章数量控制"><span class="nav-number">2.1.</span> <span class="nav-text"> 页面显示文章数量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小图标设置"><span class="nav-number">2.2.</span> <span class="nav-text"> 小图标设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主页添加menu选项"><span class="nav-number">2.3.</span> <span class="nav-text"> 主页添加menu选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-mist-副标题不显示"><span class="nav-number">2.4.</span> <span class="nav-text"> next mist 副标题不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-生成路径"><span class="nav-number">2.5.</span> <span class="nav-text"> post 生成路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新安装-hexo"><span class="nav-number">2.6.</span> <span class="nav-text"> 重新安装 hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-写-latex"><span class="nav-number">3.</span> <span class="nav-text"> Hexo 写 Latex</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错"><span class="nav-number">1.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-s-g报错"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo s -g报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#站点设置文件中的-auto-detect-会出现很多问题"><span class="nav-number">1.2.</span> <span class="nav-text">站点设置文件中的 auto_detect 会出现很多问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小伎俩-tips"><span class="nav-number">2.</span> <span class="nav-text">小伎俩 tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#页面显示文章数量控制"><span class="nav-number">2.1.</span> <span class="nav-text">页面显示文章数量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小图标设置"><span class="nav-number">2.2.</span> <span class="nav-text">小图标设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主页添加menu选项"><span class="nav-number">2.3.</span> <span class="nav-text">主页添加menu选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-mist-副标题不显示"><span class="nav-number">2.4.</span> <span class="nav-text">next mist 副标题不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-生成路径"><span class="nav-number">2.5.</span> <span class="nav-text">post 生成路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新安装-hexo"><span class="nav-number">2.6.</span> <span class="nav-text">重新安装 hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-写-Latex"><span class="nav-number">3.</span> <span class="nav-text">Hexo 写 Latex</span></a></li></ol></div>
             
 
           </div>

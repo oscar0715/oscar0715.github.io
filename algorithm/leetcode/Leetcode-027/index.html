@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Remove Element 数组">
+<meta name="description" content="Remove Element数组">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_027">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-027/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Remove Element 数组">
+<meta property="og:description" content="Remove Element数组">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_027">
-<meta name="twitter:description" content="Remove Element 数组">
+<meta name="twitter:description" content="Remove Element数组">
 
 
 
@@ -387,29 +387,20 @@
       
 
       
-        <p>Remove Element<br>
-数组</p>
-<a id="more"></a>
+        <p>Remove Element<br>数组<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
 <p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>题目的意思是，返回一个长度n<br>
-然后nums的前n个值就是去掉给定值以后的数组</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>题目的意思是，返回一个长度n<br>然后nums的前n个值就是去掉给定值以后的数组</p>
 <p>要点：</p>
 <ol>
 <li>思想上和上一题是一样一样的</li>
 <li>本质上也是应用了快慢指针的思想</li>
 </ol>
-<p>我自己的写的 慢板</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (; fast &lt; nums.length;) &#123;</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (val == nums[slow]) &#123;</div><div class="line">                <span class="comment">// 如果nums[slow]和val相等</span></div><div class="line">                <span class="comment">// 那么先把fast的值copy过来</span></div><div class="line">                nums[slow] = nums[fast];</div><div class="line">                <span class="comment">// 然后把fast的值赋为val，这样这个位置之后就会空出来了 </span></div><div class="line">                nums[fast] = val;</div><div class="line">                fast++;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                不相等的话，slow这个位置检验通过</div><div class="line">                slow++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (nums[slow] == val) &#123;</div><div class="line">            slow--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ++slow;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>别人写的 快板</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> current = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="comment">// 人家是判断快的那个指针</span></div><div class="line">        <span class="keyword">if</span> (nums[i] != val) &#123;</div><div class="line">            <span class="comment">// 如果检验通过</span></div><div class="line">            <span class="comment">// 把值赋给慢指针的位置，慢指针总是通过以后才会用到</span></div><div class="line">            current++;</div><div class="line">            nums[current] = nums[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> current + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>用这个数组为例{ 1, 1, 2, 2, 5 }<br>
-我的慢板走6次循环<br>
-人家的快板走5次循环</p>
+<p>我自己的写的 慢板<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (; fast &lt; nums.length;) &#123;</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (val == nums[slow]) &#123;</div><div class="line">                <span class="comment">// 如果nums[slow]和val相等</span></div><div class="line">                <span class="comment">// 那么先把fast的值copy过来</span></div><div class="line">                nums[slow] = nums[fast];</div><div class="line">                <span class="comment">// 然后把fast的值赋为val，这样这个位置之后就会空出来了 </span></div><div class="line">                nums[fast] = val;</div><div class="line">                fast++;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                不相等的话，slow这个位置检验通过</div><div class="line">                slow++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (nums[slow] == val) &#123;</div><div class="line">            slow--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ++slow;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>别人写的 快板<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> current = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="comment">// 人家是判断快的那个指针</span></div><div class="line">        <span class="keyword">if</span> (nums[i] != val) &#123;</div><div class="line">            <span class="comment">// 如果检验通过</span></div><div class="line">            <span class="comment">// 把值赋给慢指针的位置，慢指针总是通过以后才会用到</span></div><div class="line">            current++;</div><div class="line">            nums[current] = nums[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> current + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>用这个数组为例{ 1, 1, 2, 2, 5 }<br>我的慢板走6次循环<br>人家的快板走5次循环</p>
 <p>结论：用块指针判断，不会拖泥带水</p>
 <hr>
 <p>Over！</p>
@@ -545,7 +536,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -602,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

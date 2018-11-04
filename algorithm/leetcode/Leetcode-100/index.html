@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Same Tree 二叉树了！">
+<meta name="description" content="Same Tree二叉树了！">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_100">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-100/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Same Tree 二叉树了！">
+<meta property="og:description" content="Same Tree二叉树了！">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_100">
-<meta name="twitter:description" content="Same Tree 二叉树了！">
+<meta name="twitter:description" content="Same Tree二叉树了！">
 
 
 
@@ -387,17 +387,11 @@
       
 
       
-        <p>Same Tree<br>
-二叉树了！</p>
-<a id="more"></a>
+        <p>Same Tree<br>二叉树了！<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given two binary trees, write a function to check if they are equal or not.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given two binary trees, write a function to check if they are equal or not.</p>
 <p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>判断，两棵二叉树是否完全相等<br>
-递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> q.val == p.val &amp;&amp; isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>判断，两棵二叉树是否完全相等<br>递归<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> q.val == p.val &amp;&amp; isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -430,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-BinaryTree/" rel="next" title="Leetcode_BinaryTree">
-                <i class="fa fa-chevron-left"></i> Leetcode_BinaryTree
+              <a href="/algorithm/leetcode/Leetcode-088/" rel="next" title="Leetcode_088">
+                <i class="fa fa-chevron-left"></i> Leetcode_088
               </a>
             
           </div>
@@ -440,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/art/book/书摘-徐贲-人以什么理由来记忆/" rel="prev" title="书摘 徐贲《人以什么理由来记忆》">
-                书摘 徐贲《人以什么理由来记忆》 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-BinaryTree/" rel="prev" title="Leetcode_BinaryTree">
+                Leetcode_BinaryTree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -589,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

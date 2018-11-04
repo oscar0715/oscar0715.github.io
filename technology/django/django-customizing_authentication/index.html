@@ -387,22 +387,19 @@
       
 
       
-        <p>Customizing authentication in Django</p>
-<a id="more"></a>
+        <p>Customizing authentication in Django<br><a id="more"></a></p>
 <hr>
-<h1 id="用户验证"><a class="markdownIt-Anchor" href="#用户验证"></a> 用户验证</h1>
-<p>Django 中的用户验证系统包括了维护了用户账号，用户分组，基于 cookie 的 session 管理。</p>
+<h1 id="用户验证"><a href="#用户验证" class="headerlink" title="用户验证"></a>用户验证</h1><p>Django 中的用户验证系统包括了维护了用户账号，用户分组，基于 cookie 的 session 管理。</p>
 <p>安装：</p>
 <ol>
-<li>在 INSTALLED_APPS 数组中添加<br>
-- ‘django.contrib.auth’ : 默认就有的<br>
-- ‘django.contrib.contenttypes’ : 维护对不同 model 的权限</li>
-<li>在 MIDDLEWARE 中<br>
-- SessionMiddleware ： 维护每次请求的 session<br>
-- AuthenticationMiddleware：维护用户的 session</li>
+<li>在 INSTALLED_APPS 数组中添加 <pre><code>- &apos;django.contrib.auth&apos; : 默认就有的
+- &apos;django.contrib.contenttypes&apos; : 维护对不同 model 的权限
+</code></pre></li>
+<li>在 MIDDLEWARE 中<pre><code>- SessionMiddleware ： 维护每次请求的 session
+- AuthenticationMiddleware：维护用户的 session
+</code></pre></li>
 </ol>
-<h2 id="django-验证系统"><a class="markdownIt-Anchor" href="#django-验证系统"></a> Django 验证系统</h2>
-<p>Django authentication system 验证系统同时包含了 authentication 和 authorization.</p>
+<h2 id="Django-验证系统"><a href="#Django-验证系统" class="headerlink" title="Django 验证系统"></a>Django 验证系统</h2><p>Django authentication system 验证系统同时包含了 authentication 和 authorization.</p>
 <p>User 对象是验证系统的核心。有以下属性：</p>
 <ol>
 <li>username</li>
@@ -411,10 +408,8 @@
 <li>first_name</li>
 <li>last_name</li>
 </ol>
-<h2 id="extending-the-existing-user-model"><a class="markdownIt-Anchor" href="#extending-the-existing-user-model"></a> Extending the existing User model</h2>
-<p>如果要把额外的信息和 User Object 关联起来，有两种方法.一种是基于 User 创建一个 proxy model。第二种是利用 OneToOneField 创建一个 profile model。</p>
-<p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(models.Model)</span>:</span></div><div class="line">		user = models.OneToOneField(User, on_delete=models.CASCADE)</div><div class="line">		department = models.CharField(max_length=<span class="number">100</span>)</div></pre></td></tr></table></figure>
+<h2 id="Extending-the-existing-User-model"><a href="#Extending-the-existing-User-model" class="headerlink" title="Extending the existing User model"></a>Extending the existing User model</h2><p>如果要把额外的信息和 User Object 关联起来，有两种方法.一种是基于 User 创建一个 proxy model。第二种是利用 OneToOneField 创建一个 profile model。</p>
+<p>示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(models.Model)</span>:</span></div><div class="line">		user = models.OneToOneField(User, on_delete=models.CASCADE)</div><div class="line">		department = models.CharField(max_length=<span class="number">100</span>)</div></pre></td></tr></table></figure></p>
 <hr>
 
       
@@ -550,7 +545,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -607,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户验证"><span class="nav-number">1.</span> <span class="nav-text"> 用户验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#django-验证系统"><span class="nav-number">1.1.</span> <span class="nav-text"> Django 验证系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extending-the-existing-user-model"><span class="nav-number">1.2.</span> <span class="nav-text"> Extending the existing User model</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户验证"><span class="nav-number">1.</span> <span class="nav-text">用户验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-验证系统"><span class="nav-number">1.1.</span> <span class="nav-text">Django 验证系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-the-existing-User-model"><span class="nav-number">1.2.</span> <span class="nav-text">Extending the existing User model</span></a></li></ol></li></ol></div>
             
 
           </div>

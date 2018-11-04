@@ -387,14 +387,10 @@
       
 
       
-        <p>Simplify Path</p>
-<a id="more"></a>
+        <p>Simplify Path<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>简化路径</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>用了两个 stack 来解决<br>
-其实可以用 Deque</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>简化路径</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>用了两个 stack 来解决<br>其实可以用 Deque</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</div><div class="line">        String[] strs = path.split(<span class="string">"/"</span>);</div><div class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        </div><div class="line">        String back = <span class="string">".."</span>;</div><div class="line">        String cur = <span class="string">"."</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(String str : strs) &#123;</div><div class="line">            <span class="comment">// ".." 出栈</span></div><div class="line">            <span class="keyword">if</span>(str.equals(back))&#123;</div><div class="line">                <span class="keyword">if</span>(!stack.isEmpty()) &#123;</div><div class="line">                    stack.pop();    </div><div class="line">                &#125;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// "." 或者 "" 不变</span></div><div class="line">            <span class="keyword">if</span>(str.equals(cur) || str.equals(<span class="string">""</span>))&#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// 其他路劲则是入栈</span></div><div class="line">            stack.push(str);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(stack.isEmpty())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"/"</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 反转stack</span></div><div class="line">            Stack&lt;String&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">            <span class="keyword">while</span>(!stack.isEmpty())&#123;</div><div class="line">                stack1.push(stack.pop());</div><div class="line">            &#125;</div><div class="line">            stack = stack1;</div><div class="line">            </div><div class="line">            <span class="comment">// 此时栈顶为根目录</span></div><div class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"/"</span>);</div><div class="line">            <span class="keyword">while</span>(!stack.isEmpty())&#123;</div><div class="line">                sb.append(stack.pop());</div><div class="line">                sb.append(<span class="string">"/"</span>);</div><div class="line">            &#125;</div><div class="line">            sb.deleteCharAt(sb.length()-<span class="number">1</span>);</div><div class="line">            <span class="keyword">return</span> sb.toString();</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -428,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-091/" rel="next" title="Leetcode_91">
-                <i class="fa fa-chevron-left"></i> Leetcode_91
+              <a href="/algorithm/leetcode/Leetcode-073/" rel="next" title="Leetcode_073">
+                <i class="fa fa-chevron-left"></i> Leetcode_073
               </a>
             
           </div>
@@ -438,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-073/" rel="prev" title="Leetcode_073">
-                Leetcode_073 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-043/" rel="prev" title="Leetcode_043">
+                Leetcode_043 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -587,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

@@ -390,19 +390,16 @@
         <p>系统推荐的笔记</p>
 <a id="more"></a>
 <hr>
-<h1 id="参考资料放在最前面"><a class="markdownIt-Anchor" href="#参考资料放在最前面"></a> 参考资料放在最前面</h1>
-<ol>
-<li><a href="https://time.geekbang.org/column/article/5030" target="_blank" rel="external">矩阵分解</a></li>
+<h1 id="参考资料放在最前面"><a href="#参考资料放在最前面" class="headerlink" title="参考资料放在最前面"></a>参考资料放在最前面</h1><ol>
+<li><a href="https://time.geekbang.org/column/article/5030" target="_blank" rel="external">矩阵分解</a> </li>
 </ol>
-<br>
-***
-<br>
-<h1 id="矩阵分解"><a class="markdownIt-Anchor" href="#矩阵分解"></a> 矩阵分解</h1>
-<p>假设用户物品的评分矩阵 A 是 m 乘以 n 维，即一共有 m 个用户，n 个物品。在实际场景中 m 和 n 都会是相对比较大的数字，我们选取一个较小的数字 k ，然后通过算法将 A 矩阵拆分成两个矩阵 U 和 V。U 是 m 乘以 k 维的，V 是 n 乘以 k 维的。</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<h1 id="矩阵分解"><a href="#矩阵分解" class="headerlink" title="矩阵分解"></a>矩阵分解</h1><p>假设用户物品的评分矩阵 A 是 m 乘以 n 维，即一共有 m 个用户，n 个物品。在实际场景中 m 和 n 都会是相对比较大的数字，我们选取一个较小的数字 k ，然后通过算法将 A 矩阵拆分成两个矩阵 U 和 V。U 是 m 乘以 k 维的，V 是 n 乘以 k 维的。</p>
 <p>也就是说 $ A_{m \times n} = U_{m \times k} V^T_{n \times k}$</p>
 <p>这样的过程就叫做矩阵分解。矩阵分解有很多种方法</p>
-<h2 id="基础的svd"><a class="markdownIt-Anchor" href="#基础的svd"></a> 基础的SVD</h2>
-<p>SVD是矩阵分解的一种方法，全称是 Singular Value Decomposition，奇异值分解。</p>
+<h2 id="基础的SVD"><a href="#基础的SVD" class="headerlink" title="基础的SVD"></a>基础的SVD</h2><p>SVD是矩阵分解的一种方法，全称是 Singular Value Decomposition，奇异值分解。</p>
 <p>矩阵分解在物理上的意义就是把用户和商品投影到一个 k 维空间里，这些维度一般没有业务上的解释，所以把它们当做隐性因子:</p>
 <ul>
 <li>每一个物品得到一个向量 q ，向量中的元素有正有负，代表物品背后暗藏的一些用户关注的元素，这些元素可能没有业务上的解释。</li>
@@ -411,20 +408,16 @@
 </ul>
 <p>矩阵分解的结果是:</p>
 <ul>
-<li>关于用户的向量 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">p_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">p</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">u</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></li>
-<li>关于物品的向量 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></li>
-<li>计算物品 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span> 推荐给用户 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> 的分数就是<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>r</mi></mrow><mo>^</mo></mover><mi mathvariant="normal">_</mi><mrow><mi>u</mi><mi>i</mi></mrow><mo>=</mo><mi>p</mi><mi mathvariant="normal">_</mi><mi>u</mi><msup><mi>q</mi><mi>T</mi></msup><mi mathvariant="normal">_</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">\hat{r}\_{ui} = p\_u q^T\_i
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8913309999999999em;"></span><span class="strut bottom" style="height:1.201331em;vertical-align:-0.31em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span><span style="top:0em;margin-left:0.11112em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm" style="margin-right:0.02778em;">_</span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">u</span><span class="mord mathit">i</span></span><span class="mrel">=</span><span class="mord mathit">p</span><span class="mord mathrm" style="margin-right:0.02778em;">_</span><span class="mord mathit">u</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm" style="margin-right:0.02778em;">_</span><span class="mord mathit">i</span></span></span></span></span></p>
-</li>
+<li>关于用户的向量 $p_u$</li>
+<li>关于物品的向量 $q_i$</li>
+<li>计算物品 $i$ 推荐给用户 $u$ 的分数就是<br>  $$\hat{r}_{ui} = p_u q^T_i$$</li>
 </ul>
-<p>难点在于如何计算出这个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> 维。这是一个机器学习的过程，考虑两个因素：</p>
+<p>难点在于如何计算出这个 $k$ 维。这是一个机器学习的过程，考虑两个因素：</p>
 <ol>
 <li>损失函数</li>
 <li>优化算法</li>
 </ol>
-<p>SVD 的损失函数:</p>
-min\_{p^\*, q^\*} \sum\_{u,i} (r\_{ui} - p\_u q^T\_i)^2 + \lambda(||q\_i||^2 + ||p\_u||^2) 
-
+<p>SVD 的损失函数:<br>$$ min_{p^*, q^*} \sum_{u,i} (r_{ui} - p_u q^T_i)^2 + \lambda(||q_i||^2 + ||p_u||^2) $$</p>
 
       
     </div>
@@ -557,7 +550,7 @@ min\_{p^\*, q^\*} \sum\_{u,i} (r\_{ui} - p\_u q^T\_i)^2 + \lambda(||q\_i||^2 + |
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -614,7 +607,7 @@ min\_{p^\*, q^\*} \sum\_{u,i} (r\_{ui} - p\_u q^T\_i)^2 + \lambda(||q\_i||^2 + |
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料放在最前面"><span class="nav-number">1.</span> <span class="nav-text"> 参考资料放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵分解"><span class="nav-number">2.</span> <span class="nav-text"> 矩阵分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础的svd"><span class="nav-number">2.1.</span> <span class="nav-text"> 基础的SVD</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料放在最前面"><span class="nav-number">1.</span> <span class="nav-text">参考资料放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵分解"><span class="nav-number">2.</span> <span class="nav-text">矩阵分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础的SVD"><span class="nav-number">2.1.</span> <span class="nav-text">基础的SVD</span></a></li></ol></li></ol></div>
             
 
           </div>

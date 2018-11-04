@@ -390,22 +390,17 @@
         <p>Bulls and Cows</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>猜数字，数字和位置猜中了就是bull，只猜中有这个数字，没有猜中位置那就是cow</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>猜数字，数字和位置猜中了就是bull，只猜中有这个数字，没有猜中位置那就是cow</p>
 <pre><code>For example:
 
 Secret number:  &quot;1807&quot;
-Friend's guess: &quot;7810&quot;
-</code></pre>
-<p>Hint: 1 bull and 3 cows. (The bull is 8, the cows are 0, 1 and 7.)<br>
-Write a function to return a hint according to the secret number and friend’s guess, use A to indicate the bulls and B to indicate the cows. In the above example, your function should return “1A3B”.</p>
+Friend&apos;s guess: &quot;7810&quot;
+</code></pre><p>Hint: 1 bull and 3 cows. (The bull is 8, the cows are 0, 1 and 7.)<br>Write a function to return a hint according to the secret number and friend’s guess, use A to indicate the bulls and B to indicate the cows. In the above example, your function should return “1A3B”.</p>
 <p>Please note that both secret number and friend’s guess may contain duplicate digits, for example:</p>
 <pre><code>Secret number:  &quot;1123&quot;
-Friend's guess: &quot;0111&quot;
-</code></pre>
-<p>In this case, the 1st 1 in friend’s guess is a bull, the 2nd or 3rd 1 is a cow, and your function should return “1A1B”.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>two pass solution</p>
+Friend&apos;s guess: &quot;0111&quot;
+</code></pre><p>In this case, the 1st 1 in friend’s guess is a bull, the 2nd or 3rd 1 is a cow, and your function should return “1A1B”.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>two pass solution </p>
 <ol>
 <li>第一轮，求bull，顺便添加到map</li>
 <li>第二轮，求数字对应上的总数total（先不管位置）</li>
@@ -546,7 +541,7 @@ Friend's guess: &quot;0111&quot;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -603,7 +598,7 @@ Friend's guess: &quot;0111&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

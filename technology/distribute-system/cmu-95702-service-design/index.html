@@ -392,15 +392,12 @@
 
       
         <p>CMU 95702 - Distributed System</p>
-<p>Service Design</p>
-<a id="more"></a>
+<p>Service Design<br><a id="more"></a></p>
 <hr>
-<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
-<p><strong>System Building Goal:</strong></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><strong>System Building Goal:</strong></p>
 <ol>
 <li>Reduce Coupling</li>
-<li>Separation of Concerns
-<ul>
+<li>Separation of Concerns<ul>
 <li>Distinct Sections</li>
 <li>Modularity</li>
 <li>Encapsulation and Information Hiding</li>
@@ -409,36 +406,27 @@
 </ul>
 </li>
 </ol>
-<h1 id="web-service-api-styles"><a class="markdownIt-Anchor" href="#web-service-api-styles"></a> Web Service API Styles</h1>
-<h2 id="rpc-api"><a class="markdownIt-Anchor" href="#rpc-api"></a> RPC API</h2>
-<p>Provider:<br>
-A service makes available a Service Descriptor.<br>
-Proxy:<br>
-The Service Descriptor is used to generate a<br>
-Service Connector (proxy) on the client.</p>
+<h1 id="Web-Service-API-Styles"><a href="#Web-Service-API-Styles" class="headerlink" title="Web Service API Styles"></a>Web Service API Styles</h1><h2 id="RPC-API"><a href="#RPC-API" class="headerlink" title="RPC API"></a>RPC API</h2><p>Provider:<br>A service makes available a Service Descriptor.<br>Proxy:<br>The Service Descriptor is used to generate a<br>Service Connector (proxy) on the client.</p>
 <p>Client —(Procedure Name and Arguments)—&gt; Service</p>
 <p><img src="http://www.servicedesignpatterns.com/Images/RPC_API.jpg" alt="RPC_API"></p>
 <p><strong>Considerations:</strong></p>
 <ol>
-<li>procedures may contain a list of typed parameters.
-<ul>
+<li>procedures may contain a list of typed parameters.<ul>
 <li>tightly coupled (arguments changes, client breaks) 高耦合</li>
-<li>Descriptor changes --&gt; clients regenerate the connector</li>
-<li>Single Message Argument --&gt; less tightly coupled system</li>
+<li>Descriptor changes –&gt; clients regenerate the connector  </li>
+<li>Single Message Argument –&gt; less tightly coupled system</li>
 </ul>
 </li>
-<li>Default: Request/Response
-<ul>
+<li>Default: Request/Response<ul>
 <li>can change to Request/Acknowledge.</li>
-<li>Request/Acknowledge --&gt; less tightly coupled</li>
-<li>Request can be queued --&gt; improve scalability</li>
+<li>Request/Acknowledge –&gt; less tightly coupled</li>
+<li>Request can be queued –&gt; improve scalability</li>
 <li>Also: Request/ Acknowledge/Poll or Request/Acknowledge/Callback</li>
-<li>Clients may use an Asynchronous Response Handler if they don’t want to block while waiKng.</li>
+<li>Clients may use an Asynchronous Response Handler if they don’t want to block while waiKng. </li>
 </ul>
 </li>
 </ol>
-<h2 id="message-api"><a class="markdownIt-Anchor" href="#message-api"></a> Message API</h2>
-<ul>
+<h2 id="Message-API"><a href="#Message-API" class="headerlink" title="Message API"></a>Message API</h2><ul>
 <li>Define messages that are not derived from signatures of remote procedures.</li>
 <li>When the message is received, the server examines its contents to determine the correct procedure to execute.</li>
 <li>The web service serves as a dispatcher and is usually built amer the message is designed.</li>
@@ -446,94 +434,76 @@ Service Connector (proxy) on the client.</p>
 <li>The service descriptor is encoded by WSDL and XSDL.</li>
 <li>The services descriptor is used to generate the service connector (proxy).</li>
 </ul>
-<p><img src="http://www.servicedesignpatterns.com/Images/MessageAPI.jpg" alt="MessageAPI"></p>
-<h2 id="resource-api"><a class="markdownIt-Anchor" href="#resource-api"></a> Resource API</h2>
-<ol>
-<li>Assign a <em>URI</em> to all procedures, instances of domain data and files.</li>
-<li>Leverage <em>HTTP</em> as a complete application protocol to define standard<br>
-service behaviors.</li>
+<p><img src="http://www.servicedesignpatterns.com/Images/MessageAPI.jpg" alt="MessageAPI">  </p>
+<h2 id="Resource-API"><a href="#Resource-API" class="headerlink" title="Resource API"></a>Resource API</h2><ol>
+<li>Assign a <em>URI</em> to all procedures, instances of domain data and files. </li>
+<li>Leverage <em>HTTP</em> as a complete application protocol to define standard<br>service behaviors.</li>
 </ol>
-<p><img src="http://www.servicedesignpatterns.com/Images/ResourceAPI.jpg" alt="MessageAPI"></p>
+<p><img src="http://www.servicedesignpatterns.com/Images/ResourceAPI.jpg" alt="MessageAPI">  </p>
 <p><strong>Resource API’s may be RESTful</strong></p>
 <ol>
-<li>RepresentaKonal State Transfer (REST)<br>
-<a href="/distribute-system/0-rest/">REST Introduction</a></li>
+<li>RepresentaKonal State Transfer (REST)<br><a href="/distribute-system/0-rest/">REST Introduction</a></li>
 <li>REST is an architectural style – guidelines, best pracKces.</li>
 </ol>
-<h2 id="restful"><a class="markdownIt-Anchor" href="#restful"></a> RESTful</h2>
-<h3 id="rest-architectural-principles"><a class="markdownIt-Anchor" href="#rest-architectural-principles"></a> REST Architectural Principles</h3>
-<ol>
-<li>The web has <em>addressable resources</em>.
-<ul>
+<h2 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h2><h3 id="REST-Architectural-Principles"><a href="#REST-Architectural-Principles" class="headerlink" title="REST Architectural Principles"></a>REST Architectural Principles</h3><ol>
+<li>The web has <em>addressable resources</em>. <ul>
 <li>Each resource has a URI.</li>
 </ul>
 </li>
-<li>The web has a <em>uniform and constrained interface</em>.
-<ul>
-<li>HTTP, for example, has a small number of methods.</li>
+<li>The web has a <em>uniform and constrained interface</em>.<ul>
+<li>HTTP, for example, has a small number of methods. </li>
 <li>Use these to manipulate <em>resources</em>.</li>
 </ul>
 </li>
-<li>The web is <em>representaKon oriented</em>
-<ul>
+<li>The web is <em>representaKon oriented</em><ul>
 <li>Providing diverse formats.</li>
 </ul>
 </li>
-<li>The web may be used to communicate <em>statelessly</em>
-<ul>
+<li>The web may be used to communicate <em>statelessly</em><ul>
 <li>Providing scalability</li>
 </ul>
 </li>
 <li><em>Hypermedia</em> is used as the <em>engine of applicaKon state</em>.</li>
 </ol>
-<h3 id="understanding-rest"><a class="markdownIt-Anchor" href="#understanding-rest"></a> Understanding REST</h3>
-<ol>
+<h3 id="Understanding-REST"><a href="#Understanding-REST" class="headerlink" title="Understanding REST"></a>Understanding REST</h3><ol>
 <li>REST is not protocol specific.</li>
 <li>SOAP and WS-* use HTTP strictly as a transport protocol.</li>
 <li>HTTP may be used as a rich applicaKon protocol.</li>
 <li>Browsers usually use only a small part of HTTP (GET and POST).</li>
 <li>HTTP is a synchronous request/response network protocol used for distributed, collaboraKve, document based systems.</li>
-<li>Various message formats may be used – XML, JSON,…</li>
+<li>Various message formats may be used – XML, JSON,..</li>
 <li>Binary data may be included in the message body.</li>
 </ol>
-<h3 id="uniform-interface"><a class="markdownIt-Anchor" href="#uniform-interface"></a> Uniform Interface</h3>
-<p>Notes</p>
+<h3 id="Uniform-Interface"><a href="#Uniform-Interface" class="headerlink" title="Uniform Interface"></a>Uniform Interface</h3><p>Notes</p>
 <ul>
 <li>not save : modify resources</li>
 <li>Idempotent: be called many times without different outcomes.</li>
 </ul>
 <p><strong>Operations:</strong></p>
 <ol>
-<li>HTTP GET
-<ul>
+<li>HTTP GET<ul>
 <li>read only operaKon</li>
 <li>idempotent (once same as many)</li>
-<li>safe (no important change to server’s<br>
-state)</li>
-<li>may include parameters in the URI<br>
-<a href="http://www.example.com/products/123" target="_blank" rel="external">http://www.example.com/products/123</a></li>
+<li>safe (no important change to server’s<br>state)</li>
+<li>may include parameters in the URI<br>  <a href="http://www.example.com/products/123" target="_blank" rel="external">http://www.example.com/products/123</a></li>
 </ul>
 </li>
-<li>HTTP PUT
-<ul>
-<li>store the message body</li>
+<li>HTTP PUT<ul>
+<li>store the message body </li>
 <li>update (更新值，可以做赋值操作)</li>
-<li>idempotent</li>
-<li>not safe</li>
+<li>idempotent </li>
+<li>not safe </li>
 </ul>
 </li>
-<li>HTTP POST
-<ul>
-<li>Not idempotent （可以做加1这种操作）<br>
-(when you don’t know the id, may create several copies)</li>
-<li>Not safe</li>
+<li>HTTP POST<ul>
+<li>Not idempotent （可以做加1这种操作）<br>  (when you don’t know the id, may create several copies)</li>
+<li>Not safe </li>
 <li>Each method call may modify the resource in a unique way</li>
 <li>The request/response may or may not contain addttional information</li>
 <li>The parameters are found within the request body (not within the URI)</li>
 </ul>
 </li>
-<li>HTTP DELETE
-<ul>
+<li>HTTP DELETE<ul>
 <li>remove the resource</li>
 <li>idempotent</li>
 <li>not safe</li>
@@ -543,32 +513,21 @@ state)</li>
 </ol>
 <p><strong>What does a uniform interface buy?</strong></p>
 <ol>
-<li>Familiarity<br>
-We do not need a general IDL(interface description language) that describes a variety of method signatures.<br>
-We already know the methods and their semantics.</li>
-<li>Interoperability<br>
-WS-* has been a moving target<br>
-HTTP is widely supported</li>
-<li>Scalability<br>
-Since GET is idempotent and safe, results may be cached by clients or proxy servers.<br>
-Since PUT and DELETE are both idempotent, neither the client or the server need worry about handling duplicate message delivery</li>
+<li>Familiarity<br>We do not need a general IDL(interface description language) that describes a variety of method signatures.<br>We already know the methods and their semantics.</li>
+<li>Interoperability<br>WS-* has been a moving target<br>HTTP is widely supported</li>
+<li>Scalability<br>Since GET is idempotent and safe, results may be cached by clients or proxy servers.<br>Since PUT and DELETE are both idempotent, neither the client or the server need worry about handling duplicate message delivery</li>
 </ol>
-<h3 id="rest-principle"><a class="markdownIt-Anchor" href="#rest-principle"></a> REST Principle</h3>
-<h4 id="addressability"><a class="markdownIt-Anchor" href="#addressability"></a> Addressability</h4>
-<p>Each HTTP request uses a URI.</p>
-<p>The format of a URI is well defined:<br>
-scheme://host:port/path?queryString#fragment</p>
+<h3 id="REST-Principle"><a href="#REST-Principle" class="headerlink" title="REST Principle"></a>REST Principle</h3><h4 id="Addressability"><a href="#Addressability" class="headerlink" title="Addressability"></a>Addressability</h4><p>Each HTTP request uses a URI.</p>
+<p>The format of a URI is well defined:<br>scheme://host:port/path?queryString#fragment</p>
 <ol>
 <li>The <strong>scheme</strong> need not be HTTP. May be FTP or HTTPS.</li>
 <li>The <strong>host</strong> field may be a DNS name or a IP address.</li>
-<li>The <strong>port</strong> may be derived from the scheme. Using HTTP implies port 80.</li>
+<li>The <strong>port</strong> may be derived from the scheme. Using HTTP implies port 80. </li>
 <li>The <strong>path</strong> is a set of text segments delimited by the “/”.</li>
-<li>The <strong>queryString</strong> is a list of parameters represented as name=value pairs.<br>
-Each pair is delimited by an “&amp;”.</li>
+<li>The <strong>queryString</strong> is a list of parameters represented as name=value pairs.<br>Each pair is delimited by an “&amp;”.</li>
 <li>The <strong>fragment</strong> is used to point to a parKcular place in a document.</li>
 </ol>
-<h4 id="representation-oriented"><a class="markdownIt-Anchor" href="#representation-oriented"></a> Representation Oriented</h4>
-<p><strong>Representations</strong></p>
+<h4 id="Representation-Oriented"><a href="#Representation-Oriented" class="headerlink" title="Representation Oriented"></a>Representation Oriented</h4><p><strong>Representations</strong></p>
 <ul>
 <li>Representations of resources are exchanged.</li>
 <li>GET returns a representation.</li>
@@ -579,10 +538,7 @@ Each pair is delimited by an “&amp;”.</li>
 <ul>
 <li>HTTP uses the CONTENT-TYPE header to specify the message format the client or server is sending.</li>
 <li>The value of the CONTENT-TYPE is a MIME typed string. Versioning informaKon may be included.</li>
-<li>Examples:<br>
-text/plain<br>
-text/html<br>
-applicaKon/vnd+xml;version=1.1</li>
+<li>Examples:<br>text/plain<br>text/html<br>applicaKon/vnd+xml;version=1.1</li>
 <li>“vnd” implies a vendor specific MIME type</li>
 </ul>
 <p><strong>ACCEPT：</strong></p>
@@ -592,19 +548,15 @@ applicaKon/vnd+xml;version=1.1</li>
 <li>A Java request might include a request for XML.</li>
 <li>Ruby might ask for YAML</li>
 </ul>
-<h4 id="communicate-statelessly"><a class="markdownIt-Anchor" href="#communicate-statelessly"></a> Communicate Statelessly</h4>
-<ul>
+<h4 id="Communicate-Statelessly"><a href="#Communicate-Statelessly" class="headerlink" title="Communicate Statelessly"></a>Communicate Statelessly</h4><ul>
 <li>The application may have state but there is no client session data stored on the server.</li>
 <li>If there is any session-specific data it should be held and maintained by the client and transferred to the server with each request as needed.</li>
 <li>The server is easier to scale. No replication of session data concerns.</li>
 </ul>
-<h4 id="hateoas"><a class="markdownIt-Anchor" href="#hateoas"></a> HATEOAS</h4>
-<p>Hypermedia As The Engine Of ApplicaKon State</p>
+<h4 id="HATEOAS"><a href="#HATEOAS" class="headerlink" title="HATEOAS"></a>HATEOAS</h4><p>Hypermedia As The Engine Of ApplicaKon State</p>
 <p>HATEOS is a Linked Services Pa;ern</p>
-<h4 id="linked-services-pattern"><a class="markdownIt-Anchor" href="#linked-services-pattern"></a> Linked Services Pattern</h4>
-<p>Only publish the addresses of a few root web services. Include the addresses of related services in each response. Let clients parse responses to discover subsequent service URIs.</p>
-<h1 id="client-server-interackon-styles"><a class="markdownIt-Anchor" href="#client-server-interackon-styles"></a> Client-Server InteracKon Styles</h1>
-<p>………………</p>
+<h4 id="Linked-Services-Pattern"><a href="#Linked-Services-Pattern" class="headerlink" title="Linked Services Pattern"></a>Linked Services Pattern</h4><p>Only publish the addresses of a few root web services. Include the addresses of related services in each response. Let clients parse responses to discover subsequent service URIs.</p>
+<h1 id="Client-Server-InteracKon-Styles"><a href="#Client-Server-InteracKon-Styles" class="headerlink" title="Client-Server InteracKon Styles"></a>Client-Server InteracKon Styles</h1><p>………………</p>
 <hr>
 <p>Over！</p>
 
@@ -739,7 +691,7 @@ applicaKon/vnd+xml;version=1.1</li>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -796,7 +748,7 @@ applicaKon/vnd+xml;version=1.1</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text"> Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web-service-api-styles"><span class="nav-number">2.</span> <span class="nav-text"> Web Service API Styles</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rpc-api"><span class="nav-number">2.1.</span> <span class="nav-text"> RPC API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-api"><span class="nav-number">2.2.</span> <span class="nav-text"> Message API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resource-api"><span class="nav-number">2.3.</span> <span class="nav-text"> Resource API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restful"><span class="nav-number">2.4.</span> <span class="nav-text"> RESTful</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rest-architectural-principles"><span class="nav-number">2.4.1.</span> <span class="nav-text"> REST Architectural Principles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#understanding-rest"><span class="nav-number">2.4.2.</span> <span class="nav-text"> Understanding REST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-interface"><span class="nav-number">2.4.3.</span> <span class="nav-text"> Uniform Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rest-principle"><span class="nav-number">2.4.4.</span> <span class="nav-text"> REST Principle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#addressability"><span class="nav-number">2.4.4.1.</span> <span class="nav-text"> Addressability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#representation-oriented"><span class="nav-number">2.4.4.2.</span> <span class="nav-text"> Representation Oriented</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#communicate-statelessly"><span class="nav-number">2.4.4.3.</span> <span class="nav-text"> Communicate Statelessly</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hateoas"><span class="nav-number">2.4.4.4.</span> <span class="nav-text"> HATEOAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linked-services-pattern"><span class="nav-number">2.4.4.5.</span> <span class="nav-text"> Linked Services Pattern</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-server-interackon-styles"><span class="nav-number">3.</span> <span class="nav-text"> Client-Server InteracKon Styles</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-Service-API-Styles"><span class="nav-number">2.</span> <span class="nav-text">Web Service API Styles</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC-API"><span class="nav-number">2.1.</span> <span class="nav-text">RPC API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message-API"><span class="nav-number">2.2.</span> <span class="nav-text">Message API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource-API"><span class="nav-number">2.3.</span> <span class="nav-text">Resource API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful"><span class="nav-number">2.4.</span> <span class="nav-text">RESTful</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-Architectural-Principles"><span class="nav-number">2.4.1.</span> <span class="nav-text">REST Architectural Principles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-REST"><span class="nav-number">2.4.2.</span> <span class="nav-text">Understanding REST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform-Interface"><span class="nav-number">2.4.3.</span> <span class="nav-text">Uniform Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-Principle"><span class="nav-number">2.4.4.</span> <span class="nav-text">REST Principle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Addressability"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">Addressability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-Oriented"><span class="nav-number">2.4.4.2.</span> <span class="nav-text">Representation Oriented</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Communicate-Statelessly"><span class="nav-number">2.4.4.3.</span> <span class="nav-text">Communicate Statelessly</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HATEOAS"><span class="nav-number">2.4.4.4.</span> <span class="nav-text">HATEOAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linked-Services-Pattern"><span class="nav-number">2.4.4.5.</span> <span class="nav-text">Linked Services Pattern</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Server-InteracKon-Styles"><span class="nav-number">3.</span> <span class="nav-text">Client-Server InteracKon Styles</span></a></li></ol></div>
             
 
           </div>

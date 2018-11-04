@@ -94,20 +94,23 @@
 
 
 
-<meta name="description" content="Lecture24 Priority Queue 图片引用写在最前面: picture source">
+<meta name="description" content="Lecture24 Priority Queue 图片引用写在最前面:picture source">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lecture24 Priority Queue">
 <meta property="og:url" content="http://menuet.xyz/algorithm/ucb61b/lecture24-PriorityQueue/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Lecture24 Priority Queue 图片引用写在最前面: picture source">
+<meta property="og:description" content="Lecture24 Priority Queue 图片引用写在最前面:picture source">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heap1.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapInsert.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapDelete.png">
+<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapBuild.png">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lecture24 Priority Queue">
-<meta name="twitter:description" content="Lecture24 Priority Queue 图片引用写在最前面: picture source">
-<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapDelete.png">
+<meta name="twitter:description" content="Lecture24 Priority Queue 图片引用写在最前面:picture source">
+<meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heap1.png">
 
 
 
@@ -390,19 +393,14 @@
 
       
         <p>Lecture24 Priority Queue</p>
-<p><strong>图片引用写在最前面:</strong></p>
-<a href="https://segmentfault.com/a/1190000004153707" title="picture source" target="_blank" rel="external">picture source</a>
-<a id="more"></a>
+<p><strong>图片引用写在最前面:</strong><br><a href="https://segmentfault.com/a/1190000004153707" title="picture source" target="_blank" rel="external">picture source</a><br><a id="more"></a></p>
 <hr>
-<h3 id="priority-queue"><a class="markdownIt-Anchor" href="#priority-queue"></a> Priority Queue</h3>
-<p>类似于字典的结构</p>
+<h3 id="Priority-Queue"><a href="#Priority-Queue" class="headerlink" title="Priority Queue"></a>Priority Queue</h3><p>类似于字典的结构</p>
 <ol>
 <li>Entries contains a key an d a value</li>
-<li>total order is defined on the key</li>
-<li>operations
-<ul>
-<li>identify or remove whose key is lowest,but not other entires<br>
-只能找到最小的那个</li>
+<li>total order is defined on the key </li>
+<li>operations<ul>
+<li>identify or remove whose key is lowest,but not other entires<br>只能找到最小的那个</li>
 <li>insert at any time</li>
 </ul>
 </li>
@@ -413,56 +411,40 @@
 <li>key is time, value is the description of event</li>
 </ol>
 <p>如果key相等，queue只会弹出一个</p>
-<h3 id="binary-heap-implementation-of-priority-queue"><a class="markdownIt-Anchor" href="#binary-heap-implementation-of-priority-queue"></a> Binary Heap: Implementation of Priority Queue</h3>
-<ol>
+<h3 id="Binary-Heap-Implementation-of-Priority-Queue"><a href="#Binary-Heap-Implementation-of-Priority-Queue" class="headerlink" title="Binary Heap: Implementation of Priority Queue"></a>Binary Heap: Implementation of Priority Queue</h3><ol>
 <li>Binary Heap: <code>Complete*</code> binary tree(every row is full, except the lowest)</li>
 <li>It is filled from left to right</li>
 <li><code>Heap -order Property</code>: no child has a key less than its parent’s key</li>
 <li>Stored as arrayof entries by `level order`` traversal</li>
-<li>Mapping of nodes to indices: <code>level numbering</code><br>
-<code>Node i's children is 2i &amp; 2i+1, parent is i/2(只保留整数位)</code></li>
+<li>Mapping of nodes to indices: <code>level numbering</code><br><code>Node i&#39;s children is 2i &amp; 2i+1, parent is i/2(只保留整数位)</code></li>
 <li>Each tree node has 2 reference(key, value), or references an “Entry” object</li>
 </ol>
-<br>
-![heap](http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heap1.png "heap")
-<br>
-<h3 id="three-operations-of-priority-queue"><a class="markdownIt-Anchor" href="#three-operations-of-priority-queue"></a> Three Operations of Priority Queue</h3>
-<h4 id="entry-min"><a class="markdownIt-Anchor" href="#entry-min"></a> Entry min()</h4>
-<p>Just Return entry at root</p>
-<h4 id="entry-insertobject-k-object-v"><a class="markdownIt-Anchor" href="#entry-insertobject-k-object-v"></a> Entry insert(Object k, Object v):</h4>
-<ol>
-<li>x: the new entry (k, v).</li>
+<p><br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heap1.png" alt="heap" title="heap"><br><br></p>
+<h3 id="Three-Operations-of-Priority-Queue"><a href="#Three-Operations-of-Priority-Queue" class="headerlink" title="Three Operations of Priority Queue"></a>Three Operations of Priority Queue</h3><h4 id="Entry-min"><a href="#Entry-min" class="headerlink" title="Entry min()"></a>Entry min()</h4><p>Just Return entry at root</p>
+<h4 id="Entry-insert-Object-k-Object-v"><a href="#Entry-insert-Object-k-Object-v" class="headerlink" title="Entry insert(Object k, Object v):"></a>Entry insert(Object k, Object v):</h4><ol>
+<li>x: the new entry (k, v). </li>
 <li>place x in bottom level of tree, at first. Free spot <code>from left</code></li>
 <li>此时，可能违反 Heap-order Property. Entry <code>Bubbles up</code></li>
-<li>Repeat
-<ul>
-<li>compare x’s key with its parent’s key
-<ul>
+<li>Repeat<ul>
+<li>compare x’s key with its parent’s key<ul>
 <li>if x’s key is <code>less</code>, exchange （相等则不用）</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
-<br>
-![heap Insert](http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapInsert.png "heap Insert")
-<br>
-<h4 id="entry-removemin-重点在这里"><a class="markdownIt-Anchor" href="#entry-removemin-重点在这里"></a> Entry removeMin() 重点在这里！</h4>
-<ol>
+<p><br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapInsert.png" alt="heap Insert" title="heap Insert"><br><br></p>
+<h4 id="Entry-removeMin-重点在这里！"><a href="#Entry-removeMin-重点在这里！" class="headerlink" title="Entry removeMin() 重点在这里！"></a>Entry removeMin() 重点在这里！</h4><ol>
 <li><code>remove entry at root</code>; save for return value;</li>
 <li>fill the hole(the place of root) with the <code>last entry</code> x</li>
-<li><code>Bubble the x down</code> the heap
-<ul>
+<li><code>Bubble the x down</code> the heap<ul>
 <li>if x &gt; one or both of its children</li>
 <li>swap x with its <code>minmum child</code></li>
 </ul>
 </li>
 </ol>
-<p><br><br>
-<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapDelete.png" alt="heap Delete" title="heap Delete"><br>
-<br></p>
-<h3 id="running-time"><a class="markdownIt-Anchor" href="#running-time"></a> Running time</h3>
-<table>
+<p><br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapDelete.png" alt="heap Delete" title="heap Delete"><br><br></p>
+<h3 id="Running-time"><a href="#Running-time" class="headerlink" title="Running time"></a>Running time</h3><table>
 <thead>
 <tr>
 <th></th>
@@ -510,8 +492,7 @@
 <li>complete binary  tree: has at most 1 + log(n) levels</li>
 <li>O(log n) worst-case time;</li>
 </ol>
-<h3 id="bottom-up-heap-construction"><a class="markdownIt-Anchor" href="#bottom-up-heap-construction"></a> Bottom up heap construction</h3>
-<ol>
+<h3 id="Bottom-up-heap-construction"><a href="#Bottom-up-heap-construction" class="headerlink" title="Bottom up heap construction"></a>Bottom up heap construction</h3><ol>
 <li>make a complete tree out of entries in any order</li>
 <li>walk backward from <code>last internal node</code> to root; reverse order in array</li>
 <li>when visit a node, bubble down as in removeMin()</li>
@@ -523,9 +504,7 @@
 <li>每次访问一个节点的时候都做bubble down的动作</li>
 </ol>
 <p>run time O(n)</p>
-<br>
-![heap Build](http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapBuild.png "heap Build")
-<br>
+<p><br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture24-PriorityQueue/heapBuild.png" alt="heap Build" title="heap Build"><br><br></p>
 
       
     </div>
@@ -658,7 +637,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -715,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-queue"><span class="nav-number">1.</span> <span class="nav-text"> Priority Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-heap-implementation-of-priority-queue"><span class="nav-number">2.</span> <span class="nav-text"> Binary Heap: Implementation of Priority Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#three-operations-of-priority-queue"><span class="nav-number">3.</span> <span class="nav-text"> Three Operations of Priority Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entry-min"><span class="nav-number">3.1.</span> <span class="nav-text"> Entry min()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#entry-insertobject-k-object-v"><span class="nav-number">3.2.</span> <span class="nav-text"> Entry insert(Object k, Object v):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#entry-removemin-重点在这里"><span class="nav-number">3.3.</span> <span class="nav-text"> Entry removeMin() 重点在这里！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-time"><span class="nav-number">4.</span> <span class="nav-text"> Running time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bottom-up-heap-construction"><span class="nav-number">5.</span> <span class="nav-text"> Bottom up heap construction</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Priority-Queue"><span class="nav-number">1.</span> <span class="nav-text">Priority Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Heap-Implementation-of-Priority-Queue"><span class="nav-number">2.</span> <span class="nav-text">Binary Heap: Implementation of Priority Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Operations-of-Priority-Queue"><span class="nav-number">3.</span> <span class="nav-text">Three Operations of Priority Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Entry-min"><span class="nav-number">3.1.</span> <span class="nav-text">Entry min()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Entry-insert-Object-k-Object-v"><span class="nav-number">3.2.</span> <span class="nav-text">Entry insert(Object k, Object v):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Entry-removeMin-重点在这里！"><span class="nav-number">3.3.</span> <span class="nav-text">Entry removeMin() 重点在这里！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-time"><span class="nav-number">4.</span> <span class="nav-text">Running time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bottom-up-heap-construction"><span class="nav-number">5.</span> <span class="nav-text">Bottom up heap construction</span></a></li></ol></div>
             
 
           </div>

@@ -390,15 +390,10 @@
         <p>230 Kth Smallest Element in a BST</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
-<p>Note:<br>
-You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
-<p>Follow up:<br>
-What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>从小到大遍历BST咯</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    TreeNode node = root;</div><div class="line">    </div><div class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span>(stack != <span class="keyword">null</span> || node != <span class="keyword">null</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(stack.empty()) &#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        node = stack.pop();</div><div class="line">        <span class="keyword">if</span>( i == k) &#123;</div><div class="line">            <span class="keyword">return</span> node.val;</div><div class="line">        &#125;</div><div class="line">        i++;</div><div class="line">        </div><div class="line">        node = node.right;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
+<p>Follow up:<br>    What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>从小到大遍历BST咯<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    TreeNode node = root;</div><div class="line">    </div><div class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span>(stack != <span class="keyword">null</span> || node != <span class="keyword">null</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(stack.empty()) &#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        node = stack.pop();</div><div class="line">        <span class="keyword">if</span>( i == k) &#123;</div><div class="line">            <span class="keyword">return</span> node.val;</div><div class="line">        &#125;</div><div class="line">        i++;</div><div class="line">        </div><div class="line">        node = node.right;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -431,8 +426,8 @@ What if the BST is modified (insert/delete operations) often and you need to fin
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-232/" rel="next" title="Leetcode_232">
-                <i class="fa fa-chevron-left"></i> Leetcode_232
+              <a href="/algorithm/leetcode/Leetcode-288/" rel="next" title="Leetcode_288">
+                <i class="fa fa-chevron-left"></i> Leetcode_288
               </a>
             
           </div>
@@ -441,8 +436,8 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-278/" rel="prev" title="Leetcode_278">
-                Leetcode_278 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-232/" rel="prev" title="Leetcode_232">
+                Leetcode_232 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +528,7 @@ What if the BST is modified (insert/delete operations) often and you need to fin
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">384</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -590,7 +585,7 @@ What if the BST is modified (insert/delete operations) often and you need to fin
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
