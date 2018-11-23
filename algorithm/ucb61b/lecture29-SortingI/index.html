@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="Lecture29 Sorting I讲排序了！好激动！">
+<meta name="description" content="Lecture29 Sorting I 讲排序了！好激动！">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lecture29 Sorting I">
 <meta property="og:url" content="http://menuet.xyz/algorithm/ucb61b/lecture29-SortingI/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Lecture29 Sorting I讲排序了！好激动！">
+<meta property="og:description" content="Lecture29 Sorting I 讲排序了！好激动！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort1.jpg">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort3.jpg">
@@ -108,7 +108,7 @@
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lecture29 Sorting I">
-<meta name="twitter:description" content="Lecture29 Sorting I讲排序了！好激动！">
+<meta name="twitter:description" content="Lecture29 Sorting I 讲排序了！好激动！">
 <meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort1.jpg">
 
 
@@ -391,27 +391,36 @@
       
 
       
-        <p>Lecture29 Sorting I<br>讲排序了！好激动！<br><a id="more"></a></p>
-<p><br></p>
+        <p>Lecture29 Sorting I<br>
+讲排序了！好激动！</p>
+<a id="more"></a>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Insertion-sort-插入排序"><a href="#Insertion-sort-插入排序" class="headerlink" title="Insertion sort 插入排序"></a>Insertion sort 插入排序</h1><p>O(n^2) time</p>
-<p>Invariant: S is sorted </p>
+<br>
+<h1 id="insertion-sort-插入排序"><a class="markdownIt-Anchor" href="#insertion-sort-插入排序"></a> Insertion sort 插入排序</h1>
+<p>O(n^2) time</p>
+<p>Invariant: S is sorted</p>
 <p>start with empty list S &amp; unsorted list I of <code>n</code> items</p>
 <pre><code>for ( each item x in I ) {
     insert x into S, in sorted order
     就是I按次序向S插入，然后插入的时候找对的位置
 }
-</code></pre><ol>
+</code></pre>
+<ol>
 <li>If S is linked list, O(n) worst-case time to <code>find right position</code></li>
 <li>If S is array, O(n) worst-case time to <code>shift higher items over</code> (二分查找log n, 但是找到以后还是要插入，数组的插入呃呃呃)</li>
-<li>If S  is a array, insertion sort is in-place.(在原数组上做就好了，不需要两个数组了，也就是不需要额外空间)<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort1.jpg" alt=""><br>如果一部分已经有序了，从后面的字符开始insert，会快很多。<br>proportion to inversions（顺序不对的数对）<br>数据结构的有时候就在于linked list和array之间的compromise</li>
+<li>If S  is a array, insertion sort is in-place.(在原数组上做就好了，不需要两个数组了，也就是不需要额外空间)<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort1.jpg" alt=""><br>
+如果一部分已经有序了，从后面的字符开始insert，会快很多。<br>
+proportion to inversions（顺序不对的数对）<br>
+数据结构的有时候就在于linked list和array之间的compromise</li>
 <li>If S is a balanced search tree, O(n log n)</li>
 </ol>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Selection-sort-选择查找"><a href="#Selection-sort-选择查找" class="headerlink" title="Selection sort 选择查找"></a>Selection sort 选择查找</h1><p>O(n^2)</p>
+<br>
+<h1 id="selection-sort-选择查找"><a class="markdownIt-Anchor" href="#selection-sort-选择查找"></a> Selection sort 选择查找</h1>
+<p>O(n^2)</p>
 <p>start with empty list S &amp; unsorted list I of <code>n</code> items</p>
 <pre><code>for ( i = 0; i &lt; n; i++) {
     item in I with smallest key
@@ -419,13 +428,16 @@
     Append x to end of s
     每次都找到I中最小值的，直接插到S的末尾就好了。
 }
-</code></pre><p>Best case 也需要 O(n^2)<br>因为每次都要找最小的嘛，逃不掉</p>
+</code></pre>
+<p>Best case 也需要 O(n^2)<br>
+因为每次都要找最小的嘛，逃不掉</p>
 <p>其实每次查找最小的范围都在减小 从<code>n-1</code>到<code>1</code>，最后sum就是<code>(n * (n - 1)) / 2</code> 时间复杂度还是平方的。</p>
 <p>如果是数组同样也能不用额外的空间 In place</p>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Heap-sort-堆排序"><a href="#Heap-sort-堆排序" class="headerlink" title="Heap sort 堆排序"></a>Heap sort 堆排序</h1><p>Selection Sort where I is a heap</p>
+<br>
+<h1 id="heap-sort-堆排序"><a class="markdownIt-Anchor" href="#heap-sort-堆排序"></a> Heap sort 堆排序</h1>
+<p>Selection Sort where I is a heap</p>
 <pre><code>Toss all items in `I` onto heap `h`   // 生成无序堆
 h.bottomUpHeap();    // 堆排序 O(n)
 for (i = 0; i &lt; n; i++) {
@@ -433,34 +445,43 @@ for (i = 0; i &lt; n; i++) {
     x = h.removeMin(); // O(log n)
     Append x to the end of S;
 }
-</code></pre><p>所以 <code>O( n log n)</code></p>
+</code></pre>
+<p>所以 <code>O( n log n)</code></p>
 <p>In Place （二叉堆<code>反向</code>存在数组里） 注意是反向哦！</p>
 <p><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort3.jpg" alt=""></p>
 <p>Heap sort 适用于Array 而不是 linked list</p>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Merge-Sort-归并排序"><a href="#Merge-Sort-归并排序" class="headerlink" title="Merge Sort 归并排序"></a>Merge Sort 归并排序</h1><p>Merge 2 sorted lists into one sorted list in linear time</p>
-<p>Q1 &amp; Q2 两个有序queue<br>Q 为空的queue</p>
+<br>
+<h1 id="merge-sort-归并排序"><a class="markdownIt-Anchor" href="#merge-sort-归并排序"></a> Merge Sort 归并排序</h1>
+<p>Merge 2 sorted lists into one sorted list in linear time</p>
+<p>Q1 &amp; Q2 两个有序queue<br>
+Q 为空的queue</p>
 <pre><code>while (Q1 Q2 都非空) {
     item1 = Q1.front();
     item2 = Q2.front();
     把小的那个存入Q中 
 }
 concatenate remaining non-empty queue to end of Q
-</code></pre><p>recursive divide-and-conquer algorithm<br>把一个大的数据结构一分为二</p>
+</code></pre>
+<p>recursive divide-and-conquer algorithm<br>
+把一个大的数据结构一分为二</p>
 <ol>
-<li>把I 一分为二到 I1，I2 </li>
+<li>把I 一分为二到 I1，I2</li>
 <li>sort I1 <code>recursively</code>, yielding S1,</li>
 <li>sort I2 <code>recursively</code>, yielding S2,</li>
 <li>merge S1 and S2 into S</li>
 </ol>
-<p>这个图是从下往上看的！<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort4.jpg" alt=""></p>
-<p>Merge Sort 适合 Linked List， 用merge的适合不需要多余的空间<br>不太适合array，因为需要多于的空间来做merge</p>
-<p><br></p>
+<p>这个图是从下往上看的！<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture29-SortingI/sort4.jpg" alt=""></p>
+<p>Merge Sort 适合 Linked List， 用merge的适合不需要多余的空间<br>
+不太适合array，因为需要多于的空间来做merge</p>
+<br>
 <hr>
-<p><br></p>
-<p>清晰的参考<br><a href="http://www.jianshu.com/p/f5baf7f27a7e" title="各种排序算法总结" target="_blank" rel="external">各种排序算法总结</a><br><a href="http://alexyyek.github.io/2014/12/07/heap/" title="堆排序" target="_blank" rel="external">堆排序</a></p>
+<br>
+<p>清晰的参考</p>
+<a href="http://www.jianshu.com/p/f5baf7f27a7e" title="各种排序算法总结" target="_blank" rel="external">各种排序算法总结</a>
+<a href="http://alexyyek.github.io/2014/12/07/heap/" title="堆排序" target="_blank" rel="external">堆排序</a>
 
       
     </div>
@@ -501,8 +522,8 @@ concatenate remaining non-empty queue to end of Q
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-160/" rel="prev" title="Leetcode_160">
-                Leetcode_160 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-217/" rel="prev" title="Leetcode_217">
+                Leetcode_217 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -650,7 +671,7 @@ concatenate remaining non-empty queue to end of Q
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Insertion-sort-插入排序"><span class="nav-number">1.</span> <span class="nav-text">Insertion sort 插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selection-sort-选择查找"><span class="nav-number">2.</span> <span class="nav-text">Selection sort 选择查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Heap-sort-堆排序"><span class="nav-number">3.</span> <span class="nav-text">Heap sort 堆排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Merge-Sort-归并排序"><span class="nav-number">4.</span> <span class="nav-text">Merge Sort 归并排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#insertion-sort-插入排序"><span class="nav-number">1.</span> <span class="nav-text"> Insertion sort 插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selection-sort-选择查找"><span class="nav-number">2.</span> <span class="nav-text"> Selection sort 选择查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#heap-sort-堆排序"><span class="nav-number">3.</span> <span class="nav-text"> Heap sort 堆排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merge-sort-归并排序"><span class="nav-number">4.</span> <span class="nav-text"> Merge Sort 归并排序</span></a></li></ol></div>
             
 
           </div>

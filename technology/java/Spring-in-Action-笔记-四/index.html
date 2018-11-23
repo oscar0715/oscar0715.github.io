@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the webIn this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various k">
+<meta name="description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the web In this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various">
 <meta name="keywords" content="Java,Spring,MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring_in_Action_笔记(四)">
 <meta property="og:url" content="http://menuet.xyz/technology/java/Spring-in-Action-笔记-四/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the webIn this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various k">
+<meta property="og:description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the web In this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring_in_Action_笔记(四)">
-<meta name="twitter:description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the webIn this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various k">
+<meta name="twitter:description" content="如题，阅读《Spring_in_Action》的笔记 (四)Spring on the web In this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various">
 
 
 
@@ -388,13 +388,16 @@
 
       
         <p>如题，阅读《Spring_in_Action》的笔记</p>
-<p>(四)Spring on the web<br>In this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various kinds of web requests, parameters, and form input.</p>
+<p>(四)Spring on the web<br>
+In this chapter, we’ll explore the essentials of Spring’s MVC web framework. We’ll focus on using annotations to create controllers that handle various kinds of web requests, parameters, and form input.</p>
 <a id="more"></a>
 <hr>
-<h3 id="Getting-started-with-Spring-MVC"><a href="#Getting-started-with-Spring-MVC" class="headerlink" title="Getting started with Spring MVC"></a>Getting started with Spring MVC</h3><h4 id="life-of-the-request"><a href="#life-of-the-request" class="headerlink" title="life of the request"></a>life of the request</h4><p>The first stop in the request’s travels is at Spring’s <code>DispatcherServlet</code>.</p>
+<h3 id="getting-started-with-spring-mvc"><a class="markdownIt-Anchor" href="#getting-started-with-spring-mvc"></a> Getting started with Spring MVC</h3>
+<h4 id="life-of-the-request"><a class="markdownIt-Anchor" href="#life-of-the-request"></a> life of the request</h4>
+<p>The first stop in the request’s travels is at Spring’s <code>DispatcherServlet</code>.</p>
 <p>A <code>front controller</code> is a common web application pattern where a single servlet delegates responsibility for a request to other components of an application to perform actual processing. In the case of Spring MVC, DispatcherServlet is the front controller.</p>
 <p>A <code>controller</code> is a Spring component that <code>processes the request</code>.</p>
-<p>A typical application may have several controllers, and DispatcherServlet needs some help <code>deciding which controller</code> to send the request to. </p>
+<p>A typical application may have several controllers, and DispatcherServlet needs some help <code>deciding which controller</code> to send the request to.</p>
 <p>So the DispatcherServlet consults one or more <code>handler mappings</code> to figure out where the request’s next stop will be. The handler mapping pays particular attention to the <code>URL</code> carried by the request when making its decision.</p>
 <p>Once an appropriate controller has been chosen, DispatcherServlet sends the request on its merry way to the chosen controller。</p>
 <blockquote>
@@ -410,11 +413,14 @@
 <p>The DispatcherServlet consults a <code>view resolver</code> to map the logical view name to a specific view implementation.</p>
 <p>Its final stop is at the view implementation, typically a JSP, where it delivers the model data.</p>
 <p>The view will use the model data to render output that will be carried back to the client by the (not- so-hardworking) response object.</p>
-<h4 id="CONFIGURING-DISPATCHERSERVLET"><a href="#CONFIGURING-DISPATCHERSERVLET" class="headerlink" title="CONFIGURING DISPATCHERSERVLET"></a>CONFIGURING DISPATCHERSERVLET</h4><p>When DispatcherServlet starts up, it creates a <code>Spring application context</code> and starts <code>loading it with beans</code> declared in the configuration files or classes that it’s given.</p>
-<p>getServletConfigClasses():<br>With the <code>getServletConfigClasses()</code> method in listing 5.1, you’ve asked that DispatcherServlet load its application context with beans defined in the WebConfig configura- tion class (using Java configuration).</p>
+<h4 id="configuring-dispatcherservlet"><a class="markdownIt-Anchor" href="#configuring-dispatcherservlet"></a> CONFIGURING DISPATCHERSERVLET</h4>
+<p>When DispatcherServlet starts up, it creates a <code>Spring application context</code> and starts <code>loading it with beans</code> declared in the configuration files or classes that it’s given.</p>
+<p>getServletConfigClasses():<br>
+With the <code>getServletConfigClasses()</code> method in listing 5.1, you’ve asked that DispatcherServlet load its application context with beans defined in the WebConfig configura- tion class (using Java configuration).</p>
 <p>But in Spring web applications, there’s often another application context. This other application context is <code>created</code> by <code>ContextLoaderListener</code>.</p>
 <p>Whereas DispatcherServlet is expected to load beans containing <code>web components</code> such as <code>controllers</code>, <code>view resolvers</code>, and <code>handler mappings</code>, ContextLoaderListener is expected to load the <code>other beans in your application</code>. These beans are typically the middle-tier and data-tier components that drive the back end of the application.</p>
-<p>The @Configuration classes returned from <code>getServletConfigClasses()</code> will define beans for <code>DispatcherServlet’s application context</code>.<br>Meanwhile, the @Configuration class’s returned <code>getRootConfigClasses()</code> will be used to configure the application context created by <code>ContextLoaderListener</code>.</p>
+<p>The @Configuration classes returned from <code>getServletConfigClasses()</code> will define beans for <code>DispatcherServlet’s application context</code>.<br>
+Meanwhile, the @Configuration class’s returned <code>getRootConfigClasses()</code> will be used to configure the application context created by <code>ContextLoaderListener</code>.</p>
 <p>It’s important to realize that configuring DispatcherServlet via AbstractAnnotationConfigDispatcherServletInitializer is an alternative to the traditional web.xml file.</p>
 
       
@@ -609,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getting-started-with-Spring-MVC"><span class="nav-number">1.</span> <span class="nav-text">Getting started with Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#life-of-the-request"><span class="nav-number">1.1.</span> <span class="nav-text">life of the request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CONFIGURING-DISPATCHERSERVLET"><span class="nav-number">1.2.</span> <span class="nav-text">CONFIGURING DISPATCHERSERVLET</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#getting-started-with-spring-mvc"><span class="nav-number">1.</span> <span class="nav-text"> Getting started with Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#life-of-the-request"><span class="nav-number">1.1.</span> <span class="nav-text"> life of the request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configuring-dispatcherservlet"><span class="nav-number">1.2.</span> <span class="nav-text"> CONFIGURING DISPATCHERSERVLET</span></a></li></ol></li></ol></div>
             
 
           </div>

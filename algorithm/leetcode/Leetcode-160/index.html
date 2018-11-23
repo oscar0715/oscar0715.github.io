@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Intersection of Two Linked Lists找两个单链表的相交处">
+<meta name="description" content="Intersection of Two Linked Lists 找两个单链表的相交处">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_160">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-160/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Intersection of Two Linked Lists找两个单链表的相交处">
+<meta property="og:description" content="Intersection of Two Linked Lists 找两个单链表的相交处">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_160">
-<meta name="twitter:description" content="Intersection of Two Linked Lists找两个单链表的相交处">
+<meta name="twitter:description" content="Intersection of Two Linked Lists 找两个单链表的相交处">
 
 
 
@@ -387,14 +387,28 @@
       
 
       
-        <p>Intersection of Two Linked Lists<br>找两个单链表的相交处<br><a id="more"></a></p>
+        <p>Intersection of Two Linked Lists<br>
+找两个单链表的相交处</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
 <p>For example, the following two linked lists:</p>
-<p><pre><br>A:          a1 → a2<br>                   ↘<br>                     c1 → c2 → c3<br>                   ↗<br>B:     b1 → b2 → b3<br></pre><br>begin to intersect at node c1.</p>
+<pre>
+A:          a1 → a2
+                   ↘
+                     c1 → c2 → c3
+                   ↗            
+B:     b1 → b2 → b3
+</pre>
+<p>begin to intersect at node c1.</p>
 <p>Notes:</p>
-<p>If the two linked lists have no intersection at all, return null.<br>The linked lists must retain their original structure after the function returns.<br>You may assume there are no cycles anywhere in the entire linked structure.<br>Your code should preferably run in O(n) time and use only O(1) memory.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
+<p>If the two linked lists have no intersection at all, return null.<br>
+The linked lists must retain their original structure after the function returns.<br>
+You may assume there are no cycles anywhere in the entire linked structure.<br>
+Your code should preferably run in O(n) time and use only O(1) memory.</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<ol>
 <li>求两个链表的长度，然后求出长度的差值。</li>
 <li>长的链表先走，走完差值的长度，剩下的长度与短链表长度相等</li>
 <li>然后两个链表同时走，同时比较，找到相同的 node 就返回</li>
@@ -432,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/ucb61b/lecture29-SortingI/" rel="next" title="Lecture29 Sorting I">
-                <i class="fa fa-chevron-left"></i> Lecture29 Sorting I
+              <a href="/algorithm/leetcode/Leetcode-217/" rel="next" title="Leetcode_217">
+                <i class="fa fa-chevron-left"></i> Leetcode_217
               </a>
             
           </div>
@@ -442,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-217/" rel="prev" title="Leetcode_217">
-                Leetcode_217 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-189/" rel="prev" title="Leetcode_189">
+                Leetcode_189 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

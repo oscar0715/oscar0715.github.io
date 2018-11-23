@@ -389,29 +389,41 @@
       
         <p>Lecture31 Disjoint Sets</p>
 <a id="more"></a>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Disjoint-Set"><a href="#Disjoint-Set" class="headerlink" title="Disjoint Set"></a>Disjoint Set</h1><p>No item is in more than one set.  互斥的集合</p>
+<br>
+<h1 id="disjoint-set"><a class="markdownIt-Anchor" href="#disjoint-set"></a> Disjoint Set</h1>
+<p>No item is in more than one set.  互斥的集合</p>
 <p>Collection of disjoint sets is called a <code>partition</code></p>
-<p>2 Operations:<br>Union: merge 2 sets into 1<br>find: takes an item and tells us what set it’s in.</p>
+<p>2 Operations:<br>
+Union: merge 2 sets into 1<br>
+find: takes an item and tells us what set it’s in.</p>
 <p>Application: Kruskal’s alg (Graph)</p>
-<h1 id="List-Based-Disjoint-Sets"><a href="#List-Based-Disjoint-Sets" class="headerlink" title="List Based Disjoint Sets"></a>List Based Disjoint Sets</h1><p><code>the Quick-Find algorithm</code></p>
+<h1 id="list-based-disjoint-sets"><a class="markdownIt-Anchor" href="#list-based-disjoint-sets"></a> List Based Disjoint Sets</h1>
+<p><code>the Quick-Find algorithm</code></p>
 <ul>
 <li>Each set references list of items in the set</li>
 <li>Each item references set that contains it.</li>
 </ul>
-<p>Find: O(1) time<br>Union: O(n) time slow</p>
-<h1 id="Tree-based-Disjoint-Sets"><a href="#Tree-based-Disjoint-Sets" class="headerlink" title="Tree-based Disjoint Sets"></a>Tree-based Disjoint Sets</h1><p><code>the Quick-Union algorithm</code></p>
-<p>Union: O(1)<br>Find: slower<br>Quick-union faster overall than quick Find</p>
-<p>Each Set maintained as a tree<br>Data structure is a forest<br>Each item is initially root of its own tree.</p>
+<p>Find: O(1) time<br>
+Union: O(n) time slow</p>
+<h1 id="tree-based-disjoint-sets"><a class="markdownIt-Anchor" href="#tree-based-disjoint-sets"></a> Tree-based Disjoint Sets</h1>
+<p><code>the Quick-Union algorithm</code></p>
+<p>Union: O(1)<br>
+Find: slower<br>
+Quick-union faster overall than quick Find</p>
+<p>Each Set maintained as a tree<br>
+Data structure is a forest<br>
+Each item is initially root of its own tree.</p>
 <p>No child or sibling references – only parent</p>
 <p>True identity of each set recorded at the root.</p>
 <p>Union: make the root of one set be child of root of other set</p>
 <p>find: walk through 要遍历这棵树,和树的深度有关</p>
-<p>Tricks: </p>
+<p>Tricks:</p>
 <ol>
-<li>Keep items from getting too deep: At each root, we record size of tree (totall number)<br>Union: Make smaller one as subtree of larger one (<code>Union by size</code>)<br>两棵树深度都是n的情况下，Union以后深度才会是n+1</li>
+<li>Keep items from getting too deep: At each root, we record size of tree (totall number)<br>
+Union: Make smaller one as subtree of larger one (<code>Union by size</code>)<br>
+两棵树深度都是n的情况下，Union以后深度才会是n+1</li>
 </ol>
 
       
@@ -602,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Disjoint-Set"><span class="nav-number">1.</span> <span class="nav-text">Disjoint Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List-Based-Disjoint-Sets"><span class="nav-number">2.</span> <span class="nav-text">List Based Disjoint Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree-based-Disjoint-Sets"><span class="nav-number">3.</span> <span class="nav-text">Tree-based Disjoint Sets</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#disjoint-set"><span class="nav-number">1.</span> <span class="nav-text"> Disjoint Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#list-based-disjoint-sets"><span class="nav-number">2.</span> <span class="nav-text"> List Based Disjoint Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-based-disjoint-sets"><span class="nav-number">3.</span> <span class="nav-text"> Tree-based Disjoint Sets</span></a></li></ol></div>
             
 
           </div>

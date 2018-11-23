@@ -390,69 +390,104 @@
         <p>注册模块不好做啊，继续学习 django-userena</p>
 <a id="more"></a>
 <hr>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>用 pip 安装嘛</p>
+<h1 id="installation"><a class="markdownIt-Anchor" href="#installation"></a> Installation</h1>
+<p>用 pip 安装嘛</p>
 <hr>
-<h1 id="Required-settings"><a href="#Required-settings" class="headerlink" title="Required settings"></a>Required settings</h1><p>在 Django 中修改三处设置：<br><code>AUTHENTICATION_BACKENDS</code>, <code>INSTALLED_APPS</code> 和 optionally <code>MIDDLEWARE_CLASSES</code></p>
+<h1 id="required-settings"><a class="markdownIt-Anchor" href="#required-settings"></a> Required settings</h1>
+<p>在 Django 中修改三处设置：<br>
+<code>AUTHENTICATION_BACKENDS</code>, <code>INSTALLED_APPS</code> 和 optionally <code>MIDDLEWARE_CLASSES</code></p>
 <ol>
-<li>在 <code>INSTALLED_APPS</code> 中<ul>
+<li>在 <code>INSTALLED_APPS</code> 中
+<ul>
 <li>添加 <code>userena</code>, <code>guardian</code> 和 <code>easy_thumbnails</code></li>
 <li><code>django.contrib.sites</code> 也要有</li>
 </ul>
 </li>
-<li>在 <code>AUTHENTICATION_BACKENDS</code> 中<ul>
-<li>添加 <code>UserenaAuthenticationBackend</code> 和 django-guardian 中的 <code>ObjectPermissionBackend</code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">AUTHENTICATION_BACKENDS = (</div><div class="line">	<span class="string">'userena.backends.UserenaAuthenticationBackend'</span>,</div><div class="line">	<span class="string">'guardian.backends.ObjectPermissionBackend'</span>,</div><div class="line">	<span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
+<li>在 <code>AUTHENTICATION_BACKENDS</code> 中
+<ul>
+<li>添加 <code>UserenaAuthenticationBackend</code> 和 django-guardian 中的 <code>ObjectPermissionBackend</code></li>
 </ul>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">AUTHENTICATION_BACKENDS = (</div><div class="line">	<span class="string">'userena.backends.UserenaAuthenticationBackend'</span>,</div><div class="line">	<span class="string">'guardian.backends.ObjectPermissionBackend'</span>,</div><div class="line">	<span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <hr>
-<h1 id="Start-New-App"><a href="#Start-New-App" class="headerlink" title="Start New App"></a>Start New App</h1><p>为 <code>Userena</code>  创建一个 App: <code>account</code>:<br><code>python manage.py startapp accounts</code></p>
+<h1 id="start-new-app"><a class="markdownIt-Anchor" href="#start-new-app"></a> Start New App</h1>
+<p>为 <code>Userena</code>  创建一个 App: <code>account</code>:<br>
+<code>python manage.py startapp accounts</code></p>
 <p>创建好以后，也要把 <code>account</code> 添加到 <code>INSTALLED_APPS</code></p>
 <hr>
-<h1 id="Email-Backend"><a href="#Email-Backend" class="headerlink" title="Email Backend"></a>Email Backend</h1><p>接下来就要设置 Email Backend, 默认用 SMTP backend， 如果 SMTP 有问题，则要在 <code>setting.py</code> 重新设置：<br><code>EMAIL_BACKEND = &#39;django.core.mail.backends.dummy.EmailBackend&#39;</code></p>
-<p>如果要用 <code>GMail SMTP</code>， 则在 <code>setting.py</code> 中设置 ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EMAIL_USE_TLS = <span class="keyword">True</span></div><div class="line">EMAIL_HOST = <span class="string">'smtp.gmail.com'</span></div><div class="line">EMAIL_PORT = <span class="number">587</span></div><div class="line">EMAIL_HOST_USER = <span class="string">'yourgmailaccount@gmail.com'</span></div><div class="line">EMAIL_HOST_PASSWORD = <span class="string">'yourgmailpassword'</span></div></pre></td></tr></table></figure></p>
+<h1 id="email-backend"><a class="markdownIt-Anchor" href="#email-backend"></a> Email Backend</h1>
+<p>接下来就要设置 Email Backend, 默认用 SMTP backend， 如果 SMTP 有问题，则要在 <code>setting.py</code> 重新设置：<br>
+<code>EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'</code></p>
+<p>如果要用 <code>GMail SMTP</code>， 则在 <code>setting.py</code> 中设置 ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EMAIL_USE_TLS = <span class="keyword">True</span></div><div class="line">EMAIL_HOST = <span class="string">'smtp.gmail.com'</span></div><div class="line">EMAIL_PORT = <span class="number">587</span></div><div class="line">EMAIL_HOST_USER = <span class="string">'yourgmailaccount@gmail.com'</span></div><div class="line">EMAIL_HOST_PASSWORD = <span class="string">'yourgmailpassword'</span></div></pre></td></tr></table></figure>
 <hr>
-<h1 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h1><p>Userena 需要定义一个 profile，提供给 Django 的 <code>AUTH_PROFILE_MODULE</code> 使用的。<br>有两个抽象类可以继承：</p>
+<h1 id="profiles"><a class="markdownIt-Anchor" href="#profiles"></a> Profiles</h1>
+<p>Userena 需要定义一个 profile，提供给 Django 的 <code>AUTH_PROFILE_MODULE</code> 使用的。<br>
+有两个抽象类可以继承：</p>
 <ol>
-<li><code>UserenaBaseProfile</code>:<br> 一个基本的 profile，包括了头像和一些基本的属性</li>
-<li><code>UserenaLanguageBaseProfile</code>:<br> 多了一个用户可以选择多语言的属性</li>
+<li><code>UserenaBaseProfile</code>:<br>
+一个基本的 profile，包括了头像和一些基本的属性</li>
+<li><code>UserenaLanguageBaseProfile</code>:<br>
+多了一个用户可以选择多语言的属性</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</div><div class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext <span class="keyword">as</span> _</div><div class="line"><span class="keyword">from</span> userena.models <span class="keyword">import</span> UserenaBaseProfile</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProfile</span><span class="params">(UserenaBaseProfile)</span>:</span></div><div class="line">	user = models.OneToOneField(User, </div><div class="line">		unique=<span class="keyword">True</span>, </div><div class="line">		verbose_name=_(<span class="string">'user'</span>),</div><div class="line">		related_name=<span class="string">'my_profile'</span>)</div><div class="line">	favourite_snack = models.CharField(_(<span class="string">'favourite snack'</span>),</div><div class="line">		max_length=<span class="number">5</span>)</div></pre></td></tr></table></figure>
 <hr>
-<h1 id="The-URI’s"><a href="#The-URI’s" class="headerlink" title="The URI’s"></a>The URI’s</h1><p>我们之前创建了 <code>account</code> app，现在要给相关的 view 定义 URL。 修改 url.py 中的 URLconf ：<br><code>(r&#39;^accounts/&#39;, include(&#39;userena.urls&#39;)),</code></p>
+<h1 id="the-uris"><a class="markdownIt-Anchor" href="#the-uris"></a> The URI’s</h1>
+<p>我们之前创建了 <code>account</code> app，现在要给相关的 view 定义 URL。 修改 <a href="http://url.py" target="_blank" rel="external">url.py</a> 中的 URLconf ：<br>
+<code>(r'^accounts/', include('userena.urls')),</code></p>
 <hr>
-<h1 id="Required-settings-1"><a href="#Required-settings-1" class="headerlink" title="Required settings"></a>Required settings</h1><p>设置 <code>ANONYMOUS_USER_ID</code> 为 -1 （一脸懵逼）。<br>把定制的 profile 设置到 AUTH_PROFILE_MODULE<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ANONYMOUS_USER_ID = <span class="number">-1</span></div><div class="line"></div><div class="line">AUTH_PROFILE_MODULE = <span class="string">'accounts.MyProfile'</span></div></pre></td></tr></table></figure></p>
-<p>为了把 Userena 整合到 Django 里，还要做以下设置：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">USERENA_SIGNIN_REDIRECT_URL = <span class="string">'/accounts/%(username)s/'</span></div><div class="line">LOGIN_URL = <span class="string">'/accounts/signin/'</span></div><div class="line">LOGOUT_URL = <span class="string">'/accounts/signout/'</span></div></pre></td></tr></table></figure></p>
+<h1 id="required-settings-2"><a class="markdownIt-Anchor" href="#required-settings-2"></a> Required settings</h1>
+<p>设置 <code>ANONYMOUS_USER_ID</code> 为 -1 （一脸懵逼）。<br>
+把定制的 profile 设置到 AUTH_PROFILE_MODULE</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ANONYMOUS_USER_ID = <span class="number">-1</span></div><div class="line"></div><div class="line">AUTH_PROFILE_MODULE = <span class="string">'accounts.MyProfile'</span></div></pre></td></tr></table></figure>
+<p>为了把 Userena 整合到 Django 里，还要做以下设置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">USERENA_SIGNIN_REDIRECT_URL = <span class="string">'/accounts/%(username)s/'</span></div><div class="line">LOGIN_URL = <span class="string">'/accounts/signin/'</span></div><div class="line">LOGOUT_URL = <span class="string">'/accounts/signout/'</span></div></pre></td></tr></table></figure>
 <hr>
-<h1 id="一些报错"><a href="#一些报错" class="headerlink" title="一些报错"></a>一些报错</h1><h2 id="cannot-import-name-‘patterns’"><a href="#cannot-import-name-‘patterns’" class="headerlink" title="cannot import name ‘patterns’"></a>cannot import name ‘patterns’</h2><p>from django.conf.urls import url, patterns, include, handler404, handler500<br>ImportError: cannot import name ‘patterns’</p>
-<p>更新一下 django-guardian 的版本<br><code>pip install django-guardian --upgrade</code></p>
-<h2 id="Permission-matching-query-does-not-exist"><a href="#Permission-matching-query-does-not-exist" class="headerlink" title="Permission matching query does not exist"></a>Permission matching query does not exist</h2><p>Sometimes Django decides not to install the default permissions for a model and thus the change_profile permission goes missing. To fix this, run the <code>check_permissions</code> in Commands.. This checks all permissions and adds those that are missing.</p>
+<h1 id="一些报错"><a class="markdownIt-Anchor" href="#一些报错"></a> 一些报错</h1>
+<h2 id="cannot-import-name-patterns"><a class="markdownIt-Anchor" href="#cannot-import-name-patterns"></a> cannot import name ‘patterns’</h2>
+<p>from django.conf.urls import url, patterns, include, handler404, handler500<br>
+ImportError: cannot import name ‘patterns’</p>
+<p>更新一下 django-guardian 的版本<br>
+<code>pip install django-guardian --upgrade</code></p>
+<h2 id="permission-matching-query-does-not-exist"><a class="markdownIt-Anchor" href="#permission-matching-query-does-not-exist"></a> Permission matching query does not exist</h2>
+<p>Sometimes Django decides not to install the default permissions for a model and thus the change_profile permission goes missing. To fix this, run the <code>check_permissions</code> in Commands… This checks all permissions and adds those that are missing.</p>
 <p><code>./manage.py check_permissions</code></p>
 <p>重新装了一遍数据库，这个要重新来一遍…………不要再忘了</p>
-<h2 id="SMTPAuthenticationError"><a href="#SMTPAuthenticationError" class="headerlink" title="SMTPAuthenticationError"></a>SMTPAuthenticationError</h2><p><a href="https://www.google.com/settings/security/lesssecureapps" target="_blank" rel="external">https://www.google.com/settings/security/lesssecureapps</a><br>到这里修改成启用</p>
+<h2 id="smtpauthenticationerror"><a class="markdownIt-Anchor" href="#smtpauthenticationerror"></a> SMTPAuthenticationError</h2>
+<p><a href="https://www.google.com/settings/security/lesssecureapps" target="_blank" rel="external">https://www.google.com/settings/security/lesssecureapps</a><br>
+到这里修改成启用</p>
 <hr>
-<h1 id="一些-reference"><a href="#一些-reference" class="headerlink" title="一些 reference"></a>一些 reference</h1><ol>
-<li><a href="http://www.dear-shen.com/2015/04/09/django-userena%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_blank" rel="external">http://www.dear-shen.com/2015/04/09/django-userena%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</a></li>
+<h1 id="一些-reference"><a class="markdownIt-Anchor" href="#一些-reference"></a> 一些 reference</h1>
+<ol>
+<li><a href="http://www.dear-shen.com/2015/04/09/django-userena%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_blank" rel="external">http://www.dear-shen.com/2015/04/09/django-userena使用记录/</a></li>
 <li><a href="http://www.ctolib.com/topics-45280.html" target="_blank" rel="external">http://www.ctolib.com/topics-45280.html</a></li>
 <li><a href="https://segmentfault.com/q/1010000000435039" target="_blank" rel="external">https://segmentfault.com/q/1010000000435039</a></li>
 <li><a href="http://blog.yourlabs.org/post/19777151073/how-to-override-a-view-from-an-external-django-app" target="_blank" rel="external">How to override a view from an external Django app</a></li>
 <li><a href="https://github.com/wellown/FlexyGears/blob/master/docs/02%20-%20Django%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/02%20-%20django%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95.rst" target="_blank" rel="external">Django第三方应用开发经验记录</a></li>
 </ol>
-<h1 id="重写-Userena-的-template"><a href="#重写-Userena-的-template" class="headerlink" title="重写 Userena 的 template"></a>重写 Userena 的 template</h1><p>This is the signin method signature for Userena(source) -</p>
+<h1 id="重写-userena-的-template"><a class="markdownIt-Anchor" href="#重写-userena-的-template"></a> 重写 Userena 的 template</h1>
+<p>This is the signin method signature for Userena(source) -</p>
 <blockquote>
-<p>def signin(request, auth_form=AuthenticationForm,<br>       template_name=’userena/signin_form.html’,<br>       redirect_field_name=REDIRECT_FIELD_NAME,<br>       redirect_signin_function=signin_redirect, extra_context=None):</p>
+<p>def signin(request, auth_form=AuthenticationForm,<br>
+template_name=‘userena/signin_form.html’,<br>
+redirect_field_name=REDIRECT_FIELD_NAME,<br>
+redirect_signin_function=signin_redirect, extra_context=None):</p>
 </blockquote>
-<p>As you can see, there is a template_name method that holds the template location. You can override this. In your urls.py, you can use it like -</p>
+<p>As you can see, there is a template_name method that holds the template location. You can override this. In your <a href="http://urls.py" target="_blank" rel="external">urls.py</a>, you can use it like -</p>
 <blockquote>
-<p>url(r’^signin/‘, ‘userena.views.signin’, {‘template_name’: ‘signin.html’}, name=”signin”),</p>
+<p>url(r’^signin/’, ‘userena.views.signin’, {‘template_name’: ‘signin.html’}, name=“signin”),</p>
 </blockquote>
 <p>You can then create the signin.html page inside your templates folder and extend base.html. The signin view sends the login form in a variable called form. You can see the source. You can use the form on your template signin.html like . You can also format each field individually if you can follow the userena.forms. AuthenticationForm. Again, check the source code. You can do the same for any view Userena has that allows overriding like this.</p>
-<p>When in doubt, read the source code. :)</p>
+<p>When in doubt, read the source code. 😃</p>
 <p><a href="http://stackoverflow.com/questions/15652462/django-userena-customization/15652729#15652729" target="_blank" rel="external">Reference</a></p>
-<p>重写以后可以放在叫做 account 的 app 里。这里要特别注意 template 的导入顺序<br><a href="http://blog.donews.com/limodou/archive/2006/03/10/761749.aspx" target="_blank" rel="external">[Django学习]Template导入顺序</a></p>
-<h1 id="获取当前的用户，注意获取的是-user-类的-profile"><a href="#获取当前的用户，注意获取的是-user-类的-profile" class="headerlink" title="获取当前的用户，注意获取的是 user 类的 profile"></a>获取当前的用户，注意获取的是 user 类的 profile</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">user = models.OneToOneField(User, </div><div class="line">	on_delete=models.CASCADE,</div><div class="line">	unique=<span class="keyword">True</span>,</div><div class="line">	verbose_name=_(<span class="string">'user'</span>),</div><div class="line">	related_name=<span class="string">'my_profile'</span>)</div></pre></td></tr></table></figure>
+<p>重写以后可以放在叫做 account 的 app 里。这里要特别注意 template 的导入顺序<br>
+<a href="http://blog.donews.com/limodou/archive/2006/03/10/761749.aspx" target="_blank" rel="external">[Django学习]Template导入顺序</a></p>
+<h1 id="获取当前的用户注意获取的是-user-类的-profile"><a class="markdownIt-Anchor" href="#获取当前的用户注意获取的是-user-类的-profile"></a> 获取当前的用户，注意获取的是 user 类的 profile</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">user = models.OneToOneField(User, </div><div class="line">	on_delete=models.CASCADE,</div><div class="line">	unique=<span class="keyword">True</span>,</div><div class="line">	verbose_name=_(<span class="string">'user'</span>),</div><div class="line">	related_name=<span class="string">'my_profile'</span>)</div></pre></td></tr></table></figure>
 <p>如果user是这么定义的</p>
-<p>要获取这个 profile的话，我们就用 related_name：<br><code>current_user = request.user.my_profile</code></p>
+<p>要获取这个 profile的话，我们就用 related_name：<br>
+<code>current_user = request.user.my_profile</code></p>
 <hr>
 
       
@@ -645,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Installation"><span class="nav-number">1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Required-settings"><span class="nav-number">2.</span> <span class="nav-text">Required settings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Start-New-App"><span class="nav-number">3.</span> <span class="nav-text">Start New App</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Email-Backend"><span class="nav-number">4.</span> <span class="nav-text">Email Backend</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Profiles"><span class="nav-number">5.</span> <span class="nav-text">Profiles</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-URI’s"><span class="nav-number">6.</span> <span class="nav-text">The URI’s</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Required-settings-1"><span class="nav-number">7.</span> <span class="nav-text">Required settings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些报错"><span class="nav-number">8.</span> <span class="nav-text">一些报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cannot-import-name-‘patterns’"><span class="nav-number">8.1.</span> <span class="nav-text">cannot import name ‘patterns’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permission-matching-query-does-not-exist"><span class="nav-number">8.2.</span> <span class="nav-text">Permission matching query does not exist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMTPAuthenticationError"><span class="nav-number">8.3.</span> <span class="nav-text">SMTPAuthenticationError</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些-reference"><span class="nav-number">9.</span> <span class="nav-text">一些 reference</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重写-Userena-的-template"><span class="nav-number">10.</span> <span class="nav-text">重写 Userena 的 template</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取当前的用户，注意获取的是-user-类的-profile"><span class="nav-number">11.</span> <span class="nav-text">获取当前的用户，注意获取的是 user 类的 profile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#installation"><span class="nav-number">1.</span> <span class="nav-text"> Installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#required-settings"><span class="nav-number">2.</span> <span class="nav-text"> Required settings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#start-new-app"><span class="nav-number">3.</span> <span class="nav-text"> Start New App</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#email-backend"><span class="nav-number">4.</span> <span class="nav-text"> Email Backend</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#profiles"><span class="nav-number">5.</span> <span class="nav-text"> Profiles</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-uris"><span class="nav-number">6.</span> <span class="nav-text"> The URI’s</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#required-settings-2"><span class="nav-number">7.</span> <span class="nav-text"> Required settings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些报错"><span class="nav-number">8.</span> <span class="nav-text"> 一些报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cannot-import-name-patterns"><span class="nav-number">8.1.</span> <span class="nav-text"> cannot import name ‘patterns’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#permission-matching-query-does-not-exist"><span class="nav-number">8.2.</span> <span class="nav-text"> Permission matching query does not exist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#smtpauthenticationerror"><span class="nav-number">8.3.</span> <span class="nav-text"> SMTPAuthenticationError</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些-reference"><span class="nav-number">9.</span> <span class="nav-text"> 一些 reference</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重写-userena-的-template"><span class="nav-number">10.</span> <span class="nav-text"> 重写 Userena 的 template</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取当前的用户注意获取的是-user-类的-profile"><span class="nav-number">11.</span> <span class="nav-text"> 获取当前的用户，注意获取的是 user 类的 profile</span></a></li></ol></div>
             
 
           </div>

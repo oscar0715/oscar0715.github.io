@@ -387,37 +387,41 @@
       
 
       
-        <p>64 Minimum Path Sum<br><a id="more"></a></p>
+        <p>64 Minimum Path Sum</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
-<p>给一个二维数组<br>求从左上角走到右下角的最短路径</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
+<p>给一个二维数组<br>
+求从左上角走到右下角的最短路径</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<ol>
 <li>第0行，第0列累加</li>
 <li>之后的 <code>grid[i][j]</code> 累加上Math.min(grid[i][j-1], grid[i - 1][j])</li>
 <li>最后一格就是最小值</li>
 </ol>
 <p>代码如下</p>
-<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>{
-    <span class="keyword">int</span> length = grid.length;
-    <span class="keyword">int</span> width = grid[<span class="number">0</span>].length;
+<pre class="highlight"><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>{
+	<span class="keyword">int</span> length = grid.length;
+	<span class="keyword">int</span> width = grid[<span class="number">0</span>].length;
 
-    <span class="keyword">int</span> i = <span class="number">0</span>;
-    <span class="keyword">int</span> j = <span class="number">0</span>;
+	<span class="keyword">int</span> i = <span class="number">0</span>;
+	<span class="keyword">int</span> j = <span class="number">0</span>;
 
-    <span class="keyword">for</span> ( i = <span class="number">0</span>, j = <span class="number">1</span>; j &lt; width; j++ ) {
-        grid[i][j] += grid[i][j-<span class="number">1</span>];
-    }
-    <span class="keyword">for</span> ( i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; length; i++ ) {
-        grid[i][j] += grid[i - <span class="number">1</span>][j];
-    }
+	<span class="keyword">for</span> ( i = <span class="number">0</span>, j = <span class="number">1</span>; j &lt; width; j++ ) {
+		grid[i][j] += grid[i][j-<span class="number">1</span>];
+	}
+	<span class="keyword">for</span> ( i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; length; i++ ) {
+		grid[i][j] += grid[i - <span class="number">1</span>][j];
+	}
 
-    <span class="keyword">for</span> ( i = <span class="number">1</span>; i &lt; length; i++) {
-        <span class="keyword">for</span> (j = <span class="number">1</span>; j&lt; width; j++){
-            grid[i][j] += Math.min(grid[i][j-<span class="number">1</span>], grid[i - <span class="number">1</span>][j]);
-        }
-    }
+	<span class="keyword">for</span> ( i = <span class="number">1</span>; i &lt; length; i++) {
+		<span class="keyword">for</span> (j = <span class="number">1</span>; j&lt; width; j++){
+			grid[i][j] += Math.min(grid[i][j-<span class="number">1</span>], grid[i - <span class="number">1</span>][j]);
+		}
+	}
 
-    <span class="keyword">return</span> grid[length-<span class="number">1</span>][width-<span class="number">1</span>];
+	<span class="keyword">return</span> grid[length-<span class="number">1</span>][width-<span class="number">1</span>];
 }
 </code></pre>
 <hr>
@@ -462,8 +466,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-153/" rel="prev" title="Leetcode_153">
-                Leetcode_153 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-155/" rel="prev" title="Leetcode_155">
+                Leetcode_155 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -611,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

@@ -390,34 +390,38 @@
         <p>Lecture28 Weighted Graphs</p>
 <a id="more"></a>
 <hr>
-<h2 id="Weighted-Graphs"><a href="#Weighted-Graphs" class="headerlink" title="Weighted Graphs"></a>Weighted Graphs</h2><p>Each <code>edge</code> labeled with a numertical <code>weight</code>.</p>
+<h2 id="weighted-graphs"><a class="markdownIt-Anchor" href="#weighted-graphs"></a> Weighted Graphs</h2>
+<p>Each <code>edge</code> labeled with a numertical <code>weight</code>.</p>
 <p>Adjacency matrix: array of ints/doubles/whatever</p>
 <p>Adjacency list: Each listnode includes a weight field.</p>
 <p>Problem: “shortest path problem”</p>
-<p>“Minimum spanning tree” </p>
+<p>“Minimum spanning tree”</p>
 <p>Each node is an outlet, or soure of electricity.</p>
 <p>Edges labeld with length of wire.</p>
 <p>Connect all nodes with shortest length of wires.</p>
-<h3 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h3><p>最小生成树<br>克鲁斯卡算法</p>
+<h3 id="kruskals-algorithm"><a class="markdownIt-Anchor" href="#kruskals-algorithm"></a> Kruskal’s Algorithm</h3>
+<p>最小生成树<br>
+克鲁斯卡算法</p>
 <p>G = (V, E) undirected graph</p>
-<p>Spanning tree: T = (V, F) of G is a graph   (G T 点相同，边不同)<br>Normally T has |V|-1 edges of T that form a tree.</p>
+<p>Spanning tree: T = (V, F) of G is a graph   (G T 点相同，边不同)<br>
+Normally T has |V|-1 edges of T that form a tree.</p>
 <p>If G is not connected, then T is a forest, a collect of trees.</p>
 <p>If G is weighted, a “minimum spanning tree” (没打完，反正权重和也是最小的)</p>
 <ol>
 <li>Creat a new Tree T 点都和G一样，但是没有边</li>
 <li>Make list of all edges in G</li>
-<li><code>Sort</code> edges by weight, <code>lowest to highest</code>. </li>
-<li>Iterate through edges in sorted order. For each edge(u, w): <ul>
+<li><code>Sort</code> edges by weight, <code>lowest to highest</code>.</li>
+<li>Iterate through edges in sorted order. For each edge(u, w):</li>
+</ol>
+<ul>
 <li>if u &amp; w are not connected by <code>path</code> in T, add (u, w) to T  注意这里是path</li>
 <li>Never adds (u, w) is same path connects u &amp; w, T is guaranteed to be a tree(if G is connected) or a forest.</li>
 </ul>
-</li>
-</ol>
 <p>就是每次都找最小的连，如果已经通了，就不连</p>
-<p>Running time </p>
+<p>Running time</p>
 <ol>
 <li>前两步 O(|V|)</li>
-<li>第三步 Sort |E| edges takes O(|E| log |E|) </li>
+<li>第三步 Sort |E| edges takes O(|E| log |E|)</li>
 <li>第四步 &lt; O(|E| log |E|) 老师说后面会讲到</li>
 <li>总体而言 O(|V| + |E| log |E|) = O(|V| + |E| log |V^2|) = O(|V| + |E| log |V|)</li>
 </ol>
@@ -611,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Weighted-Graphs"><span class="nav-number">1.</span> <span class="nav-text">Weighted Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal’s-Algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Kruskal’s Algorithm</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-graphs"><span class="nav-number">1.</span> <span class="nav-text"> Weighted Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskals-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text"> Kruskal’s Algorithm</span></a></li></ol></li></ol></div>
             
 
           </div>

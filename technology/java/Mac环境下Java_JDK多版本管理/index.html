@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。打算把1.8卸载掉，安装1.7版本。查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
+<meta name="description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。 打算把1.8卸载掉，安装1.7版本。 查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
 <meta name="keywords" content="Tool,Java_JDK,jenv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac环境下Java_JDK多版本管理">
 <meta property="og:url" content="http://menuet.xyz/technology/java/Mac环境下Java_JDK多版本管理/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。打算把1.8卸载掉，安装1.7版本。查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
+<meta property="og:description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。 打算把1.8卸载掉，安装1.7版本。 查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac环境下Java_JDK多版本管理">
-<meta name="twitter:description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。打算把1.8卸载掉，安装1.7版本。查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
+<meta name="twitter:description" content="现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。 打算把1.8卸载掉，安装1.7版本。 查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。">
 
 
 
@@ -387,79 +387,106 @@
       
 
       
-        <p>现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。<br>打算把1.8卸载掉，安装1.7版本。<br>查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。<br><a id="more"></a></p>
+        <p>现在电脑上安装的JDK版本为1.8，感觉出现了很多问题。<br>
+打算把1.8卸载掉，安装1.7版本。<br>
+查资料的时候顺便又发现了Mac上JDK多版本的管理工具，顺便学习了。</p>
+<a id="more"></a>
 <hr>
-<h2 id="卸载JDK-1-8版本"><a href="#卸载JDK-1-8版本" class="headerlink" title="卸载JDK 1.8版本"></a>卸载JDK 1.8版本</h2><ol>
-<li><p>在iTerm（或者Terminal）中执行命令</p>
+<h2 id="卸载jdk-18版本"><a class="markdownIt-Anchor" href="#卸载jdk-18版本"></a> 卸载JDK 1.8版本</h2>
+<ol>
+<li>在iTerm（或者Terminal）中执行命令</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin</div><div class="line">sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefpane</div></pre></td></tr></table></figure>
-</li>
-<li><p>上述命令删除了plugin和System Perference中的控制项，而不是删除实际执行程序。<br>删除执行程序的方法参考 <a href="http://stackoverflow.com/questions/19039752/removing-java-8-jdk-from-mac" target="_blank" rel="external">Removing Java 8 JDK from Mac</a></p>
+<ol start="2">
+<li>上述命令删除了plugin和System Perference中的控制项，而不是删除实际执行程序。<br>
+删除执行程序的方法参考 <a href="http://stackoverflow.com/questions/19039752/removing-java-8-jdk-from-mac" target="_blank" rel="external">Removing Java 8 JDK from Mac</a></li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Java/JavaVirtualMachines/jdk&lt;version&gt;.jdk</div><div class="line">// 我的版本为 jdk1.8.0_51.jdk</div><div class="line">// 即  sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk</div><div class="line">sudo rm -rf /Library/PreferencePanes/JavaControlPanel.prefPane</div><div class="line">sudo rm -rf /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin</div><div class="line">sudo rm -rf /Library/LaunchAgents/com.oracle.java.Java-Updater.plist</div><div class="line">sudo rm -rf /Library/PrivilegedHelperTools/com.oracle.java.JavaUpdateHelper</div><div class="line">sudo rm -rf /Library/LaunchDaemons/com.oracle.java.JavaUpdateHelper.plist</div><div class="line">sudo rm -rf /Library/Preferences/com.oracle.java.Helper-Tool.plist</div></pre></td></tr></table></figure>
-</li>
-<li><p>至此 JDK 1.8已经完全卸载了 再输入 <code>JAVA -version</code> 系统会提示安装JDK</p>
-</li>
+<ol start="3">
+<li>至此 JDK 1.8已经完全卸载了 再输入 <code>JAVA -version</code> 系统会提示安装JDK</li>
 </ol>
-<h2 id="安装JDK-1-7"><a href="#安装JDK-1-7" class="headerlink" title="安装JDK 1.7"></a>安装JDK 1.7</h2><ol>
+<h2 id="安装jdk-17"><a class="markdownIt-Anchor" href="#安装jdk-17"></a> 安装JDK 1.7</h2>
+<ol>
 <li>去Oracle官网下<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">1.7版本JDK</a></li>
-<li>下来一个dmg文件， 安装之 </li>
+<li>下来一个dmg文件， 安装之</li>
 <li>继续安装JDK 1.8，与上同理。安装完执行 <code>java -version</code> 版本来到了1.8</li>
-<li>我们来瞅瞅当前系统的Java版本，执行 <code>/usr/libexec/java_home -verbose</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">OscarMacBook:downloads oscar$ /usr/libexec/java_home -verbose</div><div class="line">Matching Java Virtual Machines (2):</div><div class="line">    1.8.0_91, x86_64:   &quot;Java SE 8&quot; /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home</div><div class="line">    1.7.0_79, x86_64:   &quot;Java SE 7&quot; /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</div></pre></td></tr></table></figure>
-</li>
+<li>我们来瞅瞅当前系统的Java版本，执行 <code>/usr/libexec/java_home -verbose</code></li>
 </ol>
-<h2 id="设置终端中-通过-java7-和-java8-来切换环境"><a href="#设置终端中-通过-java7-和-java8-来切换环境" class="headerlink" title="设置终端中 通过 java7 和 java8 来切换环境"></a>设置终端中 通过 java7 和 java8 来切换环境</h2><ol>
-<li><p>在 <code>~/.bash_profile</code> 中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">OscarMacBook:downloads oscar$ /usr/libexec/java_home -verbose</div><div class="line">Matching Java Virtual Machines (2):</div><div class="line">    1.8.0_91, x86_64:   &quot;Java SE 8&quot; /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home</div><div class="line">    1.7.0_79, x86_64:   &quot;Java SE 7&quot; /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</div></pre></td></tr></table></figure>
+<h2 id="设置终端中-通过-java7-和-java8-来切换环境"><a class="markdownIt-Anchor" href="#设置终端中-通过-java7-和-java8-来切换环境"></a> 设置终端中 通过 java7 和 java8 来切换环境</h2>
+<ol>
+<li>在 <code>~/.bash_profile</code> 中添加</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_7_HOME=<span class="string">"`/usr/libexec/java_home -v '1.7*'`"</span></div><div class="line"><span class="built_in">export</span> JAVA_8_HOME=<span class="string">"`/usr/libexec/java_home -v '1.8*'`"</span></div><div class="line"></div><div class="line"><span class="built_in">alias</span> java7=<span class="string">'export JAVA_HOME=$JAVA_7_HOME'</span></div><div class="line"><span class="built_in">alias</span> java8=<span class="string">'export JAVA_HOME=$JAVA_8_HOME'</span></div><div class="line"></div><div class="line"><span class="comment"># Default java7</span></div><div class="line"><span class="built_in">export</span> JAVA_HOME=<span class="string">"`/usr/libexec/java_home -v '1.7*'`"</span></div><div class="line"></div></pre></td></tr></table></figure>
-</li>
-<li><p>然后，我们就可以用<code>java7</code> 和 <code>java8</code> 来切换java环境了。 <strong> 但素，这只能影响终端中java的执行版本，不能影响图形程序执行的java版本  </strong></p>
-</li>
+<ol start="2">
+<li>然后，我们就可以用<code>java7</code> 和 <code>java8</code> 来切换java环境了。 ** 但素，这只能影响终端中java的执行版本，不能影响图形程序执行的java版本  **</li>
 </ol>
-<h2 id="jEnv管理Java多版本"><a href="#jEnv管理Java多版本" class="headerlink" title="jEnv管理Java多版本"></a>jEnv管理Java多版本</h2><p>用 jEnv 是另一种管理方法，下面给出配置，但是个人觉得bash就够了，两套不要搞乱了<br>博主就是先搞了bash，再搞了jenv，然后两套一起弄乱了，所以不是对jenv特别好奇就别往下看了，毕竟bahs命令已经炒鸡方便了。<br>当然，如果你有时间把两套都同时figure out了，还请留言指教。</p>
-<h3 id="安装jenv和配置"><a href="#安装jenv和配置" class="headerlink" title="安装jenv和配置"></a>安装jenv和配置</h3><ol>
-<li><p>安装 homebrew jenv(默认你的mac已经安装了brew) </p>
+<h2 id="jenv管理java多版本"><a class="markdownIt-Anchor" href="#jenv管理java多版本"></a> jEnv管理Java多版本</h2>
+<p>用 jEnv 是另一种管理方法，下面给出配置，但是个人觉得bash就够了，两套不要搞乱了<br>
+博主就是先搞了bash，再搞了jenv，然后两套一起弄乱了，所以不是对jenv特别好奇就别往下看了，毕竟bahs命令已经炒鸡方便了。<br>
+当然，如果你有时间把两套都同时figure out了，还请留言指教。</p>
+<h3 id="安装jenv和配置"><a class="markdownIt-Anchor" href="#安装jenv和配置"></a> 安装jenv和配置</h3>
+<ol>
+<li>安装 homebrew jenv(默认你的mac已经安装了brew)</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install jenv</div></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>~/.bash_profile</code> 的最后添加</p>
+<ol start="2">
+<li>在 <code>~/.bash_profile</code> 的最后添加</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;</div><div class="line">eval &quot;$(jenv init -)&quot;</div><div class="line"></div><div class="line">export JENV_ROOT=/usr/local/opt/jenv</div><div class="line">// 鳖问我为什么，我也不知道</div></pre></td></tr></table></figure>
-</li>
-<li><p>用<code>jenv add</code> 加入java版本</p>
+<ol start="3">
+<li>用<code>jenv add</code> 加入java版本</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 添加JDK 1.7</div><div class="line">$ sudo jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</div><div class="line">oracle64-1.7.0.79 added</div><div class="line">1.7.0.79 added</div><div class="line">1.7 added</div><div class="line">// 执行后得到</div><div class="line">oracle64-1.7.0.79 added</div><div class="line">1.7.0.79 added</div><div class="line">1.7 added</div><div class="line">//添加JDK 1.8</div><div class="line">$ sudo jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home</div><div class="line">// 执行后得到</div><div class="line">oracle64-1.8.0.91 added</div><div class="line">1.8.0.91 added</div><div class="line">1.8 added</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行 <code>sudo jenv versions</code></p>
+<ol start="4">
+<li>执行 <code>sudo jenv versions</code></li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ sudo jenv versions</div><div class="line">* system (<span class="built_in">set</span> by /Users/oscar/.jenv/version)</div><div class="line">  1.7</div><div class="line">  1.7.0.79</div><div class="line">  1.8</div><div class="line">  1.8.0.91</div><div class="line">  oracle64-1.7.0.79</div><div class="line">  oracle64-1.8.0.91</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行  <code>sudo jenv local 1.7</code> 或者<code>sudo jenv local 1.8</code> 随便玩</p>
+<ol start="5">
+<li>执行  <code>sudo jenv local 1.7</code> 或者<code>sudo jenv local 1.8</code> 随便玩</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ sudo jenv <span class="built_in">local</span> 1.7</div><div class="line">$ java -version</div><div class="line">java version <span class="string">"1.7.0_79"</span></div><div class="line">Java(TM) SE Runtime Environment (build 1.7.0_79-b15)</div><div class="line">Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)</div><div class="line"></div><div class="line">//显示java路径</div><div class="line">$ jenv <span class="built_in">which</span> java </div></pre></td></tr></table></figure>  
-</li>
-<li><p>太乱了 <code>jenv remove</code><br>额 这部分(6)先跳过，乱删版本后面会出错，先这样吧………………</p>
+<ol start="6">
+<li>太乱了 <code>jenv remove</code><br>
+额 这部分(6)先跳过，乱删版本后面会出错，先这样吧………………</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo jenv remove 1.8</div><div class="line">JDK 1.8 removed</div></pre></td></tr></table></figure>  
 <p>直到</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo jenv versions</div><div class="line">  system</div><div class="line">* 1.7.0.79 (<span class="built_in">set</span> by /Users/oscar/.jenv/version)</div><div class="line">  1.8.0.91</div></pre></td></tr></table></figure>  
 <p>开心了</p>
-</li>
-</ol>
 <blockquote>
 <p>整了半天没觉得 jenv和第三部分bash里设置有什么区别哎呀</p>
 </blockquote>
-<h3 id="要开始使用jEnv管理了"><a href="#要开始使用jEnv管理了" class="headerlink" title="要开始使用jEnv管理了"></a>要开始使用jEnv管理了</h3><ol>
-<li><p>先玩几个命令<br>查看当前java版本</p>
+<h3 id="要开始使用jenv管理了"><a class="markdownIt-Anchor" href="#要开始使用jenv管理了"></a> 要开始使用jEnv管理了</h3>
+<ol>
+<li>先玩几个命令<br>
+查看当前java版本</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></div></pre></td></tr></table></figure>  
 <p>列出所有版本的 JAVA_HOME：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ /usr/libexec/java_home -V</div></pre></td></tr></table></figure>  
-</li>
-<li><p>全局配置, 这个根据前面 <code>jenv versions</code> 命令的结果来选</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv global 1.7</div></pre></td></tr></table></figure>  
-</li>
-<li><p>单个项目设置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv <span class="built_in">local</span> 1.7.0.79</div></pre></td></tr></table></figure>  
-</li>
-<li><p>shell 设置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv shell 1.7.0.79</div></pre></td></tr></table></figure>  
-</li>
+<ol start="2">
+<li>全局配置, 这个根据前面 <code>jenv versions</code> 命令的结果来选</li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://blog.huatai.me/2015/12/07/multiple-java-versions-on-Mac-OS-X/" target="_blank" rel="external">Mac OS X JAVA多版本并存</a></li>
-<li><a href="https://segmentfault.com/a/1190000004332179" target="_blank" rel="external">Mac上管理多个java版本</a></li>
-<li><a href="http://boxingp.github.io/blog/2015/01/25/manage-multiple-versions-of-java-on-os-x/" target="_blank" rel="external">在OS X中使用jEnv管理多个Java版本</a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv global 1.7</div></pre></td></tr></table></figure>  
+<ol start="3">
+<li>单个项目设置</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv <span class="built_in">local</span> 1.7.0.79</div></pre></td></tr></table></figure>  
+<ol start="4">
+<li>shell 设置</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jenv shell 1.7.0.79</div></pre></td></tr></table></figure>  
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ol>
+<li>
+<a href="http://blog.huatai.me/2015/12/07/multiple-java-versions-on-Mac-OS-X/" target="_blank" rel="external">Mac OS X JAVA多版本并存</a>
+</li>
+<li>
+<a href="https://segmentfault.com/a/1190000004332179" target="_blank" rel="external">Mac上管理多个java版本</a>
+</li>
+<li>
+<a href="http://boxingp.github.io/blog/2015/01/25/manage-multiple-versions-of-java-on-os-x/" target="_blank" rel="external">在OS X中使用jEnv管理多个Java版本</a>
 </li>
 </ol>
 
@@ -655,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载JDK-1-8版本"><span class="nav-number">1.</span> <span class="nav-text">卸载JDK 1.8版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK-1-7"><span class="nav-number">2.</span> <span class="nav-text">安装JDK 1.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置终端中-通过-java7-和-java8-来切换环境"><span class="nav-number">3.</span> <span class="nav-text">设置终端中 通过 java7 和 java8 来切换环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jEnv管理Java多版本"><span class="nav-number">4.</span> <span class="nav-text">jEnv管理Java多版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装jenv和配置"><span class="nav-number">4.1.</span> <span class="nav-text">安装jenv和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要开始使用jEnv管理了"><span class="nav-number">4.2.</span> <span class="nav-text">要开始使用jEnv管理了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载jdk-18版本"><span class="nav-number">1.</span> <span class="nav-text"> 卸载JDK 1.8版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装jdk-17"><span class="nav-number">2.</span> <span class="nav-text"> 安装JDK 1.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置终端中-通过-java7-和-java8-来切换环境"><span class="nav-number">3.</span> <span class="nav-text"> 设置终端中 通过 java7 和 java8 来切换环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jenv管理java多版本"><span class="nav-number">4.</span> <span class="nav-text"> jEnv管理Java多版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装jenv和配置"><span class="nav-number">4.1.</span> <span class="nav-text"> 安装jenv和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要开始使用jenv管理了"><span class="nav-number">4.2.</span> <span class="nav-text"> 要开始使用jEnv管理了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text"> 参考</span></a></li></ol></div>
             
 
           </div>

@@ -387,19 +387,22 @@
       
 
       
-        <p>Unique Binary Search Trees II<br><a id="more"></a></p>
+        <p>Unique Binary Search Trees II</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1…n.</p>
-<p>For example,<br>Given n = 3, your program should return all 5 unique BST’s shown below.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1…n.</p>
+<p>For example,<br>
+Given n = 3, your program should return all 5 unique BST’s shown below.</p>
 <pre>   
    1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
+	\       /     /      / \      \
+	 3     2     1      1   3      2
+	/     /       \                 \
    2     1         2                 3
 </pre>
-
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>别人写的答案，看来我还是没有掌握递归的精髓</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>别人写的答案，看来我还是没有掌握递归的精髓</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	List&lt;TreeNode&gt; result = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</div><div class="line">	 </div><div class="line">	<span class="comment">// n 如果小于等于0 就不考虑了 </span></div><div class="line">	<span class="keyword">if</span>(n &gt; <span class="number">0</span>) &#123;</div><div class="line">		result = genBST(<span class="number">1</span>, n);</div><div class="line">	&#125; </div><div class="line"></div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> List&lt;TreeNode&gt; <span class="title">genBST</span><span class="params">(<span class="keyword">int</span> min, <span class="keyword">int</span> max)</span> </span>&#123;</div><div class="line">	List&lt;TreeNode&gt; result = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (min &gt; max) &#123;</div><div class="line">		result.add(<span class="keyword">null</span>);</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// i &lt;= max, max也可以做root</span></div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> i = min ; i &lt;= max; i++) &#123;</div><div class="line">		List&lt;TreeNode&gt; leftSubTree = genBST(min, i - <span class="number">1</span>);</div><div class="line">		List&lt;TreeNode&gt; rightSubTree = genBST(i + <span class="number">1</span>, max);</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; leftSubTree.size(); j++) &#123;</div><div class="line">			<span class="keyword">for</span>( <span class="keyword">int</span> k = <span class="number">0</span>; k &lt; rightSubTree.size(); k++) &#123;</div><div class="line">				TreeNode root = <span class="keyword">new</span> TreeNode(i);</div><div class="line">				root.left = leftSubTree.get(j);</div><div class="line">				root.right = rightSubTree.get(k);</div><div class="line">				result.add(root);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	 &#125;</div><div class="line">	 </div><div class="line">	 <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -592,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

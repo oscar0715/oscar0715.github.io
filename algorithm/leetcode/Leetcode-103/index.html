@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Binary Tree Zigzag Level Order Traversal层次遍历 变形">
+<meta name="description" content="Binary Tree Zigzag Level Order Traversal 层次遍历 变形">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_103">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-103/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Binary Tree Zigzag Level Order Traversal层次遍历 变形">
+<meta property="og:description" content="Binary Tree Zigzag Level Order Traversal 层次遍历 变形">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-08-19T03:46:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_103">
-<meta name="twitter:description" content="Binary Tree Zigzag Level Order Traversal层次遍历 变形">
+<meta name="twitter:description" content="Binary Tree Zigzag Level Order Traversal 层次遍历 变形">
 
 
 
@@ -387,26 +387,31 @@
       
 
       
-        <p>Binary Tree Zigzag Level Order Traversal<br>层次遍历 变形<br><a id="more"></a></p>
+        <p>Binary Tree Zigzag Level Order Traversal<br>
+层次遍历 变形</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree, return the zigzag level order traversal of its nodes’ values. (ie, from left to right, then right to left for the next level and alternate between).</p>
-<p>For example:<br>Given binary tree [3,9,20,null,null,15,7],</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Given a binary tree, return the zigzag level order traversal of its nodes’ values. (ie, from left to right, then right to left for the next level and alternate between).</p>
+<p>For example:<br>
+Given binary tree [3,9,20,null,null,15,7],</p>
 <pre>    3
-     / \
-    9  20
-        /  \
-     15   7
+	 / \
+	9  20
+		/  \
+	 15   7
 </pre>
-return its level order traversal as:
+<p>return its level order traversal as:</p>
 <pre>[
-    [3],
-    [20,9],
-    [15,7]
+	[3],
+	[20,9],
+	[15,7]
 ]
 </pre>
-
-<p>就是奇数行是正向的<br>偶数行是反向的</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>精髓：</p>
+<p>就是奇数行是正向的<br>
+偶数行是反向的</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>精髓：</p>
 <ol>
 <li>queue 队列！</li>
 <li>queue.size</li>
@@ -603,7 +608,7 @@ return its level order traversal as:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>
