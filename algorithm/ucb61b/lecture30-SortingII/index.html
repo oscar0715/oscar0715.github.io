@@ -394,57 +394,39 @@
       
         <p>Lecture30 Sorting II</p>
 <a id="more"></a>
-<br>
+<p><br></p>
 <hr>
-<br>
-<h1 id="quick-sort"><a class="markdownIt-Anchor" href="#quick-sort"></a> Quick sort</h1>
-<p>Recursive divide-and-conquer algorithm</p>
+<p><br></p>
+<h1 id="Quick-sort"><a href="#Quick-sort" class="headerlink" title="Quick sort"></a>Quick sort</h1><p>Recursive divide-and-conquer algorithm</p>
 <p>Fastest comparesion-based sort for arrays</p>
-<p>Worest O(n^2)<br>
-Vitually always O(n logn)</p>
-<p>用在数组比较快<br>
-链表不一定比mergeSort快</p>
+<p>Worest O(n^2)<br>Vitually always O(n logn)</p>
+<p>用在数组比较快<br>链表不一定比mergeSort快</p>
 <ol>
-<li>Start with list I of n items</li>
-<li>Choose pivot item v from I</li>
-<li>Partition I into 2 unsorted lists I1 &amp; I2
-<ul>
+<li>Start with list I of n items </li>
+<li>Choose pivot item v from I </li>
+<li>Partition I into 2 unsorted lists I1 &amp; I2<ul>
 <li>I1 all keys smaller than v’s key</li>
 <li>I2 all keys larger than v’s key</li>
 <li>Items with same key as v go into either list.</li>
-<li>the pivot v does not go into wither list.</li>
+<li>the pivot v does not go into wither list. </li>
 </ul>
 </li>
 <li>Sort I1 recursively, yielding sorted list S1</li>
 <li>Sort I2 recursively, yielding sorted list S2</li>
 <li>concatenate S1, v and S1, yielding sorted list S</li>
 </ol>
-<p>举个例子：<br>
-<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5.jpg" alt="Quick Sort O(n log n) " title="Quick Sort O(n log n) "><br>
-上图就取每个array的第一个为pivot</p>
-<p>但是，看下图，都选第一个有时候白花了很多时间。 O(n^2)<br>
-它明明排好序了啊<br>
-<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-1.jpg" alt="Pivot Disastrous O(n^2)" title="Pivot Disastrous O(n^2)"></p>
-<p>那么有木有好一点的办法<br>
-<strong>Choosing a pivot</strong><br>
-Randomly select an item form I as pivot<br>
-平均的长度是 一边四分之一 一边四分之三</p>
-<p>On Average running</p>
-<h2 id="quicksort-on-linked-lists"><a class="markdownIt-Anchor" href="#quicksort-on-linked-lists"></a> Quicksort on linked lists</h2>
-<p>假设 key 和 pivot相同的都放到I1，那如果整个链表值都是一样的那么又O(n^2)了</p>
-<p>Better: 拆分为三个链表<br>
-I1, I2, Iv<br>
-Iv: contain pivot v &amp; all items with same key as pivot</p>
-<h2 id="quicksort-on-arrays"><a class="markdownIt-Anchor" href="#quicksort-on-arrays"></a> Quicksort on arrays</h2>
-<p>In place</p>
-<p>快速排序比别的O(n log n)算法快的原因是<br>
-外循环里的小循环都非常的small</p>
+<p>举个例子：<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5.jpg" alt="Quick Sort O(n log n) " title="Quick Sort O(n log n) "><br>上图就取每个array的第一个为pivot</p>
+<p>但是，看下图，都选第一个有时候白花了很多时间。 O(n^2)<br>它明明排好序了啊<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-1.jpg" alt="Pivot Disastrous O(n^2)" title="Pivot Disastrous O(n^2)"></p>
+<p>那么有木有好一点的办法<br><strong>Choosing a pivot</strong><br>Randomly select an item form I as pivot<br>平均的长度是 一边四分之一 一边四分之三</p>
+<p>On Average running  </p>
+<h2 id="Quicksort-on-linked-lists"><a href="#Quicksort-on-linked-lists" class="headerlink" title="Quicksort on linked lists"></a>Quicksort on linked lists</h2><p>假设 key 和 pivot相同的都放到I1，那如果整个链表值都是一样的那么又O(n^2)了</p>
+<p>Better: 拆分为三个链表<br>I1, I2, Iv<br>Iv: contain pivot v &amp; all items with same key as pivot</p>
+<h2 id="Quicksort-on-arrays"><a href="#Quicksort-on-arrays" class="headerlink" title="Quicksort on arrays"></a>Quicksort on arrays</h2><p>In place</p>
+<p>快速排序比别的O(n log n)算法快的原因是<br>外循环里的小循环都非常的small</p>
 <p><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/sort5-2.png" alt="Quick Sort of Array" title="Quick Sort of Array"></p>
 <hr>
 <p>Over！</p>
-<p><br><br><br>
-彩蛋！<br>
-<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/shoe.png" alt="shoe" title="shoe"></p>
+<p><br><br><br>彩蛋！<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture30-SortingII/shoe.png" alt="shoe" title="shoe"></p>
 <p>14年的男神苍老不少，但是那金花的衬衫还是帅爆了。</p>
 
       
@@ -578,7 +560,7 @@ Iv: contain pivot v &amp; all items with same key as pivot</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -600,7 +582,7 @@ Iv: contain pivot v &amp; all items with same key as pivot</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -635,7 +617,7 @@ Iv: contain pivot v &amp; all items with same key as pivot</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-sort"><span class="nav-number">1.</span> <span class="nav-text"> Quick sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#quicksort-on-linked-lists"><span class="nav-number">1.1.</span> <span class="nav-text"> Quicksort on linked lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quicksort-on-arrays"><span class="nav-number">1.2.</span> <span class="nav-text"> Quicksort on arrays</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-sort"><span class="nav-number">1.</span> <span class="nav-text">Quick sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicksort-on-linked-lists"><span class="nav-number">1.1.</span> <span class="nav-text">Quicksort on linked lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicksort-on-arrays"><span class="nav-number">1.2.</span> <span class="nav-text">Quicksort on arrays</span></a></li></ol></li></ol></div>
             
 
           </div>

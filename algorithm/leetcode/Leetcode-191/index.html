@@ -387,28 +387,20 @@
       
 
       
-        <p>Number of 1 Bits</p>
-<a id="more"></a>
+        <p>Number of 1 Bits<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
 <p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
 <p>整数转为一个二进制数，然后数1的个数</p>
-<h3 id="solution1"><a class="markdownIt-Anchor" href="#solution1"></a> Solution1</h3>
-<p>需要注意的是java中没有无符号数，所以负数的情况（32位的第一位为1）要特别考虑。</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>需要注意的是java中没有无符号数，所以负数的情况（32位的第一位为1）要特别考虑。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">// 当n为0时,通过减去最小的整数,转为一个正数</span></div><div class="line">        n = n - Integer.MIN_VALUE;</div><div class="line">        <span class="comment">//把32位中第一位的1加上</span></div><div class="line">        count++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> count + countPositive(n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countPositive</span><span class="params">(<span class="keyword">int</span> decimal)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (decimal / <span class="number">2</span> &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (decimal % <span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        decimal = decimal / <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (decimal != <span class="number">0</span>) &#123;</div><div class="line">        count++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="solution2-countpositive通过移位运算来实现"><a class="markdownIt-Anchor" href="#solution2-countpositive通过移位运算来实现"></a> Solution2 countPositive通过移位运算来实现</h3>
-<p>改一下 countPositive方法更快</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countPositive</span><span class="params">(<span class="keyword">int</span> decimal)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (decimal&gt;<span class="number">0</span>) &#123;</div><div class="line">        count += decimal&amp;<span class="number">1</span>;</div><div class="line">        decimal &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="solution3-还有更简单的不用对负数处理的"><a class="markdownIt-Anchor" href="#solution3-还有更简单的不用对负数处理的"></a> Solution3 还有更简单的不用对负数处理的</h3>
-<p>‘&lt;&lt;’ : 左移运算符，num &lt;&lt; 1,相当于num乘以2</p>
+<h3 id="Solution2-countPositive通过移位运算来实现"><a href="#Solution2-countPositive通过移位运算来实现" class="headerlink" title="Solution2 countPositive通过移位运算来实现"></a>Solution2 countPositive通过移位运算来实现</h3><p>改一下 countPositive方法更快<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countPositive</span><span class="params">(<span class="keyword">int</span> decimal)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (decimal&gt;<span class="number">0</span>) &#123;</div><div class="line">        count += decimal&amp;<span class="number">1</span>;</div><div class="line">        decimal &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Solution3-还有更简单的不用对负数处理的"><a href="#Solution3-还有更简单的不用对负数处理的" class="headerlink" title="Solution3 还有更简单的不用对负数处理的"></a>Solution3 还有更简单的不用对负数处理的</h3><p>‘&lt;&lt;’ : 左移运算符，num &lt;&lt; 1,相当于num乘以2</p>
 <p>‘&gt;&gt;’ : 右移运算符，num &gt;&gt; 1,相当于num除以2</p>
 <p>‘&gt;&gt;&gt;’: 无符号右移，忽略符号位，空位都以0补齐</p>
-<p>正数的情况反正都是一样的<br>
-当n为负数的时候</p>
+<p>正数的情况反正都是一样的<br>当n为负数的时候</p>
 <p>第一位为1，<code>&gt;&gt;</code> 右移运算的时候空位全都用1补齐，所以不能用decimal&gt;0来判断</p>
-<p>这个时候用无符号右移，空位都以0补齐，之后都是正数，完美规避，于是就有以下不用对负数进行处理的Solution</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> ones = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(n!=<span class="number">0</span>) &#123;</div><div class="line">        ones = ones + (n &amp; <span class="number">1</span>);</div><div class="line">        n = n&gt;&gt;&gt;<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ones;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个时候用无符号右移，空位都以0补齐，之后都是正数，完美规避，于是就有以下不用对负数进行处理的Solution<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> ones = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(n!=<span class="number">0</span>) &#123;</div><div class="line">        ones = ones + (n &amp; <span class="number">1</span>);</div><div class="line">        n = n&gt;&gt;&gt;<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ones;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -451,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-231/" rel="prev" title="Leetcode_231, 236, 342">
-                Leetcode_231, 236, 342 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-237/" rel="prev" title="Leetcode_237">
+                Leetcode_237 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -543,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -565,7 +557,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -600,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution1"><span class="nav-number">2.</span> <span class="nav-text"> Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution2-countpositive通过移位运算来实现"><span class="nav-number">3.</span> <span class="nav-text"> Solution2 countPositive通过移位运算来实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution3-还有更简单的不用对负数处理的"><span class="nav-number">4.</span> <span class="nav-text"> Solution3 还有更简单的不用对负数处理的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution1"><span class="nav-number">2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2-countPositive通过移位运算来实现"><span class="nav-number">3.</span> <span class="nav-text">Solution2 countPositive通过移位运算来实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution3-还有更简单的不用对负数处理的"><span class="nav-number">4.</span> <span class="nav-text">Solution3 还有更简单的不用对负数处理的</span></a></li></ol></div>
             
 
           </div>

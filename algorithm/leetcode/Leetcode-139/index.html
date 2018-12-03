@@ -387,23 +387,18 @@
       
 
       
-        <p>Word Break</p>
-<a id="more"></a>
+        <p>Word Break<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>给定：</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定：</p>
 <ol>
 <li>字符串 s</li>
 <li>字符串列表 List<string> wordDict</string></li>
 </ol>
 <p>判断 s 能否被拆成 wordDict 中的字符串的组合</p>
 <p>例子</p>
-<p>For example, given<br>
-s = “leetcode”,<br>
-dict = [“leet”, “code”].</p>
+<p>For example, given<br>s = “leetcode”,<br>dict = [“leet”, “code”].</p>
 <p>Return true because “leetcode” can be segmented as “leet code”.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>典型的动态规划</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>典型的动态规划</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> </span>&#123;</div><div class="line">    	<span class="comment">// 长度设置为 s.length() + 1</span></div><div class="line">    	<span class="comment">// 我觉得主要因为 substring(j,i) 是不包括i的</span></div><div class="line">        <span class="keyword">boolean</span>[] res = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length() + <span class="number">1</span>];</div><div class="line">        <span class="comment">// res[0] 要设置为true</span></div><div class="line">        res[<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">        </div><div class="line">        <span class="comment">// for 循环的判断条件是 &lt;=</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= s.length(); i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</div><div class="line">                <span class="comment">// 状态转移方程</span></div><div class="line">                <span class="keyword">if</span>(res[j] &amp;&amp; wordDict.contains(s.substring(j,i))) &#123;</div><div class="line">                    res[i] = <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res[s.length()];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -539,7 +534,7 @@ dict = [“leet”, “code”].</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -561,7 +556,7 @@ dict = [“leet”, “code”].</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -596,7 +591,7 @@ dict = [“leet”, “code”].</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

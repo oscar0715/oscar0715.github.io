@@ -387,17 +387,14 @@
       
 
       
-        <p>Combination Sum</p>
-<a id="more"></a>
+        <p>Combination Sum<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>给定一个无重复数组，和一个整数 target，给出所有使和为target的所有组合</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定一个无重复数组，和一个整数 target，给出所有使和为target的所有组合</p>
 <ol>
 <li>数组中的元素可以重复使用</li>
 <li>所有元素都是正数，这个很重要，不然没法做了</li>
 </ol>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>backtracking</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>backtracking</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    </div><div class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    List&lt;Integer&gt; current = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        backtrack(candidates, <span class="number">0</span>, target);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> left, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList(current));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// 这里 for 循环的判断条件</span></div><div class="line">        <span class="comment">// 里面有 target &gt;= candidates[i] </span></div><div class="line">        <span class="comment">// 不符合的话，减掉以后target就负数了，后面就不用跑下去了</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt; candidates.length &amp;&amp; target &gt;= candidates[i]; i++) &#123;</div><div class="line">            current.add(candidates[i]);</div><div class="line">            <span class="comment">// 这里的下一层递归的起始位置还是 i ，这样可以重复使用元素。</span></div><div class="line">            backtrack(candidates, i , target - candidates[i]);</div><div class="line">            current.remove(current.size()-<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -431,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-130/" rel="next" title="Leetcode_130">
-                <i class="fa fa-chevron-left"></i> Leetcode_130
+              <a href="/algorithm/leetcode/Leetcode-131/" rel="next" title="Leetcode_131">
+                <i class="fa fa-chevron-left"></i> Leetcode_131
               </a>
             
           </div>
@@ -533,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -555,7 +552,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -590,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

@@ -391,11 +391,9 @@
 <a id="more"></a>
 <hr>
 <p>Django 的代码写在 django.core.mail 模块里面。</p>
-<h1 id="quick-example"><a class="markdownIt-Anchor" href="#quick-example"></a> Quick example</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail</div><div class="line"></div><div class="line">send_mail(</div><div class="line">	<span class="string">'Subject here'</span>,</div><div class="line">	<span class="string">'Here is the message.'</span>,</div><div class="line">	<span class="string">'from@example.com'</span>,</div><div class="line">	[<span class="string">'to@example.com'</span>],</div><div class="line">	fail_silently=<span class="keyword">False</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="Quick-example"><a href="#Quick-example" class="headerlink" title="Quick example"></a>Quick example</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail</div><div class="line"></div><div class="line">send_mail(</div><div class="line">	<span class="string">'Subject here'</span>,</div><div class="line">	<span class="string">'Here is the message.'</span>,</div><div class="line">	<span class="string">'from@example.com'</span>,</div><div class="line">	[<span class="string">'to@example.com'</span>],</div><div class="line">	fail_silently=<span class="keyword">False</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
 <p>SMTP 协议下发送邮件需要 host 和 port， 记录在 <code>EMAIL_HOST</code> 和 <code>EMAIL_PORT</code> 之中。 <code>EMAIL_HOST_USER</code> 和 <code>EMAIL_HOST_PASSWORD</code> 是用来验证 SMTP 服务器的， <code>EMAIL_USE_TLS</code> 和 <code>EMAIL_USE_SSL</code> 用来确定是否建立安全连接。</p>
-<h1 id="send_mail"><a class="markdownIt-Anchor" href="#send_mail"></a> send_mail()</h1>
-<p>Django 中发邮件最简单的方法是 <code>django.core.mail.send_mail()</code></p>
+<h1 id="send-mail"><a href="#send-mail" class="headerlink" title="send_mail()"></a>send_mail()</h1><p>Django 中发邮件最简单的方法是 <code>django.core.mail.send_mail()</code></p>
 <p><code>send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=None)</code></p>
 <ol>
 <li><code>subject</code> 邮件主题，string</li>
@@ -404,31 +402,25 @@
 <li><code>recipient_list</code> 收件人列表，列表中的收件人都可以互相看到</li>
 <li><code>fail_silently</code> 这是一个 boolean 值。如果是 false，会抛出一个 <code>smtplib.SMTPException</code> 异常</li>
 <li><code>auth_user</code> 和 <code>auth_password</code> 是 optional 的值，如果为空，则会用 <code>EMAIL_HOST_USER</code> 和 <code>EMAIL_HOST_PASSWORD</code> 来验证 SMTP 服务器。</li>
-<li><code>connection</code> 是 optional 的值，如果不填，就用默认的 <code>backend</code></li>
+<li><code>connection</code> 是 optional 的值，如果不填，就用默认的 <code>backend</code> </li>
 <li><code>html_message</code> 这个不是很懂啊</li>
 <li>这个方法的返回值是发送成功的消息的数量，因为消息数量只有一条，所有就是 0 或 1</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">send_mail(</div><div class="line">	<span class="string">'Subject'</span>,</div><div class="line">	<span class="string">'Message.'</span>,</div><div class="line">	<span class="string">'from@example.com'</span>,</div><div class="line">	[<span class="string">'john@example.com'</span>, <span class="string">'jane@example.com'</span>],</div><div class="line">)</div></pre></td></tr></table></figure>
 <hr>
-<h1 id="send_mass_mail"><a class="markdownIt-Anchor" href="#send_mass_mail"></a> send_mass_mail()</h1>
-<p><code>django.core.mail.send_mass_mail()</code> 是用来群发邮件的。</p>
+<h1 id="send-mass-mail"><a href="#send-mass-mail" class="headerlink" title="send_mass_mail()"></a>send_mass_mail()</h1><p><code>django.core.mail.send_mass_mail()</code> 是用来群发邮件的。</p>
 <p><code>send_mass_mail(datatuple, fail_silently=False, auth_user=None, auth_password=None, connection=None)</code></p>
-<p>datatuple 是一个包含多条消息的元组。每条消息的结构如此：<br>
-<code>(subject, message, from_email, recipient_list)</code></p>
-<p>举个栗子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">message1 = (<span class="string">'Subject here'</span>, <span class="string">'Here is the message'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'first@example.com'</span>, <span class="string">'other@example.com'</span>])</div><div class="line">message2 = (<span class="string">'Another Subject'</span>, <span class="string">'Here is another message'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'second@test.com'</span>])</div><div class="line">send_mass_mail((message1, message2), fail_silently=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<p>datatuple 是一个包含多条消息的元组。每条消息的结构如此：<br><code>(subject, message, from_email, recipient_list)</code> </p>
+<p>举个栗子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">message1 = (<span class="string">'Subject here'</span>, <span class="string">'Here is the message'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'first@example.com'</span>, <span class="string">'other@example.com'</span>])</div><div class="line">message2 = (<span class="string">'Another Subject'</span>, <span class="string">'Here is another message'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'second@test.com'</span>])</div><div class="line">send_mass_mail((message1, message2), fail_silently=<span class="keyword">False</span>)</div></pre></td></tr></table></figure></p>
 <p>上面的例子， send_mass_mail 方法只建立一个连接，发送了两条消息。该方法返回值也是发送成功的消息数量。因为 send_mass_mail 发送多条消息只建立一个连接，所以在群发邮件时这个方法比较高效。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">datatuple = (</div><div class="line">	(<span class="string">'Subject'</span>, <span class="string">'Message.'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'john@example.com'</span>]),</div><div class="line">	(<span class="string">'Subject'</span>, <span class="string">'Message.'</span>, <span class="string">'from@example.com'</span>, [<span class="string">'jane@example.com'</span>]),</div><div class="line">)</div><div class="line">send_mass_mail(datatuple)</div></pre></td></tr></table></figure>
 <hr>
-<h1 id="mail_admins"><a class="markdownIt-Anchor" href="#mail_admins"></a> mail_admins()</h1>
-<p><code>django.core.mail.mail_admins()</code> 是用来向 admin 发送邮件的。</p>
+<h1 id="mail-admins"><a href="#mail-admins" class="headerlink" title="mail_admins()"></a>mail_admins()</h1><p><code>django.core.mail.mail_admins()</code> 是用来向 admin 发送邮件的。</p>
 <p><code>mail_admins(subject, message, fail_silently=False, connection=None, html_message=None)</code></p>
-<p>EMAIL_SUBJECT_PREFIX 定义了 mail_admins() 方法发送邮件的 subject 的前缀，默认是 &quot;[Django] &quot;.</p>
-<h1 id="mail_managers"><a class="markdownIt-Anchor" href="#mail_managers"></a> mail_managers()</h1>
-<p><code>django.core.mail.mail_managers()</code> 和 mail_admins 类似，是发送邮件给 manager 的。</p>
+<p>EMAIL_SUBJECT_PREFIX 定义了 mail_admins() 方法发送邮件的 subject 的前缀，默认是 “[Django] “.</p>
+<h1 id="mail-managers"><a href="#mail-managers" class="headerlink" title="mail_managers()"></a>mail_managers()</h1><p><code>django.core.mail.mail_managers()</code> 和 mail_admins 类似，是发送邮件给 manager 的。</p>
 <hr>
-<h1 id="preventing-header-injection"><a class="markdownIt-Anchor" href="#preventing-header-injection"></a> Preventing header injection</h1>
-<p>Header injection 是一种修改邮件头 “To:” and “From:” 的攻击。前面的这些方法都可以预防 Header Injection 攻击，如果邮件头部有修改，则会抛出 <code>django.core.mail.BadHeaderError</code> 异常。</p>
+<h1 id="Preventing-header-injection"><a href="#Preventing-header-injection" class="headerlink" title="Preventing header injection"></a>Preventing header injection</h1><p>Header injection 是一种修改邮件头 “To:” and “From:” 的攻击。前面的这些方法都可以预防 Header Injection 攻击，如果邮件头部有修改，则会抛出 <code>django.core.mail.BadHeaderError</code> 异常。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail, BadHeaderError</div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse, HttpResponseRedirect</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_email</span><span class="params">(request)</span>:</span></div><div class="line">	subject = request.POST.get(<span class="string">'subject'</span>, <span class="string">''</span>)</div><div class="line">	message = request.POST.get(<span class="string">'message'</span>, <span class="string">''</span>)</div><div class="line">	from_email = request.POST.get(<span class="string">'from_email'</span>, <span class="string">''</span>)</div><div class="line">	<span class="keyword">if</span> subject <span class="keyword">and</span> message <span class="keyword">and</span> from_email:</div><div class="line">		<span class="keyword">try</span>:</div><div class="line">			send_mail(subject, message, from_email, [<span class="string">'admin@example.com'</span>])</div><div class="line">		<span class="keyword">except</span> BadHeaderError:</div><div class="line">			<span class="keyword">return</span> HttpResponse(<span class="string">'Invalid header found.'</span>)</div><div class="line">		<span class="keyword">return</span> HttpResponseRedirect(<span class="string">'/contact/thanks/'</span>)</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		<span class="comment"># In reality we'd use a form class</span></div><div class="line">		<span class="comment"># to get proper validation errors.</span></div><div class="line">		<span class="keyword">return</span> HttpResponse(<span class="string">'Make sure all fields are entered and valid.'</span>)</div></pre></td></tr></table></figure>
 
       
@@ -564,7 +556,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -586,7 +578,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -621,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-example"><span class="nav-number">1.</span> <span class="nav-text"> Quick example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send_mail"><span class="nav-number">2.</span> <span class="nav-text"> send_mail()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send_mass_mail"><span class="nav-number">3.</span> <span class="nav-text"> send_mass_mail()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mail_admins"><span class="nav-number">4.</span> <span class="nav-text"> mail_admins()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mail_managers"><span class="nav-number">5.</span> <span class="nav-text"> mail_managers()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preventing-header-injection"><span class="nav-number">6.</span> <span class="nav-text"> Preventing header injection</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-example"><span class="nav-number">1.</span> <span class="nav-text">Quick example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send-mail"><span class="nav-number">2.</span> <span class="nav-text">send_mail()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send-mass-mail"><span class="nav-number">3.</span> <span class="nav-text">send_mass_mail()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mail-admins"><span class="nav-number">4.</span> <span class="nav-text">mail_admins()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mail-managers"><span class="nav-number">5.</span> <span class="nav-text">mail_managers()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preventing-header-injection"><span class="nav-number">6.</span> <span class="nav-text">Preventing header injection</span></a></li></ol></div>
             
 
           </div>

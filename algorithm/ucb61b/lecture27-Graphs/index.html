@@ -392,69 +392,45 @@
         <p>Lecture27 Graphs</p>
 <a id="more"></a>
 <hr>
-<h2 id="graphs"><a class="markdownIt-Anchor" href="#graphs"></a> Graphs</h2>
-<p>A graph G is a set V of vertices and a set E of edges that connect vertices.</p>
+<h2 id="Graphs"><a href="#Graphs" class="headerlink" title="Graphs"></a>Graphs</h2><p>A graph G is a set V of vertices and a set E of edges that connect vertices.</p>
 <p>G = (V, E)</p>
 <p>2 Types</p>
 <ul>
-<li>directed</li>
+<li>directed </li>
 <li>undirected</li>
 </ul>
-<h3 id="directed-graphs"><a class="markdownIt-Anchor" href="#directed-graphs"></a> Directed Graphs</h3>
-<p>e = (v, w)  ———— ordered pair, v is the origin and w is the destination.</p>
-<h3 id="undirected-graphs"><a class="markdownIt-Anchor" href="#undirected-graphs"></a> undirected Graphs</h3>
-<p>(v, w) = (w, v)  ————  unordered pair</p>
+<h3 id="Directed-Graphs"><a href="#Directed-Graphs" class="headerlink" title="Directed Graphs"></a>Directed Graphs</h3><p>e = (v, w)  ———— ordered pair, v is the origin and w is the destination.</p>
+<h3 id="undirected-Graphs"><a href="#undirected-Graphs" class="headerlink" title="undirected Graphs"></a>undirected Graphs</h3><p>(v, w) = (w, v)  ————  unordered pair</p>
 <p>self-edge (v, v)</p>
-<h3 id="path"><a class="markdownIt-Anchor" href="#path"></a> Path</h3>
-<p>sequence of vertices with each adjcent pair connected by an edge.</p>
-<h3 id="length-of-path"><a class="markdownIt-Anchor" href="#length-of-path"></a> Length of path</h3>
-<p>numbers of edges<br>
-&lt;4,5,6,3&gt; ———— length is 3<br>
-&lt;2&gt; ———— length is 0</p>
-<h3 id="strongly-connected"><a class="markdownIt-Anchor" href="#strongly-connected"></a> Strongly connected</h3>
-<p>There is a path from any vertex to any other vertex<br>
-(Called connected in undirected graph)</p>
-<h3 id="degree-of-a-vertex"><a class="markdownIt-Anchor" href="#degree-of-a-vertex"></a> Degree of a vertex</h3>
-<p>Numbers of edges incident an vertex.<br>
-(self-edges count as one)</p>
+<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><p>sequence of vertices with each adjcent pair connected by an edge.</p>
+<h3 id="Length-of-path"><a href="#Length-of-path" class="headerlink" title="Length of path"></a>Length of path</h3><p>numbers of edges </p>
+<p><4,5,6,3> ———— length is 3</4,5,6,3></p>
+<p><2> ———— length is 0</2></p>
+<h3 id="Strongly-connected"><a href="#Strongly-connected" class="headerlink" title="Strongly connected"></a>Strongly connected</h3><p>There is a path from any vertex to any other vertex<br>(Called connected in undirected graph)</p>
+<h3 id="Degree-of-a-vertex"><a href="#Degree-of-a-vertex" class="headerlink" title="Degree of a vertex"></a>Degree of a vertex</h3><p>Numbers of edges incident an vertex.<br>(self-edges count as one)</p>
 <p>digraph</p>
 <ol>
 <li>Indegree</li>
 <li>Outdegree</li>
 </ol>
-<h2 id="graph-representation"><a class="markdownIt-Anchor" href="#graph-representation"></a> Graph Representation</h2>
-<p><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture27-Graphs/graph1.gif" alt=""><br></p>
-<h3 id="adjacency-matrix"><a class="markdownIt-Anchor" href="#adjacency-matrix"></a> Adjacency matrix:</h3>
-<p>|v| - by - |v| array of booleans</p>
+<h2 id="Graph-Representation"><a href="#Graph-Representation" class="headerlink" title="Graph Representation"></a>Graph Representation</h2><p><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture27-Graphs/graph1.gif" alt=""><br></p>
+<h3 id="Adjacency-matrix"><a href="#Adjacency-matrix" class="headerlink" title="Adjacency matrix:"></a>Adjacency matrix:</h3><p>|v| - by - |v| array of booleans</p>
 <p>二维数组</p>
 <p>斜对角线对称（i, j） = (j, i)</p>
-<p>最大edge的数量<br>
-directed = |v|^2<br>
-undirected = |v|^2 / 2</p>
+<p>最大edge的数量<br>directed = |v|^2<br>undirected = |v|^2 / 2</p>
 <p>planer graphs has O(|v|) edges. 能在二维平面展示，不交叉的图，能有线性的数量的edges</p>
 <p>sparse Graph 稀疏的图</p>
 <p>如果是String，先Hash String 到 int  // 等等，这里没明白，老师说会collision是什么情况</p>
-<h3 id="adajcency-list"><a class="markdownIt-Anchor" href="#adajcency-list"></a> Adajcency List</h3>
-<p>Each vertex has a linkedList of edges out</p>
+<h3 id="Adajcency-List"><a href="#Adajcency-List" class="headerlink" title="Adajcency List"></a>Adajcency List</h3><p>Each vertex has a linkedList of edges out</p>
 <ol>
-<li>Vertices are consecutive integers<br>
-Use Array of Lists (<code>ArrayList&lt;List&lt;Integer&gt;</code>)</li>
-<li>Vertices has name &quot;String&quot;<br>
-Use Hashtable to map Strings to List (<code>HashMap&lt;List&lt;String&gt;&gt;</code>)<br>
-Key: vertex name<br>
-Value: List</li>
+<li>Vertices are consecutive integers<br>Use Array of Lists (<code>ArrayList&lt;List&lt;Integer&gt;</code>)</li>
+<li>Vertices has name “String”<br>Use Hashtable to map Strings to List (<code>HashMap&lt;List&lt;String&gt;&gt;</code>)<br>Key: vertex name<br>Value: List</li>
 </ol>
 <p>If it is a sparce gragh, then Adjacent List 时间空间上都更省</p>
-<h2 id="graph-traversal"><a class="markdownIt-Anchor" href="#graph-traversal"></a> Graph traversal</h2>
-<p>防止重复visit<br>
-每个点有个一个 Boolean ‘visited’ field</p>
-<h3 id="depth-first-serach-dfs"><a class="markdownIt-Anchor" href="#depth-first-serach-dfs"></a> Depth-First serach DFS</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Vertex u)</span></span>&#123;</div><div class="line">    u.visit();</div><div class="line">    u.visited;</div><div class="line"></div><div class="line">    <span class="comment">// 访问和u相连的每个v点</span></div><div class="line">    <span class="keyword">for</span>(<span class="function">each vertex v such that in <span class="title">the</span> <span class="params">(u,v)</span> )</span>&#123;</div><div class="line">        <span class="keyword">if</span>(!v.visited)&#123;</div><div class="line">            <span class="comment">// 迭代</span></div><div class="line">            dfs(v);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Runs in O(|V|+|E|) time using Adjacent List<br>
-Runs in O(|V|^2) time using Adjacent Matrix</p>
-<h3 id="breadth-first-search-bfs"><a class="markdownIt-Anchor" href="#breadth-first-search-bfs"></a> Breadth-First search BFS</h3>
-<p>Queue</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</div><div class="line">  Vertex parent;</div><div class="line">  <span class="keyword">int</span> depth;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Vertex origin)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.parent = origin;</div><div class="line">    <span class="keyword">if</span> (origin == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.depth = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.depth = origin.depth + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Vertex u)</span> </span>&#123;</div><div class="line">  u.visit(<span class="keyword">null</span>);</div><div class="line">  u.visited = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">  q = <span class="keyword">new</span> Queue();</div><div class="line">  q.enqueue(u)</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">    v = q.dequeue(); <span class="comment">// 取出q最前面那个，做该点的bfs</span></div><div class="line">    <span class="keyword">for</span> ( <span class="function">Each vertex w such <span class="title">that</span> <span class="params">(v, w)</span> is an edge ) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (!w.visited) &#123;</div><div class="line">        w.visit(v);</div><div class="line">        w.visited = <span class="keyword">true</span>;</div><div class="line">        q.enqueue(w); <span class="comment">// 取出w的时候会访问与它相连的点</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Graph-traversal"><a href="#Graph-traversal" class="headerlink" title="Graph traversal"></a>Graph traversal</h2><p>防止重复visit<br>每个点有个一个 Boolean ‘visited’ field </p>
+<h3 id="Depth-First-serach-DFS"><a href="#Depth-First-serach-DFS" class="headerlink" title="Depth-First serach DFS"></a>Depth-First serach DFS</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Vertex u)</span></span>&#123;</div><div class="line">    u.visit();</div><div class="line">    u.visited;</div><div class="line"></div><div class="line">    <span class="comment">// 访问和u相连的每个v点</span></div><div class="line">    <span class="keyword">for</span>(<span class="function">each vertex v such that in <span class="title">the</span> <span class="params">(u,v)</span> )</span>&#123;</div><div class="line">        <span class="keyword">if</span>(!v.visited)&#123;</div><div class="line">            <span class="comment">// 迭代</span></div><div class="line">            dfs(v);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Runs in O(|V|+|E|) time using Adjacent List<br>Runs in O(|V|^2) time using Adjacent Matrix</p>
+<h3 id="Breadth-First-search-BFS"><a href="#Breadth-First-search-BFS" class="headerlink" title="Breadth-First search BFS"></a>Breadth-First search BFS</h3><p>Queue<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</div><div class="line">  Vertex parent;</div><div class="line">  <span class="keyword">int</span> depth;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Vertex origin)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.parent = origin;</div><div class="line">    <span class="keyword">if</span> (origin == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.depth = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.depth = origin.depth + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Vertex u)</span> </span>&#123;</div><div class="line">  u.visit(<span class="keyword">null</span>);</div><div class="line">  u.visited = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">  q = <span class="keyword">new</span> Queue();</div><div class="line">  q.enqueue(u)</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">    v = q.dequeue(); <span class="comment">// 取出q最前面那个，做该点的bfs</span></div><div class="line">    <span class="keyword">for</span> ( <span class="function">Each vertex w such <span class="title">that</span> <span class="params">(v, w)</span> is an edge ) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (!w.visited) &#123;</div><div class="line">        w.visit(v);</div><div class="line">        w.visited = <span class="keyword">true</span>;</div><div class="line">        q.enqueue(w); <span class="comment">// 取出w的时候会访问与它相连的点</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>when edge (v, w) is traversed to visit w, depth of w is depth of v + 1, and v becomes the “parent” of w.</p>
 <p>Find <code>shortest path</code>  <code>from any vertex to start</code> vertex by following parent pointers</p>
 <p>run time</p>
@@ -595,7 +571,7 @@ Runs in O(|V|^2) time using Adjacent Matrix</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -617,7 +593,7 @@ Runs in O(|V|^2) time using Adjacent Matrix</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -652,7 +628,7 @@ Runs in O(|V|^2) time using Adjacent Matrix</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#graphs"><span class="nav-number">1.</span> <span class="nav-text"> Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#directed-graphs"><span class="nav-number">1.1.</span> <span class="nav-text"> Directed Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undirected-graphs"><span class="nav-number">1.2.</span> <span class="nav-text"> undirected Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#path"><span class="nav-number">1.3.</span> <span class="nav-text"> Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#length-of-path"><span class="nav-number">1.4.</span> <span class="nav-text"> Length of path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strongly-connected"><span class="nav-number">1.5.</span> <span class="nav-text"> Strongly connected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#degree-of-a-vertex"><span class="nav-number">1.6.</span> <span class="nav-text"> Degree of a vertex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-representation"><span class="nav-number">2.</span> <span class="nav-text"> Graph Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adjacency-matrix"><span class="nav-number">2.1.</span> <span class="nav-text"> Adjacency matrix:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adajcency-list"><span class="nav-number">2.2.</span> <span class="nav-text"> Adajcency List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-traversal"><span class="nav-number">3.</span> <span class="nav-text"> Graph traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-serach-dfs"><span class="nav-number">3.1.</span> <span class="nav-text"> Depth-First serach DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breadth-first-search-bfs"><span class="nav-number">3.2.</span> <span class="nav-text"> Breadth-First search BFS</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Graphs"><span class="nav-number">1.</span> <span class="nav-text">Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Directed-Graphs"><span class="nav-number">1.1.</span> <span class="nav-text">Directed Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undirected-Graphs"><span class="nav-number">1.2.</span> <span class="nav-text">undirected Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path"><span class="nav-number">1.3.</span> <span class="nav-text">Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Length-of-path"><span class="nav-number">1.4.</span> <span class="nav-text">Length of path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strongly-connected"><span class="nav-number">1.5.</span> <span class="nav-text">Strongly connected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Degree-of-a-vertex"><span class="nav-number">1.6.</span> <span class="nav-text">Degree of a vertex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Representation"><span class="nav-number">2.</span> <span class="nav-text">Graph Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjacency-matrix"><span class="nav-number">2.1.</span> <span class="nav-text">Adjacency matrix:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adajcency-List"><span class="nav-number">2.2.</span> <span class="nav-text">Adajcency List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-traversal"><span class="nav-number">3.</span> <span class="nav-text">Graph traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth-First-serach-DFS"><span class="nav-number">3.1.</span> <span class="nav-text">Depth-First serach DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Breadth-First-search-BFS"><span class="nav-number">3.2.</span> <span class="nav-text">Breadth-First search BFS</span></a></li></ol></li></ol></div>
             
 
           </div>

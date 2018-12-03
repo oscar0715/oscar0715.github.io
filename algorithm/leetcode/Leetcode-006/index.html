@@ -387,32 +387,18 @@
       
 
       
-        <p>ZigZag Conversion</p>
-<a id="more"></a>
+        <p>ZigZag Conversion<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<pre>P   A   H   N
-A P L S I I G
-Y   I   R
-</pre>
-<p>And then read line by line: &quot;PAHNAPLSIIGYIR&quot;<br>
-Write the code that will take a string and make this conversion given a number of rows:</p>
-<p>string convert(string text, int nRows);<br>
-convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>找规律的智力题啊，没什么好说的。</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<p><pre>P   A   H   N<br>A P L S I I G<br>Y   I   R<br></pre><br>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
+<p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>找规律的智力题啊，没什么好说的。</p>
 <p>规律理一下</p>
 <ol>
-<li>找到第一行的数所在的位置的间隔 （间隔为numRows * 2 - 2）<br>
-例如，行数为3，第一行数字的下标间隔为4<br>
-这个间隔用来计算周期，所以周期也为4</li>
-<li>在用当前字母所在位置去计算所在的周期<br>
-周期=当前字母位置去对这个间隔数取余（flag = i % (numRows * 2 - 2)）</li>
-<li>再判断当前字母位置，在这个周期的前一半还是后一半
-<ul>
-<li>如果是前一半，那么下一个字母应该放在下一行里<br>
-flag &lt; (numRows * 2 - 2) / 2</li>
+<li>找到第一行的数所在的位置的间隔 （间隔为numRows * 2 - 2）<br>例如，行数为3，第一行数字的下标间隔为4<br>这个间隔用来计算周期，所以周期也为4</li>
+<li>在用当前字母所在位置去计算所在的周期<br>周期=当前字母位置去对这个间隔数取余（flag = i % (numRows * 2 - 2)）</li>
+<li>再判断当前字母位置，在这个周期的前一半还是后一半<ul>
+<li>如果是前一半，那么下一个字母应该放在下一行里<br>flag &lt; (numRows * 2 - 2) / 2</li>
 <li>如果是后一半，那么下一个字母要放在上一行里</li>
 </ul>
 </li>
@@ -551,7 +537,7 @@ flag &lt; (numRows * 2 - 2) / 2</li>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -573,7 +559,7 @@ flag &lt; (numRows * 2 - 2) / 2</li>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -608,7 +594,7 @@ flag &lt; (numRows * 2 - 2) / 2</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

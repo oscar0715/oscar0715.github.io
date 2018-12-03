@@ -387,20 +387,17 @@
       
 
       
-        <p>动态规划，给定一个数组，求 a[j] - a[i]的最大值 (j &gt; i)</p>
-<a id="more"></a>
+        <p>动态规划，给定一个数组，求 a[j] - a[i]的最大值 (j &gt; i)<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>动态规划，给定一个数组，求 a[j] - a[i]的最大值 (j &gt; i)</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<ol>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>动态规划，给定一个数组，求 a[j] - a[i]的最大值 (j &gt; i)</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
 <li>min保存到位置i之前的最小值</li>
 <li>比较a[i] 与 min 的大小</li>
 <li>如果a[i] 比较大，那么两者的差值是正的</li>
 <li>那么可以计算差值，更新result</li>
-<li>如果min更大，那么更新min就好了，反正result也不会变动</li>
+<li>如果min更大，那么更新min就好了，反正result也不会变动<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxDifference</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> result = -<span class="number">1</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> min = a[<span class="number">0</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (a[i] &gt; min) &#123;</div><div class="line">			result = Math.max(result, a[i] - min);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (a[i] &lt; min ) &#123;</div><div class="line">			min = a[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxDifference</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> result = -<span class="number">1</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> min = a[<span class="number">0</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (a[i] &gt; min) &#123;</div><div class="line">			result = Math.max(result, a[i] - min);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (a[i] &lt; min ) &#123;</div><div class="line">			min = a[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -533,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">385</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -555,7 +552,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -590,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
