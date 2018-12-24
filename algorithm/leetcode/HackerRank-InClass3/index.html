@@ -387,17 +387,13 @@
       
 
       
-        <p>对Map的Key 和 value 排序</p>
-<a id="more"></a>
+        <p>对Map的Key 和 value 排序<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<ol>
-<li>给一个<code>String[]</code><br>
-<code>String[] votes = { &quot;Alex&quot;, &quot;Michael&quot;, &quot;Harry&quot;, &quot;Dave&quot;, &quot;Michael&quot;,&quot;Victor&quot;, &quot;Harry&quot;, &quot;Alex&quot;, &quot;Mary&quot;, &quot;Mary&quot;, }</code></li>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><ol>
+<li>给一个<code>String[]</code><br><code>String[] votes = { &quot;Alex&quot;, &quot;Michael&quot;, &quot;Harry&quot;, &quot;Dave&quot;, &quot;Michael&quot;,&quot;Victor&quot;, &quot;Harry&quot;, &quot;Alex&quot;, &quot;Mary&quot;, &quot;Mary&quot;, }</code></li>
 <li>选出票数最多的，得票相同的情况下，字母排序考后的胜利</li>
 </ol>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> String <span class="title">electionWinner</span><span class="params">(String[] votes)</span> </span>&#123;</div><div class="line">	<span class="comment">// 对key排序</span></div><div class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> TreeMap&lt;String, Integer&gt;(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> o2.compareTo(o1);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (String s : votes) &#123;</div><div class="line">		<span class="keyword">if</span> (map.containsKey(s)) &#123;</div><div class="line">			<span class="keyword">int</span> num = map.get(s);</div><div class="line">			map.put(s, num + <span class="number">1</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			map.put(s, <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 把entry装到List里</span></div><div class="line">	List&lt;Map.Entry&lt;String, Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String, Integer&gt;&gt;(map.entrySet());</div><div class="line"></div><div class="line">	<span class="comment">// 对value排序</span></div><div class="line">	Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String, Integer&gt;&gt;() &#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Map.Entry&lt;String, Integer&gt; o1,</span></span></div><div class="line"><span class="function"><span class="params">								  Map.Entry&lt;String, Integer&gt; o2)</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> o2.getValue() - o1.getValue();</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> list.get(<span class="number">0</span>).getKey();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> String <span class="title">electionWinner</span><span class="params">(String[] votes)</span> </span>&#123;</div><div class="line">	<span class="comment">// 对key排序</span></div><div class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> TreeMap&lt;String, Integer&gt;(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> o2.compareTo(o1);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (String s : votes) &#123;</div><div class="line">		<span class="keyword">if</span> (map.containsKey(s)) &#123;</div><div class="line">			<span class="keyword">int</span> num = map.get(s);</div><div class="line">			map.put(s, num + <span class="number">1</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			map.put(s, <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 把entry装到List里</span></div><div class="line">	List&lt;Map.Entry&lt;String, Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String, Integer&gt;&gt;(map.entrySet());</div><div class="line"></div><div class="line">	<span class="comment">// 对value排序</span></div><div class="line">	Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String, Integer&gt;&gt;() &#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Map.Entry&lt;String, Integer&gt; o1,</span></span></div><div class="line"><span class="function"><span class="params">								  Map.Entry&lt;String, Integer&gt; o2)</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> o2.getValue() - o1.getValue();</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> list.get(<span class="number">0</span>).getKey();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -530,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">309</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -541,7 +537,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -552,7 +548,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -587,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

@@ -387,23 +387,16 @@
       
 
       
-        <p>Sum Root to Leaf Numbers</p>
-<a id="more"></a>
+        <p>Sum Root to Leaf Numbers<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.</p>
 <p>An example is the root-to-leaf path 1-&gt;2-&gt;3 which represents the number 123.</p>
 <p>Find the total sum of all root-to-leaf numbers.</p>
 <p>For example,</p>
 <pre><code>1
-</code></pre>
-<p>/ <br>
-2   3<br>
-The root-to-leaf path 1-&gt;2 represents the number 12.<br>
-The root-to-leaf path 1-&gt;3 represents the number 13.</p>
+</code></pre><p>   / \<br>  2   3<br>The root-to-leaf path 1-&gt;2 represents the number 12.<br>The root-to-leaf path 1-&gt;3 represents the number 13.</p>
 <p>Return the sum = 12 + 13 = 25.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>DFS</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>DFS</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    Integer sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumNumbers</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        add(root, <span class="number">0</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(TreeNode root, <span class="keyword">int</span> curr)</span> </span>&#123;</div><div class="line">        curr = curr * <span class="number">10</span> + root.val;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</div><div class="line">            sum += curr;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125; </div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</div><div class="line">            add(root.left, curr);</div><div class="line">        &#125; </div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(root.right != <span class="keyword">null</span>) &#123;</div><div class="line">            add(root.right, curr);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -539,7 +532,7 @@ The root-to-leaf path 1-&gt;3 represents the number 13.</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">309</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -550,7 +543,7 @@ The root-to-leaf path 1-&gt;3 represents the number 13.</p>
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -561,7 +554,7 @@ The root-to-leaf path 1-&gt;3 represents the number 13.</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -596,7 +589,7 @@ The root-to-leaf path 1-&gt;3 represents the number 13.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

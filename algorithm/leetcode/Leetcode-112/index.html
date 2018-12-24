@@ -390,26 +390,13 @@
         <p>Path Sum</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
-<p>For example:<br>
-Given the below binary tree and sum = 22,</p>
-<pre>
-              5
-             / \
-            4   8
-           /   / \
-          11  13  4
-         /  \      \
-        7    2      1
-</pre>
-<p>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+<p>For example:<br>Given the below binary tree and sum = 22,</p>
+<p><pre><br>              5<br>             / \<br>            4   8<br>           /   / \<br>          11  13  4<br>         /  \      \<br>        7    2      1<br></pre><br>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p>
 <p>求是否存在一条从根节点到叶子节点的路径上的值的和等于给定值</p>
-<h3 id="solution-非递归方法"><a class="markdownIt-Anchor" href="#solution-非递归方法"></a> Solution 非递归方法</h3>
-<p>利用了层次遍历的思路</p>
+<h3 id="Solution-非递归方法"><a href="#Solution-非递归方法" class="headerlink" title="Solution 非递归方法"></a>Solution 非递归方法</h3><p>利用了层次遍历的思路</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Queue&lt;TreeNode&gt; treeNodes = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</div><div class="line"></div><div class="line">    treeNodes.add(root);</div><div class="line">    <span class="keyword">while</span> (!treeNodes.isEmpty()) &#123;</div><div class="line">      <span class="keyword">int</span> size = treeNodes.size();</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">        TreeNode p = treeNodes.poll();</div><div class="line">        <span class="keyword">if</span> (p.val == sum &amp;&amp; p.left == <span class="keyword">null</span> &amp;&amp; p.right == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (p.left != <span class="keyword">null</span>) &#123;</div><div class="line">          p.left.val = p.left.val + p.val;</div><div class="line">          treeNodes.add(p.left);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (p.right != <span class="keyword">null</span>) &#123;</div><div class="line">          p.right.val = p.right.val + p.val;</div><div class="line">          treeNodes.add(p.right);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line"></div></pre></td></tr></table></figure>
-<h3 id="solution-递归思路"><a class="markdownIt-Anchor" href="#solution-递归思路"></a> Solution 递归思路</h3>
-<p>递归更快，递归更漂亮。</p>
+<h3 id="Solution-递归思路"><a href="#Solution-递归思路" class="headerlink" title="Solution 递归思路"></a>Solution 递归思路</h3><p>递归更快，递归更漂亮。</p>
 <p>我还有什么可以说的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span> &amp;&amp; root.val == sum) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
 <hr>
@@ -546,7 +533,7 @@ Given the below binary tree and sum = 22,</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">309</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -557,7 +544,7 @@ Given the below binary tree and sum = 22,</p>
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -568,7 +555,7 @@ Given the below binary tree and sum = 22,</p>
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -603,7 +590,7 @@ Given the below binary tree and sum = 22,</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-非递归方法"><span class="nav-number">2.</span> <span class="nav-text"> Solution 非递归方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-递归思路"><span class="nav-number">3.</span> <span class="nav-text"> Solution 递归思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-非递归方法"><span class="nav-number">2.</span> <span class="nav-text">Solution 非递归方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-递归思路"><span class="nav-number">3.</span> <span class="nav-text">Solution 递归思路</span></a></li></ol></div>
             
 
           </div>

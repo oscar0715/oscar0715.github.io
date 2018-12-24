@@ -390,26 +390,21 @@
         <p>Nim Game</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a pattern and a string str, find if str follows the same pattern.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a pattern and a string str, find if str follows the same pattern.</p>
 <p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.</p>
 <pre><code>Examples:
 pattern = &quot;abba&quot;, str = &quot;dog cat cat dog&quot; should return true.
 pattern = &quot;abba&quot;, str = &quot;dog cat cat fish&quot; should return false.
 pattern = &quot;aaaa&quot;, str = &quot;dog cat cat dog&quot; should return false.
 pattern = &quot;abba&quot;, str = &quot;dog dog dog dog&quot; should return false.
-</code></pre>
-<p>Notes:<br>
-You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<ol>
+</code></pre><p>Notes:<br>You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
 <li>把pattern的每一个character放到map里，value是位置的list</li>
 <li>然后用list里每一个位置的string去比较</li>
 </ol>
 <p>还是太复杂了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern</span><span class="params">(String pattern, String str)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span>(pattern.length() != str.split(<span class="string">" "</span>).length)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">	Map&lt;Character, List&lt;Integer&gt;&gt; patternMap = <span class="keyword">new</span> HashMap&lt;Character, List&lt;Integer&gt;&gt;();</div><div class="line"></div><div class="line">	<span class="keyword">char</span>[] patternArray = pattern.toCharArray();</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; patternArray.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(patternMap.containsKey(patternArray[i]))&#123;</div><div class="line">			patternMap.get(patternArray[i]).add(i);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">			list.add(i);</div><div class="line">			patternMap.put(patternArray[i], list);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	String[] strArray = str.split(<span class="string">" "</span>);</div><div class="line">		</div><div class="line">		Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();</div><div class="line">		</div><div class="line">	<span class="keyword">for</span>(Character c : patternMap.keySet())&#123;</div><div class="line">		List&lt;Integer&gt; list = patternMap.get(c);</div><div class="line">		String word = strArray[list.get(<span class="number">0</span>)];</div><div class="line">		<span class="keyword">if</span>(set.contains(word)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			set.add(word);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; list.size(); i++)&#123;</div><div class="line">			<span class="keyword">if</span>(!strArray[list.get(i)].equals(word)) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="solution2"><a class="markdownIt-Anchor" href="#solution2"></a> Solution2</h3>
-<p>比人家的做法，屌爆了</p>
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>比人家的做法，屌爆了</p>
 <ol>
 <li>map的put会返回一个旧值，如果没有旧值，那返回null</li>
 <li>同一个map同时维护了pattern 和 words，value都是位置</li>
@@ -551,7 +546,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">309</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -562,7 +557,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -573,7 +568,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -608,7 +603,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution2"><span class="nav-number">3.</span> <span class="nav-text"> Solution2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2"><span class="nav-number">3.</span> <span class="nav-text">Solution2</span></a></li></ol></div>
             
 
           </div>

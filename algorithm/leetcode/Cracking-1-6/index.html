@@ -387,18 +387,13 @@
       
 
       
-        <p>Compress String</p>
+        <p>Compress String </p>
 <a id="more"></a>
 <hr>
-<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
-<p>Compress String<br>
-&quot;aabcccccaaa&quot;  to “a2b1c5a3”</p>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Compress String<br>“aabcccccaaa”  to “a2b1c5a3”</p>
 <p>return the shorter string bewteen original string and the compressed string</p>
-<h1 id="solution-1"><a class="markdownIt-Anchor" href="#solution-1"></a> Solution 1</h1>
-<p>Normal Solution</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">compression</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">    <span class="keyword">char</span>[] chars = s.toCharArray();</div><div class="line"></div><div class="line">    <span class="keyword">char</span> current = chars[<span class="number">0</span>];</div><div class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; chars.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (chars[i] == current) &#123;</div><div class="line">            count++;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            result.append(current);</div><div class="line">            result.append(count);</div><div class="line">            current = chars[i];</div><div class="line">            count = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    result.append(current);</div><div class="line">    result.append(count);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (s.length() &lt;= result.length()) &#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
-<h1 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution 2</h1>
-<p>You can count the length of the String after compresstion first, then decide whether return the compressed String or the original String.</p>
+<h1 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1"></a>Solution 1</h1><p>Normal Solution<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">compression</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">    <span class="keyword">char</span>[] chars = s.toCharArray();</div><div class="line"></div><div class="line">    <span class="keyword">char</span> current = chars[<span class="number">0</span>];</div><div class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; chars.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (chars[i] == current) &#123;</div><div class="line">            count++;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            result.append(current);</div><div class="line">            result.append(count);</div><div class="line">            current = chars[i];</div><div class="line">            count = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    result.append(current);</div><div class="line">    result.append(count);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (s.length() &lt;= result.length()) &#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure></p>
+<h1 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2"></a>Solution 2</h1><p>You can count the length of the String after compresstion first, then decide whether return the compressed String or the original String.</p>
 <hr>
 <p>Over！</p>
 
@@ -431,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/technology/webapplication/codecademy_js/" rel="next" title="Codecademy Javascript">
-                <i class="fa fa-chevron-left"></i> Codecademy Javascript
+              <a href="/art/diary/【随笔】虫儿飞/" rel="next" title="【随笔】虫儿飞">
+                <i class="fa fa-chevron-left"></i> 【随笔】虫儿飞
               </a>
             
           </div>
@@ -533,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">386</span>
+                <span class="site-state-item-count">309</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -544,7 +539,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -555,7 +550,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -590,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution-1"><span class="nav-number">2.</span> <span class="nav-text"> Solution 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution-2"><span class="nav-number">3.</span> <span class="nav-text"> Solution 2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.</span> <span class="nav-text">Solution 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.</span> <span class="nav-text">Solution 2</span></a></li></ol></div>
             
 
           </div>
