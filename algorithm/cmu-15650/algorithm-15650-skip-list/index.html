@@ -94,24 +94,22 @@
 
 
 
-<meta name="description" content="CMU 15650 - Algorithm and Data Structure  Skip List">
+<meta name="description" content="CMU 15650 - Algorithm and Data Structure Skip List">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU 15650 - Skip List">
 <meta property="og:url" content="http://menuet.xyz/algorithm/cmu-15650/algorithm-15650-skip-list/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure  Skip List">
+<meta property="og:description" content="CMU 15650 - Algorithm and Data Structure Skip List">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-1.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-2.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-1.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-2.png">
-<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-1.png">
-<meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-2.png">
 <meta property="og:updated_time" content="2018-12-04T14:32:53.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 15650 - Skip List">
-<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure  Skip List">
+<meta name="twitter:description" content="CMU 15650 - Algorithm and Data Structure Skip List">
 <meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-1.png">
 
 
@@ -299,7 +297,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -394,30 +392,39 @@
       
 
       
-        <p>CMU 15650 - Algorithm and Data Structure </p>
-<p>Skip List<br><a id="more"></a></p>
+        <p>CMU 15650 - Algorithm and Data Structure</p>
+<p>Skip List</p>
+<a id="more"></a>
 <hr>
 <p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-1.png" alt="Skip List" title="Skip List"></p>
-<h1 id="Perfect-Skip-Lists"><a href="#Perfect-Skip-Lists" class="headerlink" title="Perfect Skip Lists"></a>Perfect Skip Lists</h1><p>我们熟悉的是单链表，但是单链表的搜索时间是$O(n)$<br>Skip List的目的是，把搜索某个节点的时间复杂度降低到$O(logn)$，以空间换时间。</p>
+<h1 id="perfect-skip-lists"><a class="markdownIt-Anchor" href="#perfect-skip-lists"></a> Perfect Skip Lists</h1>
+<p>我们熟悉的是单链表，但是单链表的搜索时间是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span><br>
+Skip List的目的是，把搜索某个节点的时间复杂度降低到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，以空间换时间。</p>
 <p>Skip List 有以下特点</p>
 <ol>
 <li>Keys in sorted order 有序</li>
-<li>$O(logn)$ levels，层数是对数</li>
-<li>Each higher level contains $\frac{1}{2}$ the elements of the level below it<br>每一层的节点数都比下一层的要少$\frac{1}{2}$</li>
-<li>Header &amp; Sentinel nodes are in every level<br>Header节点 和 Sentinel节点在每一次层都有</li>
-<li>Nodes are of variable size:<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> levels，层数是对数</li>
+<li>Each higher level contains <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.845108em;"></span><span class="strut bottom" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="base textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span> the elements of the level below it<br>
+每一层的节点数都比下一层的要少<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.845108em;"></span><span class="strut bottom" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="base textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
+<li>Header &amp; Sentinel nodes are in every level<br>
+Header节点 和 Sentinel节点在每一次层都有</li>
+<li>Nodes are of variable size:
+<ul>
 <li>contain between 1 and O(log n) pointers</li>
 <li>每一个节点的层数是不一定的，可能是1，也可能是O(log n)，相应的每一层都有指向这一次层的下一个节点的指针</li>
 </ul>
 </li>
-<li>Pointers point to the start of each node </li>
-<li>Called skip lists because higher level lists let you skip over many items<br>叫Skip List的原因是，在高层的时候，你可以跳过一些不必要的节点，提高搜索速度。</li>
+<li>Pointers point to the start of each node</li>
+<li>Called skip lists because higher level lists let you skip over many items<br>
+叫Skip List的原因是，在高层的时候，你可以跳过一些不必要的节点，提高搜索速度。</li>
 </ol>
-<h1 id="Find-Operation"><a href="#Find-Operation" class="headerlink" title="Find Operation"></a>Find Operation</h1><p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-2.png" alt="Find" title="Find"></p>
+<h1 id="find-operation"><a class="markdownIt-Anchor" href="#find-operation"></a> Find Operation</h1>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-2.png" alt="Find" title="Find"></p>
 <p><strong>Runtime:</strong></p>
 <ol>
-<li>$O(logn)$ levels </li>
-<li>visit at most 2 nodes per level<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> levels</li>
+<li>visit at most 2 nodes per level
+<ul>
 <li>每一层最多就访问两个节点</li>
 <li>这个很有意思，如果你访问了超过了两个节点，那么其实你可以在更高层跳过多访问的这些节点</li>
 <li>但是这个的前提是，<strong>Perfect</strong> Skip List</li>
@@ -425,41 +432,70 @@
 </li>
 <li>search time is O(log n)</li>
 </ol>
-<h1 id="Insert-amp-Delete"><a href="#Insert-amp-Delete" class="headerlink" title="Insert &amp; Delete"></a>Insert &amp; Delete</h1><p>Skip Lists are a randomized data structure: the same sequence of inserts / deletes may produce different structures depending on the outcome of random coin flips.<br>因为<strong>Perfect</strong> Skip List的太过于结构化，我们很难去update。所以我们把条件宽一些。</p>
-<h2 id="Randomization"><a href="#Randomization" class="headerlink" title="Randomization"></a>Randomization</h2><p>每次插入一个节点，我们用投硬币的方式来决定，这个节点，要不要往上涨一层，所以每次的概率都是50%</p>
+<h1 id="insert-delete"><a class="markdownIt-Anchor" href="#insert-delete"></a> Insert &amp; Delete</h1>
+<p>Skip Lists are a randomized data structure: the same sequence of inserts / deletes may produce different structures depending on the outcome of random coin flips.<br>
+因为<strong>Perfect</strong> Skip List的太过于结构化，我们很难去update。所以我们把条件宽一些。</p>
+<h2 id="randomization"><a class="markdownIt-Anchor" href="#randomization"></a> Randomization</h2>
+<p>每次插入一个节点，我们用投硬币的方式来决定，这个节点，要不要往上涨一层，所以每次的概率都是50%</p>
 <ol>
 <li>Allows for some imbalance</li>
 <li>Expected behavior (over the random choices) remains the same as with perfect skip lists.</li>
-<li>Idea: Each node is promoted to the next higher level with probability 1/2<ul>
-<li>Expect 1/2 the nodes at level 1 </li>
+<li>Idea: Each node is promoted to the next higher level with probability 1/2
+<ul>
+<li>Expect 1/2 the nodes at level 1</li>
 <li>Expect 1/4 the nodes at level 2</li>
 </ul>
 </li>
 <li>Therefore, expect number of nodes at each level is the same as with perfect skip lists. 我们的期望值是和perfect skip list是一样的</li>
 <li>Also: expect the promoted nodes will be well distributed across the list</li>
 </ol>
-<h2 id="Insert-Demo"><a href="#Insert-Demo" class="headerlink" title="Insert Demo"></a>Insert Demo</h2><p>Search first:<br><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-1.png" alt="Find"><br>Then insert<br><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-2.png" alt="Insert" title="Insert"></p>
-<h2 id="Delete-Demo"><a href="#Delete-Demo" class="headerlink" title="Delete Demo"></a>Delete Demo</h2><p><br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-1.png" alt="Delete"><br><img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-2.png" alt="Delete" title="Delete"><br><br></p>
-<h1 id="Skip-List-Analysis"><a href="#Skip-List-Analysis" class="headerlink" title="Skip List Analysis"></a>Skip List Analysis</h1><p><strong>Backwards Analysis:</strong><br>Consider the reverse of the path you took to find k:<br>You always move up if you can.<br>(because you always enter a node from its topmost level when doing a find)<br>回溯一条路线的时候，原则就是尽可能的往上爬。</p>
+<h2 id="insert-demo"><a class="markdownIt-Anchor" href="#insert-demo"></a> Insert Demo</h2>
+<p>Search first:<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-1.png" alt="Find"><br>
+Then insert<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-insert-2.png" alt="Insert" title="Insert"></p>
+<h2 id="delete-demo"><a class="markdownIt-Anchor" href="#delete-demo"></a> Delete Demo</h2>
+<br>
+![Delete](http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-1.png )
+![Delete](http://ogy8sh1ok.bkt.clouddn.com/algorithm-15650-skip-list/skip-list-delete-2.png "Delete")
+<br>
+<h1 id="skip-list-analysis"><a class="markdownIt-Anchor" href="#skip-list-analysis"></a> Skip List Analysis</h1>
+<p><strong>Backwards Analysis:</strong><br>
+Consider the reverse of the path you took to find k:<br>
+You always move up if you can.<br>
+(because you always enter a node from its topmost level when doing a find)<br>
+回溯一条路线的时候，原则就是尽可能的往上爬。</p>
 <ol>
-<li>What’s the probability that you can move up at a given step of the reverse walk? <ul>
-<li>$P = 0.5$</li>
+<li>What’s the probability that you can move up at a given step of the reverse walk?
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">P = 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span></span></span></span></li>
 <li>每次能往上爬一层的概率都是0.5</li>
 </ul>
 </li>
-<li>Define $C(j)$ to be the expected number of steps to return to the start if we start at level $j$.<ul>
+<li>Define <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> to be the expected number of steps to return to the start if we start at level <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>.
+<ul>
 <li>假设现在处在j层，我们要回到最高层（这里最高层是第一层么？？）</li>
 </ul>
 </li>
-<li>Steps to go up $j$ levels = Make one step, then make either<ul>
-<li>$C(j-1)$ steps if this step went up because node was extended past level $j$ [Prob = 0.5]<br>(向上走，$j$ 要减一层)（这里也就是越高的地方，j越小，所以最高层j就是1吧）</li>
-<li>$C(j)$ steps if this step went left because node wasn’t extended up past $j$ [Prob = 0.5]<br>(向左走，$j$ 保持不变)</li>
+<li>Steps to go up <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> levels = Make one step, then make either
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span> steps if this step went up because node was extended past level <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> [Prob = 0.5]<br>
+(向上走，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> 要减一层)（这里也就是越高的地方，j越小，所以最高层j就是1吧）</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> steps if this step went left because node wasn’t extended up past <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> [Prob = 0.5]<br>
+(向左走，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> 保持不变)</li>
 </ul>
 </li>
-<li>Expected number of steps to walk up $j$ levels is:<br> $$C(j) = 1 + 0.5C(j-1) + 0.5C(j)$$</li>
+<li>Expected number of steps to walk up <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> levels is:<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mi>C</mi><mo>(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j) = 1 + 0.5C(j-1) + 0.5C(j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
 </ol>
-<p>So:<br>$2C(j) = 2 + C(j-1) + C(j)$<br>$C(j) = 2 + C(j-1)$<br>Expected number of steps at each level = 2<br>这样就算出了每层最多走两步</p>
-<p>Expanding $C(j)$ above gives us: $C(j) = 2j$<br>Since $O(log n)$ levels, we have $O(log n)$ steps, expected</p>
+<p>So:<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>+</mo><mi>C</mi><mo>(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">2C(j) = 2 + C(j-1) + C(j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>+</mo><mi>C</mi><mo>(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j) = 2 + C(j-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span><br>
+Expected number of steps at each level = 2<br>
+这样就算出了每层最多走两步</p>
+<p>Expanding <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> above gives us: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>j</mi><mo>)</mo><mo>=</mo><mn>2</mn><mi>j</mi></mrow><annotation encoding="application/x-tex">C(j) = 2j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span><br>
+Since <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> levels, we have <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> steps, expected</p>
 
       
     </div>
@@ -490,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/art/diary/【随笔】虫儿飞/" rel="next" title="【随笔】虫儿飞">
-                <i class="fa fa-chevron-left"></i> 【随笔】虫儿飞
+              <a href="/technology/distribute-system/cmu-95702-cryptography/" rel="next" title="CMU 95702 - Cryptography">
+                <i class="fa fa-chevron-left"></i> CMU 95702 - Cryptography
               </a>
             
           </div>
@@ -500,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/technology/distribute-system/cmu-95702-cryptography/" rel="prev" title="CMU 95702 - Cryptography">
-                CMU 95702 - Cryptography <i class="fa fa-chevron-right"></i>
+              <a href="/technology/distribute-system/cmu-95702-service-design/" rel="prev" title="CMU 95702 - Service Design">
+                CMU 95702 - Service Design <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +616,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -592,7 +628,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -603,7 +639,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -614,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -649,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Perfect-Skip-Lists"><span class="nav-number">1.</span> <span class="nav-text">Perfect Skip Lists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Find-Operation"><span class="nav-number">2.</span> <span class="nav-text">Find Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Insert-amp-Delete"><span class="nav-number">3.</span> <span class="nav-text">Insert & Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Randomization"><span class="nav-number">3.1.</span> <span class="nav-text">Randomization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert-Demo"><span class="nav-number">3.2.</span> <span class="nav-text">Insert Demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-Demo"><span class="nav-number">3.3.</span> <span class="nav-text">Delete Demo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skip-List-Analysis"><span class="nav-number">4.</span> <span class="nav-text">Skip List Analysis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#perfect-skip-lists"><span class="nav-number">1.</span> <span class="nav-text"> Perfect Skip Lists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find-operation"><span class="nav-number">2.</span> <span class="nav-text"> Find Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insert-delete"><span class="nav-number">3.</span> <span class="nav-text"> Insert & Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#randomization"><span class="nav-number">3.1.</span> <span class="nav-text"> Randomization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-demo"><span class="nav-number">3.2.</span> <span class="nav-text"> Insert Demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-demo"><span class="nav-number">3.3.</span> <span class="nav-text"> Delete Demo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#skip-list-analysis"><span class="nav-number">4.</span> <span class="nav-text"> Skip List Analysis</span></a></li></ol></div>
             
 
           </div>

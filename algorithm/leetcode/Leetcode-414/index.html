@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -390,8 +390,10 @@
         <p>Third Maximum Number</p>
 <a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定一个乱序数组。如果存在第三大的数，则返回第三大的数，否则返回最大的数。（重复的数字不算）</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">		Integer[] maxArray = <span class="keyword">new</span> Integer[<span class="number">3</span>];</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> ( Integer n : nums) &#123;</div><div class="line">			</div><div class="line">			<span class="comment">// ignore duplicate number</span></div><div class="line">			<span class="keyword">if</span> (n.equals(maxArray[<span class="number">0</span>]) || n.equals(maxArray[<span class="number">1</span>]) || n.equals(maxArray[<span class="number">2</span>]) ) &#123;</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span> (maxArray[<span class="number">0</span>]==<span class="keyword">null</span> || n &gt; maxArray[<span class="number">0</span>]) &#123;</div><div class="line">				maxArray[<span class="number">2</span>] = maxArray[<span class="number">1</span>];</div><div class="line">				maxArray[<span class="number">1</span>] = maxArray[<span class="number">0</span>];</div><div class="line">				maxArray[<span class="number">0</span>] = n;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxArray[<span class="number">1</span>] == <span class="keyword">null</span> || n &gt; maxArray[<span class="number">1</span>]) &#123;</div><div class="line">				maxArray[<span class="number">2</span>] = maxArray[<span class="number">1</span>];</div><div class="line">				maxArray[<span class="number">1</span>] = n;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxArray[<span class="number">2</span>] == <span class="keyword">null</span> || n &gt; maxArray[<span class="number">2</span>])&#123;</div><div class="line">				maxArray[<span class="number">2</span>] = n;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (maxArray[<span class="number">2</span>] == <span class="keyword">null</span> ) &#123;</div><div class="line">			<span class="keyword">return</span> maxArray[<span class="number">0</span>];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> maxArray[<span class="number">2</span>];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>给定一个乱序数组。如果存在第三大的数，则返回第三大的数，否则返回最大的数。（重复的数字不算）</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">		Integer[] maxArray = <span class="keyword">new</span> Integer[<span class="number">3</span>];</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> ( Integer n : nums) &#123;</div><div class="line">			</div><div class="line">			<span class="comment">// ignore duplicate number</span></div><div class="line">			<span class="keyword">if</span> (n.equals(maxArray[<span class="number">0</span>]) || n.equals(maxArray[<span class="number">1</span>]) || n.equals(maxArray[<span class="number">2</span>]) ) &#123;</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span> (maxArray[<span class="number">0</span>]==<span class="keyword">null</span> || n &gt; maxArray[<span class="number">0</span>]) &#123;</div><div class="line">				maxArray[<span class="number">2</span>] = maxArray[<span class="number">1</span>];</div><div class="line">				maxArray[<span class="number">1</span>] = maxArray[<span class="number">0</span>];</div><div class="line">				maxArray[<span class="number">0</span>] = n;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxArray[<span class="number">1</span>] == <span class="keyword">null</span> || n &gt; maxArray[<span class="number">1</span>]) &#123;</div><div class="line">				maxArray[<span class="number">2</span>] = maxArray[<span class="number">1</span>];</div><div class="line">				maxArray[<span class="number">1</span>] = n;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxArray[<span class="number">2</span>] == <span class="keyword">null</span> || n &gt; maxArray[<span class="number">2</span>])&#123;</div><div class="line">				maxArray[<span class="number">2</span>] = n;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (maxArray[<span class="number">2</span>] == <span class="keyword">null</span> ) &#123;</div><div class="line">			<span class="keyword">return</span> maxArray[<span class="number">0</span>];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> maxArray[<span class="number">2</span>];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -512,7 +514,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -524,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -535,7 +537,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -546,7 +548,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -581,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -390,13 +390,16 @@
         <p>Beautiful Arrangement</p>
 <a id="more"></a>
 <hr>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>给定整数 N<br>排列 1 到 N， 满足以下两个条件</p>
+<h1 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h1>
+<p>给定整数 N<br>
+排列 1 到 N， 满足以下两个条件</p>
 <ol>
 <li>The number at the ith position is divisible by i. （num % position == 0）</li>
 <li>i is divisible by the number at the ith position. (position % num == 0)</li>
 </ol>
 <p>问一共有多少种满足要求的排列</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Backtracking 思想</p>
+<h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h1>
+<p>Backtracking 思想</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countArrangement</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">        <span class="comment">// flag 的长度设置为 N + 1</span></div><div class="line">        <span class="comment">// 方便后面计算</span></div><div class="line">        <span class="keyword">int</span>[] flag = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</div><div class="line">        </div><div class="line">        dfs(flag, <span class="number">1</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">( <span class="keyword">int</span>[] flag, <span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">        <span class="comment">// size 代表当前集合的大小+1</span></div><div class="line">        <span class="comment">// 也就是下一个元素要赋予的位置</span></div><div class="line">        <span class="keyword">if</span> ( size == flag.length ) &#123;</div><div class="line">            <span class="comment">// 如果size刚好等于 N + 1</span></div><div class="line">            <span class="comment">// 也就是当前集合大小为 N</span></div><div class="line">            count++;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; flag.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span>(flag[i] != <span class="number">0</span>) &#123;</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="comment">// 满足条件</span></div><div class="line">                <span class="keyword">if</span>(i % size == <span class="number">0</span> || size % i == <span class="number">0</span>) &#123;</div><div class="line">                    flag[i] = size;</div><div class="line">                    <span class="comment">// 那么向下一个位置进行DFS</span></div><div class="line">                    dfs(flag, size + <span class="number">1</span>);</div><div class="line"></div><div class="line">                    flag[i] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -518,7 +521,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -530,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -541,7 +544,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -552,7 +555,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -587,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Binary Tree Inorder Traversal二叉树的中序遍历">
+<meta name="description" content="Binary Tree Inorder Traversal 二叉树的中序遍历">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_94">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-094/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Binary Tree Inorder Traversal二叉树的中序遍历">
+<meta property="og:description" content="Binary Tree Inorder Traversal 二叉树的中序遍历">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-12-04T14:32:53.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_94">
-<meta name="twitter:description" content="Binary Tree Inorder Traversal二叉树的中序遍历">
+<meta name="twitter:description" content="Binary Tree Inorder Traversal 二叉树的中序遍历">
 
 
 
@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -387,16 +387,23 @@
       
 
       
-        <p>Binary Tree Inorder Traversal<br>二叉树的中序遍历<br><a id="more"></a></p>
+        <p>Binary Tree Inorder Traversal<br>
+二叉树的中序遍历</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree, return the inorder traversal of its nodes’ values.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Given a binary tree, return the inorder traversal of its nodes’ values.</p>
 <p>二叉树的中序遍历</p>
-<h3 id="Solution-迭代"><a href="#Solution-迭代" class="headerlink" title="Solution 迭代"></a>Solution 迭代</h3><p>迭代中序遍历的两种写法</p>
+<h3 id="solution-迭代"><a class="markdownIt-Anchor" href="#solution-迭代"></a> Solution 迭代</h3>
+<p>迭代中序遍历的两种写法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (root != <span class="keyword">null</span>) &#123;</div><div class="line">        stack.push(root);</div><div class="line">        root = root.left;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">        TreeNode node = stack.pop();</div><div class="line">        list.add(node.val);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</div><div class="line">            node = node.right;</div><div class="line">            <span class="keyword">while</span> (node != <span class="keyword">null</span>) &#123;</div><div class="line">                stack.push(node);</div><div class="line">                node = node.left;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">    <span class="keyword">while</span> (root != <span class="keyword">null</span> || !stack.isEmpty()) &#123;</div><div class="line">        <span class="keyword">if</span> (root != <span class="keyword">null</span>) &#123;</div><div class="line">            stack.push(root);</div><div class="line">            root = root.left;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            root = stack.pop();</div><div class="line">            list.add(root.val);</div><div class="line">            root = root.right;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Solution-递归"><a href="#Solution-递归" class="headerlink" title="Solution 递归"></a>Solution 递归</h3><p>递归写法：</p>
+<h3 id="solution-递归"><a class="markdownIt-Anchor" href="#solution-递归"></a> Solution 递归</h3>
+<p>递归写法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inorderTraversal(root ,list);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (root==<span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line">    inorderTraversal(root.left, list);</div><div class="line">    list.add(root.val);</div><div class="line">    inorderTraversal(root.right, list);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Solution-Morris遍历"><a href="#Solution-Morris遍历" class="headerlink" title="Solution Morris遍历"></a>Solution Morris遍历</h3><p>常数空间，不用list<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 挖个坑</span></div></pre></td></tr></table></figure></p>
+<h3 id="solution-morris遍历"><a class="markdownIt-Anchor" href="#solution-morris遍历"></a> Solution Morris遍历</h3>
+<p>常数空间，不用list</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 挖个坑</span></div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -519,7 +526,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -531,7 +538,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -542,7 +549,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -553,7 +560,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -588,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-迭代"><span class="nav-number">2.</span> <span class="nav-text">Solution 迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-递归"><span class="nav-number">3.</span> <span class="nav-text">Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-Morris遍历"><span class="nav-number">4.</span> <span class="nav-text">Solution Morris遍历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-迭代"><span class="nav-number">2.</span> <span class="nav-text"> Solution 迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-递归"><span class="nav-number">3.</span> <span class="nav-text"> Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-morris遍历"><span class="nav-number">4.</span> <span class="nav-text"> Solution Morris遍历</span></a></li></ol></div>
             
 
           </div>

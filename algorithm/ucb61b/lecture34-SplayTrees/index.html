@@ -298,7 +298,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -395,36 +395,56 @@
       
         <p>Lecture34 Splay Trees</p>
 <a id="more"></a>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Spaly-Trees"><a href="#Spaly-Trees" class="headerlink" title="Spaly Trees"></a>Spaly Trees</h1><p>Balanced binay search tree</p>
-<p>All operations: O(log n ) time on average<br>Single operation: worst O(n)time </p>
+<br>
+<h1 id="spaly-trees"><a class="markdownIt-Anchor" href="#spaly-trees"></a> Spaly Trees</h1>
+<p>Balanced binay search tree</p>
+<p>All operations: O(log n ) time on average<br>
+Single operation: worst O(n)time</p>
 <hr>
-<h1 id="Tree-Roatations"><a href="#Tree-Roatations" class="headerlink" title="Tree Roatations"></a>Tree Roatations</h1><p>Splay trees are kept balanced with ratations.</p>
+<h1 id="tree-roatations"><a class="markdownIt-Anchor" href="#tree-roatations"></a> Tree Roatations</h1>
+<p>Splay trees are kept balanced with ratations.</p>
 <p>Splay trees are not perfectly balanced</p>
 <hr>
-<h1 id="Splay-Tree-Operations"><a href="#Splay-Tree-Operations" class="headerlink" title="Splay Tree Operations"></a>Splay Tree Operations</h1><h2 id="Object-find-object-k"><a href="#Object-find-object-k" class="headerlink" title="Object find (object k);"></a>Object find (object k);</h2><p>Let X be node where search ended, whether it contains k or not.<br>Splay X up the tree through a sequence of ratation, so X become root.</p>
+<h1 id="splay-tree-operations"><a class="markdownIt-Anchor" href="#splay-tree-operations"></a> Splay Tree Operations</h1>
+<h2 id="object-find-object-k"><a class="markdownIt-Anchor" href="#object-find-object-k"></a> Object find (object k);</h2>
+<p>Let X be node where search ended, whether it contains k or not.<br>
+Splay X up the tree through a sequence of ratation, so X become root.</p>
 <ol>
 <li>X 变为root，下次查找会很快。</li>
 <li>让树重新balance</li>
 </ol>
 <p>3 Case</p>
 <ol>
-<li>X is left child of a right child 或者 right child of a left child<br>先转parent，再转grand parent<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find1.jpg" alt="case 1" title="case 1"></li>
-<li>X is left child of a left child 或者 right child of a right child<br>先转grand parent，再转parent<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find2.jpg" alt="case 2" title="case 2"></li>
-<li>X is child of the root<br>重复case 1 和 case 2 就来到了case 3<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find3.jpg" alt="case 3" title="case 3"></li>
-<li>一个栗子<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find4.jpg" alt="一个栗子" title="一个栗子"></li>
+<li>X is left child of a right child 或者 right child of a left child<br>
+先转parent，再转grand parent<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find1.jpg" alt="case 1" title="case 1"></li>
+<li>X is left child of a left child 或者 right child of a right child<br>
+先转grand parent，再转parent<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find2.jpg" alt="case 2" title="case 2"></li>
+<li>X is child of the root<br>
+重复case 1 和 case 2 就来到了case 3<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find3.jpg" alt="case 3" title="case 3"></li>
+<li>一个栗子<br>
+<img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/find4.jpg" alt="一个栗子" title="一个栗子"></li>
 </ol>
-<h2 id="Object-first-Object-last"><a href="#Object-first-Object-last" class="headerlink" title="Object first(); Object last();"></a>Object first(); Object last();</h2><p>min: 一路向左<br>max: 一路向右</p>
+<h2 id="object-first-object-last"><a class="markdownIt-Anchor" href="#object-first-object-last"></a> Object first(); Object last();</h2>
+<p>min: 一路向左<br>
+max: 一路向右</p>
 <p>然后 Splay it to root</p>
-<h2 id="void-insert-Object-k-Object-v"><a href="#void-insert-Object-k-Object-v" class="headerlink" title="void insert(Object k, Object v);"></a>void insert(Object k, Object v);</h2><p>insert new entry(k, v)<br>Splay new node to the root</p>
-<h2 id="Object-remove-Object-k"><a href="#Object-remove-Object-k" class="headerlink" title="Object remove(Object k);"></a>Object remove(Object k);</h2><p>和普通的查找二叉树一样。<br>如果被删除的点，有左右节点，会复杂一点。</p>
+<h2 id="void-insertobject-k-object-v"><a class="markdownIt-Anchor" href="#void-insertobject-k-object-v"></a> void insert(Object k, Object v);</h2>
+<p>insert new entry(k, v)<br>
+Splay new node to the root</p>
+<h2 id="object-removeobject-k"><a class="markdownIt-Anchor" href="#object-removeobject-k"></a> Object remove(Object k);</h2>
+<p>和普通的查找二叉树一样。<br>
+如果被删除的点，有左右节点，会复杂一点。</p>
 <ol>
 <li>Let X be the node removed from the tree</li>
-<li>Splay X’parent to root.  </li>
+<li>Splay X’parent to root.</li>
 </ol>
-<p><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/remove.jpg" alt="delete" title="delete"><br>这个地方的X指的是，找到大于被删除数的最小值，然后把这个最小值的parent Splay to the root</p>
+<p><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture34-SplayTrees/remove.jpg" alt="delete" title="delete"><br>
+这个地方的X指的是，找到大于被删除数的最小值，然后把这个最小值的parent Splay to the root</p>
 
       
     </div>
@@ -545,7 +565,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -557,7 +577,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -568,7 +588,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -579,7 +599,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -614,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spaly-Trees"><span class="nav-number">1.</span> <span class="nav-text">Spaly Trees</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree-Roatations"><span class="nav-number">2.</span> <span class="nav-text">Tree Roatations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Splay-Tree-Operations"><span class="nav-number">3.</span> <span class="nav-text">Splay Tree Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-find-object-k"><span class="nav-number">3.1.</span> <span class="nav-text">Object find (object k);</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-first-Object-last"><span class="nav-number">3.2.</span> <span class="nav-text">Object first(); Object last();</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-insert-Object-k-Object-v"><span class="nav-number">3.3.</span> <span class="nav-text">void insert(Object k, Object v);</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-remove-Object-k"><span class="nav-number">3.4.</span> <span class="nav-text">Object remove(Object k);</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spaly-trees"><span class="nav-number">1.</span> <span class="nav-text"> Spaly Trees</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-roatations"><span class="nav-number">2.</span> <span class="nav-text"> Tree Roatations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree-operations"><span class="nav-number">3.</span> <span class="nav-text"> Splay Tree Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#object-find-object-k"><span class="nav-number">3.1.</span> <span class="nav-text"> Object find (object k);</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object-first-object-last"><span class="nav-number">3.2.</span> <span class="nav-text"> Object first(); Object last();</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-insertobject-k-object-v"><span class="nav-number">3.3.</span> <span class="nav-text"> void insert(Object k, Object v);</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object-removeobject-k"><span class="nav-number">3.4.</span> <span class="nav-text"> Object remove(Object k);</span></a></li></ol></li></ol></div>
             
 
           </div>

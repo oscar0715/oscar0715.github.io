@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="Lecture25 Binary Search Tree 图片引用写在最前面:picture source">
+<meta name="description" content="Lecture25 Binary Search Tree 图片引用写在最前面: picture source">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lecture25 Binary Search Tree">
 <meta property="og:url" content="http://menuet.xyz/algorithm/ucb61b/lecture25-BinarySearchTree/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Lecture25 Binary Search Tree 图片引用写在最前面:picture source">
+<meta property="og:description" content="Lecture25 Binary Search Tree 图片引用写在最前面: picture source">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete0.png">
 <meta property="og:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete2.png">
@@ -109,7 +109,7 @@
 <meta property="og:updated_time" content="2018-12-04T14:32:53.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lecture25 Binary Search Tree">
-<meta name="twitter:description" content="Lecture25 Binary Search Tree 图片引用写在最前面:picture source">
+<meta name="twitter:description" content="Lecture25 Binary Search Tree 图片引用写在最前面: picture source">
 <meta name="twitter:image" content="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete0.png">
 
 
@@ -297,7 +297,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -393,10 +393,12 @@
 
       
         <p>Lecture25 Binary Search Tree</p>
-<p><strong>图片引用写在最前面:</strong><br><a href="https://segmentfault.com/a/1190000004407072" title="picture source" target="_blank" rel="external">picture source</a></p>
+<p><strong>图片引用写在最前面:</strong></p>
+<a href="https://segmentfault.com/a/1190000004407072" title="picture source" target="_blank" rel="external">picture source</a>
 <a id="more"></a>
 <hr>
-<h3 id="Ordered-dictionary"><a href="#Ordered-dictionary" class="headerlink" title="Ordered dictionary"></a>Ordered dictionary</h3><p>dictionary in which keys have a total order, like a heap.</p>
+<h3 id="ordered-dictionary"><a class="markdownIt-Anchor" href="#ordered-dictionary"></a> Ordered dictionary</h3>
+<p>dictionary in which keys have a total order, like a heap.</p>
 <ol>
 <li>Insert Entries</li>
 <li>Find</li>
@@ -404,36 +406,61 @@
 <li>Quickly find entry with min or max key</li>
 <li>or entry nearest another entry(key小于30的最大的那个entry)</li>
 </ol>
-<h3 id="Binary-search-tree-invariant"><a href="#Binary-search-tree-invariant" class="headerlink" title="Binary search tree invariant"></a>Binary search tree invariant</h3><p>For any node X, every key in <code>left subtree</code> of X is &lt;= X’s Key<br>For any node X, every key in <code>right subtree</code> of X is &gt;= X’s Key<br>父节点总比左子树大，右子树小</p>
-<h3 id="Inorder-Traversal-of-binary-search-tree"><a href="#Inorder-Traversal-of-binary-search-tree" class="headerlink" title="Inorder Traversal of binary search tree"></a>Inorder Traversal of binary search tree</h3><p>Visit in sorted order<br>基于上面的规则，中序遍历确实是顺序输出。</p>
-<h3 id="Entry-find-Object-k"><a href="#Entry-find-Object-k" class="headerlink" title="Entry find( Object k )"></a>Entry find( Object k )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">find</span><span class="params">(Object k)</span> </span>&#123;</div><div class="line"></div><div class="line">  BinaryTreeNode node = root;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (node != <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">int</span> comp = ((Comparable) k).compareTo(node.entry.key());</div><div class="line">    <span class="keyword">if</span> (comp &lt; <span class="number">0</span>) &#123;</div><div class="line">      node = node.left;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (comp &gt; <span class="number">0</span>) &#123;</div><div class="line">      node = node.right;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> node.entry;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是这并没有什么, hashmap更快<br>有趣的是: </p>
+<h3 id="binary-search-tree-invariant"><a class="markdownIt-Anchor" href="#binary-search-tree-invariant"></a> Binary search tree invariant</h3>
+<p>For any node X, every key in <code>left subtree</code> of X is &lt;= X’s Key<br>
+For any node X, every key in <code>right subtree</code> of X is &gt;= X’s Key<br>
+父节点总比左子树大，右子树小</p>
+<h3 id="inorder-traversal-of-binary-search-tree"><a class="markdownIt-Anchor" href="#inorder-traversal-of-binary-search-tree"></a> Inorder Traversal of binary search tree</h3>
+<p>Visit in sorted order<br>
+基于上面的规则，中序遍历确实是顺序输出。</p>
+<h3 id="entry-find-object-k"><a class="markdownIt-Anchor" href="#entry-find-object-k"></a> Entry find( Object k )</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">find</span><span class="params">(Object k)</span> </span>&#123;</div><div class="line"></div><div class="line">  BinaryTreeNode node = root;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (node != <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">int</span> comp = ((Comparable) k).compareTo(node.entry.key());</div><div class="line">    <span class="keyword">if</span> (comp &lt; <span class="number">0</span>) &#123;</div><div class="line">      node = node.left;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (comp &gt; <span class="number">0</span>) &#123;</div><div class="line">      node = node.right;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> node.entry;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这并没有什么, hashmap更快<br>
+有趣的是:</p>
 <ol>
 <li>when search down a tree for a key k that is <code>not</code> in tree.</li>
 <li>How to find the <code>smallest key &gt;=k</code>,  (最后一次查左子树的那个点)</li>
 <li>or <code>largest key &lt;= k</code>;（最后一次查右子树的那个点）</li>
 </ol>
-<h3 id="Entry-first-Entry-last"><a href="#Entry-first-Entry-last" class="headerlink" title="Entry first() / Entry last()"></a>Entry first() / Entry last()</h3><ol>
+<h3 id="entry-first-entry-last"><a class="markdownIt-Anchor" href="#entry-first-entry-last"></a> Entry first() / Entry last()</h3>
+<ol>
 <li>first(): 找最小的那个，简单地说，一路向左，知道有个节点没有左节点</li>
 <li>last(): 同理一路向右</li>
 </ol>
-<h3 id="Entry-insert（-Object-k-Object-v）"><a href="#Entry-insert（-Object-k-Object-v）" class="headerlink" title="Entry insert（ Object k, Object v）"></a>Entry insert（ Object k, Object v）</h3><p>和查找<code>find(Object k)</code>相同<br>当遇到null的时候，把这个entry放在null这个位置</p>
+<h3 id="entry-insert-object-k-object-v"><a class="markdownIt-Anchor" href="#entry-insert-object-k-object-v"></a> Entry insert（ Object k, Object v）</h3>
+<p>和查找<code>find(Object k)</code>相同<br>
+当遇到null的时候，把这个entry放在null这个位置</p>
 <p>如果有重复呢，老师说，随便，Let’s just go to left！哈哈哈哈</p>
-<h3 id="Entry-remove-Object-k"><a href="#Entry-remove-Object-k" class="headerlink" title="Entry remove( Object k )"></a>Entry remove( Object k )</h3><p>find a node n with key k</p>
-<h4 id="Return-null-if-k-is-not-in-the-tree"><a href="#Return-null-if-k-is-not-in-the-tree" class="headerlink" title="Return null if k is not in the tree"></a>Return null if k is not in the tree</h4><h4 id="If-n-has-no-children"><a href="#If-n-has-no-children" class="headerlink" title="If n has no children"></a>If n has no children</h4><p>delete it  简单<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete0.png" alt=""><br><br></p>
-<h4 id="If-n-has-one-child"><a href="#If-n-has-one-child" class="headerlink" title="If n has one child"></a>If n has one child</h4><p>move child up to n’s place 简单<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete2.png" alt=""><br><br></p>
-<h4 id="重点来了-If-n-has-two-children"><a href="#重点来了-If-n-has-two-children" class="headerlink" title="重点来了: If n has two children"></a>重点来了: If n has two children</h4><ol>
+<h3 id="entry-remove-object-k"><a class="markdownIt-Anchor" href="#entry-remove-object-k"></a> Entry remove( Object k )</h3>
+<p>find a node n with key k</p>
+<h4 id="return-null-if-k-is-not-in-the-tree"><a class="markdownIt-Anchor" href="#return-null-if-k-is-not-in-the-tree"></a> Return null if k is not in the tree</h4>
+<h4 id="if-n-has-no-children"><a class="markdownIt-Anchor" href="#if-n-has-no-children"></a> If n has no children</h4>
+<p>delete it  简单<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete0.png" alt=""><br>
+<br></p>
+<h4 id="if-n-has-one-child"><a class="markdownIt-Anchor" href="#if-n-has-one-child"></a> If n has one child</h4>
+<p>move child up to n’s place 简单<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete2.png" alt=""><br>
+<br></p>
+<h4 id="重点来了-if-n-has-two-children"><a class="markdownIt-Anchor" href="#重点来了-if-n-has-two-children"></a> 重点来了: If n has two children</h4>
+<ol>
 <li>Let x be node in n’s right subtree with smallest key (一路向左)</li>
 <li>这个时候x是这棵n的右子树里最小的，所以它最多只有一个右子树，反正没有左子树。</li>
 <li>所以要把x remove掉很容易的。所以就把x remove掉，放到要删除的n的位置。</li>
 <li>如果x有右子树，按照前面的方法接上就好了。</li>
-<li>然后就神奇地结束了！因为x是在这整棵树里大于n且最接近n的<br><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete3.png" alt=""><br><br></li>
+<li>然后就神奇地结束了！因为x是在这整棵树里大于n且最接近n的<br>
+<br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/delete3.png" alt=""><br>
+<br></li>
 </ol>
-<p>学生还有一种solution就是把n的左子树接到x下面，老师说，可以，但是我不喜欢树太深  </p>
+<p>学生还有一种solution就是把n的左子树接到x下面，老师说，可以，但是我不喜欢树太深</p>
 <p>对比一下二叉堆，二叉堆remove min操作的时候是把最后一个节点先放到最上面，再bubble down，有异曲同工之妙</p>
-<h3 id="Running-time"><a href="#Running-time" class="headerlink" title="Running time"></a>Running time</h3><p>insert find remove<br>proportion to the depth of the tree O(log n)</p>
-<p>一个悲伤地故事是，如果是 1，2，3，4，5，6………………<br>这就会变成一个链表，然后就变成线性了</p>
-<p><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/list.png" alt=""><br><br></p>
+<h3 id="running-time"><a class="markdownIt-Anchor" href="#running-time"></a> Running time</h3>
+<p>insert find remove<br>
+proportion to the depth of the tree O(log n)</p>
+<p>一个悲伤地故事是，如果是 1，2，3，4，5，6………………<br>
+这就会变成一个链表，然后就变成线性了</p>
+<p><br><img src="http://ogy8sh1ok.bkt.clouddn.com/ucb61b/lecture25-BinarySearchTree/list.png" alt=""><br>
+<br></p>
 
       
     </div>
@@ -554,7 +581,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -566,7 +593,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -577,7 +604,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -588,7 +615,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -623,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ordered-dictionary"><span class="nav-number">1.</span> <span class="nav-text">Ordered dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-search-tree-invariant"><span class="nav-number">2.</span> <span class="nav-text">Binary search tree invariant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inorder-Traversal-of-binary-search-tree"><span class="nav-number">3.</span> <span class="nav-text">Inorder Traversal of binary search tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry-find-Object-k"><span class="nav-number">4.</span> <span class="nav-text">Entry find( Object k )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry-first-Entry-last"><span class="nav-number">5.</span> <span class="nav-text">Entry first() / Entry last()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry-insert（-Object-k-Object-v）"><span class="nav-number">6.</span> <span class="nav-text">Entry insert（ Object k, Object v）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry-remove-Object-k"><span class="nav-number">7.</span> <span class="nav-text">Entry remove( Object k )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Return-null-if-k-is-not-in-the-tree"><span class="nav-number">7.1.</span> <span class="nav-text">Return null if k is not in the tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#If-n-has-no-children"><span class="nav-number">7.2.</span> <span class="nav-text">If n has no children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#If-n-has-one-child"><span class="nav-number">7.3.</span> <span class="nav-text">If n has one child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重点来了-If-n-has-two-children"><span class="nav-number">7.4.</span> <span class="nav-text">重点来了: If n has two children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-time"><span class="nav-number">8.</span> <span class="nav-text">Running time</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ordered-dictionary"><span class="nav-number">1.</span> <span class="nav-text"> Ordered dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-search-tree-invariant"><span class="nav-number">2.</span> <span class="nav-text"> Binary search tree invariant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inorder-traversal-of-binary-search-tree"><span class="nav-number">3.</span> <span class="nav-text"> Inorder Traversal of binary search tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entry-find-object-k"><span class="nav-number">4.</span> <span class="nav-text"> Entry find( Object k )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entry-first-entry-last"><span class="nav-number">5.</span> <span class="nav-text"> Entry first() / Entry last()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entry-insert-object-k-object-v"><span class="nav-number">6.</span> <span class="nav-text"> Entry insert（ Object k, Object v）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entry-remove-object-k"><span class="nav-number">7.</span> <span class="nav-text"> Entry remove( Object k )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#return-null-if-k-is-not-in-the-tree"><span class="nav-number">7.1.</span> <span class="nav-text"> Return null if k is not in the tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-n-has-no-children"><span class="nav-number">7.2.</span> <span class="nav-text"> If n has no children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-n-has-one-child"><span class="nav-number">7.3.</span> <span class="nav-text"> If n has one child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重点来了-if-n-has-two-children"><span class="nav-number">7.4.</span> <span class="nav-text"> 重点来了: If n has two children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-time"><span class="nav-number">8.</span> <span class="nav-text"> Running time</span></a></li></ol></div>
             
 
           </div>

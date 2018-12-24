@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -390,26 +390,28 @@
         <p>Invert Binary Tree</p>
 <a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Invert a binary tree.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Invert a binary tree.</p>
 <pre>     
-     4
+	 4
    /   \
   2     7
  / \   / \
 1   3 6   9
 </pre>
-to
+<p>to</p>
 <pre>     
-     4
+	 4
    /   \
   7     2
  / \   / \
 9   6 3   1
 </pre>
-
-<h3 id="Solution-递归"><a href="#Solution-递归" class="headerlink" title="Solution 递归"></a>Solution 递归</h3><p>二叉树还是递归比较快</p>
+<h3 id="solution-递归"><a class="markdownIt-Anchor" href="#solution-递归"></a> Solution 递归</h3>
+<p>二叉树还是递归比较快</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line"></div><div class="line">	System.out.println(levelOrder(root));</div><div class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	TreeNode result = root;</div><div class="line"></div><div class="line">	exchange(root);</div><div class="line"></div><div class="line">	System.out.println(levelOrder(result));</div><div class="line">	<span class="keyword">return</span>  result;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	TreeNode tmp = root.left;</div><div class="line">	root.left = root.right;</div><div class="line">	root.right = tmp;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</div><div class="line">		exchange(root.left);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (root.right != <span class="keyword">null</span>) &#123;</div><div class="line">		exchange(root.right);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Solution-非递归"><a href="#Solution-非递归" class="headerlink" title="Solution 非递归"></a>Solution 非递归</h3><p>其实还是用的层次遍历的思想，比较慢</p>
+<h3 id="solution-非递归"><a class="markdownIt-Anchor" href="#solution-非递归"></a> Solution 非递归</h3>
+<p>其实还是用的层次遍历的思想，比较慢</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	TreeNode result = root;</div><div class="line"></div><div class="line">	Deque&lt;TreeNode&gt; queue = <span class="keyword">new</span> ArrayDeque&lt;TreeNode&gt;();</div><div class="line">	queue.add(root);</div><div class="line">	<span class="keyword">while</span> (!queue.isEmpty())&#123;</div><div class="line">		TreeNode node = queue.pollFirst();</div><div class="line">		exchange(node);</div><div class="line">		<span class="keyword">if</span> (node.left!=<span class="keyword">null</span>)&#123;</div><div class="line">			queue.addLast(node.left);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (node.right!=<span class="keyword">null</span>)&#123;</div><div class="line">			queue.addLast(node.right);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	System.out.println(levelOrder(result));</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	TreeNode tmp = root.left;</div><div class="line">	root.left = root.right;</div><div class="line">	root.right = tmp;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -533,7 +535,7 @@ to
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -545,7 +547,7 @@ to
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -556,7 +558,7 @@ to
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -567,7 +569,7 @@ to
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -602,7 +604,7 @@ to
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-递归"><span class="nav-number">2.</span> <span class="nav-text">Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-非递归"><span class="nav-number">3.</span> <span class="nav-text">Solution 非递归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-递归"><span class="nav-number">2.</span> <span class="nav-text"> Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-非递归"><span class="nav-number">3.</span> <span class="nav-text"> Solution 非递归</span></a></li></ol></div>
             
 
           </div>

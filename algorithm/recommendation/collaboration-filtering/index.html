@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -395,7 +395,8 @@
 </ol>
 <a id="more"></a>
 <hr>
-<h1 id="参考资料放在最前面"><a href="#参考资料放在最前面" class="headerlink" title="参考资料放在最前面"></a>参考资料放在最前面</h1><ol>
+<h1 id="参考资料放在最前面"><a class="markdownIt-Anchor" href="#参考资料放在最前面"></a> 参考资料放在最前面</h1>
+<ol>
 <li><a href="https://www.jianshu.com/p/5463ab162a58" target="_blank" rel="external">推荐算法–协同过滤</a> —— 从这里借了一个例子</li>
 <li><a href="https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf" target="_blank" rel="external">Amazon Recommendation</a></li>
 <li><a href="http://glaros.dtc.umn.edu/gkhome/fetch/papers/www10_sarwar.pdf" target="_blank" rel="external">Item-based Collaborative Filtering Recommendation Algorithms</a></li>
@@ -403,49 +404,61 @@
 <li><a href="http://www.infoq.com/cn/news/2013/04/netflix-ml-architecture#" target="_blank" rel="external">Netflix公布个性化和推荐系统架构</a></li>
 <li><a href="http://www.infoq.com/cn/articles/a-discussion-of-recommended-algorithms" target="_blank" rel="external">一次推荐算法的普及性讨论</a></li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="读Paper"><a href="#读Paper" class="headerlink" title="读Paper"></a>读Paper</h1><h2 id="Item-based-Collaborative-Filtering-Recommendation-Algorithms"><a href="#Item-based-Collaborative-Filtering-Recommendation-Algorithms" class="headerlink" title="Item-based Collaborative Filtering Recommendation Algorithms"></a><a href="http://glaros.dtc.umn.edu/gkhome/fetch/papers/www10_sarwar.pdf" target="_blank" rel="external">Item-based Collaborative Filtering Recommendation Algorithms</a></h2><p><strong>相似度计算</strong><br>在利用用户评分的进行协同推荐的电商系统中，计算商品的相似度主要有三种方式：</p>
+<br>
+***
+<br>
+<h1 id="读paper"><a class="markdownIt-Anchor" href="#读paper"></a> 读Paper</h1>
+<h2 id="item-based-collaborative-filtering-recommendation-algorithms"><a class="markdownIt-Anchor" href="#item-based-collaborative-filtering-recommendation-algorithms"></a> <a href="http://glaros.dtc.umn.edu/gkhome/fetch/papers/www10_sarwar.pdf" target="_blank" rel="external">Item-based Collaborative Filtering Recommendation Algorithms</a></h2>
+<p><strong>相似度计算</strong><br>
+在利用用户评分的进行协同推荐的电商系统中，计算商品的相似度主要有三种方式：</p>
 <ol>
-<li>余弦相似度 Cosine-based </li>
-<li>皮尔逊相关系数 Pearson-r correlation </li>
+<li>余弦相似度 Cosine-based</li>
+<li>皮尔逊相关系数 Pearson-r correlation</li>
 <li>修正的余弦相似 Adjusted Cosine similarity</li>
 </ol>
-<p>这三种相似度其实还是只使用了评分这一个维度：<br>一个用户 $U_a$ 这个向量，对商品 $i, j, k$ 的打分是这个向量不同的维度，</p>
+<p>这三种相似度其实还是只使用了评分这一个维度：<br>
+一个用户 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>U</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">U_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">U</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">a</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> 这个向量，对商品 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo separator="true">,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">i, j, k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> 的打分是这个向量不同的维度，</p>
 
 $
 \overrightarrow{U_a} = ( R_{a,i}, R_{a,j}, R_{a,k} )  \\
 \overrightarrow{U_b} = ( R_{b,i}, R_{b,j}, R_{b,k} )  \\
 $
 
-<p><a href="https://www.zhihu.com/question/21824291" target="_blank" rel="external">修正余弦相似度和皮尔森系数什么关系？</a><br>皮尔逊相关度和修正余弦相似中的去中心化，是减去一个评分均值。</p>
+<p><a href="https://www.zhihu.com/question/21824291" target="_blank" rel="external">修正余弦相似度和皮尔森系数什么关系？</a><br>
+皮尔逊相关度和修正余弦相似中的去中心化，是减去一个评分均值。</p>
 <p><strong>用户的隐形偏好（点击，购买，加购等等），可以通过加权变为一个评分</strong></p>
 <hr>
-<h2 id="Two-Decades-of-RecommenderSystems-at-Amazon-com"><a href="#Two-Decades-of-RecommenderSystems-at-Amazon-com" class="headerlink" title="Two Decades of RecommenderSystems at Amazon.com"></a><a href="https://www.computer.org/csdl/mags/ic/2017/03/mic2017030012.pdf" target="_blank" rel="external">Two Decades of RecommenderSystems at Amazon.com</a></h2><blockquote>
-<p>The algorithm’s success has been from its simplicity, scalability,<br>and often surprising and useful recommendations, as well as desirable<br>properties such as updating immediately based on new information about a customer and being able to explain why itrecommended something in a way that’s easily understandable.</p>
+<h2 id="two-decades-of-recommendersystems-at-amazoncom"><a class="markdownIt-Anchor" href="#two-decades-of-recommendersystems-at-amazoncom"></a> <a href="https://www.computer.org/csdl/mags/ic/2017/03/mic2017030012.pdf" target="_blank" rel="external">Two Decades of RecommenderSystems at Amazon.com</a></h2>
+<blockquote>
+<p>The algorithm’s success has been from its simplicity, scalability,<br>
+and often surprising and useful recommendations, as well as desirable<br>
+properties such as updating immediately based on new information about a customer and being able to explain why itrecommended something in a way that’s easily understandable.</p>
 </blockquote>
 <p>协同推荐的一个好处就是，可以直观地给出推荐理由（购买过此商品的用户也购买了XXX）</p>
 <blockquote>
-<p>For many expensive items, and especially for non-media items, what people view and what they purchase can be radically different. </p>
+<p>For many expensive items, and especially for non-media items, what people view and what they purchase can be radically different.</p>
 </blockquote>
-<p>浏览行为和购买行为有本质上的区别。<br>经济学里有互补品和替代品的概念。我的感觉是：在浏览的时候应该推荐替代品，在购买完成的时候应该推荐互补品。浏览的相似表，就应该在他闲逛的时候给他，支付完成的时候就是购买了啊</p>
+<p>浏览行为和购买行为有本质上的区别。<br>
+经济学里有互补品和替代品的概念。我的感觉是：在浏览的时候应该推荐替代品，在购买完成的时候应该推荐互补品。浏览的相似表，就应该在他闲逛的时候给他，支付完成的时候就是购买了啊</p>
 <blockquote>
 <p>The Importance of Time</p>
 </blockquote>
 <ol>
 <li>近期数据更重要</li>
-<li>季节规律 <ul>
-<li>当季推荐 </li>
-<li>解决冷启动的问题 </li>
+<li>季节规律
+<ul>
+<li>当季推荐</li>
+<li>解决冷启动的问题</li>
 </ul>
 </li>
-<li>有些品类的购买体现长期规律 </li>
+<li>有些品类的购买体现长期规律</li>
 </ol>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="推荐算法架构文章"><a href="#推荐算法架构文章" class="headerlink" title="推荐算法架构文章"></a>推荐算法架构文章</h1><h2 id="Netflix公布个性化和推荐系统架构"><a href="#Netflix公布个性化和推荐系统架构" class="headerlink" title="Netflix公布个性化和推荐系统架构"></a><a href="http://www.infoq.com/cn/news/2013/04/netflix-ml-architecture#" target="_blank" rel="external">Netflix公布个性化和推荐系统架构</a></h2><p><a href="https://medium.com/netflix-techblog/system-architectures-for-personalization-and-recommendation-e081aa94b5d8" target="_blank" rel="external">原文在这里</a></p>
+<br>
+***
+<br>
+<h1 id="推荐算法架构文章"><a class="markdownIt-Anchor" href="#推荐算法架构文章"></a> 推荐算法架构文章</h1>
+<h2 id="netflix公布个性化和推荐系统架构"><a class="markdownIt-Anchor" href="#netflix公布个性化和推荐系统架构"></a> <a href="http://www.infoq.com/cn/news/2013/04/netflix-ml-architecture#" target="_blank" rel="external">Netflix公布个性化和推荐系统架构</a></h2>
+<p><a href="https://medium.com/netflix-techblog/system-architectures-for-personalization-and-recommendation-e081aa94b5d8" target="_blank" rel="external">原文在这里</a></p>
 <blockquote>
 <p>In any case, the choice of online/nearline/offline processing is not an either/or question. All approaches can and should be combined. There are many ways to combine them. We already mentioned the idea of using offline computation as a fallback. Another option is to precompute part of a result with an offline process and leave the less costly or more context-sensitive parts of the algorithms for online computation.</p>
 </blockquote>
@@ -458,29 +471,35 @@ $
 <p>模型是以离线方式训练完成的参数文件，数据是已完成处理的信息，存在某种数据库中。在Netflix，信号是指输入到算法中的新鲜信息。这些数据来自实时服务，可用其产生用户相关数据。</p>
 </blockquote>
 <ol>
-<li>模型<ul>
+<li>模型
+<ul>
 <li>算法的参数</li>
 </ul>
 </li>
-<li>数据<ul>
+<li>数据
+<ul>
 <li>完成处理的数据</li>
 </ul>
 </li>
-<li>信号<ul>
+<li>信号
+<ul>
 <li>来自实时服务的用户行为等</li>
 </ul>
 </li>
 </ol>
 <blockquote>
-<p>Here we try to make a distinction between data and events, although the boundary is certainly blurry. We think of events as small units of time-sensitive information that need to be processed with the least amount of latency possible. These events are routed to trigger a subsequent action or process, such as updating a nearline result set. On the other hand, we think of data as more dense information units that might need to be processed and stored for later use. </p>
+<p>Here we try to make a distinction between data and events, although the boundary is certainly blurry. We think of events as small units of time-sensitive information that need to be processed with the least amount of latency possible. These events are routed to trigger a subsequent action or process, such as updating a nearline result set. On the other hand, we think of data as more dense information units that might need to be processed and stored for later use.</p>
 </blockquote>
-<p><br></p>
-<hr>
-<p><br></p>
-<h1 id="一些科普"><a href="#一些科普" class="headerlink" title="一些科普"></a>一些科普</h1><h2 id="一次推荐算法的普及性讨论"><a href="#一次推荐算法的普及性讨论" class="headerlink" title="一次推荐算法的普及性讨论"></a><a href="http://www.infoq.com/cn/articles/a-discussion-of-recommended-algorithms" target="_blank" rel="external">一次推荐算法的普及性讨论</a></h2><blockquote>
+<br>
+***
+<br>
+<h1 id="一些科普"><a class="markdownIt-Anchor" href="#一些科普"></a> 一些科普</h1>
+<h2 id="一次推荐算法的普及性讨论"><a class="markdownIt-Anchor" href="#一次推荐算法的普及性讨论"></a> <a href="http://www.infoq.com/cn/articles/a-discussion-of-recommended-algorithms" target="_blank" rel="external">一次推荐算法的普及性讨论</a></h2>
+<blockquote>
 <p>在互联网时代，我们需要用算法处理的数据规模越来越大，要求的处理时间越来越短，单一计算机的处理能力是不可能满足需求的。而架构技术的发展，带来了很多不同特点的分布式计算平台。算法为了能够应用到这些分布式计算平台上，往往需要进化，例如：并行计算要求算法可以拆分为可并行计算的几个独立单位，但很多算法不具备这种可拆分特性，使得不能简单通过分布式计算来提高效率。这时候，为了实现分布式化的计算效果，需要将算法进行等效改写，使得其具有独立拆分性。另一方面，算法的发展，也反过来会对计算架构提出新的要求。</p>
 </blockquote>
-<p>算法需要适应架构，比如分布式系统；架构也要去适配算法的发展。<br>所以我的目标是达到“算法架构师”的水平？</p>
+<p>算法需要适应架构，比如分布式系统；架构也要去适配算法的发展。<br>
+所以我的目标是达到“算法架构师”的水平？</p>
 
       
     </div>
@@ -601,7 +620,7 @@ $
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -613,7 +632,7 @@ $
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -624,7 +643,7 @@ $
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -635,7 +654,7 @@ $
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -670,7 +689,7 @@ $
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料放在最前面"><span class="nav-number">1.</span> <span class="nav-text">参考资料放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读Paper"><span class="nav-number">2.</span> <span class="nav-text">读Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Item-based-Collaborative-Filtering-Recommendation-Algorithms"><span class="nav-number">2.1.</span> <span class="nav-text">Item-based Collaborative Filtering Recommendation Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Decades-of-RecommenderSystems-at-Amazon-com"><span class="nav-number">2.2.</span> <span class="nav-text">Two Decades of RecommenderSystems at Amazon.com</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐算法架构文章"><span class="nav-number">3.</span> <span class="nav-text">推荐算法架构文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netflix公布个性化和推荐系统架构"><span class="nav-number">3.1.</span> <span class="nav-text">Netflix公布个性化和推荐系统架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些科普"><span class="nav-number">4.</span> <span class="nav-text">一些科普</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一次推荐算法的普及性讨论"><span class="nav-number">4.1.</span> <span class="nav-text">一次推荐算法的普及性讨论</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料放在最前面"><span class="nav-number">1.</span> <span class="nav-text"> 参考资料放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读paper"><span class="nav-number">2.</span> <span class="nav-text"> 读Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#item-based-collaborative-filtering-recommendation-algorithms"><span class="nav-number">2.1.</span> <span class="nav-text"> Item-based Collaborative Filtering Recommendation Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-decades-of-recommendersystems-at-amazoncom"><span class="nav-number">2.2.</span> <span class="nav-text"> Two Decades of RecommenderSystems at Amazon.com</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐算法架构文章"><span class="nav-number">3.</span> <span class="nav-text"> 推荐算法架构文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netflix公布个性化和推荐系统架构"><span class="nav-number">3.1.</span> <span class="nav-text"> Netflix公布个性化和推荐系统架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些科普"><span class="nav-number">4.</span> <span class="nav-text"> 一些科普</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一次推荐算法的普及性讨论"><span class="nav-number">4.1.</span> <span class="nav-text"> 一次推荐算法的普及性讨论</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -390,13 +390,15 @@
         <p>Add Strings</p>
 <a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>两个字符串相加</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>两个字符串相加</p>
 <p>注意点</p>
 <ol>
 <li>从string的最后一位开始，index要注意</li>
 <li>用Stringbuilder的话，高位都是append到后面的，所以最后要reverse一下</li>
 </ol>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStrings</span><span class="params">(String num1, String num2)</span> </span>&#123;</div><div class="line">        </div><div class="line">        String longS = <span class="keyword">null</span>;</div><div class="line">        String shortS = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span>(num1.length() &gt; num2.length()) &#123;</div><div class="line">            longS = num1;</div><div class="line">            shortS = num2;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            longS = num2;</div><div class="line">            shortS = num1;</div><div class="line">        &#125;</div><div class="line">         </div><div class="line">        <span class="keyword">int</span> longindex = longS.length() - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> shortindex = shortS.length() - <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(shortindex &gt;= <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">        	<span class="comment">// Solution里</span></div><div class="line">        	<span class="comment">// num1.charAt(i) - '0'这样也行………………</span></div><div class="line">            <span class="keyword">int</span> sum = (shortS.charAt(shortindex)-<span class="string">'0'</span>)</div><div class="line">                + (longS.charAt(longindex)-<span class="string">'0'</span>)</div><div class="line">                + carry;</div><div class="line">            <span class="keyword">int</span> digit = sum % <span class="number">10</span>;</div><div class="line">            sb.append(digit);</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            shortindex--; </div><div class="line">            longindex--;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(longindex&gt;=<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> sum = (longS.charAt(longindex)-<span class="string">'0'</span>) + carry;</div><div class="line">            <span class="keyword">int</span> digit = sum % <span class="number">10</span>;</div><div class="line">            sb.append(digit);</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            longindex--;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>) &#123;</div><div class="line">            sb.append(carry);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> sb.reverse().toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStrings</span><span class="params">(String num1, String num2)</span> </span>&#123;</div><div class="line">        </div><div class="line">        String longS = <span class="keyword">null</span>;</div><div class="line">        String shortS = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span>(num1.length() &gt; num2.length()) &#123;</div><div class="line">            longS = num1;</div><div class="line">            shortS = num2;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            longS = num2;</div><div class="line">            shortS = num1;</div><div class="line">        &#125;</div><div class="line">         </div><div class="line">        <span class="keyword">int</span> longindex = longS.length() - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> shortindex = shortS.length() - <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(shortindex &gt;= <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">        	<span class="comment">// Solution里</span></div><div class="line">        	<span class="comment">// num1.charAt(i) - '0'这样也行………………</span></div><div class="line">            <span class="keyword">int</span> sum = (shortS.charAt(shortindex)-<span class="string">'0'</span>)</div><div class="line">                + (longS.charAt(longindex)-<span class="string">'0'</span>)</div><div class="line">                + carry;</div><div class="line">            <span class="keyword">int</span> digit = sum % <span class="number">10</span>;</div><div class="line">            sb.append(digit);</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            shortindex--; </div><div class="line">            longindex--;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(longindex&gt;=<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> sum = (longS.charAt(longindex)-<span class="string">'0'</span>) + carry;</div><div class="line">            <span class="keyword">int</span> digit = sum % <span class="number">10</span>;</div><div class="line">            sb.append(digit);</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            longindex--;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>) &#123;</div><div class="line">            sb.append(carry);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> sb.reverse().toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,7 +519,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -529,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -540,7 +542,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -551,7 +553,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -586,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>

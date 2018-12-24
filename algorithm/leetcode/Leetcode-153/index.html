@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="153 Find Minimum in Rotated Sorted Array二分查找">
+<meta name="description" content="153 Find Minimum in Rotated Sorted Array 二分查找">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_153">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-153/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="153 Find Minimum in Rotated Sorted Array二分查找">
+<meta property="og:description" content="153 Find Minimum in Rotated Sorted Array 二分查找">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-12-04T14:32:53.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_153">
-<meta name="twitter:description" content="153 Find Minimum in Rotated Sorted Array二分查找">
+<meta name="twitter:description" content="153 Find Minimum in Rotated Sorted Array 二分查找">
 
 
 
@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -387,13 +387,17 @@
       
 
       
-        <p>153 Find Minimum in Rotated Sorted Array<br>二分查找<br><a id="more"></a></p>
+        <p>153 Find Minimum in Rotated Sorted Array<br>
+二分查找</p>
+<a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
 <p>(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</p>
 <p>Find the minimum element.</p>
 <p>You may assume no duplicate exists in the array.</p>
-<h3 id="Solution-二分查找"><a href="#Solution-二分查找" class="headerlink" title="Solution 二分查找"></a>Solution 二分查找</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> binary(nums, <span class="number">0</span>, nums.length-<span class="number">1</span>);</div><div class="line">         </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(left &gt; right) &#123;</div><div class="line">            <span class="keyword">return</span> nums[left];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> mid = left + (right-left)/<span class="number">2</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nums[left] &gt; nums[mid]) &#123;</div><div class="line">            <span class="keyword">return</span> binary(nums, left, mid);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; nums[right] )&#123;</div><div class="line">            <span class="keyword">return</span> binary(nums, mid+<span class="number">1</span>, right);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> nums[left];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="solution-二分查找"><a class="markdownIt-Anchor" href="#solution-二分查找"></a> Solution 二分查找</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> binary(nums, <span class="number">0</span>, nums.length-<span class="number">1</span>);</div><div class="line">         </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(left &gt; right) &#123;</div><div class="line">            <span class="keyword">return</span> nums[left];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> mid = left + (right-left)/<span class="number">2</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nums[left] &gt; nums[mid]) &#123;</div><div class="line">            <span class="keyword">return</span> binary(nums, left, mid);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; nums[right] )&#123;</div><div class="line">            <span class="keyword">return</span> binary(nums, mid+<span class="number">1</span>, right);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> nums[left];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -426,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-064/" rel="next" title="Leetcode_064">
-                <i class="fa fa-chevron-left"></i> Leetcode_064
+              <a href="/algorithm/leetcode/Leetcode-155/" rel="next" title="Leetcode_155">
+                <i class="fa fa-chevron-left"></i> Leetcode_155
               </a>
             
           </div>
@@ -436,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-155/" rel="prev" title="Leetcode_155">
-                Leetcode_155 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-150/" rel="prev" title="Leetcode_150">
+                Leetcode_150 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,7 +520,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -528,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -539,7 +543,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -550,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -585,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-二分查找"><span class="nav-number">2.</span> <span class="nav-text">Solution 二分查找</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-二分查找"><span class="nav-number">2.</span> <span class="nav-text"> Solution 二分查找</span></a></li></ol></div>
             
 
           </div>

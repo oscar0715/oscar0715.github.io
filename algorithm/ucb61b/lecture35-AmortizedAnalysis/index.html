@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -389,22 +389,31 @@
       
         <p>Lecture35 Amortized Analysis</p>
 <a id="more"></a>
-<p><br></p>
+<br>
 <hr>
-<p><br></p>
-<h1 id="Amortized-Analysis"><a href="#Amortized-Analysis" class="headerlink" title="Amortized Analysis"></a>Amortized Analysis</h1><p>Average time:<br>hash tables(Resize), disjoint sets, splay trees</p>
-<h1 id="The-Average-Method"><a href="#The-Average-Method" class="headerlink" title="The Average Method"></a>The Average Method</h1><p>Suppose new hash table has one bucket. (slowest case)</p>
+<br>
+<h1 id="amortized-analysis"><a class="markdownIt-Anchor" href="#amortized-analysis"></a> Amortized Analysis</h1>
+<p>Average time:<br>
+hash tables(Resize), disjoint sets, splay trees</p>
+<h1 id="the-average-method"><a class="markdownIt-Anchor" href="#the-average-method"></a> The Average Method</h1>
+<p>Suppose new hash table has one bucket. (slowest case)</p>
 <p>Any operation that doesn’t resize table takes O(1) time （只有resize是线性时间的）</p>
 <p>N buckets &amp; n items</p>
-<p>suppose insert doubles size of table, (before adding new items) if n = N<br>load factor can’t exceed one<br>resizing takes &lt;= 2n seconds</p>
+<p>suppose insert doubles size of table, (before adding new items) if n = N<br>
+load factor can’t exceed one<br>
+resizing takes &lt;= 2n seconds</p>
 <p>when resizeing done, N doubles, n + 1</p>
 <p>以上是model</p>
-<p>Construct an empty hash table, perform i inserts<br>Then, n = i and N is smallest power of 2 that is &gt;= n</p>
-<p>Total seconds for all resizing operations is </p>
+<p>Construct an empty hash table, perform i inserts<br>
+Then, n = i and N is smallest power of 2 that is &gt;= n</p>
+<p>Total seconds for all resizing operations is</p>
 <p>2 + 4 + 8 + … + N/4 + N/2 + N = 2N - 2</p>
-<p>Cost of i inserts is &lt;= i + 2N - 2 seconds<br>N &lt; 2n = 2i<br>O(5i-2) = <code>O(i)</code></p>
+<p>Cost of i inserts is &lt;= i + 2N - 2 seconds<br>
+N &lt; 2n = 2i<br>
+O(5i-2) = <code>O(i)</code></p>
 <p>Average running time of insert O(i)/i = O(1)</p>
-<p>Amortized running time of insert O(i);<br>worst-case time O(n) </p>
+<p>Amortized running time of insert O(i);<br>
+worst-case time O(n)</p>
 
       
     </div>
@@ -525,7 +534,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -537,7 +546,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -548,7 +557,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -559,7 +568,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -594,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Amortized-Analysis"><span class="nav-number">1.</span> <span class="nav-text">Amortized Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Average-Method"><span class="nav-number">2.</span> <span class="nav-text">The Average Method</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#amortized-analysis"><span class="nav-number">1.</span> <span class="nav-text"> Amortized Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-average-method"><span class="nav-number">2.</span> <span class="nav-text"> The Average Method</span></a></li></ol></div>
             
 
           </div>

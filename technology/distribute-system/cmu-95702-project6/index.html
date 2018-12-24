@@ -303,7 +303,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -400,9 +400,11 @@
       
         <p>CMU 95702 - Distributed System</p>
 <p>Project 6</p>
-<p>这个Project是要实现SnapShot算法（快照算法），在这里做一个小总结。<br><a id="more"></a></p>
+<p>这个Project是要实现SnapShot算法（快照算法），在这里做一个小总结。</p>
+<a id="more"></a>
 <hr>
-<h1 id="SnapShot算法"><a href="#SnapShot算法" class="headerlink" title="SnapShot算法"></a>SnapShot算法</h1><p>SnapShot 算法是用来确定分布式系统中的全局状态（ Global State ）的一个算法。也就是说，要数清楚，在某个时间点，各个进程（或者说节点）里有什么，各个进程之间的 channel 上有什么。</p>
+<h1 id="snapshot算法"><a class="markdownIt-Anchor" href="#snapshot算法"></a> SnapShot算法</h1>
+<p>SnapShot 算法是用来确定分布式系统中的全局状态（ Global State ）的一个算法。也就是说，要数清楚，在某个时间点，各个进程（或者说节点）里有什么，各个进程之间的 channel 上有什么。</p>
 <p>尽管每次做 SnapShot 算法记录下来的状态的组合可能都不一样，也就是说，在不同的时刻，每个节点里有什么东西不一样，但是全局状态是一样的，也就是说，各个节点和 channel 上的东西的总和是一样的。</p>
 <p>这个算法的特点在于，每一个节点都在本地记录自己的状态。因为在分布式系统中，我们很难去全局地统计所有节点在某个时刻的一个全局状态。</p>
 <p>算法有几个前提：</p>
@@ -414,30 +416,47 @@
 <li>整个系统的逻辑，或者说业务，是完全可以继续进行的。也就是说，发起快照算法不影响正常的业务处理</li>
 </ol>
 <p>算法的核心是一个 Marker 消息。整个快照算法通过各个节点间收发 Marker 消息来进行。</p>
-<h1 id="模拟一次快照算法"><a href="#模拟一次快照算法" class="headerlink" title="模拟一次快照算法"></a>模拟一次快照算法</h1><p>给定三个节点的分布式系统。假设有三种不同的消息在这个系统中流动，分别是A，B，C，每种消息的是数量都为4。</p>
-<p>初始化状态时:<br>1号节点有1个A，0个B，1个C<br>2号节点有0个A，2个B，0个C<br>3号节点有1个A，0个B，2个C</p>
+<h1 id="模拟一次快照算法"><a class="markdownIt-Anchor" href="#模拟一次快照算法"></a> 模拟一次快照算法</h1>
+<p>给定三个节点的分布式系统。假设有三种不同的消息在这个系统中流动，分别是A，B，C，每种消息的是数量都为4。</p>
+<p>初始化状态时:<br>
+1号节点有1个A，0个B，1个C<br>
+2号节点有0个A，2个B，0个C<br>
+3号节点有1个A，0个B，2个C</p>
 <p>另外的消息在节点间的channel上传输，如下图所示</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/1.png" alt="&quot;图1&quot;" title="图1"></p>
 <p>这个时候，2号节点从外界（我们假设一个Admin节点，该节点不参与业务逻辑）收到一个 marker消息。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/2.png" alt="&quot;图2&quot;" title="图2"></p>
-<p>收到 marker 以后，2号节点要做两件事情：<br>a. 记录自己现在的状态，也就是说，数清楚自己节点上有哪些消息。这个时候2号有0个A，2个B，0个C。记录到叫做state的map里。<br>b. 向另外两个节点发送 marker消息。</p>
+<p>收到 marker 以后，2号节点要做两件事情：<br>
+a. 记录自己现在的状态，也就是说，数清楚自己节点上有哪些消息。这个时候2号有0个A，2个B，0个C。记录到叫做state的map里。<br>
+b. 向另外两个节点发送 marker消息。</p>
 <p>同时，在进行snapshot算法的同时，业务继续进行，也就是消息还是正常地在三个节点间流通。流通示意如下图</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/3.png" alt="&quot;图3&quot;" title="图3"></p>
-<p>然后我们来看在两个marker即将到达节点1 和 节点2 的时候发生了的事情：<br>首先，节点1，先收到了来自3的A。在这个时候，因为节点1还没有收到 marker，所以节点1还未开始 snapshot 算法，只是更新一下节点1上的消息数量，不更新state。<br>然后，节点2，节点2收到了一个A，和一个C，这里很重要，因为节点2是已经收到了 marker 的，所以节点2已经开始了snapshot算法，所以，这个时候要把这两个加到节点2的state里，这个时候，节点2一共有1个A，2个B，1个C。</p>
-<p>最后，节点3，和节点1一样，是没有开始snapshot算法的，所以也只是更新一下自己的消息数量，<br>更新结果如图4所示。</p>
-<p>注意：所有channel上都没有消息这种状态是很难被捕捉到的，这里只是为了分析才画出来<br><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/4.png" alt="&quot;图4&quot;" title="图4"></p>
+<p>然后我们来看在两个marker即将到达节点1 和 节点2 的时候发生了的事情：<br>
+首先，节点1，先收到了来自3的A。在这个时候，因为节点1还没有收到 marker，所以节点1还未开始 snapshot 算法，只是更新一下节点1上的消息数量，不更新state。<br>
+然后，节点2，节点2收到了一个A，和一个C，这里很重要，因为节点2是已经收到了 marker 的，所以节点2已经开始了snapshot算法，所以，这个时候要把这两个加到节点2的state里，这个时候，节点2一共有1个A，2个B，1个C。</p>
+<p>最后，节点3，和节点1一样，是没有开始snapshot算法的，所以也只是更新一下自己的消息数量，<br>
+更新结果如图4所示。</p>
+<p>注意：所有channel上都没有消息这种状态是很难被捕捉到的，这里只是为了分析才画出来<br>
+<img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/4.png" alt="&quot;图4&quot;" title="图4"></p>
 <p>然后业务逻辑继续，假设我们的消息是按照中图5所示继续发送的。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/5.png" alt="&quot;图5&quot;" title="图5"></p>
-<p>然后1，3节点收到了来自节点1的 marker，这个时候，它们也要做两件事情：<br>a. 记录自己现在的状态。这个时候1号有0个A，0个B，1个C，记录到 state 里。这个时候3号有1个A，1个B，1个C，记录到 state 里。<br>b. 通过从自己出发的 channel 向另外两个节点发送 marker 消息。</p>
+<p>然后1，3节点收到了来自节点1的 marker，这个时候，它们也要做两件事情：<br>
+a. 记录自己现在的状态。这个时候1号有0个A，0个B，1个C，记录到 state 里。这个时候3号有1个A，1个B，1个C，记录到 state 里。<br>
+b. 通过从自己出发的 channel 向另外两个节点发送 marker 消息。</p>
 <p>还有一件事情会发生，就是在接收 marker 的这条线路上，后来再来的消息将不被记录到state中，我们用一个叉叉来表示。</p>
 <p>如图6所示。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/6.png" alt="&quot;图6&quot;" title="图6"></p>
 <p>这个时候大家都收到了Marker，然后继续业务逻辑的收发。</p>
-<p>我们来看看各个节点在之后发生的事情：<br>a. 节点1。从节点2收到了一个 B ，但是这个 B 经过的这个 channel 已经被叉掉了，所以这个 B 将不会被记录到 state 中。从节点3 收到了一个 C，因为这条 channel 上还没有收到过 marker，这个C是要加到state中的。<br>b. 节点2。从节点1收到一个 A ，这条channel没有收到过 marker，加到state中去。从节点3收到一个 B，同理，加到state中去。<br>c. 节点3。从节点1收到一个 A ，这条channel没有收到过 marker，加到state中去。从节点2收到了一个 C ，但是这个 C 经过的这个 channel 已经被叉掉了，所以这个 C 将不会被记录到 state 中</p>
-<p>我们再来分析：为什么被叉掉的 channel 上，收到的消息就不计算到state里呢？<br>我们来看图6中，从节点2向节点1发送的B:</p>
+<p>我们来看看各个节点在之后发生的事情：<br>
+a. 节点1。从节点2收到了一个 B ，但是这个 B 经过的这个 channel 已经被叉掉了，所以这个 B 将不会被记录到 state 中。从节点3 收到了一个 C，因为这条 channel 上还没有收到过 marker，这个C是要加到state中的。<br>
+b. 节点2。从节点1收到一个 A ，这条channel没有收到过 marker，加到state中去。从节点3收到一个 B，同理，加到state中去。<br>
+c. 节点3。从节点1收到一个 A ，这条channel没有收到过 marker，加到state中去。从节点2收到了一个 C ，但是这个 C 经过的这个 channel 已经被叉掉了，所以这个 C 将不会被记录到 state 中</p>
+<p>我们再来分析：为什么被叉掉的 channel 上，收到的消息就不计算到state里呢？<br>
+我们来看图6中，从节点2向节点1发送的B:</p>
 <ol>
 <li>因为节点2早早就进入了snapshot算法之中</li>
-<li>这个B消息的来源可能有两个<ul>
+<li>这个B消息的来源可能有两个
+<ul>
 <li>在节点2，刚刚收到marker的时候，算本地的消息数量的时候被计入state了</li>
 <li>或者，在算法开始之后，在其他没有收到过 channel 上收到了这个 B ，这个时候肯定也是会被记入state的。</li>
 </ul>
@@ -448,7 +467,8 @@
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/7.png" alt="&quot;图7&quot;" title="图7"></p>
 <p>然后业务逻辑继续进行。如图8所示。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/8.png" alt="&quot;图8&quot;" title="图8"></p>
-<p>到这里，我们放慢脚步。假设节点1率先收到了来自节点3的 marker 。如图9所示。<br>我们可以看见，两条进入节点1的 channel 都被标记上叉叉的符号。这个时候节点1在 snapshot 算法中的历史使命就到此完成了。节点1可以向 admin 汇报自己的statue了。</p>
+<p>到这里，我们放慢脚步。假设节点1率先收到了来自节点3的 marker 。如图9所示。<br>
+我们可以看见，两条进入节点1的 channel 都被标记上叉叉的符号。这个时候节点1在 snapshot 算法中的历史使命就到此完成了。节点1可以向 admin 汇报自己的statue了。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/9.png" alt="&quot;图9&quot;" title="图9"></p>
 <p>接下来另外两个节点也陆续收到了marker，整个算法也就结束了。如图10所示。</p>
 <p><img src="http://ogy9sznv2.bkt.clouddn.com/project6/snapshot/10-update.png" alt="&quot;图10&quot;" title="图10"></p>
@@ -576,7 +596,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -588,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -599,7 +619,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -610,7 +630,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -645,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SnapShot算法"><span class="nav-number">1.</span> <span class="nav-text">SnapShot算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模拟一次快照算法"><span class="nav-number">2.</span> <span class="nav-text">模拟一次快照算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#snapshot算法"><span class="nav-number">1.</span> <span class="nav-text"> SnapShot算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模拟一次快照算法"><span class="nav-number">2.</span> <span class="nav-text"> 模拟一次快照算法</span></a></li></ol></div>
             
 
           </div>

@@ -296,7 +296,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -391,11 +391,14 @@
       
 
       
-        <p>HBase Introduction<br><a id="more"></a></p>
+        <p>HBase Introduction</p>
+<a id="more"></a>
 <hr>
-<h1 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h1><p>Hbase 是开源版本的 Google BigTable 分布式存储系统。 BigTable 是一个分布式，可拓展，高性能的数据库。</p>
+<h1 id="hbase"><a class="markdownIt-Anchor" href="#hbase"></a> Hbase</h1>
+<p>Hbase 是开源版本的 Google BigTable 分布式存储系统。 BigTable 是一个分布式，可拓展，高性能的数据库。</p>
 <p>HBase是运行在 Hadoop Distributed File System （HDFS）上的。HDFS 则是一个分布式文件系统，它把文件分割为 block， 并存储了几个副本在不同的机器上。 HDFS 为 HBase 提供了一个可靠地可拓展的文件系统。</p>
-<h1 id="HBase-的-Data-Modal"><a href="#HBase-的-Data-Modal" class="headerlink" title="HBase 的 Data Modal"></a>HBase 的 Data Modal</h1><p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_table.png" alt="Table in HBase" title="Table in HBase"></p>
+<h1 id="hbase-的-data-modal"><a class="markdownIt-Anchor" href="#hbase-的-data-modal"></a> HBase 的 Data Modal</h1>
+<p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_table.png" alt="Table in HBase" title="Table in HBase"></p>
 <p>HBase 中一行代表一条记录，每一行用一个 <code>row key</code> 来作为主键。 与关系型数据库不同的是，HBase中的主键是一个字节数组。所以理论上，从字符串，整数，double，long等各种数据类型被转换为字节数组以后都可以作为 <code>row key</code>。HBase在存储数据的时候，自动回根据 <code>row key</code> 把数据排序。</p>
 <p>HBase 中的每一个 <code>column</code> 有自己的 <code>column name</code>。 而且几个 <code>column</code> 可以进一步组合为 <code>column family</code>。 同属于一个 <code>column family</code> 的 <code>column</code> 有一个共同的前缀。</p>
 <p>例如：<code>Metadata:Type</code> 和 <code>Metadata:Language</code> 同属于 <code>Metadata</code> <code>column family</code></p>
@@ -404,12 +407,13 @@
 <p>HBase  对每个 cell 提供了时间戳，来维护不同的 version。<code>{row,column,version}</code> 可以在 HBase 表中找到一个特定的值。</p>
 <p>排序顺序:</p>
 <ol>
-<li><code>row key</code> </li>
+<li><code>row key</code></li>
 <li><code>column family</code></li>
 <li><code>family members</code></li>
 <li><code>timestamp</code></li>
 </ol>
-<h1 id="HBase-的操作"><a href="#HBase-的操作" class="headerlink" title="HBase 的操作"></a>HBase 的操作</h1><p>HBase 有四种操作： <code>Get</code>, <code>Put</code>, <code>Scan</code>, 和 <code>Delete</code>.</p>
+<h1 id="hbase-的操作"><a class="markdownIt-Anchor" href="#hbase-的操作"></a> HBase 的操作</h1>
+<p>HBase 有四种操作： <code>Get</code>, <code>Put</code>, <code>Scan</code>, 和 <code>Delete</code>.</p>
 <ol>
 <li><code>Get</code>: 返回一行的所有 cell （可以理解为返回一条记录）</li>
 <li><code>Put</code>: 可以用来添加或者更新</li>
@@ -422,7 +426,8 @@
 <li><code>Put</code> 则创建一个新的版本存入数据库中</li>
 <li>当然删除也可以针对某一个 <code>version</code> 进行</li>
 </ol>
-<h1 id="HBase-Architecture"><a href="#HBase-Architecture" class="headerlink" title="HBase Architecture"></a>HBase Architecture</h1><p>HBase 是由一组 <code>HBase node</code> 组成的</p>
+<h1 id="hbase-architecture"><a class="markdownIt-Anchor" href="#hbase-architecture"></a> HBase Architecture</h1>
+<p>HBase 是由一组 <code>HBase node</code> 组成的</p>
 <ol>
 <li>一台为 <code>master</code></li>
 <li>其他为 <code>slave</code></li>
@@ -433,36 +438,50 @@
 <li>节点注册</li>
 </ol>
 <p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_archi.png" alt="HBase architecture" title="HBase architecture"></p>
-<h1 id="Data-Partition"><a href="#Data-Partition" class="headerlink" title="Data Partition"></a>Data Partition</h1><p>为了实现 HBase 的可拓展性，当数据量很大的时候，需要将数据分布到不同的节点上。</p>
+<h1 id="data-partition"><a class="markdownIt-Anchor" href="#data-partition"></a> Data Partition</h1>
+<p>为了实现 HBase 的可拓展性，当数据量很大的时候，需要将数据分布到不同的节点上。</p>
 <p>HBase 会自动将一张表分割成几个区域，每个区域都有一段连续的 row。</p>
 <p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_regions.png" alt="Splitting a table into multiple regions in HBase" title="Splitting a table into multiple regions in HBase"></p>
 <p>在表小的时候整张表都在一个 region 当中，随着表越来越大，HBase会对此进行自动分割。</p>
-<h1 id="Client-Access"><a href="#Client-Access" class="headerlink" title="Client Access"></a>Client Access</h1><p>用户是怎么在 cluster 中找到要操作的数据的呢？</p>
+<h1 id="client-access"><a class="markdownIt-Anchor" href="#client-access"></a> Client Access</h1>
+<p>用户是怎么在 cluster 中找到要操作的数据的呢？</p>
 <p>为了保存所有的 region 信息和他们的位置， HBase 维护了两张目录表，这两张目录表也其他表一样存在 HBase 中，这样可以实现 fault tolerance</p>
 <ol>
-<li><code>-ROOT-</code><br> <code>-ROOT-</code> 会一直保存在一个 region 中，</li>
-<li><code>.META.</code><br> <code>.META.</code> 可能会被分割到不同 region 中</li>
+<li><code>-ROOT-</code><br>
+<code>-ROOT-</code> 会一直保存在一个 region 中，</li>
+<li><code>.META.</code><br>
+<code>.META.</code> 可能会被分割到不同 region 中</li>
 </ol>
 <p>用户先连接到 <code>cluster，</code> 通过 <code>ZooKeeper</code> 找到 <code>-ROOT-</code> 表，然后通过 <code>-ROOT-</code> 表找到 <code>.META.</code> 表的位置。然后通过 <code>.META.</code> 表找到用户要找的 <code>row</code> 所在的 <code>regionserver</code> 。用户找到了 <code>regionserver</code> 以后就可以直接对 <code>regionserver</code> 进行操作了。</p>
-<h1 id="Write-Operation"><a href="#Write-Operation" class="headerlink" title="Write Operation"></a>Write Operation</h1><p>一个 RegionServer 在执行写操作的时候要经过一下步骤</p>
+<h1 id="write-operation"><a class="markdownIt-Anchor" href="#write-operation"></a> Write Operation</h1>
+<p>一个 RegionServer 在执行写操作的时候要经过一下步骤</p>
 <ol>
 <li>把写操作添加到 commit log 中 （commit log 在 HDFS）</li>
 <li>然后写操作会被添加到内存里 （in-memory cache）</li>
 <li>在内存满的时候，这些内容才会被添加到文件系统上</li>
 </ol>
 <p>因为 commit log 是存在 HDFS ，所以当一台 regionServer 挂掉以后，我们还能从别的 node 上得到副本，然后根据commit log 来恢复这台 regionServer 在挂前的状态。</p>
-<h1 id="Read-Operation"><a href="#Read-Operation" class="headerlink" title="Read Operation"></a>Read Operation</h1><p>根绝前面的写操作，读操作相应有以下顺序：</p>
+<h1 id="read-operation"><a class="markdownIt-Anchor" href="#read-operation"></a> Read Operation</h1>
+<p>根绝前面的写操作，读操作相应有以下顺序：</p>
 <ol>
 <li>先访问内存（in-memory cache）</li>
 <li>如果内存上没有，再去访问文件系统上的 flushed file ，访问顺序是从最新的文件到最旧的文件。</li>
 <li>随着 flushed file 的增加，HBase 会自动 compact flushed files，如果某条记录的 version 超过了一定的数量就会被删除。</li>
 </ol>
-<h1 id="ACID-Properties-in-HBase"><a href="#ACID-Properties-in-HBase" class="headerlink" title="ACID Properties in HBase"></a>ACID Properties in HBase</h1><p>ACID：</p>
+<h1 id="acid-properties-in-hbase"><a class="markdownIt-Anchor" href="#acid-properties-in-hbase"></a> ACID Properties in HBase</h1>
+<p>ACID：</p>
 <ol>
-<li>Atomicity:<br> HBase 的更新操作具有原子性；</li>
-<li>Consistency:<br> 对于单条 row 来说呢，Get 操作具有一致性。<br> 但是对于 scan 来说就不一定了。<br> 但是至少一条 row 是具有原子性的</li>
-<li>Isolation:<br> 对于一条 row 的操作都是 Isolation的<br> 但是 scan 同样不一定</li>
-<li>Durability:<br> 具有 durability</li>
+<li>Atomicity:<br>
+HBase 的更新操作具有原子性；</li>
+<li>Consistency:<br>
+对于单条 row 来说呢，Get 操作具有一致性。<br>
+但是对于 scan 来说就不一定了。<br>
+但是至少一条 row 是具有原子性的</li>
+<li>Isolation:<br>
+对于一条 row 的操作都是 Isolation的<br>
+但是 scan 同样不一定</li>
+<li>Durability:<br>
+具有 durability</li>
 </ol>
 
       
@@ -584,7 +603,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -596,7 +615,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -607,7 +626,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -618,7 +637,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -653,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hbase"><span class="nav-number">1.</span> <span class="nav-text">Hbase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-的-Data-Modal"><span class="nav-number">2.</span> <span class="nav-text">HBase 的 Data Modal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-的操作"><span class="nav-number">3.</span> <span class="nav-text">HBase 的操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-Architecture"><span class="nav-number">4.</span> <span class="nav-text">HBase Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Partition"><span class="nav-number">5.</span> <span class="nav-text">Data Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Access"><span class="nav-number">6.</span> <span class="nav-text">Client Access</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Operation"><span class="nav-number">7.</span> <span class="nav-text">Write Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-Operation"><span class="nav-number">8.</span> <span class="nav-text">Read Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACID-Properties-in-HBase"><span class="nav-number">9.</span> <span class="nav-text">ACID Properties in HBase</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hbase"><span class="nav-number">1.</span> <span class="nav-text"> Hbase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hbase-的-data-modal"><span class="nav-number">2.</span> <span class="nav-text"> HBase 的 Data Modal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hbase-的操作"><span class="nav-number">3.</span> <span class="nav-text"> HBase 的操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hbase-architecture"><span class="nav-number">4.</span> <span class="nav-text"> HBase Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-partition"><span class="nav-number">5.</span> <span class="nav-text"> Data Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-access"><span class="nav-number">6.</span> <span class="nav-text"> Client Access</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#write-operation"><span class="nav-number">7.</span> <span class="nav-text"> Write Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read-operation"><span class="nav-number">8.</span> <span class="nav-text"> Read Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#acid-properties-in-hbase"><span class="nav-number">9.</span> <span class="nav-text"> ACID Properties in HBase</span></a></li></ol></div>
             
 
           </div>

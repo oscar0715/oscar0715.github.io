@@ -292,7 +292,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaming Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg">
+      <meta itemprop="image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -390,15 +390,17 @@
         <p>Is Unique</p>
 <a id="more"></a>
 <hr>
-<h3 id="Difference-ASCII-Unicode"><a href="#Difference-ASCII-Unicode" class="headerlink" title="Difference ASCII / Unicode"></a>Difference ASCII / Unicode</h3><p>ASCII defines 128 characters, which map to the numbers 0–127. Unicode defines (less than) 221 characters, which, similarly, map to numbers 0–221 (though not all numbers are currently assigned, and some are reserved).</p>
+<h3 id="difference-ascii-unicode"><a class="markdownIt-Anchor" href="#difference-ascii-unicode"></a> Difference ASCII / Unicode</h3>
+<p>ASCII defines 128 characters, which map to the numbers 0–127. Unicode defines (less than) 221 characters, which, similarly, map to numbers 0–221 (though not all numbers are currently assigned, and some are reserved).</p>
 <p>Unicode is a superset of ASCII, and the numbers 0–128 have the same meaning in ASCII as they have in Unicode. For example, the number 65 means “Latin capital ‘A’”.</p>
 <p>Because Unicode characters don’t generally fit into one 8-bit byte, there are numerous ways of storing Unicode characters in byte sequences, such as UTF-32 and UTF-8.</p>
 <p>In extended ASCII, Assume 256 Characters.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<ol>
 <li>Ask if the string is a unicode string or ASCII string</li>
-<li>Assume it is an ASCII string<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isUnique</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">	<span class="comment">// ASCII defines 128 character</span></div><div class="line">	<span class="keyword">if</span> (s.length() &gt; <span class="number">128</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span>[] charSet = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">128</span>];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">		<span class="keyword">int</span> val = s.charAt(i);</div><div class="line">		<span class="keyword">if</span> (charSet[val]) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">		charSet[val] = <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>Assume it is an ASCII string</li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isUnique</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">	<span class="comment">// ASCII defines 128 character</span></div><div class="line">	<span class="keyword">if</span> (s.length() &gt; <span class="number">128</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span>[] charSet = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">128</span>];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">		<span class="keyword">int</span> val = s.charAt(i);</div><div class="line">		<span class="keyword">if</span> (charSet[val]) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">		charSet[val] = <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
 
@@ -431,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Cracking-1-3/" rel="next" title="Cracking the Code Interview 1.3">
-                <i class="fa fa-chevron-left"></i> Cracking the Code Interview 1.3
+              <a href="/algorithm/leetcode/Leetcode-397/" rel="next" title="Leetcode_397">
+                <i class="fa fa-chevron-left"></i> Leetcode_397
               </a>
             
           </div>
@@ -441,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Cracking-1-5/" rel="prev" title="Cracking the Code Interview 1.5">
-                Cracking the Code Interview 1.5 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Cracking-1-3/" rel="prev" title="Cracking the Code Interview 1.3">
+                Cracking the Code Interview 1.3 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -521,7 +523,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oux09z9su.bkt.clouddn.com/image/jpg/a20e897ajw1dylpoqq3rxj.jpg"
+               src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/a20e897ajw1dylpoqq3rxj.jpg"
                alt="Jiaming Ni" />
           <p class="site-author-name" itemprop="name">Jiaming Ni</p>
            
@@ -533,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">391</span>
+                <span class="site-state-item-count">386</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -544,7 +546,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -555,7 +557,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -590,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-ASCII-Unicode"><span class="nav-number">1.</span> <span class="nav-text">Difference ASCII / Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#difference-ascii-unicode"><span class="nav-number">1.</span> <span class="nav-text"> Difference ASCII / Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>
