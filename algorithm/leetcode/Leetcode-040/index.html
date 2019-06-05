@@ -387,18 +387,15 @@
       
 
       
-        <p>Combination Sum II</p>
-<a id="more"></a>
+        <p>Combination Sum II<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>给定一个数组，和一个整数 target，给出所有使和为target的所有组合</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定一个数组，和一个整数 target，给出所有使和为target的所有组合</p>
 <ol>
 <li>数组中可能有重复的元素</li>
 <li>每个元素只能用一次</li>
 <li>所有元素都是正数</li>
 </ol>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>backtracking</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>backtracking</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    </div><div class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    List&lt;Integer&gt; current = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        backtrack(candidates, <span class="number">0</span>, target);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> left, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList(current));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt; candidates.length &amp;&amp; target &gt;= candidates[i]; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(i &gt; left &amp;&amp; candidates[i] == candidates[i-<span class="number">1</span>]) &#123;</div><div class="line">                <span class="comment">// 在同一轮循环里面不能出现两次</span></div><div class="line">                <span class="comment">// 意思就是说，不会有重复的list</span></div><div class="line">                <span class="comment">// 但是可以在不同的循环里，可以添加相同的元素</span></div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            current.add(candidates[i]);</div><div class="line">            backtrack(candidates, i + <span class="number">1</span> , target - candidates[i]);</div><div class="line">            current.remove(current.size()-<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -591,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

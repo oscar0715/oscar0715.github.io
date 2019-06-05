@@ -387,21 +387,14 @@
       
 
       
-        <p>Unique Binary Search Trees</p>
-<a id="more"></a>
+        <p>Unique Binary Search Trees<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given n, how many structurally unique BST’s (binary search trees) that store values 1…n?</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given n, how many structurally unique BST’s (binary search trees) that store values 1…n?</p>
 <p>给出n，求包含1到n的二叉搜索树的所有可能的结构的数量</p>
-<p>这一题之所以是BST数的原因是：<br>
-题目想要我们给出的是给定 n 个节点，数出可能构成多少种形状。<br>
-反之，如果是普通的二叉树的话，假设两个val不同的节点，同一种形状就有两种可能构造方式。</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>动态规划</p>
+<p>这一题之所以是BST数的原因是：<br>题目想要我们给出的是给定 n 个节点，数出可能构成多少种形状。<br>反之，如果是普通的二叉树的话，假设两个val不同的节点，同一种形状就有两种可能构造方式。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>动态规划</p>
 <p>基本的思想是</p>
-<p>给出n的时候<br>
-a<sub>1</sub>    a<sub>2</sub>   … a<sub>k</sub>   a<sub>k+1</sub>   … a<sub>n</sub><br>
-以a<sub>k</sub>为根节点，左子树有k-1种可能，右子树有n-(k-1)-1种可能，两边相乘，则得到这种情况下总的可能性</p>
+<p>给出n的时候<br>a<sub>1</sub> &nbsp;&nbsp; a<sub>2</sub> &nbsp; … a<sub>k</sub> &nbsp; a<sub>k+1</sub> &nbsp; … a<sub>n</sub><br>以a<sub>k</sub>为根节点，左子树有k-1种可能，右子树有n-(k-1)-1种可能，两边相乘，则得到这种情况下总的可能性</p>
 <p>(动态规划是要把子树节点为0看有1种可能)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">    num[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    num[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 循环终止条件为 i &lt;= n</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="comment">// 节点数为n时的可能性为累加左子树节点数为0到n-1的所有情况的可能性</span></div><div class="line">        <span class="comment">// j &lt; i 是因为根节点占据一个节点数，左子树的数量最多只有i-1</span></div><div class="line">        <span class="comment">// 相对应右子树节点数是 为 i-1-j</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</div><div class="line">            <span class="comment">// 以 j 为根节点的可能性为</span></div><div class="line">            <span class="comment">// 左子树的可能性和右子树的可能性相乘</span></div><div class="line">            num[i] += num[j] * num[i - j - <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> num[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
@@ -595,7 +588,7 @@ a<sub>1</sub>    a<sub>2</sub>   … a<sub>k</sub>   a<sub>k+1</sub>   … 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

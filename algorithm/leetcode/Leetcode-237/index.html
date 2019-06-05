@@ -390,12 +390,10 @@
         <p>Delete Node in a Linked List</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
 <p>Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.</p>
 <p>一个单链表，给出要删除的节点，然后把自己删了</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>单链表删除节点都要知道前一个节点，然后把，前一个接到下一个，中间这个就删掉了。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>单链表删除节点都要知道前一个节点，然后把，前一个接到下一个，中间这个就删掉了。</p>
 <p>我觉得这题好无聊……</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</div><div class="line">    <span class="comment">//本质上仍然是删除了node的下一个</span></div><div class="line">    <span class="comment">//只不过删除之前,把下一个node的value赋到了当前的node</span></div><div class="line">    node.val = node.next.val;</div><div class="line">    node.next = node.next.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
@@ -589,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
