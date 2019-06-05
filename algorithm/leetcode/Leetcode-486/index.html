@@ -390,8 +390,12 @@
         <p>Predict the Winner</p>
 <a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>给定一个数组。两个选手分别从头尾两个数字中选一个，选完以后，这个数字就被剔除。<br>PlayerA 先选。<br>判断A有没有赢的机会。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>利用递归动态规划</p>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<p>给定一个数组。两个选手分别从头尾两个数字中选一个，选完以后，这个数字就被剔除。<br>
+PlayerA 先选。<br>
+判断A有没有赢的机会。</p>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
+<p>利用递归动态规划</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">PredictTheWinner</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> PredictTheWinner(nums, <span class="number">0</span>, nums.length-<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/* </span></div><div class="line"><span class="comment">     * left 表示做指针的位置</span></div><div class="line"><span class="comment">     * right 表示右指针的位置</span></div><div class="line"><span class="comment">     * a 表示 player A 累积的分数</span></div><div class="line"><span class="comment">     * b 表示 player B 累积的分数</span></div><div class="line"><span class="comment">     * flag 是 true 时，轮到 player A 选择；反之，player B 选择。</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">PredictTheWinner</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">boolean</span> flag)</span> </span>&#123;</div><div class="line">    	<span class="comment">// 当所有数字都选完了</span></div><div class="line">    	<span class="comment">// 判断大小</span></div><div class="line">        <span class="keyword">if</span>(left &gt; right) &#123;</div><div class="line">            <span class="keyword">return</span> a &gt;= b;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(flag) &#123;</div><div class="line">        	<span class="comment">// 轮到 A 选择的时候</span></div><div class="line">        	<span class="comment">// 用 || 挑出一个对 A 有利的选择</span></div><div class="line">            <span class="keyword">return</span> PredictTheWinner(nums,left+<span class="number">1</span>, right, a+nums[left], b, <span class="keyword">false</span>) ||</div><div class="line">                PredictTheWinner(nums,left, right-<span class="number">1</span>, a+nums[right], b, <span class="keyword">false</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">        	<span class="comment">// 轮到 B 选择的时候</span></div><div class="line">        	<span class="comment">// 要求 B 怎样选都是 A 赢，所以用 &amp;&amp;</span></div><div class="line">            <span class="keyword">return</span> PredictTheWinner(nums,left+<span class="number">1</span>, right, a, b+nums[left], <span class="keyword">true</span>) &amp;&amp;</div><div class="line">                PredictTheWinner(nums,left, right-<span class="number">1</span>, a, b+nums[right], <span class="keyword">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -423,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-485/" rel="next" title="Leetcode_485">
-                <i class="fa fa-chevron-left"></i> Leetcode_485
+              <a href="/algorithm/leetcode/Leetcode-482/" rel="next" title="Leetcode_482">
+                <i class="fa fa-chevron-left"></i> Leetcode_482
               </a>
             
           </div>
@@ -433,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-080/" rel="prev" title="Leetcode_080">
-                Leetcode_080 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-485/" rel="prev" title="Leetcode_485">
+                Leetcode_485 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
             
 
           </div>
