@@ -390,13 +390,15 @@
         <p>String Compresstion.</p>
 <a id="more"></a>
 <hr>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><ol>
+<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
+<ol>
 <li>insert</li>
 <li>remove</li>
 <li>replace</li>
 </ol>
 <p>chech if one operation can make two strings same.</p>
-<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1"></a>Solution 1</h3><ol>
+<h3 id="solution-1"><a class="markdownIt-Anchor" href="#solution-1"></a> Solution 1</h3>
+<ol>
 <li>remove is the reverse operation of insert.</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">oneAway</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (s.length() == t.length()) &#123;</div><div class="line">		<span class="keyword">return</span> replceCheck(s, t);</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (s.length() - t.length() == <span class="number">1</span>) &#123;</div><div class="line">		<span class="keyword">return</span> insertCheck(t, s);</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (t.length() - s.length() == <span class="number">1</span>) &#123;</div><div class="line">		<span class="keyword">return</span> insertCheck(s, t);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">replceCheck</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">	<span class="keyword">boolean</span> diffrence = <span class="keyword">false</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">		<span class="keyword">if</span> (s.charAt(i) != t.charAt(i)) &#123;</div><div class="line">			<span class="keyword">if</span> (diffrence) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">			diffrence = <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">insertCheck</span><span class="params">(String shortStr, String longStr)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> indexShort = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> indexLong = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (indexLong &lt; longStr.length() &amp;&amp; indexShort &lt; shortStr.length()) &#123;</div><div class="line">		<span class="keyword">if</span> (shortStr.charAt(indexShort) == longStr.charAt(indexLong)) &#123;</div><div class="line">			indexLong++;</div><div class="line">			indexShort++;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span> (indexLong == indexShort ) &#123;</div><div class="line">				indexLong++;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -432,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/leetcode/Cracking-1-2/" rel="next" title="Cracking the Code Interview 1.2">
-                <i class="fa fa-chevron-left"></i> Cracking the Code Interview 1.2
+              <a href="/algorithm/leetcode/Cracking-1-1/" rel="next" title="Cracking the Code Interview 1.1">
+                <i class="fa fa-chevron-left"></i> Cracking the Code Interview 1.1
               </a>
             
           </div>
@@ -591,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.</span> <span class="nav-text">Solution 1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-1"><span class="nav-number">2.</span> <span class="nav-text"> Solution 1</span></a></li></ol></div>
             
 
           </div>
