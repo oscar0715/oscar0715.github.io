@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="String to Integer (atoi) atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
+<meta name="description" content="String to Integer (atoi)atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_008">
 <meta property="og:url" content="http://menuet.xyz/algorithm/leetcode/Leetcode-008/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="String to Integer (atoi) atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
+<meta property="og:description" content="String to Integer (atoi)atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-12-04T14:32:53.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_008">
-<meta name="twitter:description" content="String to Integer (atoi) atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
+<meta name="twitter:description" content="String to Integer (atoi)atoi (表示ascii to integer)是把字符串转换成整型数的一个函数">
 
 
 
@@ -387,29 +387,23 @@
       
 
       
-        <p>String to Integer (atoi)<br>
-atoi (表示ascii to integer)是把字符串转换成整型数的一个函数</p>
-<a id="more"></a>
+        <p>String to Integer (atoi)<br>atoi (表示ascii to integer)是把字符串转换成整型数的一个函数<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.<br>
-（难点就是考虑所有的情况，但是……卧槽，总要有点需求吧，不然不是莫名其妙吗，呵呵）</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Implement atoi to convert a string to an integer.</p>
+<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.<br>（难点就是考虑所有的情况，但是……卧槽，总要有点需求吧，不然不是莫名其妙吗，呵呵）</p>
 <p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front. （你倒是说的大义凌然，我最后还不是一点一点去测试你的测试器，呵呵again）</p>
 <p><strong>Requirements for atoi:</strong></p>
 <ol>
-<li>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found.</li>
+<li>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. </li>
 <li>Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</li>
 </ol>
 <p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
 <p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
 <p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>要求是这样的：</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>要求是这样的：</p>
 <ol>
 <li>去掉字符串开头的所有空格</li>
-<li>允许去掉空格后第一个字符是加减号，分两种情况
-<ul>
+<li>允许去掉空格后第一个字符是加减号，分两种情况<ul>
 <li>第一有符号后面马上连数字</li>
 <li>第二无符号马上连数字</li>
 </ul>
@@ -419,10 +413,8 @@ atoi (表示ascii to integer)是把字符串转换成整型数的一个函数</p
 <li>overflows以后返回INT_MAX or INT_MIN</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (str.length() == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        str = str.trim();</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[] strArray = str.toCharArray();</div><div class="line"></div><div class="line">        <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span> (strArray[<span class="number">0</span>] == <span class="string">'-'</span>) &#123;</div><div class="line">            flag = -<span class="number">1</span>;</div><div class="line">            i++;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (strArray[<span class="number">0</span>] == <span class="string">'+'</span>) &#123;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (; i &lt; strArray.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> digit = strArray[i] - <span class="string">'0'</span>;</div><div class="line">            <span class="keyword">if</span> (digit &gt; <span class="number">9</span> || digit &lt; <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">          </div><div class="line">                <span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span> || result &gt; Integer.MAX_VALUE / <span class="number">10</span>) &#123;</div><div class="line">                    <span class="keyword">return</span> flag == <span class="number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                result = result * <span class="number">10</span> + digit;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result * flag;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>唉 来研究一下判断条件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正确的是</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span> || result &gt; Integer.MAX_VALUE / <span class="number">10</span>) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 错误一:</span></div><div class="line"><span class="keyword">if</span> (result * <span class="number">10</span> + digit &gt; Integer.MAX_VALUE) &#123;&#125;</div><div class="line"><span class="comment">// 当string="2147483648",跑到最后一位时，if条件应当成立</span></div><div class="line"><span class="comment">// 214748364*10+8 = -2147483647 &lt; Integer.MAX_VALUE 判断有误</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 错误二:</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span>) &#123;&#125;</div><div class="line"><span class="comment">// 当string="10522545459",跑到倒数第二位时</span></div><div class="line"><span class="comment">// [digit] = 5 [Integer.MAX_VALUE-result*10] = 1095229107</span></div><div class="line"><span class="comment">// 条件不成立</span></div><div class="line"><span class="comment">// 那么  result = 1095229107*10+5 = 10,952,291,075 &gt; 2,147,483,647 overflow了！</span></div><div class="line"></div><div class="line"><span class="comment">// 所以,只有</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span> || result &gt; Integer.MAX_VALUE / <span class="number">10</span>) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 当string="2147483648",跑到最后一位时，if条件应当成立</span></div><div class="line"><span class="comment">// digit &gt; Integer.MAX_VALUE - result * 10 ==&gt; 8&gt;7成立</span></div><div class="line"></div><div class="line"><span class="comment">// 当string="10522545459",跑到倒数第二位时</span></div><div class="line"><span class="comment">// [result] = 1,052,254,545 [Integer.MAX_VALUE / 10] = 214,748,364</span></div><div class="line"><span class="comment">// 也就是 result * 10就比 MAX_VALUE大了</span></div></pre></td></tr></table></figure>
-<p>这个判断乱死了<br>
-先放在这里，下次再想。</p>
+<p>唉 来研究一下判断条件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正确的是</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span> || result &gt; Integer.MAX_VALUE / <span class="number">10</span>) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 错误一:</span></div><div class="line"><span class="keyword">if</span> (result * <span class="number">10</span> + digit &gt; Integer.MAX_VALUE) &#123;&#125;</div><div class="line"><span class="comment">// 当string="2147483648",跑到最后一位时，if条件应当成立</span></div><div class="line"><span class="comment">// 214748364*10+8 = -2147483647 &lt; Integer.MAX_VALUE 判断有误</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 错误二:</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span>) &#123;&#125;</div><div class="line"><span class="comment">// 当string="10522545459",跑到倒数第二位时</span></div><div class="line"><span class="comment">// [digit] = 5 [Integer.MAX_VALUE-result*10] = 1095229107</span></div><div class="line"><span class="comment">// 条件不成立</span></div><div class="line"><span class="comment">// 那么  result = 1095229107*10+5 = 10,952,291,075 &gt; 2,147,483,647 overflow了！</span></div><div class="line"></div><div class="line"><span class="comment">// 所以,只有</span></div><div class="line"><span class="keyword">if</span> (digit &gt; Integer.MAX_VALUE - result * <span class="number">10</span> || result &gt; Integer.MAX_VALUE / <span class="number">10</span>) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 当string="2147483648",跑到最后一位时，if条件应当成立</span></div><div class="line"><span class="comment">// digit &gt; Integer.MAX_VALUE - result * 10 ==&gt; 8&gt;7成立</span></div><div class="line"></div><div class="line"><span class="comment">// 当string="10522545459",跑到倒数第二位时</span></div><div class="line"><span class="comment">// [result] = 1,052,254,545 [Integer.MAX_VALUE / 10] = 214,748,364</span></div><div class="line"><span class="comment">// 也就是 result * 10就比 MAX_VALUE大了</span></div></pre></td></tr></table></figure></p>
+<p>这个判断乱死了<br>先放在这里，下次再想。</p>
 
       
     </div>
@@ -555,7 +547,7 @@ atoi (表示ascii to integer)是把字符串转换成整型数的一个函数</p
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">324</span>
+                <span class="site-state-item-count">325</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -612,7 +604,7 @@ atoi (表示ascii to integer)是把字符串转换成整型数的一个函数</p
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

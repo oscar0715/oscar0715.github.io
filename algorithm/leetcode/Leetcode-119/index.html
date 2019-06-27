@@ -390,8 +390,7 @@
         <p>Pascal’s Triangle II</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<pre>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><pre>
 [
      [1],
     [1,1],
@@ -400,12 +399,11 @@
  [1,4,6,4,1]
 ]
 </pre>
+
+
 <p>Given an index k, return the kth row of the Pascal’s triangle.</p>
-<p>For example, given k = 3,<br>
-Return [1,3,3,1].</p>
-<h3 id="solution-简单易懂版"><a class="markdownIt-Anchor" href="#solution-简单易懂版"></a> Solution 简单易懂版</h3>
-<p>就是118题稍微改动一下。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</div><div class="line"> </div><div class="line">  List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">  </div><div class="line">  row.add(<span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; rowIndex+<span class="number">1</span>; i++) &#123;</div><div class="line">    List&lt;Integer&gt; newRow = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">    newRow.add(<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; row.size(); j++) &#123;</div><div class="line">      newRow.add(row.get(j - <span class="number">1</span>) + row.get(j));</div><div class="line">    &#125;</div><div class="line">    newRow.add(<span class="number">1</span>);</div><div class="line">    row = newRow;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> row;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>For example, given k = 3,<br>Return [1,3,3,1].</p>
+<h3 id="Solution-简单易懂版"><a href="#Solution-简单易懂版" class="headerlink" title="Solution 简单易懂版"></a>Solution 简单易懂版</h3><p>就是118题稍微改动一下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</div><div class="line"> </div><div class="line">  List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">  </div><div class="line">  row.add(<span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; rowIndex+<span class="number">1</span>; i++) &#123;</div><div class="line">    List&lt;Integer&gt; newRow = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">    newRow.add(<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; row.size(); j++) &#123;</div><div class="line">      newRow.add(row.get(j - <span class="number">1</span>) + row.get(j));</div><div class="line">    &#125;</div><div class="line">    newRow.add(<span class="number">1</span>);</div><div class="line">    row = newRow;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> row;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>Over！</p>
 
@@ -448,8 +446,8 @@ Return [1,3,3,1].</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/algorithm/leetcode/Leetcode-283/" rel="prev" title="Leetcode_283">
-                Leetcode_283 <i class="fa fa-chevron-right"></i>
+              <a href="/algorithm/leetcode/Leetcode-266/" rel="prev" title="Leetcode_266">
+                Leetcode_266 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +538,7 @@ Return [1,3,3,1].</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">324</span>
+                <span class="site-state-item-count">325</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -597,7 +595,7 @@ Return [1,3,3,1].</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-简单易懂版"><span class="nav-number">2.</span> <span class="nav-text"> Solution 简单易懂版</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-简单易懂版"><span class="nav-number">2.</span> <span class="nav-text">Solution 简单易懂版</span></a></li></ol></div>
             
 
           </div>

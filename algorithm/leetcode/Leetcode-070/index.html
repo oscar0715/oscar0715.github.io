@@ -387,40 +387,33 @@
       
 
       
-        <p>Climbing Stairs</p>
-<a id="more"></a>
+        <p>Climbing Stairs<br><a id="more"></a></p>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>You are climbing a stair case. It takes n steps to reach to the top.</p>
 <p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
-<h3 id="solution-递归"><a class="markdownIt-Anchor" href="#solution-递归"></a> Solution 递归</h3>
-<p>这种题目第一反应是递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;  </div><div class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;  </div><div class="line">    <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>) + climbStairs(n-<span class="number">2</span>);  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是递归的问题是重复计算了很多分支，所以性能很差。<br>
-例如：<br>
-+ climbStairs(5)<br>
-+ climbStairs(4)<br>
-+ climbStairs(3)<br>
-+ climbStairs(2)<br>
-+ climbStairs(1)<br>
-+ climbStairs(2)<br>
-+ climbStairs(3)<br>
-+ climbStairs(2)<br>
-+ climbStairs(1)</p>
-<p>climbStairs(3)计算了两次，所以有重复。</p>
-<h3 id="solution-动态规划法填表初级版"><a class="markdownIt-Anchor" href="#solution-动态规划法填表初级版"></a> Solution 动态规划法填表（初级版）</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    a[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        a[i] = a[i-<span class="number">1</span>] + a[i-<span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>依然用climbStairs(5)举例<br>
-+ climbStairs(5)<br>
-+ climbStairs(4)<br>
-+ climbStairs(3)<br>
-+ climbStairs(2)<br>
-+ climbStairs(1)<br>
-+ climbStairs(2)<br>
-+ climbStairs(3)</p>
-<p>此时 climbStairs(3) 不用再次计算，直接调用就好了。</p>
-<h3 id="solution-动态规划法填表节约空间进阶版"><a class="markdownIt-Anchor" href="#solution-动态规划法填表节约空间进阶版"></a> Solution 动态规划法填表（节约空间进阶版）</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    a[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        a[i % <span class="number">3</span>] = a[(i - <span class="number">1</span>) % <span class="number">3</span>] + a[(i - <span class="number">2</span>) % <span class="number">3</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a[n % <span class="number">3</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution-递归"><a href="#Solution-递归" class="headerlink" title="Solution 递归"></a>Solution 递归</h3><p>这种题目第一反应是递归<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;  </div><div class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;  </div><div class="line">    <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>) + climbStairs(n-<span class="number">2</span>);  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是递归的问题是重复计算了很多分支，所以性能很差。<br>例如：</p>
+<pre><code>+ climbStairs(5)
+    + climbStairs(4)
+        + climbStairs(3)
+            + climbStairs(2)
+            + climbStairs(1)
+        + climbStairs(2)
+    + climbStairs(3)
+        + climbStairs(2)
+        + climbStairs(1)
+</code></pre><p>climbStairs(3)计算了两次，所以有重复。</p>
+<h3 id="Solution-动态规划法填表（初级版）"><a href="#Solution-动态规划法填表（初级版）" class="headerlink" title="Solution 动态规划法填表（初级版）"></a>Solution 动态规划法填表（初级版）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    a[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        a[i] = a[i-<span class="number">1</span>] + a[i-<span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>依然用climbStairs(5)举例</p>
+<pre><code>+ climbStairs(5)
+    + climbStairs(4)
+        + climbStairs(3)
+            + climbStairs(2)
+            + climbStairs(1)
+        + climbStairs(2)
+    + climbStairs(3)
+</code></pre><p>此时 climbStairs(3) 不用再次计算，直接调用就好了。</p>
+<h3 id="Solution-动态规划法填表（节约空间进阶版）"><a href="#Solution-动态规划法填表（节约空间进阶版）" class="headerlink" title="Solution 动态规划法填表（节约空间进阶版）"></a>Solution 动态规划法填表（节约空间进阶版）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    a[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        a[i % <span class="number">3</span>] = a[(i - <span class="number">1</span>) % <span class="number">3</span>] + a[(i - <span class="number">2</span>) % <span class="number">3</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a[n % <span class="number">3</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>不需要一个长度为n+1的数组。真是高手呀！。</p>
 <hr>
 <p>Over！</p>
@@ -556,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">324</span>
+                <span class="site-state-item-count">325</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -613,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-递归"><span class="nav-number">2.</span> <span class="nav-text"> Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-动态规划法填表初级版"><span class="nav-number">3.</span> <span class="nav-text"> Solution 动态规划法填表（初级版）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-动态规划法填表节约空间进阶版"><span class="nav-number">4.</span> <span class="nav-text"> Solution 动态规划法填表（节约空间进阶版）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-递归"><span class="nav-number">2.</span> <span class="nav-text">Solution 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-动态规划法填表（初级版）"><span class="nav-number">3.</span> <span class="nav-text">Solution 动态规划法填表（初级版）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-动态规划法填表（节约空间进阶版）"><span class="nav-number">4.</span> <span class="nav-text">Solution 动态规划法填表（节约空间进阶版）</span></a></li></ol></div>
             
 
           </div>

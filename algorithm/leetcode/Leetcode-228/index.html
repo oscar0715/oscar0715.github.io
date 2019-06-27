@@ -390,11 +390,9 @@
         <p>Summary Ranges</p>
 <a id="more"></a>
 <hr>
-<h3 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h3>
-<p>Given a sorted integer array without duplicates, return the summary of its ranges.</p>
-<p>For example, given [0,1,2,4,5,7], return [“0-&gt;2”,“4-&gt;5”,“7”].</p>
-<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
-<p>数组，也没什么难的</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a sorted integer array without duplicates, return the summary of its ranges.</p>
+<p>For example, given [0,1,2,4,5,7], return [“0-&gt;2”,”4-&gt;5”,”7”].</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>数组，也没什么难的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">summaryRanges</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        </div><div class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span>(nums.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> list;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> start = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">int</span> end = nums[<span class="number">0</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(nums[i] &gt; <span class="number">1</span> + end) &#123;</div><div class="line">                <span class="keyword">if</span>(start == end)&#123;</div><div class="line">                    list.add(start+<span class="string">""</span>);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    list.add(start+<span class="string">"-&gt;"</span>+end);</div><div class="line">                &#125;</div><div class="line">                start = nums[i];</div><div class="line">                end = nums[i];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                end = nums[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(start == end)&#123;</div><div class="line">            list.add(start+<span class="string">""</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            list.add(start+<span class="string">"-&gt;"</span>+end);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>Over！</p>
@@ -530,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">324</span>
+                <span class="site-state-item-count">325</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -587,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

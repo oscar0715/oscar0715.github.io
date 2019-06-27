@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Hexo deploy的时候报错 ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSH Using SSH over the HTTPS port">
+<meta name="description" content="Hexo deploy的时候报错ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSHUsing SSH over the HTTPS port">
 <meta name="keywords" content="Tool,SSH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决SSH无法登录Github">
 <meta property="og:url" content="http://menuet.xyz/technology/tool/解决SSH无法登录Github/index.html">
 <meta property="og:site_name" content="Revolutionary Road">
-<meta property="og:description" content="Hexo deploy的时候报错 ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSH Using SSH over the HTTPS port">
+<meta property="og:description" content="Hexo deploy的时候报错ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSHUsing SSH over the HTTPS port">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-12-04T14:32:54.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决SSH无法登录Github">
-<meta name="twitter:description" content="Hexo deploy的时候报错 ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSH Using SSH over the HTTPS port">
+<meta name="twitter:description" content="Hexo deploy的时候报错ssh connect to host github com port 22 operation timed out ssh -T git@github.com 也连不上 Github 官方给出解决方案:通过HTTPS端口连接SSHUsing SSH over the HTTPS port">
 
 
 
@@ -387,33 +387,26 @@
       
 
       
-        <p>Hexo deploy的时候报错<br>
-<code>ssh connect to host github com port 22 operation timed out</code></p>
+        <p>Hexo deploy的时候报错<br><code>ssh connect to host github com port 22 operation timed out</code></p>
 <p><code>ssh -T git@github.com</code> 也连不上</p>
-<p>Github 官方给出解决方案:通过HTTPS端口连接SSH</p>
-<a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Using SSH over the HTTPS port</a>
-<a id="more"></a>
+<p>Github 官方给出解决方案:通过HTTPS端口连接SSH<br><a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Using SSH over the HTTPS port</a><br><a id="more"></a></p>
 <hr>
-<h3 id="解决"><a class="markdownIt-Anchor" href="#解决"></a> 解决</h3>
-<ol>
-<li>先测试通过HTTPS端口连接SSH是否可行</li>
-</ol>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ol>
+<li><p>先测试通过HTTPS端口连接SSH是否可行</p>
 <figure class="highlight shell"><figcaption><span>run this SSH command</span><a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Github</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> ssh -T -p 443 git@ssh.github.com</span></div><div class="line">Hi username! You've successfully authenticated, but GitHub does not</div><div class="line">provide shell access.</div></pre></td></tr></table></figure>
 <p>如果显示如上，则可行</p>
-<ol start="2">
-<li>在~/.ssh/config文件中添加如下设置</li>
-</ol>
+</li>
+<li><p>在~/.ssh/config文件中添加如下设置</p>
 <figure class="highlight shell"><figcaption><span>config</span><a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Github</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> ssh -T -p 443 git@ssh.github.com</span></div><div class="line">Host github.com</div><div class="line">  Hostname ssh.github.com</div><div class="line">  Port 443</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>再运行SSH命令</li>
-</ol>
+</li>
+<li><p>再运行SSH命令</p>
 <figure class="highlight shell"><figcaption><span>run this SSH command</span><a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Github</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div><div class="line">Hi username! You've successfully authenticated, but GitHub does not</div><div class="line">provide shell access.</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>Works！</p>
 <hr>
-<h3 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h3>
-<ol>
-<li>
-<a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Using SSH over the HTTPS port</a>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://help.github.com/articles/using-ssh-over-the-https-port/" target="_blank" rel="external">Using SSH over the HTTPS port</a>
 </li>
 </ol>
 
@@ -550,7 +543,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">324</span>
+                <span class="site-state-item-count">325</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -607,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">1.</span> <span class="nav-text"> 解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text"> 参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">1.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
