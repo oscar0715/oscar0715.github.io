@@ -991,6 +991,7 @@ pre .javascript .function {
   color: #999;
   font-size: 0.8125em;
   margin: 10px 0;
+  text-align: center;
 }
 .use-motion .brand {
   opacity: 0;
@@ -1165,7 +1166,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #28bf05;
+  background: #0ffcec;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
