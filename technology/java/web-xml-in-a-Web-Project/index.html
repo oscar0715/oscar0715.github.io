@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"menuet.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Web项目启动的时候，容器唯一会自动读取web.xml文件。学习一下web.xml的机制和标签的含义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web.xml_in_a_Web_Project">
+<meta property="og:url" content="http://menuet.xyz/technology/java/web-xml-in-a-Web-Project/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="Web项目启动的时候，容器唯一会自动读取web.xml文件。学习一下web.xml的机制和标签的含义">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-06-14T03:37:43.000Z">
+<meta property="article:modified_time" content="2021-09-15T07:16:46.062Z">
+<meta property="article:author" content="Jiaming Ni">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://menuet.xyz/technology/java/web-xml-in-a-Web-Project/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>web.xml_in_a_Web_Project | Revolutionary Road</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Revolutionary Road</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/technology/java/web-xml-in-a-Web-Project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="你闻讯而来 我大喜过望">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          web.xml_in_a_Web_Project
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-06-14 11:37:43" itemprop="dateCreated datePublished" datetime="2016-06-14T11:37:43+08:00">2016-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-15 15:16:46" itemprop="dateModified" datetime="2021-09-15T15:16:46+08:00">2021-09-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Web项目启动的时候，容器唯一会自动读取web.xml文件。<br>学习一下web.xml的机制和标签的含义</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><h3 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h3><ol>
+<li>启动一个WEB项目的时候,容器(如:Tomcat)会去读它的配置文件web.xml.</li>
+<li>容器在web.xml中会首先读两个节点: <code>&lt;listener&gt;&lt;/listener&gt;</code> 和 <code>&lt;context-param&gt;&lt;/context-param&gt;</code></li>
+</ol>
+<h3 id="context-param"><a href="#context-param" class="headerlink" title="context-param"></a>context-param</h3><blockquote>
+<p><code>&lt;context-param&gt;</code> 用来声明应用范围(整个WEB项目)内的上下文初始化参数。</p>
+</blockquote>
+<p>格式:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span>  </span><br><span class="line">	<span class="comment">&lt;!-- param-name 设定上下文的参数名称。必须是唯一名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- param-value 设定的参数名称的值 --&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>contextConfigLocationValue<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+
+<p>读到 <code>&lt;context-param&gt;</code>，容器会创建一个<code>ServletContext</code>，应用范围内，即整个WEB项目，都能使用这个上下文。</p>
+<p>接着，容器将<code>param-name</code>和<code>para-value</code>转化为键值对，交给<code>ServletContent</code></p>
+<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><blockquote>
+<p>定义: 监听器<code>Listener</code>就是在<code>application</code>,<code>session</code>,<code>request</code>三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件。<br><code>Listener</code>是<code>Servlet</code>的监听器，可以监听客户端的请求，服务端的操作等。</p>
+</blockquote>
+<p>在<code>web.xml</code>中，<code>Listener</code>的配置信息的初始化（<code>ServletContentListener</code>初始化）必须比<code>Filter</code>和<code>Servlet</code>都优先，而销毁比 <code>Servlet</code> 和 <code>Filter</code> 都慢。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>com.listener.class<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>容器创建 <code>&lt;listener&gt;&lt;/listener&gt;</code> 中的类实例，即创建监听（备注：<code>listener</code>定义的类可以是自定义的类但必须需要继承<code>ServletContextListener</code>）</li>
+<li>在监听的类中会有一个<code>contextInitialized(ServletContextEvent event)</code>初始化方法。</li>
+<li>在这个方法中可以通过<code>event.getServletContext().getInitParameter(&quot;contextConfigLocation&quot;)</code> 来得到<br><code>context-param</code> 设定的值。<br>在这个类中还必须有一个 <code>contextDestroyed(ServletContextEvent event)</code> 销毁方法。用于关闭应用前释放资源，比如说数据库连接的关闭。<br>得到这个<code>context-param</code>的值之后,你就可以做一些操作了。注意，这个时候你的WEB项目还没有完全启动完成。这个动作会比所有的<code>Servlet</code>都要早</li>
+</ul>
+<p>由上面的初始化过程可知容器对于<code>web.xml</code>的加载过程是 <code>context-param &gt;&gt; listener  &gt;&gt; fileter  &gt;&gt; servlet</code> </p>
+<h3 id="context-param-和-init-param区别"><a href="#context-param-和-init-param区别" class="headerlink" title="context-param 和 init-param区别"></a>context-param 和 init-param区别</h3><p><code>web.xml</code>里面可以定义两种参数：</p>
+<ol>
+<li><p>application 范围内的参数，存放在 <code>servlet context</code> 中，在 <code>web.xml</code> 中配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>context/param<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>avalible during application<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>servlet</code> 里面可以通过 <code>getServletContext().getInitParameter(&quot;context/param&quot;)</code> 得到</p>
+</li>
+<li><p><code>servlet</code> 范围内的参数，只能在 <code>servlet</code> 的 <code>init()</code>方法中取得，在web.xml中配置如下：</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MainServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.wes.controller.MainServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>param1<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>avalible in servlet init()<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在servlet中可以通过代码分别取用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wes.controller;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> ...</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MainServlet</span><span class="params">()</span> ...</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	 &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException ...</span>&#123;</span><br><span class="line">		 System.out.println(<span class="string">&quot;下面的两个参数param1是在servlet中存放的&quot;</span>);</span><br><span class="line">		 System.out.println(<span class="keyword">this</span>.getInitParameter(<span class="string">&quot;param1&quot;</span>));</span><br><span class="line">		 System.out.println(<span class="string">&quot;下面的参数是存放在servletcontext中的&quot;</span>);</span><br><span class="line">		System.out.println(getServletContext().getInitParameter(<span class="string">&quot;context/param&quot;</span>));</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-中-DispacherServlet，-WebApplicationContext，-ServletContext-的关系"><a href="#Spring-中-DispacherServlet，-WebApplicationContext，-ServletContext-的关系" class="headerlink" title="Spring 中 DispacherServlet， WebApplicationContext， ServletContext 的关系"></a>Spring 中 DispacherServlet， WebApplicationContext， ServletContext 的关系</h3><p>再梳理一下 Spring 的启动过程</p>
+<ol>
+<li><code>ServletContext</code><br>首先，对于一个web应用，它部署在 web 容器中， web 容器提供其一个全局的上下文环境，这个上下文就是 <code>ServletContext</code> ，其为后面的 spring IoC 容器提供宿主环境；</li>
+<li><code>WebApplicationContext</code><br>其次，在web.xml中会提供有 <code>contextLoaderListener</code> 。在 web 容器启动时，会触发容器初始化事件，此时 <code>contextLoaderListener</code>会监听到这个事件，其 <code>contextInitialized</code> 方法会被调用.<br>在这个方法中，Spring 会初始化一个启动上下文，这个上下文被称为根上下文，即<code>WebApplicationContext</code>.<br>这是一个接口类，确切的说，其实际的实现类是<code>XmlWebApplicationContext</code>。这个就是 Spring 的 IoC 容器，其对应的 Bean 定义的配置由 web.xml 中的 <code>&lt;context-param&gt;</code> 标签指定.<br>在这个IoC容器初始化完毕后，spring以 <code>WebApplicationContext.ROOTWEBAPPLICATIONCONTEXTATTRIBUTE</code> 为属性Key，将其存储到 <code>ServletContext</code> 中，便于获取；</li>
+<li><code>DispatcherServlet</code><br>再次，<code>contextLoaderListener</code>监听器初始化完毕后，开始初始化web.xml中配置的Servlet.<br>以最常见的<code>DispatcherServlet</code>为例，这个 servlet 实际上是一个标准的前端控制器，用以转发、匹配、处理每个 servlet 请求。<br><code>DispatcherServlet</code>上下文在初始化的时候会建立自己的IoC上下文，用以持有 spring mvc 相关的 bean 。<br>在建立 <code>DispatcherServlet</code> 自己的IoC上下文时，会利用<code>WebApplicationContext.ROOTWEBAPPLICATIONCONTEXTATTRIBUTE</code>先从 <code>ServletContext</code> 中获取之前的根上下文(即 <code>WebApplicationContext</code> )作为自己上下文的 parent 上下文。<br>有了这个 parent 上下文之后，再初始化自己持有的上下文。<br>初始化完毕后， spring 以与 servlet 的名字相关(此处不是简单的以 servlet 名为 Key ，而是通过一些转换，具体可自行查看源码)的属性为属性 Key ，也将其存到 <code>ServletContext</code> 中，以便后续使用。这样每个 servlet 就持有自己的上下文，即拥有自己独立的 bean 空间，同时各个 servlet 共享相同的 bean ，即根上下文(第2步中初始化的上下文)定义的那些bean。</li>
+</ol>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="Spring使用ContextLoaderListener加载ApplicationContext配置信息"><a href="#Spring使用ContextLoaderListener加载ApplicationContext配置信息" class="headerlink" title="Spring使用ContextLoaderListener加载ApplicationContext配置信息"></a>Spring使用ContextLoaderListener加载ApplicationContext配置信息</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/applicationContext-*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 采用的是通配符方式，查找WEB-INF/spring目录下xml文件。如有多个xml文件，以“,”分隔。 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>contextConfigLocation</code> 参数定义了要装入的 Spring 配置文件。<br>spring 会使用 <code>contextConfigLocation</code> 参数加载所有逗号分割的xml。<br>如果没有这个参数，spring 默认加载 <code>web-inf/applicationContext.xml</code> 文件.</p>
+<p>Spring 提供 <code>ServletContextListener</code> 的一个实现类 <code>ContextLoaderListener</code> 。<br>该类可以作为 listener 使用，它会在创建时自动查找 <code>WEB-INF/</code> 下的 <code>applicationContext.xml</code> 文件。<br>因此，如果只有一个配置文件，并且文件名为 <code>applicationContext.xml</code> ，则只需在web.xml文件中增加如下代码即可:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置一个spring为加载而设置的servlet可以达到同样效果"><a href="#配置一个spring为加载而设置的servlet可以达到同样效果" class="headerlink" title="配置一个spring为加载而设置的servlet可以达到同样效果."></a>配置一个spring为加载而设置的servlet可以达到同样效果.</h3><p>Spring 提供了一个特殊的 Servllet 类: <code>ContextLoaderServlet。</code><br>该 Servlet 在启动时，会自动查找WEB-IN日下的 <code>applicationContext.xml</code> 文件。</p>
+<p>当然，为了让 <code>ContextLoaderServlet</code> 随应用启动而启动，应将此 Servlet 配置成 <code>load-on-startup</code> . Servlet <code>load-on-startup</code> 的值小一点比较合适，因为要保证 ApplicationContext 优先创建。</p>
+<p>如果只有一个配置文件，并且文件名为 <code>applicationContext.xml</code> ，则在 web.xml 文件中增加如下代码即可:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>context<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.context.ContextLoaderServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>带多个配置文件的web.xml 文件如下:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--确定多个配置文件--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 参数名为contextConfigLocation--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 多个配置文件之间以，隔开 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-工NF/daoContext.xml,/WEB-工NF/applicationContext.</span><br><span class="line">		xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!--采用load-on-startup Servlet 创建Applicat工onContext 实例--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>context<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.context.ContextLoader</span><br><span class="line">		Servlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- 表示启动容器时初始化该Servlet；值小一点比较合适，会优先加载 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实例解释各个上下文关系"><a href="#实例解释各个上下文关系" class="headerlink" title="实例解释各个上下文关系"></a>实例解释各个上下文关系</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>  </span><br><span class="line">		org.springframework.web.context.ContextLoaderListener  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>mvc-dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>  </span><br><span class="line">		org.springframework.web.servlet.DispatcherServlet  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>mvc-dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>上文已经说过， 以上配置首先会在 <code>ContextLoaderListener</code> 中通过 <code>&lt;context-param&gt;</code> 中的 <code>applicationContext.xml</code> 创建一个 <code>ApplicationContext</code> ，再将这个 applicationContext 塞到 <code>ServletContext</code> 里面，通过 <code>ServletContext</code> 的 <code>setAttribute</code> 方法达到此目的，在 <code>ContextLoaderListener</code> 的源代码中，我们可以看到这样的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, <span class="keyword">this</span>.context);</span><br></pre></td></tr></table></figure>
+
+<p>以上由 ContextLoaderListener 创建的 <code>ApplicationContext</code> 是共享于整个Web应用程序的。<br>而你可能早已经知道， <code>DispatcherServlet</code> 会维持一个自己的 <code>ApplicationContext</code> ，默认会读取 <code>/WEB-INFO/&lt;dispatcherServletName&gt;-servlet.xml</code> 文件，而我们也可以重新配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>  </span><br><span class="line">	customConfiguredDispacherServlet  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>  </span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">		contextConfigLocation  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">		/WEB-INF/dispacherServletContext.xml  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>ContextLoaderListener</code>中创建<code>ApplicationContext</code>主要用于整个Web应用程序需要共享的一些组件，比如DAO，数据库的ConnectionFactory等。</li>
+<li>而由<code>DispatcherServlet</code>创建的<code>ApplicationContext</code>主要用于和该Servlet相关的一些组件，比如Controller、ViewResovler等。对于作用范围而言，在<code>DispatcherServlet</code>中可以引用由<code>ContextLoaderListener</code>所创建的<code>ApplicationContext</code>，而反过来不行。</li>
+</ol>
+<p>在Spring的具体实现上，这两个<code>ApplicationContext</code>都是通过<code>ServletContext</code>的<code>setAttribute</code>方法放到<code>ServletContext</code>中的。</p>
+<ul>
+<li>但是，<code>ContextLoaderListener</code>会先于<code>DispatcherServlet</code>创建<code>ApplicationContext</code></li>
+<li><code>DispatcherServlet</code>在创建<code>ApplicationContext</code>时会先找到由<code>ContextLoaderListener</code>所创建的<code>ApplicationContext</code>，再将后者的<code>ApplicationContext</code>作为参数传给<code>DispatcherServlet</code>的<code>ApplicationContext</code>的<code>setParent()</code>方法</li>
+<li>在Spring源代码中，你可以在FrameServlet.java中找到如下代码：<br><code>wac.setParent(parent);</code><br>其中，wac即为由<code>DisptcherServle</code>t创建的<code>ApplicationContext</code>，而parent则为有<code>ContextLoaderListener</code>创建的<code>ApplicationContext</code>。</li>
+<li>此后，框架又会调用<code>ServletContext</code>的<code>setAttribute()</code>方法将wac加入到<code>ServletContext</code>中。</li>
+</ul>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://tianweili.github.io/blog/2015/01/27/java-listener/" title="" target="">Java中的Listener 监听器</a></li>
+<li><a href="http://my.oschina.net/u/874225/blog/177978" title="" target="">Web.xml配置文件之contextConfigLocation(Spring)监听器</a></li>
+<li><a href="http://blog.csdn.net/liaoxiaohua1981/article/details/6759206" title="" target="">Web.xml配置详解之context-param</a></li>
+<li><a href="http://www.cnblogs.com/hzj-/articles/1689836.html" title="" target="">context-param与init-param的区别与作用</a></li>
+<li><a href="http://blog.csdn.net/c289054531/article/details/9196149" title="" target="">Spring中DispacherServlet、WebApplicationContext、ServletContext的关系</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/art/diary/%E3%80%90%E9%9A%8F%E7%AC%94%E3%80%91%E8%80%81%E6%97%B6%E5%85%89/" rel="prev" title="【随笔】老时光">
+      <i class="fa fa-chevron-left"></i> 【随笔】老时光
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/art/diary/%E3%80%90%E9%9A%8F%E7%AC%94%E3%80%91%E5%9F%8E%E5%8D%97%E6%97%A7%E4%BA%8B/" rel="next" title="【随笔】城南旧事">
+      【随笔】城南旧事 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">初始化流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-xml"><span class="nav-number">1.1.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context-param"><span class="nav-number">1.2.</span> <span class="nav-text">context-param</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Listener"><span class="nav-number">1.3.</span> <span class="nav-text">Listener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context-param-%E5%92%8C-init-param%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">context-param 和 init-param区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-%E4%B8%AD-DispacherServlet%EF%BC%8C-WebApplicationContext%EF%BC%8C-ServletContext-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.5.</span> <span class="nav-text">Spring 中 DispacherServlet， WebApplicationContext， ServletContext 的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring%E4%BD%BF%E7%94%A8ContextLoaderListener%E5%8A%A0%E8%BD%BDApplicationContext%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text">Spring使用ContextLoaderListener加载ApplicationContext配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AAspring%E4%B8%BA%E5%8A%A0%E8%BD%BD%E8%80%8C%E8%AE%BE%E7%BD%AE%E7%9A%84servlet%E5%8F%AF%E4%BB%A5%E8%BE%BE%E5%88%B0%E5%90%8C%E6%A0%B7%E6%95%88%E6%9E%9C"><span class="nav-number">2.2.</span> <span class="nav-text">配置一个spring为加载而设置的servlet可以达到同样效果.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E9%87%8A%E5%90%84%E4%B8%AA%E4%B8%8A%E4%B8%8B%E6%96%87%E5%85%B3%E7%B3%BB"><span class="nav-number">2.3.</span> <span class="nav-text">实例解释各个上下文关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+  <div class="site-description" itemprop="description">你闻讯而来 我大喜过望</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">326</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

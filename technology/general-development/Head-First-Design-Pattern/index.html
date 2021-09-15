@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"menuet.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Head First Desgin Pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解《Head First Design Pattern》">
+<meta property="og:url" content="http://menuet.xyz/technology/general-development/Head-First-Design-Pattern/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="Head First Desgin Pattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/1.1-simple-extend.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/1.2-simple-extend.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/2-simple-interface.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/3-strategy-pattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/observer/WeatherDataClass.png?v=2">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/observer/ObserverPattern.png?v=2">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/1-background.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/2-inheritance.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/3-wrapper.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/4-call-cost%28%29-method.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/5-decorator-on-coffee.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/simple-factory.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/pizza-factory.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/factory-pattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/command/Background.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/command/CommandPattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/adapter/Adaptor-Pattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/facade/Facade-Pattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/problem-background.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/further-abstraction.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/template-pattern.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-diagram.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-pattern%20.png">
+<meta property="og:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-pattern%20-diagram.png">
+<meta property="article:published_time" content="2017-12-05T06:14:15.000Z">
+<meta property="article:modified_time" content="2021-09-15T07:16:46.060Z">
+<meta property="article:author" content="Jiaming Ni">
+<meta property="article:tag" content="Design Pattern">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/1.1-simple-extend.png">
+
+<link rel="canonical" href="http://menuet.xyz/technology/general-development/Head-First-Design-Pattern/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>图解《Head First Design Pattern》 | Revolutionary Road</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Revolutionary Road</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/technology/general-development/Head-First-Design-Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="你闻讯而来 我大喜过望">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图解《Head First Design Pattern》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-05 14:14:15" itemprop="dateCreated datePublished" datetime="2017-12-05T14:14:15+08:00">2017-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-15 15:16:46" itemprop="dateModified" datetime="2021-09-15T15:16:46+08:00">2021-09-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/General/" itemprop="url" rel="index"><span itemprop="name">General</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Head First Desgin Pattern</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h1><p>举个例子：Duck 类<br>不同种类的鸭子继承了 Duck 父类：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/1.1-simple-extend.png" alt="简单继承"></p>
+<p>但是，当我们要给鸭子加入一个 <code>fly()</code> 方法的时候，这样的方式就会遇到麻烦：不会飞的鸭子怎么办呢？只能在 Rubber Duck 中重写 <code>fly()</code> 方法。也就是说：</p>
+<ol>
+<li>我们改动了父类就会影响到所有的子类，</li>
+<li>造成代码重复，所有不会飞的鸭子都要重写这个方法</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/1.2-simple-extend.png" alt="简单继承"></p>
+<p>那我们换用接口的方式来实现：</p>
+<ol>
+<li>我们仍然无法避免代码重复的问题，所有会飞的鸭子都要自己实现一遍 <code>fly()</code> 方法</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/2-simple-interface.png" alt="简单接口"></p>
+<p>这个时候就可以考虑设计模式了</p>
+<p>策略模式：</p>
+<ol>
+<li>把 <code>fly()</code> 方法 和  <code>quack()</code> 方法从 Duck 类中拆出来。定义自己的接口和实现类</li>
+<li>Duck 类中用接口类型定义 Fly 和 Quack 的行为变量</li>
+<li>Duck 类中用 performFly() 方法触发  <code>fly()</code> 方法，但并不关心这个方法是怎么实现的</li>
+<li>甚至可以写 setter 方法，在运行时改动 FlyBehavior 的实现</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/strategy/3-strategy-pattern.png" alt="策略模式"></p>
+<p>主要的思想有两点:</p>
+<ol>
+<li>具体的行为和 Client 分开</li>
+<li>组合比继承更加灵活</li>
+</ol>
+<br>
+
+<hr>
+<br>
+
+<h1 id="Observer-Pattern"><a href="#Observer-Pattern" class="headerlink" title="Observer Pattern"></a>Observer Pattern</h1><p>背景：</p>
+<ol>
+<li>一个气象中心提供天气信息（温度，湿度，气压）</li>
+<li>三个不同的显示设备，需要到气象中心获取天气信息，并做不同样式的展示。（Clients）<ul>
+<li>currentConditionDisplay</li>
+<li>statisticsDisplay</li>
+<li>forecastDisplay</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/observer/WeatherDataClass.png?v=2" alt="Weather Data Class"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最直接的实现方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measurementsChanged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// getter 获取最新信息</span></span><br><span class="line">        <span class="keyword">float</span> temp = getTemperature();</span><br><span class="line">        <span class="keyword">float</span> humidity = getHumidity();</span><br><span class="line">        <span class="keyword">float</span> pressure = getPressure();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新三个客户端</span></span><br><span class="line">        currentConditionDisplay.update(temp, humidity, pressure);</span><br><span class="line">        statisticsDisplay.update(temp, humidity, pressure);</span><br><span class="line">        forecastDisplay.update(temp, humidity, pressure);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的3个 update 方法，有两个问题：</p>
+<ol>
+<li>每次增加或者改动客户端，都要涉及到 WeatherData 端的改动</li>
+<li>显然代码重复了</li>
+</ol>
+<p>所以使用观察者模式：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/observer/ObserverPattern.png?v=2" alt="观察者模式"></p>
+<p>要点：</p>
+<ol>
+<li>核心是 Subject 和 Observer 两个接口</li>
+<li>Subject的实现类中维护一个 Observer 的列表<ul>
+<li>用 register 方法增加新的 Observer</li>
+<li>用 remove 方法移除 Observer</li>
+<li>notify 方法通知列表中所有的 Observers（调用 Observer 的 update 方法）</li>
+<li>Observer 中也可以维护一个 Subject 对象，来主动选择 register 或者 remove</li>
+</ul>
+</li>
+<li>观察者模式实现了 push 的机制</li>
+</ol>
+<br>
+
+<hr>
+<br>
+
+
+<h1 id="Decorator-Pattern"><a href="#Decorator-Pattern" class="headerlink" title="Decorator Pattern"></a>Decorator Pattern</h1><p><strong>背景：</strong><br>Starbuzz 咖啡店卖四种咖啡：HouseBlend, DarkRoast, Decaf, Espresso</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/1-background.png" alt="Class Diagram"></p>
+<p>咖啡店还提供了四种佐料：milk, soy, mocha, whip<br>每种咖啡都能加入任意种佐料，每种都要收费，那么如何才能灵活计费呢？</p>
+<p>第一种方法：<br>简单地在父类中，将是否含有佐料用 Boolean 类型的变量标记出来：<br><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/2-inheritance.png" alt="Simple Extension"></p>
+<ol>
+<li>显然这样方法最大的问题在于，一旦有新的佐料，我们就要对所以子类的 <code>cost()</code> 进行修改。</li>
+<li>如果某种佐料的价格发生了变化，我们也要对现有的代码进行修改</li>
+<li>总之这种代码可拓展性太差</li>
+</ol>
+<p>设计原则：</p>
+<blockquote>
+<p>类应该对拓展开放，而拒绝修改</p>
+</blockquote>
+<p>那么接下来，<strong>装饰器模式</strong>就要登场了。</p>
+<p>思路就是，我们有一杯 Beverage，然后在 RunTime 对它添加佐料。</p>
+<p>比如说，消费者要了一杯 DarkRoast 开发，要求添加 Mocha 和 Whip</p>
+<ol>
+<li>那我们就创建一个 DarkRoast Object</li>
+<li>再装饰一个 Mocha Object</li>
+<li>再装饰一个 Whip Object</li>
+<li>然后 cost() 方法通过 Delegation（委托）去累加佐料的价格</li>
+</ol>
+<p>我们可以将装饰的对象想象成一个 wrapper 类（包装类）</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/3-wrapper.png" alt="Wrapper"></p>
+<p>调用cost的方法的时候，我们调用最外层 Whip类的 cost 方法，然后不断向里层调用，然后类似递归地不断向外累加并返回</p>
+<p>（很熟悉啊，链表+递归？）</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/4-call-cost%28%29-method.png" alt="Call cost()"></p>
+<p>来看一看<strong>装饰器模式</strong>的定义</p>
+<blockquote>
+<p>装饰器模式能够动态地给对象添加新的职责。</p>
+</blockquote>
+<p>这种灵活性可以代替继承关系</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/decorator/5-decorator-on-coffee.png" alt="Decorator Pattern on Coffee"></p>
+<p>要点：</p>
+<ol>
+<li>装饰器的类和咖啡的实现类是 same type，因为类型相同，装饰器类才能包在 Beverage 的实现类外面。</li>
+<li>装饰器的实现类(例如 Milk)类中有一个 Beverage 的变量，可以看做是接口类型的变量，达到了“组合”的目的。所以此处装饰器类并没有利用“继承”来使用<code>cost()</code>方法，而是利用了“组合”</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Beverage 基类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    String description= <span class="string">&quot;unknown beverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getDescription() 已经实现好了</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// cost() 是抽象方法    </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 装饰器的抽象类</span></span><br><span class="line"><span class="comment">// 继承了 Beverage 基类， 所以是和别的 Beverage 可替换的</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CondimentDecorator</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 所有的装饰者实现类都要用类似于链表的方式重新实现 getDescription() 方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Beverage 的实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Espresso</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重写构造器，将基类中的变量 description 重新赋值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Espresso</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        description = <span class="string">&quot;Esprsso&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现 cost()   </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.99</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另外的 HouseBlend, DarkRoast, Decaf 都同理</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 装饰器的实现类</span></span><br><span class="line"><span class="comment">// 继承了 condimentDecorator（CondimentDecorator 继承了 Beverage）</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mocha</span> <span class="title">extend</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Beverage beverage;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造器，初始化了，这个装饰器装饰的 Beverage 类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mocha</span><span class="params">(Beverage beverage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 重新getDescription()方法</span></span><br><span class="line">    <span class="comment">// 这里就是所谓的 delegate</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beverage.getDescrition + <span class="string">&quot;, Mocha&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现cost()方法，完全就是链表啊</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beverage.cost() <span class="number">0.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Starbuzz</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Beverage beverage = <span class="keyword">new</span> Espresso();</span><br><span class="line">        beverage = <span class="keyword">new</span> Mocha(beverage);</span><br><span class="line">        beverage = <span class="keyword">new</span> Whip(beverage);</span><br><span class="line">        System.out.println(beverage.getDescription() </span><br><span class="line">            + <span class="string">&quot; $ &quot;</span> + beverage.cost()</span><br><span class="line">        )</span><br><span class="line">        <span class="comment">// 假设 Espresso 1.99, Mocha 0.2, Whip 0.2</span></span><br><span class="line">        <span class="comment">// 输出如下</span></span><br><span class="line">        <span class="comment">// Espresso, Mocha, Whip $ 2.39</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<hr>
+<br>
+
+<h1 id="Factory-Pattern"><a href="#Factory-Pattern" class="headerlink" title="Factory Pattern"></a>Factory Pattern</h1><p>背景：仍然是Pizza店，假设我们要根据不同的输入来定制不同的 Pizza：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Pizza <span class="title">orderPizza</span> <span class="params">(String type)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Pizza 是一个Interface（或者父类）</span></span><br><span class="line">    Pizza pizza;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(type.equal(<span class="string">&quot;cheese&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> CheesePizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;greek&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> GreekPizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;pepperoni&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> PepperoniPizza();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pizza.prepare();</span><br><span class="line">    pizza.bake();</span><br><span class="line">    pizza.cut();</span><br><span class="line">    pizza.box();</span><br><span class="line">    <span class="keyword">return</span> pizza;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是这样实现的话，每次有新的 pizza，都要更改 orderPizza这个方法</span></span><br></pre></td></tr></table></figure>
+
+<p>可以发现，变动的代码只是那一堆用来 new 出一个 Pizza 类的 if / else<br>那么，我们就可以把这一段代码抽出来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplePizzaFacrtory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(type.equal(<span class="string">&quot;cheese&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> CheesePizza();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;greek&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> GreekPizza();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;pepperoni&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> PepperoniPizza();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pizza;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>重新写一下 PizzaStore 类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PizzaStore</span> </span>&#123;</span><br><span class="line">    SimplePizzaFactory factory;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PizzaStore</span><span class="params">(SimplePizzaFactory factory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.factory = factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">orderPizza</span> <span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Pizza pizza;</span><br><span class="line"></span><br><span class="line">        pizza = factory.createPizza(type);</span><br><span class="line"></span><br><span class="line">        pizza.prepare();</span><br><span class="line">        pizza.bake();</span><br><span class="line">        pizza.cut();</span><br><span class="line">        pizza.box();</span><br><span class="line">        <span class="keyword">return</span> pizza;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/simple-factory.png" alt="简单工厂方法"></p>
+<p>要点：</p>
+<ol>
+<li>Pizza Store 是 SimplePizzaFactory 的 Client。抽象出来抽象出来以后，这个 SimplePizzaFactory 类，既可以提供给订单系统，也可以提供给菜单系统，也可以提供给外卖系统<br>而一旦有新增或修改 Pizza，我们只要修改 Factory 类就好了。</li>
+<li>Pizza 是我们的 Product。 SimplePizzaFactory 是唯一关心 Concrete Pizza 的部分</li>
+</ol>
+<p>（其实把 SimplePizzaFactory 抽象出一个接口来，就变成了抽象工厂方法 Abstract Factory）</p>
+<hr>
+<p>接下来介绍 工厂方法模式 Factory Method Pattern。</p>
+<p>有时候不同地方的披萨店需要制作不同的Pizza</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/pizza-factory.png" alt="Pizza Factory Method Pattern"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象类，用于不同的店去继承</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PizzaStore</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">orderPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Pizza pizza;</span><br><span class="line"></span><br><span class="line">        pizza = createPizza(type);</span><br><span class="line"></span><br><span class="line">        pizza.prepare();</span><br><span class="line">        pizza.bake();</span><br><span class="line">        pizza.cut();</span><br><span class="line">        pizza.box();</span><br><span class="line">        <span class="keyword">return</span> pizza;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把 Factory 类的 createPizza 方法移到 PizzaStore 中</span></span><br><span class="line">    <span class="comment">// 作为一个抽象方法，让子类自己去实现</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如在 Chicago 的披萨店可以这样实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(type.equal(<span class="string">&quot;cheese&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> ChicagoStyleCheesePizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;greek&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> ChicagoStyleGreekPizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;pepperoni&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> ChicagoStylePepperoniPizza();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pizza;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而在 New York 的披萨店则可以这样实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(type.equal(<span class="string">&quot;cheese&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> NYStyleCheesePizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;greek&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> NYStyleGreekPizza();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equal(<span class="string">&quot;pepperoni&quot;</span>)) &#123;</span><br><span class="line">        pizza = <span class="keyword">new</span> NYStylePepperoniPizza();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pizza;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>order() 方法是在父类中实现好的，也就是说，可以做统一的控制，属于不变动的代码<br>create()方法则属于需要变动的部分，所以让各个子类自己去实现</p>
+<p>工厂方法:</p>
+<ol>
+<li>负责对象的 initialization 和 encapsulation</li>
+<li>工厂方法的部分，从父类的代码中解耦出来，在子类中去实现</li>
+</ol>
+<p>PizzaStore 这个类的要点：</p>
+<ol>
+<li>PizzaStore 是一个 abstract creator. 类中定义了抽象工厂方法。</li>
+<li>PizzaStore 中的 order() 方法依赖一个 abstract product. 它不需要关心这个pizza到底是什么种类的，只要它是一个 pizza 就行了</li>
+<li>NYStylePizzaStore 继承了 PizzaStore，并自己实现一个工厂方法</li>
+</ol>
+<p>另一个角度看</p>
+<ol>
+<li>NYStylePizzaStore 封装了所有 NYStylePizza 的实现方式，所以只有 NYStylePizzaStore 知道 NYStylePizza 的细节。 ChicagoStylePizzaStore 同理</li>
+<li>抽象类 PizzaStore 只知道 Pizza 这个抽象类 的细节。（PizzaStore 是一个 level 更高的类， Pizza 也是 high level 的 Product）</li>
+<li>所以说，抽象工厂方法封装了具体实现的细节</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/factory/factory-pattern.png" alt="Factory Pattern"><br>我们再抽象一下工厂方法模式</p>
+<ol>
+<li>Creator 中的 abstract factoryMethod() 负责生产一个 Product。</li>
+<li>生产 Product 的工厂方法是一个接口，所以 Creator 中的 operationMethod() 方法可以对接口进行统一的操作，而不需要关心具体的实现</li>
+<li>Concreate Creator 来决定 这个 Product 的具体实现，也只有 ConcreateCreator 关心它的 Product 的具体实现</li>
+<li>最终的效果是，实现了 ConcreteProduct 与 Creator 类的解耦</li>
+</ol>
+<br>
+
+<hr>
+<br>
+
+<h1 id="Singleton-Pattern"><a href="#Singleton-Pattern" class="headerlink" title="Singleton Pattern"></a>Singleton Pattern</h1><p>单例模式，两个要点：</p>
+<ol>
+<li>一个类只有是一个实例</li>
+<li>这个类提供了一个全局获取这个实例的口子</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Singleton uniqueSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private 的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 公共调用的静态方法</span></span><br><span class="line">    <span class="comment">// 可以通过 Singleton.getInstance 获取实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            uniqueSingleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> uniqueSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的代码</p>
+<ol>
+<li>构造器为 private 保证了只有一个实例</li>
+<li>公共静态方法 getInstance() 是一个全局的获取该唯一实例的入口</li>
+</ol>
+<p>但是这段代码有一个问题，在 uniqueSingleton 初始化的时候，在多线程的情况下会出现 new 出多个实例的情况：</p>
+<ol>
+<li>线程1 new 出一个实例，正在使用这个类，例如赋值操作</li>
+<li>线程2 同时进来，又new 出了一个实例，线程1 赋的值就废了</li>
+</ol>
+<p>一个粗暴的方法就是给 getInstance() 方法加上 synchronized ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">        uniqueSingleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> uniqueSingleton;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码：</p>
+<ol>
+<li>保证了只会调用构造器一次，但是性能就很差了</li>
+<li>事实上只有在类初始化的时候，才需要 synchronized 来防止多次调用构造器，只要 uniqueSingleton实例化以后，就不怕多线程了</li>
+</ol>
+<p>改进一下，用 <code>double-checked locking</code> 来保证只有在初始化的时候才用到 synchronized ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Singleton uniqueSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private 的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 只有在初始化的时候才会进到 synchronized 的代码块</span></span><br><span class="line">            <span class="keyword">synchronized</span> （Singleton.class) &#123;</span><br><span class="line">                <span class="comment">// 进来以后再判断一下有没有别的先进来的线程已经 new 过了</span></span><br><span class="line">                <span class="keyword">if</span> (uniqueSingleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    uniqueSingleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> uniqueSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="/java/Java%E5%86%85%E5%AD%98%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%90Java%E7%B3%BB%E5%88%97%E7%AC%94%E8%AE%B0%E3%80%91/">关于 Volatile 和 synchronized 可以看着一篇文章</a></p>
+<br>
+
+<hr>
+<br>
+
+<h1 id="Command-Pattern"><a href="#Command-Pattern" class="headerlink" title="Command Pattern"></a>Command Pattern</h1><p>背景:<br>下面的类图展示了不同家电的开关接口，不同的家电开关的方法都不一样，现在要给这些家电做一个统一的开关，放在一把统一的遥控器上：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/command/Background.png" alt="不同的电器的类图"></p>
+<p>怎么做呢</p>
+<ol>
+<li><p>定义一个控制器的接口，这个控制器是一个统一接口，只有一个 <code>execute()</code> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接下来，给灯写一个开灯的控制器类，这个类实现了上面的控制器接口<br> 实际上这个控制器就是在 Light 类外面封装了一层，这样可以不侵入 Light 类的代码，用execute()方法实现了统一的开关封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LightOnCommand</span> <span class="title">implement</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    Light light;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LightOnCommand</span><span class="params">(Light light)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.light = light;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        light.on();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>然后写遥控器类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleRemoteControl</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Command slot;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleRemoteControl</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// setter</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">setCommand</span><span class="params">(Command command)</span> </span>&#123;</span><br><span class="line">        slot = command;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buttonWasPressed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 触发 slot 的 execute 方法</span></span><br><span class="line">        slot.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>写一个 Test 类把上面的类整合在一起</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteControlTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遥控器</span></span><br><span class="line">        SimpleRemoteControl remote = <span class="keyword">new</span> SimpleRemoteControl();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开灯的控制类</span></span><br><span class="line">        Light light = <span class="keyword">new</span> Light();</span><br><span class="line">        LightOnCommand lightOn = <span class="keyword">new</span> LightOnCommand(light);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 把控制类set到 遥控器中去</span></span><br><span class="line">        remote.set(lightOn);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用遥控器的 按按钮方法</span></span><br><span class="line">        remote.buttonWasPressed()</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>Command Pattern 的类图如下：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/command/CommandPattern.png" alt="Command Pattern"></p>
+<p>图中的元素分解：</p>
+<ol>
+<li>client（就是上面的 Test类）：<ul>
+<li>new 一个控制器实例（例如 LightOnCommand）</li>
+<li>set 控制器的Receiver （Light）</li>
+</ul>
+</li>
+<li>invoker（就是 RemoteControl）</li>
+<li>Receiver （Light）<ul>
+<li>Command的接受者</li>
+<li>也就是具体的业务方</li>
+</ul>
+</li>
+<li>command 接口<ul>
+<li>定义了统一的execute() </li>
+</ul>
+</li>
+<li>ConcreteCommand (就是SimpleRemoteControl)<ul>
+<li>execute() 封装了 Receiver 的具体 action 方法（例如 on()）</li>
+</ul>
+</li>
+</ol>
+<br>
+
+<hr>
+<br>
+
+<h1 id="Adapter-Pattern"><a href="#Adapter-Pattern" class="headerlink" title="Adapter Pattern"></a>Adapter Pattern</h1><p>定义：</p>
+<blockquote>
+<p>把一个接口转化成另外一个接口，方便适配 Client</p>
+</blockquote>
+<p>适配器模式：</p>
+<ol>
+<li>client 代码和 Server 代码接口不匹配</li>
+<li>写一个中间的 Adaptor 作为适配器</li>
+<li>Adaptor 和 Server 代码是 Compose 关系</li>
+</ol>
+<p>举个例子：</p>
+<ol>
+<li>你要操作一只鸭子，但是只有一只火鸡</li>
+<li>没办法，只能用火鸡代替一下鸭子</li>
+<li>所以要写一个火鸡到鸭子的适配器</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 你想要的 鸭子</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">Duck</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 现在只有火鸡</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">Turkey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 写一个适配器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class TurkeyAdaptor implements <span class="title">Duck</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Turkey turkey;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TurkeyAdaptor</span><span class="params">(Turkey turkey)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.turkey = turkey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        turkey.gobble();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 鸭子比火鸡飞得远</span></span><br><span class="line">        <span class="comment">// 鸭子飞一下，火鸡要飞 5 下</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            turkey.gobble();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看看适配器模式的 UML 图<br><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/adapter/Adaptor-Pattern.png" alt="Adapter Pattern"></p>
+<ol>
+<li>Target 是用户想要操作的类，也就是上面的 Duck</li>
+<li>Adaptee 是现有能提供的类，也就是上面的 Turkey</li>
+<li>Adaptor 就是中间的适配器，也就是上面的 TurkeyAdaptor</li>
+</ol>
+<p>Adapter 对 Duck 完成了包装，Client 完全不会感知 Duck 类。<br>Duck 也不需要为了 Client做出任何改动。这就是 Adapter 类的作用</p>
+<br>
+
+<hr>
+<br>
+
+<h1 id="Facade-Pattern"><a href="#Facade-Pattern" class="headerlink" title="Facade Pattern"></a>Facade Pattern</h1><p>Facade 定义：为复杂的子系统创建一个简化的，统一的接口。<br>（在子系统上包装了一层简单的接口）</p>
+<p>Facade 和 Adapter 的联系：</p>
+<ol>
+<li>目的不同：<ul>
+<li>Facade 提供了一个简化的接口</li>
+<li>Adapter 提供了一个适配 Client 的接口</li>
+</ul>
+</li>
+<li>两者都进行了包装<ul>
+<li>Facade 对子系统进行了包装</li>
+<li>Adapter 对 Adaptee 进行了包装</li>
+</ul>
+</li>
+<li>两者都通过包装完成了 Client 对内部系统的解耦，如果遇到接口的变化，之间要改变 Facade 或者 Adapter 就好了</li>
+</ol>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/facade/Facade-Pattern.png" alt="Facade Pattern"></p>
+<p>Facade Pattern 体现了一个设计原理：<br>Principle of Least Knowledge：<br>减少需要交互对象的数量，只关心最亲近的对象就好了，这样能减少依赖，降低对象间的耦合。</p>
+<p>举一个例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thermometer thermometer = station.getThermometer();</span><br><span class="line">    <span class="keyword">return</span> thermometer.getTemperature();</span><br><span class="line">    <span class="comment">// 这个方法从 Station 中获取 Thermometer 对象</span></span><br><span class="line">    <span class="comment">// 再去操作 thermometer</span></span><br><span class="line">    <span class="comment">// 那 getTemp() 方法就不太纯粹了，多依赖了 Thermometer 对象</span></span><br><span class="line">    <span class="comment">// 破坏了 Least KnowLedge 原则</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> station.getTemperature();</span><br><span class="line">    <span class="comment">// 如果直接从 station 方法获得温度，就比较好</span></span><br><span class="line">    <span class="comment">// 让 station 去关心 thermometer 对象就好了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<br>
+
+<hr>
+<br>
+
+<h1 id="Template-Pattern"><a href="#Template-Pattern" class="headerlink" title="Template Pattern"></a>Template Pattern</h1><p>举个例子，一家店同时提供了咖啡和茶，因为制作茶和咖啡的方法不同，所以两个类也有所不同：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/problem-background.png" alt="Problem background"></p>
+<ol>
+<li>父类 <code>Caffeine</code> 中有两个子类共有的三个方法</li>
+<li>子类都要 override prepareRecipe() 方法，因为咖啡和茶的的配方不同</li>
+<li>咖啡和茶两个类中各自有一些特有的方法</li>
+</ol>
+<p>但是其实我们还可以进一步抽象:</p>
+<ol>
+<li>brewCoffeeGrinds() 和 steepTeaBag() 方法都是用热水冲泡</li>
+<li>addSugarAndMilk() 和 addLemon() 则其实是添加一些佐料</li>
+</ol>
+<p>也就是我们可以把泡咖啡和泡茶抽象成四个步骤:</p>
+<ol>
+<li>煮开水</li>
+<li>用热水冲泡咖啡或者茶</li>
+<li>把泡好的咖啡或者茶倒到杯子里</li>
+<li>添加适当的佐料</li>
+</ol>
+<p>所以我们可以这样抽象:</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/further-abstraction.png" alt="further abstraction"></p>
+<p>只要在子类里面去重写 brew() 和 addCondiment() 方法就好了</p>
+<p>在这里 CaffeineBeverage 定义了一系列规范的流程。</p>
+<p>然后我们可以进一步推出我们的模板模式<br><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/template/template-pattern.png" alt="template pattern"></p>
+<p>注意：</p>
+<ol>
+<li>上图的 templateMethod() 依次调用了 primitiveOperation1(), primitiveOperation2()</li>
+</ol>
+<p>所以模板模式的定义为：用接口的模板方法定义了 algorithm的各个步骤，在子类中去实现具体的步骤，而不会影响到算法的结构。</p>
+<p>好处就是：把固定的步骤和具体的实现结构开来</p>
+<ol>
+<li>接口来定义步骤和顺序</li>
+<li>子类去完成每个步骤具体的实现</li>
+</ol>
+<p>再来看看具体的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板方法 final 子类不能改动</span></span><br><span class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">templateMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 定义了算法的步骤和顺序</span></span><br><span class="line">        primitiveOperation1();</span><br><span class="line">        primitiveOperation2();</span><br><span class="line">        concreateOperation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法1，需要子类重写</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">primitiveOperation1</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法2，需要子类重写</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">primitiveOperation2</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// concreateOperation 在父类中实现了一个具体的方法</span></span><br><span class="line">    <span class="comment">// 这个方法是所有子类都通用的，而且子类不能修改它</span></span><br><span class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">concreateOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里有个什么都不干的 hook 方法</span></span><br><span class="line">    <span class="comment">// 子类可以选择override ，也可以选择无视它</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hook</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// do nothing </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 钩子方法可以选择性地插入到算法的流程当中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当算法的某个部分是 optional 的时候<br>可以选择用 hook method </p>
+<p>举个具体的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaffeineBeverageWithHook</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板方法 </span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">prepareRecipe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 定义了算法的步骤和顺序</span></span><br><span class="line">        boilWater();</span><br><span class="line">        brew();</span><br><span class="line">        pourInCup();</span><br><span class="line">        <span class="keyword">if</span> (customerWantsCondiments()) &#123;</span><br><span class="line">            addCondiments();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 重写</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法，需要子类重写</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 重写</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有子类都通用的方法，在父类里面就实现好了</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">boilWater</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pourInCup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这就是一个 hook 方法</span></span><br><span class="line">    <span class="comment">// 子类可以选择性地去重写</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">customerWantsCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<hr>
+<br>
+
+<h1 id="Iterator-Pattern"><a href="#Iterator-Pattern" class="headerlink" title="Iterator Pattern"></a>Iterator Pattern</h1><p>迭代器模式：封装了集合的底层数据结构，提供了统一的遍历集合的方法</p>
+<br>
+
+<hr>
+<br>
+
+<h1 id="State-Pattern"><a href="#State-Pattern" class="headerlink" title="State Pattern"></a>State Pattern</h1><p>背景：一台糖果自动贩卖机</p>
+<p>状态图如下：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-diagram.png" alt="State Diagram"></p>
+<p>接下来实现一个糖果机的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 四种状态码</span></span><br><span class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD_OUT = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> NO_QUARTER = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> HAS_QUARTER = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">final</span> statict <span class="keyword">int</span> SOLD = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前状态</span></span><br><span class="line">    <span class="keyword">int</span> state SOLD_OUT;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 剩余的糖果</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GumballMachine</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.count = count;</span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            state = NO_QUARTER;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 具体的Action</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 针对不同的状态做出不同的处理</span></span><br><span class="line">        <span class="keyword">if</span> (state == HAS_QUARTER) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;You cannot insert another quarter&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == NO_QUARTER) &#123;</span><br><span class="line">            state = HAS_QUARTER;</span><br><span class="line">            System.out.println(<span class="string">&quot;You inserted a quarter&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == SOLD_OUT) &#123;</span><br><span class="line">            <span class="comment">// implement</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == SOLD) &#123;</span><br><span class="line">            <span class="comment">// implement</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他各个操作也会对不同的状态做出不同的处理</span></span><br><span class="line">    <span class="comment">// 此处不作重复的处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ejectQuarter</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnCrank</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispense</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是这段代码有非常严重的问题，假如新增了一个状态，那么就要对每个 Action 都要进行改动，整个代码就无法维护。</p>
+<p>所以需要进行一次重构 refactor </p>
+<p>重构后的类图如下图所示</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-pattern%20.png" alt="state-pattern"></p>
+<ol>
+<li>定义了 State 接口，定义了糖果机所有的 Action 方法</li>
+<li>每种状态都会去实现这个 State 接口在特定状态下的对应的方法</li>
+</ol>
+<p>举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoQuarterState</span> <span class="keyword">implements</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    GumballMachine gumballMachine;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每个状态内会有一个 gumballMachine 的指针</span></span><br><span class="line">    <span class="comment">// 用来在别的方法里面去改变糖果机的状态</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NoQuarterState</span> <span class="params">(GumballMachine gumballMachine)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.gumballMachine = gumballMachine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 具体的实现，</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 有些实现会涉及到状态的变化</span></span><br><span class="line">        gumballMachine.setState(gumballMachine.getHasQuarterState());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ejectQuarter</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnCrank</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispense</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看看 GumballMachine 的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GumballMachine</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    State soldOutState;</span><br><span class="line">    State soldState;</span><br><span class="line">    State noQuarterState;</span><br><span class="line">    State hasQuarterState;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这时候的 state 指向一个对象</span></span><br><span class="line">    State state = soldOutState;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">gumballMachine</span><span class="params">(<span class="keyword">int</span> numberGumballs)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 构造器给各个变量赋值</span></span><br><span class="line">        <span class="comment">// 省略了。。。。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertQuarter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        state.insertQuarter();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 别的方法以此类推</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// setter 方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结一下我们所做的改变：</p>
+<ol>
+<li>我们把具体行为的实现放到了每个状态的实现类中</li>
+<li>我们再也不用处理一堆 if 代码</li>
+<li>GumballMachine 类变得可拓展，而不需要改变。所有的改变都在各个状态的实现类中实现。</li>
+</ol>
+<p>Client 对 GumballMachine 的操作最终会 delegate 到具体的状态实现中去操作。</p>
+<p>所以状态模式的定义为：<br>对象的行为可以随着内在的状态的改变而改变。</p>
+<p>状态模式的类图如下：</p>
+<p><img src="https://menuet-1258369060.cos.ap-shanghai.myqcloud.com/design-pattern/state/state-pattern%20-diagram.png" alt="class diagram"></p>
+<ol>
+<li>Context 就是具有不同状态的对象，就是之前例子中的<code>Gumball Machine</code></li>
+<li>Context 每次接到一个请求，都会去调用 handle() 方法，然后 delegate 到给<strong>当前的状态实现类</strong>去处理</li>
+</ol>
+<p>其实结构上状态模式和策略模式还是一样的，但是状态模式的重点在于，可以在不同的状态间进行转化。</p>
+<br>
+
+<hr>
+<br>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Design-Pattern/" rel="tag"># Design Pattern</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/art/book/%E4%B9%A6%E6%91%98-%E5%8E%9F%E7%A0%94%E5%93%89-%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1/" rel="prev" title="书摘 原研哉 《设计中的设计》">
+      <i class="fa fa-chevron-left"></i> 书摘 原研哉 《设计中的设计》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/algorithm/recommendation/collaboration-filtering/" rel="next" title="协同过滤推荐学习">
+      协同过滤推荐学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strategy-Pattern"><span class="nav-number">1.</span> <span class="nav-text">Strategy Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observer-Pattern"><span class="nav-number">2.</span> <span class="nav-text">Observer Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decorator-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Decorator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factory-Pattern"><span class="nav-number">4.</span> <span class="nav-text">Factory Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Singleton-Pattern"><span class="nav-number">5.</span> <span class="nav-text">Singleton Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Command-Pattern"><span class="nav-number">6.</span> <span class="nav-text">Command Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adapter-Pattern"><span class="nav-number">7.</span> <span class="nav-text">Adapter Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Facade-Pattern"><span class="nav-number">8.</span> <span class="nav-text">Facade Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Template-Pattern"><span class="nav-number">9.</span> <span class="nav-text">Template Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator-Pattern"><span class="nav-number">10.</span> <span class="nav-text">Iterator Pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#State-Pattern"><span class="nav-number">11.</span> <span class="nav-text">State Pattern</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+  <div class="site-description" itemprop="description">你闻讯而来 我大喜过望</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">326</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
