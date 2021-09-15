@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"menuet.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="电商系统推荐的学习：  算法的学习 架构的学习 一些科普文的学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协同过滤推荐学习">
+<meta property="og:url" content="http://menuet.xyz/algorithm/recommendation/collaboration-filtering/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="电商系统推荐的学习：  算法的学习 架构的学习 一些科普文的学习">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-02-23T09:24:45.000Z">
+<meta property="article:modified_time" content="2021-09-15T07:16:46.041Z">
+<meta property="article:author" content="Jiaming Ni">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://menuet.xyz/algorithm/recommendation/collaboration-filtering/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>协同过滤推荐学习 | Revolutionary Road</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Revolutionary Road</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/technology/" rel="section"><i class="fa fa-laptop fa-fw"></i>technology</a>
+
+  </li>
+        <li class="menu-item menu-item-art">
+
+    <a href="/art/" rel="section"><i class="fa fa-book fa-fw"></i>art</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/algorithm/recommendation/collaboration-filtering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="你闻讯而来 我大喜过望">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          协同过滤推荐学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-23 17:24:45" itemprop="dateCreated datePublished" datetime="2018-02-23T17:24:45+08:00">2018-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-15 15:16:46" itemprop="dateModified" datetime="2021-09-15T15:16:46+08:00">2021-09-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>电商系统推荐的学习：</p>
+<ol>
+<li>算法的学习</li>
+<li>架构的学习</li>
+<li>一些科普文的学习</li>
+</ol>
+<span id="more"></span>
+
+<hr>
+<h1 id="参考资料放在最前面"><a href="#参考资料放在最前面" class="headerlink" title="参考资料放在最前面"></a>参考资料放在最前面</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5463ab162a58">推荐算法–协同过滤</a> —— 从这里借了一个例子</li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf">Amazon Recommendation</a></li>
+<li><a target="_blank" rel="noopener" href="http://glaros.dtc.umn.edu/gkhome/fetch/papers/www10_sarwar.pdf">Item-based Collaborative Filtering Recommendation Algorithms</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.computer.org/csdl/mags/ic/2017/03/mic2017030012.pdf">Two Decades of Recommender Systems at Amazon.com</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/news/2013/04/netflix-ml-architecture#">Netflix公布个性化和推荐系统架构</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/a-discussion-of-recommended-algorithms">一次推荐算法的普及性讨论</a></li>
+</ol>
+<br>
+***
+<br>
+
+<h1 id="读Paper"><a href="#读Paper" class="headerlink" title="读Paper"></a>读Paper</h1><h2 id="Item-based-Collaborative-Filtering-Recommendation-Algorithms"><a href="#Item-based-Collaborative-Filtering-Recommendation-Algorithms" class="headerlink" title="Item-based Collaborative Filtering Recommendation Algorithms"></a><a target="_blank" rel="noopener" href="http://glaros.dtc.umn.edu/gkhome/fetch/papers/www10_sarwar.pdf">Item-based Collaborative Filtering Recommendation Algorithms</a></h2><p><strong>相似度计算</strong><br>在利用用户评分的进行协同推荐的电商系统中，计算商品的相似度主要有三种方式：</p>
+<ol>
+<li>余弦相似度 Cosine-based </li>
+<li>皮尔逊相关系数 Pearson-r correlation </li>
+<li>修正的余弦相似 Adjusted Cosine similarity</li>
+</ol>
+<p>这三种相似度其实还是只使用了评分这一个维度：<br>一个用户 $U_a$ 这个向量，对商品 $i, j, k$ 的打分是这个向量不同的维度，</p>
+
+$
+\overrightarrow{U_a} = ( R_{a,i}, R_{a,j}, R_{a,k} )  \\
+\overrightarrow{U_b} = ( R_{b,i}, R_{b,j}, R_{b,k} )  \\
+$
+
+
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21824291">修正余弦相似度和皮尔森系数什么关系？</a><br>皮尔逊相关度和修正余弦相似中的去中心化，是减去一个评分均值。</p>
+<p><strong>用户的隐形偏好（点击，购买，加购等等），可以通过加权变为一个评分</strong></p>
+<hr>
+<h2 id="Two-Decades-of-RecommenderSystems-at-Amazon-com"><a href="#Two-Decades-of-RecommenderSystems-at-Amazon-com" class="headerlink" title="Two Decades of RecommenderSystems at Amazon.com"></a><a target="_blank" rel="noopener" href="https://www.computer.org/csdl/mags/ic/2017/03/mic2017030012.pdf">Two Decades of RecommenderSystems at Amazon.com</a></h2><blockquote>
+<p>The algorithm’s success has been from its simplicity, scalability,<br>and often surprising and useful recommendations, as well as desirable<br>properties such as updating immediately based on new information about a customer and being able to explain why itrecommended something in a way that’s easily understandable.</p>
+</blockquote>
+<p>协同推荐的一个好处就是，可以直观地给出推荐理由（购买过此商品的用户也购买了XXX）</p>
+<blockquote>
+<p>For many expensive items, and especially for non-media items, what people view and what they purchase can be radically different. </p>
+</blockquote>
+<p>浏览行为和购买行为有本质上的区别。<br>经济学里有互补品和替代品的概念。我的感觉是：在浏览的时候应该推荐替代品，在购买完成的时候应该推荐互补品。浏览的相似表，就应该在他闲逛的时候给他，支付完成的时候就是购买了啊</p>
+<blockquote>
+<p>The Importance of Time</p>
+</blockquote>
+<ol>
+<li>近期数据更重要</li>
+<li>季节规律 <ul>
+<li>当季推荐 </li>
+<li>解决冷启动的问题 </li>
+</ul>
+</li>
+<li>有些品类的购买体现长期规律 </li>
+</ol>
+<br>
+***
+<br>
+
+<h1 id="推荐算法架构文章"><a href="#推荐算法架构文章" class="headerlink" title="推荐算法架构文章"></a>推荐算法架构文章</h1><h2 id="Netflix公布个性化和推荐系统架构"><a href="#Netflix公布个性化和推荐系统架构" class="headerlink" title="Netflix公布个性化和推荐系统架构"></a><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/news/2013/04/netflix-ml-architecture#">Netflix公布个性化和推荐系统架构</a></h2><p><a target="_blank" rel="noopener" href="https://medium.com/netflix-techblog/system-architectures-for-personalization-and-recommendation-e081aa94b5d8">原文在这里</a></p>
+<blockquote>
+<p>In any case, the choice of online/nearline/offline processing is not an either/or question. All approaches can and should be combined. There are many ways to combine them. We already mentioned the idea of using offline computation as a fallback. Another option is to precompute part of a result with an offline process and leave the less costly or more context-sensitive parts of the algorithms for online computation.</p>
+</blockquote>
+<p>NetFlix 的推荐系统由三部分组成：离线系统，近在线系统，在线系统。这三个系统是同时存在，互相支持的。</p>
+<ol>
+<li>在SLA的要求下，如果在线算法不能提供实时推荐，可以用离线系统的结果做 Fallback</li>
+<li>离线计算可以当做在线计算的 precomputation 的部分，计算量小的部分才放在在线计算中进行</li>
+</ol>
+<blockquote>
+<p>模型是以离线方式训练完成的参数文件，数据是已完成处理的信息，存在某种数据库中。在Netflix，信号是指输入到算法中的新鲜信息。这些数据来自实时服务，可用其产生用户相关数据。</p>
+</blockquote>
+<ol>
+<li>模型<ul>
+<li>算法的参数</li>
+</ul>
+</li>
+<li>数据<ul>
+<li>完成处理的数据</li>
+</ul>
+</li>
+<li>信号<ul>
+<li>来自实时服务的用户行为等</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Here we try to make a distinction between data and events, although the boundary is certainly blurry. We think of events as small units of time-sensitive information that need to be processed with the least amount of latency possible. These events are routed to trigger a subsequent action or process, such as updating a nearline result set. On the other hand, we think of data as more dense information units that might need to be processed and stored for later use. </p>
+</blockquote>
+<br>
+***
+<br>
+
+<h1 id="一些科普"><a href="#一些科普" class="headerlink" title="一些科普"></a>一些科普</h1><h2 id="一次推荐算法的普及性讨论"><a href="#一次推荐算法的普及性讨论" class="headerlink" title="一次推荐算法的普及性讨论"></a><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/a-discussion-of-recommended-algorithms">一次推荐算法的普及性讨论</a></h2><blockquote>
+<p>在互联网时代，我们需要用算法处理的数据规模越来越大，要求的处理时间越来越短，单一计算机的处理能力是不可能满足需求的。而架构技术的发展，带来了很多不同特点的分布式计算平台。算法为了能够应用到这些分布式计算平台上，往往需要进化，例如：并行计算要求算法可以拆分为可并行计算的几个独立单位，但很多算法不具备这种可拆分特性，使得不能简单通过分布式计算来提高效率。这时候，为了实现分布式化的计算效果，需要将算法进行等效改写，使得其具有独立拆分性。另一方面，算法的发展，也反过来会对计算架构提出新的要求。</p>
+</blockquote>
+<p>算法需要适应架构，比如分布式系统；架构也要去适配算法的发展。<br>所以我的目标是达到“算法架构师”的水平？</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/technology/general-development/Head-First-Design-Pattern/" rel="prev" title="图解《Head First Design Pattern》">
+      <i class="fa fa-chevron-left"></i> 图解《Head First Design Pattern》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/art/diary/hangzhou/%E3%80%90%E9%9A%8F%E7%AC%94%E3%80%91%E4%B8%80%E8%B7%AF%E9%80%86%E9%A3%8E/" rel="next" title="【随笔】一路逆风">
+      【随笔】一路逆风 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E6%94%BE%E5%9C%A8%E6%9C%80%E5%89%8D%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">参考资料放在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BBPaper"><span class="nav-number">2.</span> <span class="nav-text">读Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Item-based-Collaborative-Filtering-Recommendation-Algorithms"><span class="nav-number">2.1.</span> <span class="nav-text">Item-based Collaborative Filtering Recommendation Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Decades-of-RecommenderSystems-at-Amazon-com"><span class="nav-number">2.2.</span> <span class="nav-text">Two Decades of RecommenderSystems at Amazon.com</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%9E%B6%E6%9E%84%E6%96%87%E7%AB%A0"><span class="nav-number">3.</span> <span class="nav-text">推荐算法架构文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netflix%E5%85%AC%E5%B8%83%E4%B8%AA%E6%80%A7%E5%8C%96%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">Netflix公布个性化和推荐系统架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%A7%91%E6%99%AE"><span class="nav-number">4.</span> <span class="nav-text">一些科普</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E7%9A%84%E6%99%AE%E5%8F%8A%E6%80%A7%E8%AE%A8%E8%AE%BA"><span class="nav-number">4.1.</span> <span class="nav-text">一次推荐算法的普及性讨论</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+  <div class="site-description" itemprop="description">你闻讯而来 我大喜过望</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">326</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

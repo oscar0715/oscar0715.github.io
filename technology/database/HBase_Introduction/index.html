@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"menuet.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="HBase Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HBase Introduction">
+<meta property="og:url" content="http://menuet.xyz/technology/database/HBase_Introduction/index.html">
+<meta property="og:site_name" content="Revolutionary Road">
+<meta property="og:description" content="HBase Introduction">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_table.png">
+<meta property="og:image" content="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_archi.png">
+<meta property="og:image" content="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_regions.png">
+<meta property="article:published_time" content="2017-04-08T14:04:15.000Z">
+<meta property="article:modified_time" content="2021-09-15T07:16:46.059Z">
+<meta property="article:author" content="Jiaming Ni">
+<meta property="article:tag" content="HBase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_table.png">
+
+<link rel="canonical" href="http://menuet.xyz/technology/database/HBase_Introduction/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>HBase Introduction | Revolutionary Road</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Revolutionary Road</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/technology/" rel="section"><i class="fa fa-laptop fa-fw"></i>technology</a>
+
+  </li>
+        <li class="menu-item menu-item-art">
+
+    <a href="/art/" rel="section"><i class="fa fa-book fa-fw"></i>art</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://menuet.xyz/technology/database/HBase_Introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiaming Ni">
+      <meta itemprop="description" content="你闻讯而来 我大喜过望">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Revolutionary Road">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HBase Introduction
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-08 22:04:15" itemprop="dateCreated datePublished" datetime="2017-04-08T22:04:15+08:00">2017-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-15 15:16:46" itemprop="dateModified" datetime="2021-09-15T15:16:46+08:00">2021-09-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>HBase Introduction</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h1><p>Hbase 是开源版本的 Google BigTable 分布式存储系统。 BigTable 是一个分布式，可拓展，高性能的数据库。</p>
+<p>HBase是运行在 Hadoop Distributed File System （HDFS）上的。HDFS 则是一个分布式文件系统，它把文件分割为 block， 并存储了几个副本在不同的机器上。 HDFS 为 HBase 提供了一个可靠地可拓展的文件系统。</p>
+<h1 id="HBase-的-Data-Modal"><a href="#HBase-的-Data-Modal" class="headerlink" title="HBase 的 Data Modal"></a>HBase 的 Data Modal</h1><p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_table.png" alt="Table in HBase" title="Table in HBase"></p>
+<p>HBase 中一行代表一条记录，每一行用一个 <code>row key</code> 来作为主键。 与关系型数据库不同的是，HBase中的主键是一个字节数组。所以理论上，从字符串，整数，double，long等各种数据类型被转换为字节数组以后都可以作为 <code>row key</code>。HBase在存储数据的时候，自动回根据 <code>row key</code> 把数据排序。</p>
+<p>HBase 中的每一个 <code>column</code> 有自己的 <code>column name</code>。 而且几个 <code>column</code> 可以进一步组合为 <code>column family</code>。 同属于一个 <code>column family</code> 的 <code>column</code> 有一个共同的前缀。</p>
+<p>例如：<code>Metadata:Type</code> 和 <code>Metadata:Language</code> 同属于 <code>Metadata</code> <code>column family</code></p>
+<p>在 HBase column 的数据类型不用定义，因为也是存储为字节数组的，这样 HBase 也可以存储任何格式的数据，然不会 validate 不通过。</p>
+<p>在定义表的时候，<code>column family</code> 必须实现定义好，不过 <code>column</code> 可以后来按需求增加。HBase把所有的 <code>column family</code> 成员存储在一起，所有被称为 <code>columnar database</code>，列式数据库</p>
+<p>HBase  对每个 cell 提供了时间戳，来维护不同的 version。<code>&#123;row,column,version&#125;</code> 可以在 HBase 表中找到一个特定的值。</p>
+<p>排序顺序:</p>
+<ol>
+<li><code>row key</code> </li>
+<li><code>column family</code></li>
+<li><code>family members</code></li>
+<li><code>timestamp</code></li>
+</ol>
+<h1 id="HBase-的操作"><a href="#HBase-的操作" class="headerlink" title="HBase 的操作"></a>HBase 的操作</h1><p>HBase 有四种操作： <code>Get</code>, <code>Put</code>, <code>Scan</code>, 和 <code>Delete</code>.</p>
+<ol>
+<li><code>Get</code>: 返回一行的所有 cell （可以理解为返回一条记录）</li>
+<li><code>Put</code>: 可以用来添加或者更新</li>
+<li><code>Scan</code>: 可以可以返回多行操作</li>
+<li><code>Delete</code>: 删除一行</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li><code>Get</code>，<code>Scan</code>，<code>Delete</code> 都对最新的 <code>version</code> 进行操作</li>
+<li><code>Put</code> 则创建一个新的版本存入数据库中</li>
+<li>当然删除也可以针对某一个 <code>version</code> 进行</li>
+</ol>
+<h1 id="HBase-Architecture"><a href="#HBase-Architecture" class="headerlink" title="HBase Architecture"></a>HBase Architecture</h1><p>HBase 是由一组 <code>HBase node</code> 组成的</p>
+<ol>
+<li>一台为 <code>master</code></li>
+<li>其他为 <code>slave</code></li>
+</ol>
+<p>HBase 使用 Apache Zookeeper 作为 cluster 的分布调度服务。</p>
+<ol>
+<li>它负责选择 master 节点</li>
+<li>节点注册</li>
+</ol>
+<p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_archi.png" alt="HBase architecture" title="HBase architecture"></p>
+<h1 id="Data-Partition"><a href="#Data-Partition" class="headerlink" title="Data Partition"></a>Data Partition</h1><p>为了实现 HBase 的可拓展性，当数据量很大的时候，需要将数据分布到不同的节点上。</p>
+<p>HBase 会自动将一张表分割成几个区域，每个区域都有一段连续的 row。</p>
+<p><img src="https://oli.cmu.edu/repository/webcontent/4b0ed9a580020ca601a544e41277d117/_u04_cloud_storage/_u04_m03_NoSQL_databases_case_studies/webcontent/HBASE_regions.png" alt="Splitting a table into multiple regions in HBase" title="Splitting a table into multiple regions in HBase"></p>
+<p>在表小的时候整张表都在一个 region 当中，随着表越来越大，HBase会对此进行自动分割。</p>
+<h1 id="Client-Access"><a href="#Client-Access" class="headerlink" title="Client Access"></a>Client Access</h1><p>用户是怎么在 cluster 中找到要操作的数据的呢？</p>
+<p>为了保存所有的 region 信息和他们的位置， HBase 维护了两张目录表，这两张目录表也其他表一样存在 HBase 中，这样可以实现 fault tolerance</p>
+<ol>
+<li><code>-ROOT-</code><br> <code>-ROOT-</code> 会一直保存在一个 region 中，</li>
+<li><code>.META.</code><br> <code>.META.</code> 可能会被分割到不同 region 中</li>
+</ol>
+<p>用户先连接到 <code>cluster，</code> 通过 <code>ZooKeeper</code> 找到 <code>-ROOT-</code> 表，然后通过 <code>-ROOT-</code> 表找到 <code>.META.</code> 表的位置。然后通过 <code>.META.</code> 表找到用户要找的 <code>row</code> 所在的 <code>regionserver</code> 。用户找到了 <code>regionserver</code> 以后就可以直接对 <code>regionserver</code> 进行操作了。</p>
+<h1 id="Write-Operation"><a href="#Write-Operation" class="headerlink" title="Write Operation"></a>Write Operation</h1><p>一个 RegionServer 在执行写操作的时候要经过一下步骤</p>
+<ol>
+<li>把写操作添加到 commit log 中 （commit log 在 HDFS）</li>
+<li>然后写操作会被添加到内存里 （in-memory cache）</li>
+<li>在内存满的时候，这些内容才会被添加到文件系统上</li>
+</ol>
+<p>因为 commit log 是存在 HDFS ，所以当一台 regionServer 挂掉以后，我们还能从别的 node 上得到副本，然后根据commit log 来恢复这台 regionServer 在挂前的状态。</p>
+<h1 id="Read-Operation"><a href="#Read-Operation" class="headerlink" title="Read Operation"></a>Read Operation</h1><p>根绝前面的写操作，读操作相应有以下顺序：</p>
+<ol>
+<li>先访问内存（in-memory cache）</li>
+<li>如果内存上没有，再去访问文件系统上的 flushed file ，访问顺序是从最新的文件到最旧的文件。</li>
+<li>随着 flushed file 的增加，HBase 会自动 compact flushed files，如果某条记录的 version 超过了一定的数量就会被删除。</li>
+</ol>
+<h1 id="ACID-Properties-in-HBase"><a href="#ACID-Properties-in-HBase" class="headerlink" title="ACID Properties in HBase"></a>ACID Properties in HBase</h1><p>ACID：</p>
+<ol>
+<li>Atomicity:<br> HBase 的更新操作具有原子性；</li>
+<li>Consistency:<br> 对于单条 row 来说呢，Get 操作具有一致性。<br> 但是对于 scan 来说就不一定了。<br> 但是至少一条 row 是具有原子性的</li>
+<li>Isolation:<br> 对于一条 row 的操作都是 Isolation的<br> 但是 scan 同样不一定</li>
+<li>Durability:<br> 具有 durability</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HBase/" rel="tag"># HBase</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/technology/java/Java%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E3%80%90Java%E7%B3%BB%E5%88%97%E7%AC%94%E8%AE%B0%E3%80%91/" rel="prev" title="Java自动内存管理【Java系列笔记】">
+      <i class="fa fa-chevron-left"></i> Java自动内存管理【Java系列笔记】
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/technology/java/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E3%80%90Java%E7%B3%BB%E5%88%97%E7%AC%94%E8%AE%B0%E3%80%91/" rel="next" title="Java垃圾回收机制【Java系列笔记】">
+      Java垃圾回收机制【Java系列笔记】 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hbase"><span class="nav-number">1.</span> <span class="nav-text">Hbase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-%E7%9A%84-Data-Modal"><span class="nav-number">2.</span> <span class="nav-text">HBase 的 Data Modal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">HBase 的操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-Architecture"><span class="nav-number">4.</span> <span class="nav-text">HBase Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Partition"><span class="nav-number">5.</span> <span class="nav-text">Data Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Access"><span class="nav-number">6.</span> <span class="nav-text">Client Access</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Operation"><span class="nav-number">7.</span> <span class="nav-text">Write Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-Operation"><span class="nav-number">8.</span> <span class="nav-text">Read Operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACID-Properties-in-HBase"><span class="nav-number">9.</span> <span class="nav-text">ACID Properties in HBase</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiaming Ni</p>
+  <div class="site-description" itemprop="description">你闻讯而来 我大喜过望</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">326</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaming Ni</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
